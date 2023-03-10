@@ -1,2 +1,2 @@
-# Flowly
+# Flowzy
 Flowly
