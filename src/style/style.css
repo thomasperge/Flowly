@@ -68,8 +68,14 @@ body {
 
 /* =========== Container =========== */
 .container {
-    overflow: hidden;
+    /* overflow: hidden; */
     width: auto;
+    height: 112vh;
     margin: 0;
-    padding-bottom: 6vh;
+    padding: 1%;
+    padding-bottom: 26vh;
+}
+
+::-webkit-scrollbar {
+    width: 0px;
 }
