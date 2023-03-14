@@ -7,7 +7,7 @@ const createWindow = () => {
         autoHideMenuBar: true,
         width: 500,
         height: 345,
-        resizable: false,
+        resizable: true,
     })
   
     win.loadFile('src/pages/index.html')
