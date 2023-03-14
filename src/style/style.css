@@ -1,16 +1,36 @@
+* {
+    padding: 0;
+    margin: 0;
+}
+
 body {
     background-color: red;
     margin: 0;
     padding: 0;
 }
 
+.drag {
+    -webkit-user-select: none;
+    -webkit-app-region: drag;
+}
+  
+.no-drag {
+    -webkit-app-region: no-drag;
+}
+
+/* =========== Menu =========== */
 .menu {
+    overflow-y: hidden;
+    position: fixed;
+    width: 100%;
+    height: 33px;
+    color: white;
     display: flex;
     align-items: center;
-    justify-content: end;
-    width: auto;
-    height: 32px;
-    background-color: black;
+    justify-content:end;
+    background-color: #29292d;
+    -webkit-app-region: drag;
+    z-index: 1;
 }
 
 .flex {
@@ -39,4 +59,11 @@ body {
 
 .minus:hover {
     background: blueviolet;
+}
+
+/* =========== Container =========== */
+.container {
+    width: 100%;
+    height: auto;
+    background-color: blue;
 }
