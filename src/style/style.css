@@ -4,9 +4,9 @@
 }
 
 body {
-    background-color: red;
     margin: 0;
     padding: 0;
+    background-color: #3a3a40;
 }
 
 .drag {
@@ -19,6 +19,11 @@ body {
 }
 
 /* =========== Menu =========== */
+.titlebar {
+    width: 100%;
+    height: 33px;
+}
+
 .menu {
     overflow-y: hidden;
     position: fixed;
@@ -54,16 +59,17 @@ body {
 }
 
 .close:hover {
-    background: blueviolet;
+    background: #1e1e21;
 }
 
 .minus:hover {
-    background: blueviolet;
+    background: #1e1e21;
 }
 
 /* =========== Container =========== */
 .container {
-    width: 100%;
-    height: auto;
-    background-color: blue;
+    overflow: hidden;
+    width: auto;
+    margin: 0;
+    padding-bottom: 6vh;
 }
