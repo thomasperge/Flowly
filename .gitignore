@@ -1,3 +1,6 @@
+# ignore .env files
+.env
+
+# ignore config files
 rules.md
 node_modules
-.env
