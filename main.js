@@ -8,7 +8,7 @@ const createWindow = () => {
     windows = new BrowserWindow({
         frame: false,
         autoHideMenuBar: true,
-        width: 1125,
+        width: 1225,
         height: 725,
         resizable: true,
         webPreferences: {

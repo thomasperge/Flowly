@@ -6,7 +6,7 @@
 body {
     margin: 0;
     padding: 0;
-    background-color: #3a3a40;
+    background-color: #000000;
 }
 
 .drag {
@@ -16,6 +16,10 @@ body {
   
 .no-drag {
     -webkit-app-region: no-drag;
+}
+
+::-webkit-scrollbar {
+    width: 0px;
 }
 
 /* =========== Menu =========== */
@@ -68,14 +72,9 @@ body {
 
 /* =========== Container =========== */
 .container {
-    /* overflow: hidden; */
     width: auto;
     height: 112vh;
     margin: 0;
     padding: 1%;
     padding-bottom: 26vh;
-}
-
-::-webkit-scrollbar {
-    width: 0px;
 }

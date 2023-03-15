@@ -18,6 +18,7 @@
   },
   "homepage": "https://github.com/thomasperge/Flowly#readme",
   "dependencies": {
+    "dotenv": "^16.0.3",
     "electron": "^23.1.3"
   }
 }
