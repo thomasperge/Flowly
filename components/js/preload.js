@@ -1,7 +1,5 @@
 const { ipcRenderer, contextBridge } = require('electron')
 
-console.log("TEST PROLOAD");
-
 // Initialize API Send
 const API = {
     window: {
