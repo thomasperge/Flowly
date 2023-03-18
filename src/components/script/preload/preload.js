@@ -25,6 +25,19 @@ document.addEventListener('DOMContentLoaded', function() {
         console.log("TEST MINUS");
         ipcRenderer.send("app/minimize");
     })
+
+    var formDoc = document.getElementById('myForm')
+
+    formDoc?.addEventListener('submit', (event) => {
+        console.log("HERE");
+        event.preventDefault();
+    
+        const formData = new FormData(event.target);
+        const email = formData.get('email');
+        const password = formData.get('password');
+    
+        ipcRenderer.send('form-data', {email, password});
+    });
 })
 
 contextBridge.exposeInMainWorld("app", API)

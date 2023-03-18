@@ -17,12 +17,12 @@
         </div>
     </div>
     
-    <div class="container">
+    <div class="container scroll-y">
         <!-- Register Area 1 -->
-        <div class="signup-registerArea1 flex">
-            <div class="signup-registerSousArea1">
+        <div class="registerArea1 flex">
+            <div class="containerSousArea1">
                 <!-- Title -->
-                <div class="signup-containerTitle">
+                <div class="containerTitle">
                     <p class="registerTitleApp">Flowly</p>
                     <p class="registerDescriptionApp">Start your journey with us.</p>
                     <p class="registerSloganApp">Take control of your carbon footprint. </p>
@@ -32,45 +32,47 @@
         </div>
 
         <!-- Register Area 2 -->
-        <div class="signup-registerArea2">
-            <form class="signup-registerSousArea2" method="post" id="myForm">
+        <div class="registerArea2">
+            <form class="containerSousArea2">
                 <!-- Title -->
-                <div class="signup-TitleArea">Sign up</div>
-                <div class="signup-HaveAccountTitleArea">Have an account ?</div>
-                <div class="signup-LookingTitleArea">Looking for?</div>
+                <div class="signupTitleArea">Sign up</div>
+                <div class="signupHaveAccountTitleArea">Have an account ?</div>
+                <div class="signupLookingTitleArea">Looking for?</div>
 
                 <!-- Looking For -->
-                <div class="signup-checkboxArea">
+                <div class="signupcheckboxArea">
                     <!-- Individual -->
-                    <div class="signup-CheckoxIndividual form-control">
-                        <input id="radio_1" class="radio isHidden" name="radio_individual" type="radio">
+                    <div class="signupCheckoxIndividual form-control" id="signupCheckoxIndividual">
+                        <input id="radio_1" class="radio isHidden" name="radio_a" type="radio">
                         <label for="radio_1" class="label">Individuals</label>
                     </div>
                     <!-- Compagnie -->
-                    <div class="signup-CheckoxCompagnie form-control">
-                        <input id="radio_2" class="radio isHidden" name="radio_compagnie" type="radio">
+                    <div class="signupCheckoxCompagnie form-control" id="signupCheckoxCompagnie">
+                        <input id="radio_2" class="radio isHidden" name="radio_a" type="radio">
                         <label for="radio_2" class="label">Compagnies</label>
                     </div>
                 </div>
 
                 <!-- Email -->
-                <div class="signup-LookingTitleArea ">Email</div>
-                <div class="signup-EmailArea">
-                    <input type="email" class="emailInput" name="email">
+                <div class="signupLookingTitleArea ">Email</div>
+                <div class="signupEmailArea">
+                    <input type="email" class="emailInput">
                 </div>
 
                 <!-- Password -->
-                <div class="signup-LookingTitleArea ">Password</div>
-                <div class="signup-PasswordArea">
-                    <input type="password" class="passwordInput" name="password">
+                <div class="signupLookingTitleArea ">Password</div>
+                <div class="signupPasswordArea">
+                    <input type="password" class="passwordInput">
                 </div>
 
-                <div class="signup-CreateAccountButtonArea">
-                    <button type="submit" class="buttonAccountCreate" id="test">Create account</button>
+                <div class="signupCreateAccountButtonArea">
+                    <button type="submit" class="buttonAccountCreate">Create account</button>
                 </div>
             </form>
         </div>
     </div> 
 
+    <script src="./../script/register.js"></script>
+    
 </body>
 </html>

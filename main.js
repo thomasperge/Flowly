@@ -22,7 +22,7 @@ const createWindow = () => {
         webPreferences: {
             contextIsolation: true,
             nodeIntegration: true,
-            preload: path.join(__dirname, "./src/components/script/preload/preload.js") // use a preload script
+            preload: path.join(__dirname, "./src/components/script/preload/preload.js")
         }
     })
   
@@ -43,17 +43,27 @@ app.whenReady().then(() => {
     createWindow()
 })
 
+
+ipcMain.on('form-data', (event, data) => {
+    console.log("HERE BRO");
+    const nom = data.email;
+    const prenom = data.password;
+  
+    console.log(`Nom: ${nom}, Prénom: ${prenom}`);
+});
+
+
 ipcMain.on("app/minimize", () => {
-    const User = mongoose.model('account', recordsSchema);
+    // const User = mongoose.model('account', recordsSchema);
 
-    const newUser = new User({
-        type: typeUsers[0],
-        email: "thomas74",
-        username: "thomas",
-        password: "thomas",
-    });
+    // const newUser = new User({
+    //     type: typeUsers[0],
+    //     email: "thomas74",
+    //     username: "thomas",
+    //     password: "thomas",
+    // });
 
-    newUser.save().then(() => console.log('User create'));
+    // newUser.save().then(() => console.log('User create'));
 
     // User.find({ idAccount: "3c71e6e3-e084-47db-ac2f-2993a568b03d" })
     // .then((records) => {
