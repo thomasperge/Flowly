@@ -22,11 +22,11 @@ const createWindow = () => {
         webPreferences: {
             contextIsolation: true,
             nodeIntegration: true,
-            preload: path.join(__dirname, "./components/js/preload.js") // use a preload script
-          }
+            preload: path.join(__dirname, "./src/components/script/preload/preload.js") // use a preload script
+        }
     })
   
-    windows.loadFile('./components/pages/index.html')
+    windows.loadFile('./src/components/pages/index.html')
 }
 
 app.on('ready', async () => {
