@@ -1,3 +1,13 @@
+@font-face {
+    font-family: "GothamMedium";
+    src: url("../../../font/Gotham\ Medium.otf");
+}
+
+@font-face {
+    font-family: "GothamBold";
+    src: url("../../../font/Gotham\ Bold.otf");
+}
+
 /* =========== Main =========== */
 * {
     padding: 0;
@@ -9,7 +19,7 @@ body {
     padding: 0;
     overflow-x: hidden;
     -webkit-app-region: no-drag;
-    background-color: #000000;
+    background-color: white;
 }
 
 .drag {
@@ -85,7 +95,7 @@ body {
     right: 0;
     top: 33px; 
     bottom: 0; 
-    background-color: red;
+    gap: 2%;
 }
 
 .scroll-y { 
@@ -94,20 +104,126 @@ body {
 
 /* =========== Register =========== */
 .registerArea1 {
-    width: 50%;
+    width: 35%;
     height: 100%;
-    background-color: aqua;
+}
+
+.containerSousArea1 {
+    width: 98%;
+    height: 98%;
+    background-color: rgb(42, 42, 237);
+    border-radius: 10px;
 }
 
 .registerArea2 {
-    width: 50%;
+    width: 65%;
     height: 100%;
-    background-color: aqua;
 }
 
-.registerArea1Left {
-    width: 95%;
-    height: 95%;
-    background-color: blue;
-    border-radius: 10px;
+.containerSousArea2 {
+    width: 85%;
+    height: 98%;
+    padding-left: 5%;
+}
+
+.signupTitleArea {
+    font-family: 'GothamBold';
+    font-size: 2vw;
+    width: fit-content;
+    color: black;
+    height: auto;
+    padding-top: 4%;
+}
+
+.signupHaveAccountTitleArea {
+    font-family: 'GothamMedium';
+    font-size: 1vw;
+    width: fit-content;
+    color: black;
+    height: auto;
+    padding-top: 1.5%;
+}
+
+.signupLookingTitleArea {
+    font-family: 'GothamMedium';
+    font-size: 1vw;
+    width: fit-content;
+    color: rgb(113, 113, 113);
+    height: auto;
+    padding-top: 4%;
+    padding-bottom: 2%;
+}
+
+.signupcheckboxArea {
+    display: flex;
+    width: 100%;
+    gap: 2%;
+}
+
+.signupCheckoxIndividual {
+    padding: 2% 4% 2% 2%;
+    width: 50%;
+    border-radius: 6px;
+    border: 2px solid;
+    border-color: black;
+    color: black;
+}
+
+.signupCheckoxCompagnie {
+    padding: 2% 4% 2% 2%;
+    width: 50%;
+    border-radius: 6px;
+    border: 2px solid;
+    border-color: black;
+    color: black;
+}
+
+.form-control {
+    font-family: system-ui, sans-serif;
+    font-size: 1.2vw;
+    font-weight: bold;
+    line-height: 1.1;
+    display: grid;
+    grid-template-columns: 1em auto;
+    gap: 0.5em;
+}
+
+.signupEmailArea {
+    display: flex;
+    width: 100%;
+}
+
+.emailInput {
+    width: 100%;
+    padding: 1.5% 0% 1.5% 1.5%;
+    background-color: white;
+    border: 2px solid;
+    border-color: black;
+    border-radius: 6px;
+    color: black;
+    font-family: 'GothamMedium';
+}
+
+.emailInput:focus {
+    outline: none;
+}
+
+.signupPasswordArea {
+    display: flex;
+    width: 100%;
+}
+
+.passwordInput {
+    width: 100%;
+    padding: 1.5% 0% 1.5% 1.5%;
+    background-color: white;
+    border: 2px solid;
+    border-color: black;
+    border-radius: 6px;
+    color: black;
+    font-family: 'GothamMedium';
+}
+
+.passwordInput:focus {
+    outline: none;
 }
