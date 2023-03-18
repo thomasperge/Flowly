@@ -26,7 +26,7 @@ const createWindow = () => {
         }
     })
   
-    windows.loadFile('./src/components/pages/index.html')
+    windows.loadFile('./src/components/pages/register.html')
 }
 
 app.on('ready', async () => {

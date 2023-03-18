@@ -1,3 +1,4 @@
+/* =========== Main =========== */
 * {
     padding: 0;
     margin: 0;
@@ -6,6 +7,8 @@
 body {
     margin: 0;
     padding: 0;
+    overflow-x: hidden;
+    -webkit-app-region: no-drag;
     background-color: #000000;
 }
 
@@ -18,11 +21,17 @@ body {
     -webkit-app-region: no-drag;
 }
 
+.flex {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
 ::-webkit-scrollbar {
     width: 0px;
 }
 
-/* =========== Menu =========== */
+/* =========== TitleBar =========== */
 .titlebar {
     width: 100%;
     height: 33px;
@@ -40,12 +49,6 @@ body {
     background-color: #29292d;
     -webkit-app-region: drag;
     z-index: 1;
-}
-
-.flex {
-    display: flex;
-    align-items: center;
-    justify-content: center;
 }
 
 .white {
@@ -72,9 +75,39 @@ body {
 
 /* =========== Container =========== */
 .container {
+    display: flex;
     width: auto;
-    height: 112vh;
+    height: 92vh;
     margin: 0;
+    overflow: hidden;
     padding: 1%;
-    padding-bottom: 26vh;
+    left: 0; 
+    right: 0;
+    top: 33px; 
+    bottom: 0; 
+    background-color: red;
+}
+
+.scroll-y { 
+    overflow-y: auto; 
+}
+
+/* =========== Register =========== */
+.registerArea1 {
+    width: 50%;
+    height: 100%;
+    background-color: aqua;
+}
+
+.registerArea2 {
+    width: 50%;
+    height: 100%;
+    background-color: aqua;
+}
+
+.registerArea1Left {
+    width: 95%;
+    height: 95%;
+    background-color: blue;
+    border-radius: 10px;
 }
