@@ -15,6 +15,7 @@
 }
 
 body {
+    overflow-y: hidden;
     margin: 0;
     padding: 0;
     overflow-x: hidden;
@@ -109,10 +110,53 @@ body {
 }
 
 .containerSousArea1 {
+    position: relative;
     width: 98%;
     height: 98%;
-    background-color: rgb(42, 42, 237);
+    background: linear-gradient(rgba(34, 0, 255, 0.612), rgba(255,255,255,.5)), url('../../../assets/360_F_296798219_SdbhwO6R9dx2i1F3nS8WvLmc5RPeS0Sl.jpg');
+    background-size: cover;
     border-radius: 10px;
+}
+
+.containerTitle {
+    width: auto;
+    margin-left: 8%;
+}
+
+.registerTitleApp {
+    padding-top: 20%;
+    width: 50%;
+    font-size: 1.9vw;
+    color: white;
+    font-family: 'GothamBold';
+}
+
+.registerDescriptionApp {
+    padding-top: 20%;
+    width: 100%;
+    font-size: 2.9vw;
+    color: white;
+    font-family: 'GothamBold';
+}
+
+.registerSloganApp {
+    padding-top: 20%;
+    width: 100%;
+    font-size: 1.5vw;
+    font-weight: bold;
+    color: white;
+    font-family: monospace;
+}
+
+.registerAuthorApp {
+    position: absolute;
+    width: 100%;
+    font-size: 1.2vw;
+    font-weight: bold;
+    color: white;
+    font-family: monospace;
+    bottom: 0;
+    padding-bottom: 1.5%;
 }
 
 .registerArea2 {
@@ -226,4 +270,19 @@ body {
 
 .passwordInput:focus {
     outline: none;
+}
+
+.signupCreateAccountButtonArea {
+    margin-top: 5%;
+    width: 100%;
+}
+
+.buttonAccountCreate {
+    padding: 1.5% 2% 1.5% 2%;
+    background-color: blue;
+    color: white;
+    font-family: 'GothamBold';
+    outline: none;
+    border: none;
+    border-radius: 6px;
 }

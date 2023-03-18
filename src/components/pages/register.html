@@ -21,13 +21,19 @@
         <!-- Register Area 1 -->
         <div class="registerArea1 flex">
             <div class="containerSousArea1">
-
+                <!-- Title -->
+                <div class="containerTitle">
+                    <p class="registerTitleApp">Flowly</p>
+                    <p class="registerDescriptionApp">Start your journey with us.</p>
+                    <p class="registerSloganApp">Take control of your carbon footprint. </p>
+                </div>
+                <p class="registerAuthorApp flex">by Thomas Kauffmant</p>
             </div>
         </div>
 
         <!-- Register Area 2 -->
         <div class="registerArea2">
-            <div class="containerSousArea2">
+            <form class="containerSousArea2">
                 <!-- Title -->
                 <div class="signupTitleArea">Sign up</div>
                 <div class="signupHaveAccountTitleArea">Have an account ?</div>
@@ -36,12 +42,14 @@
                 <!-- Looking For -->
                 <div class="signupcheckboxArea">
                     <!-- Individual -->
-                    <div class="signupCheckoxIndividual form-control">
-                        <input type="radio"> Individuals
+                    <div class="signupCheckoxIndividual form-control" id="signupCheckoxIndividual">
+                        <input id="radio_1" class="radio isHidden" name="radio_a" type="radio">
+                        <label for="radio_1" class="label">Individuals</label>
                     </div>
                     <!-- Compagnie -->
-                    <div class="signupCheckoxCompagnie form-control">
-                        <input type="radio"> Compagnies
+                    <div class="signupCheckoxCompagnie form-control" id="signupCheckoxCompagnie">
+                        <input id="radio_2" class="radio isHidden" name="radio_a" type="radio">
+                        <label for="radio_2" class="label">Compagnies</label>
                     </div>
                 </div>
 
@@ -58,11 +66,13 @@
                 </div>
 
                 <div class="signupCreateAccountButtonArea">
-
+                    <button type="submit" class="buttonAccountCreate">Create account</button>
                 </div>
-            </div>
+            </form>
         </div>
     </div> 
+
+    <script src="./../script/register.js"></script>
     
 </body>
 </html>
