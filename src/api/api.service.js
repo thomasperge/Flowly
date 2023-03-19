@@ -19,4 +19,26 @@ const getEstimate = async (data) => {
   }
 };
 
+// const apiKey = process.env.TOKEN_CARBON_INTERFACE;
+
+// axios.post('https://www.carboninterface.com/api/v1/estimates', {
+//     "type": "electricity",
+//     "electricity_unit": "mwh",
+//     "electricity_value": 42,
+//     "country": "us",
+//     "state": "fl"
+// }, {
+//     headers: {
+//         Authorization: `Bearer ${apiKey}`,
+//         'Content-Type': 'application/json',
+//     }
+// })
+// .then(response => {
+//     const responseData = response.data;
+//     console.log(responseData.data);
+// })
+// .catch(error => {
+//     console.error(error);
+// });
+
 module.exports = { getEstimate };

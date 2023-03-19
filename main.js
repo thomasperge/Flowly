@@ -4,12 +4,14 @@ const path = require('path');
 const mongoose = require('mongoose');
 const axios = require('axios');
 require('dotenv').config();
+const dataBaseComponent = require('./src/database/database.controller')
 
 // DataBase
 const { userSchema } = require('./models/account.js');
 const { recordsSchema } = require('./models/account.js');
 const { typeUsers } = require('./models/enum.js');
 
+// Create Windows
 let windows
 
 const createWindow = () => {
@@ -29,6 +31,7 @@ const createWindow = () => {
     windows.loadFile('./src/components/pages/register.html')
 }
 
+// App Ready
 app.on('ready', async () => {
     const uri = process.env.MONGODB_HOST;
 
@@ -39,62 +42,19 @@ app.on('ready', async () => {
     .then(() => console.log('MongoDB : Ready !'));
 });
 
+
 app.whenReady().then(() => {
     createWindow()
 })
 
-
+// All IPC Call
 ipcMain.on('form-data', (event, data) => {
-    console.log("HERE BRO");
-    const nom = data.email;
-    const prenom = data.password;
-  
-    console.log(`Nom: ${nom}, Prénom: ${prenom}`);
+    dataBaseComponent.addUser(data)
 });
 
 
+// Minimize & Close Windows
 ipcMain.on("app/minimize", () => {
-    // const User = mongoose.model('account', recordsSchema);
-
-    // const newUser = new User({
-    //     type: typeUsers[0],
-    //     email: "thomas74",
-    //     username: "thomas",
-    //     password: "thomas",
-    // });
-
-    // newUser.save().then(() => console.log('User create'));
-
-    // User.find({ idAccount: "3c71e6e3-e084-47db-ac2f-2993a568b03d" })
-    // .then((records) => {
-    //     console.log(records); // Tous les enregistrements avec l'idAccount correspondant à userId
-    // })
-    // .catch((err) => {
-    //     console.log(err);
-    // });
-
-    // const apiKey = process.env.TOKEN_CARBON_INTERFACE;
-
-    // axios.post('https://www.carboninterface.com/api/v1/estimates', {
-    //     "type": "electricity",
-    //     "electricity_unit": "mwh",
-    //     "electricity_value": 42,
-    //     "country": "us",
-    //     "state": "fl"
-    // }, {
-    //     headers: {
-    //         Authorization: `Bearer ${apiKey}`,
-    //         'Content-Type': 'application/json',
-    //     }
-    // })
-    // .then(response => {
-    //     const responseData = response.data;
-    //     console.log(responseData.data);
-    // })
-    // .catch(error => {
-    //     console.error(error);
-    // });
-
     windows.minimize();
 });
 

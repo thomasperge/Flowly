@@ -26,17 +26,25 @@ document.addEventListener('DOMContentLoaded', function() {
         ipcRenderer.send("app/minimize");
     })
 
-    var formDoc = document.getElementById('myForm')
-
-    formDoc?.addEventListener('submit', (event) => {
-        console.log("HERE");
+    // === Register User ==
+    document.getElementById('myForm')?.addEventListener('submit', (event) => {
         event.preventDefault();
     
         const formData = new FormData(event.target);
         const email = formData.get('email');
         const password = formData.get('password');
-    
-        ipcRenderer.send('form-data', {email, password});
+        let typeUsers;
+
+        const radios = document.querySelectorAll('input[type="radio"]');
+
+        for (const radio of radios) {
+            if (radio.checked) {
+                typeUsers = radio.value;
+                break;
+            }
+        }
+
+        ipcRenderer.send('form-data', {email, password, typeUsers});
     });
 })
 
