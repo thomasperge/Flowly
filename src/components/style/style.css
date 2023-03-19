@@ -21,7 +21,7 @@ body {
     overflow-x: hidden;
     overflow-y: hidden;
     -webkit-app-region: no-drag;
-    background-color: white;
+    background-image: url('../../../assets/background2.png');
 }
 
 .drag {
@@ -224,6 +224,7 @@ body {
     border: 2px solid;
     border-color: black;
     color: black;
+    background-color: white;
 }
 
 .signup-CheckoxCompagnie {
@@ -233,6 +234,7 @@ body {
     border: 2px solid;
     border-color: black;
     color: black;
+    background-color: white;
 }
 
 .form-control {
@@ -243,6 +245,7 @@ body {
     display: grid;
     grid-template-columns: 1em auto;
     gap: 0.5em;
+    accent-color: black;
 }
 
 .signup-EmailArea {
