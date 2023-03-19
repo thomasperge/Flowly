@@ -18,12 +18,15 @@ exports.addUserController = async (req, res) => {
  * 
  * @param {*} req Email, Password
  * @param {*} res 
- * @returns 
+ * @returns ``true`` if user found, else return ``false``
  */
-exports.loginUser = async (req, res) => {
+exports.loginUserController = async (req, res) => {
   try {
-    return await dbService.addUserInDB(req);
+    console.log(req);
+    const result = await dbService.loginUser(req);
+
+    return result;
   } catch (error) {
-    res.status(500).json({ message: error.message });
+    return error
   }
 };

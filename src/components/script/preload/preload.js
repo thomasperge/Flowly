@@ -60,7 +60,7 @@ document.addEventListener('DOMContentLoaded', function() {
         const password = formData.get('password');
 
         if (email.length > 0 && password.length > 0) {
-            ipcRenderer.send('app/login-user', {email, password, typeUsers});
+            ipcRenderer.send('app/login-user', {email, password});
         } else {
             document.getElementById("missingInformations").style.display = "block"
         }

@@ -66,8 +66,8 @@ ipcMain.on('redirect/have-account', (event, data) => {
 });
 
 // ===> Application :
-ipcMain.on("app/login-user", () => {
-    dataBaseComponent.addUserController()
+ipcMain.on("app/login-user", async (event, data) => {
+    let userFound = await dataBaseComponent.loginUserController(data)
 });
 
 ipcMain.on("app/minimize", () => {
