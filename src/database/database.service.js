@@ -39,7 +39,7 @@ async function checkPassword(password, hashedPassword) {
 /**
  * Login User with email and Password
  * @param {*} data (Object : email, password, typeOfUser)
- * @returns ``true`` if user found, else return ``false``
+ * @returns Boolean
  */
 exports.loginUser = async (data) => {
 	const User = mongoose.model('account', accountSchema);
@@ -53,5 +53,26 @@ exports.loginUser = async (data) => {
 		}
 		
 		return false
+	}
+};
+
+
+/**
+ * Function who return all information about users
+ * @param {*} data 
+ * @returns account schema
+ */
+exports.returnUserDataWithEmail = async (data) => {
+	const User = mongoose.model('account', accountSchema);
+
+	let userFound = await User.findOne({ email: data.email })
+
+	if (!userFound) return undefined
+	else {
+		if (await checkPassword(data.password, userFound.password)) {
+			return userFound
+		}
+		
+		return undefined
 	}
 };

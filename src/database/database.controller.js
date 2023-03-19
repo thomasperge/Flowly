@@ -1,8 +1,8 @@
 const dbService = require('./database.service');
 
 /**
- * Add User in Database
- * @param {*} req TypeOfUser, Email, Password 
+ * Add user in Database
+ * @param {*} req Data
  * @param {*} res 
  * @returns 
  */
@@ -15,15 +15,24 @@ exports.addUserController = async (req, res) => {
 };
 
 /**
- * 
- * @param {*} req Email, Password
+ * Login user
+ * @param {*} req Data : Email, Password
  * @param {*} res 
- * @returns ``true`` if user found, else return ``false``
+ * @returns Boolean
  */
 exports.loginUserController = async (req, res) => {
   try {
-    console.log(req);
     const result = await dbService.loginUser(req);
+
+    return result;
+  } catch (error) {
+    return error
+  }
+};
+
+exports.returnUserDataWithEmailController = async (req, res) => {
+  try {
+    const result = await dbService.returnUserDataWithEmail(req);
 
     return result;
   } catch (error) {

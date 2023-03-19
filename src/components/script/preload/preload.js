@@ -83,9 +83,4 @@ ipcRenderer.on('app/login-error', (event, data) => {
     document.getElementById('wrongInformations').style.display = "block"
 })
 
-ipcRenderer.on('app/set-cookie', (event, data) => {
-    console.log("HERE IN COOKIE");
-    document.cookie = "username=John Doe; expires=Thu, 18 Dec 2030 12:00:00 UTC; path=file://; domain=file://";
-})
-
 contextBridge.exposeInMainWorld("app", API)

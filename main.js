@@ -3,7 +3,7 @@ const { app, BrowserWindow, ipcMain, session } = require('electron')
 const path = require('path');
 const mongoose = require('mongoose');
 const axios = require('axios');
-const fs = require('fs')
+const fs = require('fs');
 
 require('dotenv').config();
 
@@ -71,6 +71,20 @@ ipcMain.on('redirect/have-account', (event, data) => {
     windows.loadFile('./src/components/pages/login.html')
 });
 
+
+function saveConfig(config, configPath) {
+    fs.writeFileSync(configPath, JSON.stringify(config));
+}
+
+function loadConfig() {
+    try {
+      const configData = fs.readFileSync(configPath, 'utf8');
+      return JSON.parse(configData);
+    } catch (err) {
+      return {};
+    }
+}
+
 // ====> Application :
 ipcMain.on("app/login-user", async (event, data) => {
     const win = BrowserWindow.getAllWindows()[0];
@@ -78,31 +92,19 @@ ipcMain.on("app/login-user", async (event, data) => {
     let userFound = await dataBaseComponent.loginUserController(data)
 
     if (!userFound) {
+        // User Not Found
         win.webContents.send('app/login-error')
     } else {
-        // win.webContents.send('app/set-cookie', (data))
-        const cookie = { url: 'http://localhost/', name: 'dummy_name', value: 'dummy' }
+        // User Found
+        // Get all data about users with email
+        let userData = await dataBaseComponent.returnUserDataWithEmailController(data)
 
+        const dataPath = path.join(app.getAppPath(), 'data.json');
 
-        const store = new Store();
+        const config = loadConfig();
+        config.id = userData._id;
 
-        session.defaultSession.cookies.get({})
-            .then((cookies) => {
-                console.log("OKKKKK");
-                store.set('cookies', cookies);
-            })
-            .catch((error) => {
-                console.error(error);
-            });
-
-        const cookies = store.get('cookies');
-
-        if (cookies) {
-            cookies.forEach((cookie) => {
-                session.defaultSession.cookies.set(cookie);
-                console.log(cookie);
-            });
-        }
+        saveConfig(config, dataPath);
 
         // windows.loadFile('./src/components/pages/dashboard.html')
     }
