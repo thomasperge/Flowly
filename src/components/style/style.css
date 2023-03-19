@@ -99,6 +99,7 @@ body {
     bottom: 0;
     gap: 2%;
     overflow-y: auto; 
+    background-color: red;
 }
 
 /* =========== Register =========== */
@@ -331,3 +332,6 @@ body {
     background-size: cover;
     border-radius: 10px;
 }
+
+/* =========== DashBoard =========== */
+/* == All Container (cf. Assets) == */

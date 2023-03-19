@@ -62,7 +62,7 @@ exports.loginUser = async (data) => {
  * @param {*} data 
  * @returns account schema
  */
-exports.returnUserDataWithEmail = async (data) => {
+exports.returnUserDataFromEmail = async (data) => {
 	const User = mongoose.model('account', accountSchema);
 
 	let userFound = await User.findOne({ email: data.email })

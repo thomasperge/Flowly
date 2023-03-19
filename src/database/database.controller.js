@@ -30,9 +30,9 @@ exports.loginUserController = async (req, res) => {
   }
 };
 
-exports.returnUserDataWithEmailController = async (req, res) => {
+exports.returnUserDataFromEmailController = async (req, res) => {
   try {
-    const result = await dbService.returnUserDataWithEmail(req);
+    const result = await dbService.returnUserDataFromEmail(req);
 
     return result;
   } catch (error) {

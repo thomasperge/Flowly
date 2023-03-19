@@ -97,7 +97,7 @@ ipcMain.on("app/login-user", async (event, data) => {
     } else {
         // User Found
         // Get all data about users with email
-        let userData = await dataBaseComponent.returnUserDataWithEmailController(data)
+        let userData = await dataBaseComponent.returnUserDataFromEmailController(data)
 
         const dataPath = path.join(app.getAppPath(), 'data.json');
 
@@ -106,7 +106,7 @@ ipcMain.on("app/login-user", async (event, data) => {
 
         saveConfig(config, dataPath);
 
-        // windows.loadFile('./src/components/pages/dashboard.html')
+        windows.loadFile('./src/components/pages/dashboard.html')
     }
 });
 
