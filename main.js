@@ -1,9 +1,11 @@
 // Modules to control application life and create native browser window
-const { app, BrowserWindow, ipcMain } = require('electron')
+const { app, BrowserWindow, ipcMain, ipcRenderer } = require('electron')
 const path = require('path');
 const mongoose = require('mongoose');
 const axios = require('axios');
 require('dotenv').config();
+
+// Import Component
 const dataBaseComponent = require('./src/database/database.controller')
 
 // Import DataBase Schema
@@ -67,8 +69,14 @@ ipcMain.on('redirect/have-account', (event, data) => {
 
 // ===> Application :
 ipcMain.on("app/login-user", async (event, data) => {
+    const win = BrowserWindow.getAllWindows()[0];
+
     let userFound = await dataBaseComponent.loginUserController(data)
-    console.log("===> User Found : ", userFound);
+
+    if (!userFound) {
+        console.log("HERE");
+        win.webContents.send('app/login-error')
+    }
 });
 
 ipcMain.on("app/minimize", () => {

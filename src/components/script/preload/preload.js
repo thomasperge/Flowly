@@ -1,4 +1,4 @@
-const { ipcRenderer, contextBridge } = require('electron')
+const { ipcRenderer, contextBridge, ipcMain } = require('electron')
 
 // Initialize API Send (minus & close button)
 const API = {
@@ -76,8 +76,11 @@ document.addEventListener('DOMContentLoaded', function() {
         ipcRenderer.send('redirect/have-account');
     })
 
-
     // ========= API Event =========
+})
+
+ipcRenderer.on('app/login-error', (event, data) => {
+    document.getElementById('wrongInformations').style.display = "block"
 })
 
 contextBridge.exposeInMainWorld("app", API)
