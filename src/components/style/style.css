@@ -99,7 +99,6 @@ body {
     bottom: 0;
     gap: 2%;
     overflow-y: auto; 
-    background-color: red;
 }
 
 /* =========== Register =========== */
@@ -363,33 +362,28 @@ body {
     display: flex;
     width: 100%;
     height: 91%;
-    background-color: rgb(13, 162, 13);
 }
 
 /* Blue Container */
 .dashboard-SCountainer2-1 {
     width: 6%;
     height: 100%;
-    background-color: blue;
 }
 
 .dashboard-SCountainer2-2 {
     width: 94%;
     height: 100%;
-    background-color: rgb(32, 32, 180);
 }
 
 /* Pink Container */
 .dashboard-SCountainer2-2-1 {
     width: 100%;
     height: 10%;
-    background-color: pink;
 }
 
 .dashboard-SCountainer2-2-2 {
     width: 100%;
     height: 90%;
-    background-color: rgb(201, 152, 160);
 }
 
 /* == All Logo - Top NavBar == */
@@ -418,8 +412,8 @@ body {
     color: white;
     font-size: 1.7vw;
     font-family: 'GothamBold';
-    border: 1.5px solid;
-    border-color: #e2d390;
+    /* border: 1.5px solid; */
+    /* border-color: #e2d390; */
 }
 
 .dashboard-title {
@@ -454,6 +448,26 @@ body {
     height: 100%;
     color: #e2d390;
     font-size: 1.5vw;
+    padding-right: 0.6%;
+    cursor: pointer;
+}
+
+.dashboard-UserLogo {
+    width: 12%;
+    height: 100%;
+    color: #e2d390;
+    font-size: 1.5vw;
     padding-right: 5%;
     cursor: pointer;
+}
+
+.dashboard-logoRoundedUser {
+    width: 70%;
+    height: 80%;
+    border-radius: 100%;
+    color: white;
+    font-size: 1.7vw;
+    font-family: 'GothamBold';
+    border: 1.5px solid;
+    border-color: #e2d390;
 }
