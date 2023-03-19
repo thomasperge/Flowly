@@ -68,6 +68,7 @@ ipcMain.on('redirect/have-account', (event, data) => {
 // ===> Application :
 ipcMain.on("app/login-user", async (event, data) => {
     let userFound = await dataBaseComponent.loginUserController(data)
+    console.log("===> User Found : ", userFound);
 });
 
 ipcMain.on("app/minimize", () => {
