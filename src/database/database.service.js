@@ -1,7 +1,11 @@
 const mongoose = require('mongoose');
 const { accountSchema } = require('../../models/account');
 
-const addUser = async (data) => {
+/**
+ * Add User In Db
+ * @param {type, email, username, password} data 
+ */
+exports.addUserInDB = async (data) => {
   try {
     const User = mongoose.model('account', accountSchema);
 
@@ -12,11 +16,8 @@ const addUser = async (data) => {
         password: data.password,
     });
 
-    newUser.save().then(() => console.log('User create'));
-
+    newUser.save()
   } catch (error) {
     console.error(error);
   }
 };
-
-module.exports = { addUser };

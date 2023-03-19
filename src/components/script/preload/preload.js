@@ -1,6 +1,6 @@
 const { ipcRenderer, contextBridge } = require('electron')
 
-// Initialize API Send
+// Initialize API Send (minus & close button)
 const API = {
     window: {
         close: () => ipcRenderer.send("appMain/close"),
@@ -8,10 +8,9 @@ const API = {
     },
 }
 
-/**
- * Close and minimize Window add task / Window Login
- */
 document.addEventListener('DOMContentLoaded', function() {
+    // ========= App Event =========
+    // Minus & Close Button :
     let closeButton = document.getElementById("close")
     let minButton = document.getElementById("minus")
 
@@ -22,11 +21,12 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // Min Button Add => Minimize window addTask
     minButton?.addEventListener("click", () => {
-        console.log("TEST MINUS");
         ipcRenderer.send("app/minimize");
     })
 
-    // === Register User ==
+
+    // ========= DataBase Event =========
+    // === Register User => Add user in DB ==
     document.getElementById('myForm')?.addEventListener('submit', (event) => {
         event.preventDefault();
     
@@ -44,8 +44,11 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         }
 
-        ipcRenderer.send('form-data', {email, password, typeUsers});
+        ipcRenderer.send('db/add-user', {email, password, typeUsers});
     });
+
+
+    // ========= API Event =========
 })
 
 contextBridge.exposeInMainWorld("app", API)

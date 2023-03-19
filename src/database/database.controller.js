@@ -1,11 +1,8 @@
 const dbService = require('./database.service');
 
-exports.addUser = async (req, res) => {
+exports.addUserController = async (req, res) => {
   try {
-    const data = req;
-
-    const result = await dbService.addUser(data);
-
+    return await dbService.addUserInDB(req);
   } catch (error) {
     res.status(500).json({ message: error.message });
   }

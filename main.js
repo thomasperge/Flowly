@@ -6,7 +6,7 @@ const axios = require('axios');
 require('dotenv').config();
 const dataBaseComponent = require('./src/database/database.controller')
 
-// DataBase
+// Import DataBase Schema
 const { userSchema } = require('./models/account.js');
 const { recordsSchema } = require('./models/account.js');
 const { typeUsers } = require('./models/enum.js');
@@ -31,7 +31,7 @@ const createWindow = () => {
     windows.loadFile('./src/components/pages/register.html')
 }
 
-// App Ready
+// == App Ready ==
 app.on('ready', async () => {
     const uri = process.env.MONGODB_HOST;
 
@@ -47,13 +47,13 @@ app.whenReady().then(() => {
     createWindow()
 })
 
-// All IPC Call
-ipcMain.on('form-data', (event, data) => {
-    dataBaseComponent.addUser(data)
+// == All IPC Call ==
+ipcMain.on('db/add-user', (event, data) => {
+    dataBaseComponent.addUserController(data)
 });
 
 
-// Minimize & Close Windows
+// == Minimize & Close Windows ==
 ipcMain.on("app/minimize", () => {
     windows.minimize();
 });
