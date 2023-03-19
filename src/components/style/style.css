@@ -335,3 +335,58 @@ body {
 
 /* =========== DashBoard =========== */
 /* == All Container (cf. Assets) == */
+.dashboard-container {
+    width: auto;
+    height: 92vh;
+    margin: 0;
+    overflow: hidden;
+    padding: 1%;
+    left: 0; 
+    right: 0;
+    top: 33px; 
+    bottom: 0;
+    gap: 2%;
+    overflow-y: auto; 
+    background-color: red;
+}
+
+/* Green Container */
+.dashboard-SCountainer1 {
+    width: 100%;
+    height: 10%;
+    background-color: green;
+}
+
+.dashboard-SCountainer2 {
+    display: flex;
+    width: 100%;
+    height: 90%;
+    background-color: rgb(13, 162, 13);
+}
+
+/* Blue Container */
+.dashboard-SCountainer2-1 {
+    width: 7%;
+    height: 100%;
+    background-color: blue;
+}
+
+.dashboard-SCountainer2-2 {
+    width: 93%;
+    height: 100%;
+    background-color: rgb(32, 32, 180);
+}
+
+/* Pink Container */
+.dashboard-SCountainer2-2-1 {
+    width: 100%;
+    height: 10%;
+    background-color: pink;
+}
+
+.dashboard-SCountainer2-2-2 {
+    width: 100%;
+    height: 90%;
+    background-color: rgb(201, 152, 160);
+}
+
