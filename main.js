@@ -22,6 +22,8 @@ const createWindow = () => {
         autoHideMenuBar: true,
         width: 1225,
         height: 725,
+        minWidth: 1225,
+        minHeight: 725,
         resizable: true,
         webPreferences: {
             contextIsolation: true,
