@@ -347,32 +347,34 @@ body {
     bottom: 0;
     gap: 2%;
     overflow-y: auto; 
-    background-color: red;
+    background-image: url('../../../assets/background.png');
+    background-size: cover;
 }
 
 /* Green Container */
 .dashboard-SCountainer1 {
+    display: flex;
+    justify-content: space-between;
     width: 100%;
-    height: 10%;
-    background-color: green;
+    height: 9%;
 }
 
 .dashboard-SCountainer2 {
     display: flex;
     width: 100%;
-    height: 90%;
+    height: 91%;
     background-color: rgb(13, 162, 13);
 }
 
 /* Blue Container */
 .dashboard-SCountainer2-1 {
-    width: 7%;
+    width: 6%;
     height: 100%;
     background-color: blue;
 }
 
 .dashboard-SCountainer2-2 {
-    width: 93%;
+    width: 94%;
     height: 100%;
     background-color: rgb(32, 32, 180);
 }
@@ -390,3 +392,68 @@ body {
     background-color: rgb(201, 152, 160);
 }
 
+/* == All Logo - Top NavBar == */
+.dashboard-leftIcon {
+    width: 50%;
+    display: flex;
+    gap: 4%;
+}
+
+.dashboard-rightIcon {
+    width: 50%;
+    display: flex;
+    gap: 3%;
+    justify-content: flex-end;
+}
+
+.dashboard-logoApp {
+    width: 12%;
+    height: 100%;
+}
+
+.dashboard-logoRounded {
+    width: 70%;
+    height: 80%;
+    border-radius: 100%;
+    color: white;
+    font-size: 1.7vw;
+    font-family: 'GothamBold';
+    border: 1.5px solid;
+    border-color: #e2d390;
+}
+
+.dashboard-title {
+    width: auto;
+    height: 100%;
+    color: white;
+    font-family: 'GothamBold';
+    font-size: 1.7vw;
+}
+
+.dashboard-aboutLogo {
+    width: auto;
+    height: 100%;
+    padding: 0 10px 0 10px;
+    gap: 50%;
+    font-size: 1.45vw;
+    color: #e2d390;
+    cursor: pointer;
+}
+
+.dashboard-languageLogo {
+    width: auto;
+    height: 100%;
+    color: #e2d390;
+    padding-right: 2%;
+    font-size: 2.4vw;
+    cursor: pointer;
+}
+
+.dashboard-notificationLogo {
+    width: auto;
+    height: 100%;
+    color: #e2d390;
+    font-size: 1.5vw;
+    padding-right: 5%;
+    cursor: pointer;
+}
