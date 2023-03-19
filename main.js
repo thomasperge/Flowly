@@ -1,8 +1,10 @@
 // Modules to control application life and create native browser window
-const { app, BrowserWindow, ipcMain, ipcRenderer } = require('electron')
+const { app, BrowserWindow, ipcMain, session } = require('electron')
 const path = require('path');
 const mongoose = require('mongoose');
 const axios = require('axios');
+const fs = require('fs')
+
 require('dotenv').config();
 
 // Import Components
@@ -39,6 +41,7 @@ const createWindow = () => {
 app.on('ready', async () => {
     const uri = process.env.MONGODB_HOST;
 
+    // Mongodb Connection
     mongoose.connect(uri, {
         useUnifiedTopology: true,
         useNewUrlParser: true,
@@ -77,7 +80,31 @@ ipcMain.on("app/login-user", async (event, data) => {
     if (!userFound) {
         win.webContents.send('app/login-error')
     } else {
-        windows.loadFile('./src/components/pages/dashboard.html')
+        // win.webContents.send('app/set-cookie', (data))
+        const cookie = { url: 'http://localhost/', name: 'dummy_name', value: 'dummy' }
+
+
+        const store = new Store();
+
+        session.defaultSession.cookies.get({})
+            .then((cookies) => {
+                console.log("OKKKKK");
+                store.set('cookies', cookies);
+            })
+            .catch((error) => {
+                console.error(error);
+            });
+
+        const cookies = store.get('cookies');
+
+        if (cookies) {
+            cookies.forEach((cookie) => {
+                session.defaultSession.cookies.set(cookie);
+                console.log(cookie);
+            });
+        }
+
+        // windows.loadFile('./src/components/pages/dashboard.html')
     }
 });
 
