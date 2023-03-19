@@ -5,10 +5,10 @@ const mongoose = require('mongoose');
 const axios = require('axios');
 require('dotenv').config();
 
-// Import Component
+// Import Components
 const dataBaseComponent = require('./src/database/database.controller')
 
-// Import DataBase Schema
+// Import DataBase /API Schema
 const { userSchema } = require('./models/account.js');
 const { recordsSchema } = require('./models/account.js');
 const { typeUsers } = require('./models/enum.js');
@@ -30,11 +30,10 @@ const createWindow = () => {
         }
     })
   
-    // windows.loadFile('./src/components/pages/register.html')
     windows.loadFile('./src/components/pages/login.html')
 }
 
-// ========== App Ready ==========
+// =========== App Ready ===========
 app.on('ready', async () => {
     const uri = process.env.MONGODB_HOST;
 
@@ -50,15 +49,15 @@ app.whenReady().then(() => {
     createWindow()
 })
 
-// ========== All IPC Call ==========
-// ===> DataBase :
+// =========== All IPC Call ===========
+// ====> DataBase :
 ipcMain.on('db/add-user', (event, data) => {
     dataBaseComponent.addUserController(data)
 
     windows.loadFile('./src/components/pages/login.html')
 });
 
-// ===> Redirect Page :
+// ====> Redirect Page :
 ipcMain.on('redirect/forgot-password', (event, data) => {
     windows.loadFile('./src/components/pages/register.html')
 });
@@ -67,15 +66,16 @@ ipcMain.on('redirect/have-account', (event, data) => {
     windows.loadFile('./src/components/pages/login.html')
 });
 
-// ===> Application :
+// ====> Application :
 ipcMain.on("app/login-user", async (event, data) => {
     const win = BrowserWindow.getAllWindows()[0];
 
     let userFound = await dataBaseComponent.loginUserController(data)
 
     if (!userFound) {
-        console.log("HERE");
         win.webContents.send('app/login-error')
+    } else {
+        windows.loadFile('./src/components/pages/dashboard.html')
     }
 });
 
