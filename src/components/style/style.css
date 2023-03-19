@@ -162,7 +162,8 @@ body {
 /* == Register Area 2 == */
 .signup-registerArea2 {
     width: 65%;
-    height: 100%;
+    height: auto;
+    padding-top: 3%;
 }
 
 .signup-registerSousArea2 {
@@ -182,16 +183,27 @@ body {
 
 .signup-HaveAccountTitleArea {
     font-family: 'GothamMedium';
-    font-size: 1vw;
+    font-size: 1.2vw;
     width: fit-content;
-    color: black;
+    color: blue;
     height: auto;
     padding-top: 1.5%;
+    cursor: pointer;
+}
+
+.signup-MissingInformation {
+    display: none;
+    font-family: 'GothamMedium';
+    font-size: 1.2vw;
+    width: fit-content;
+    color: red;
+    height: auto;
+    padding-top: 2.3%;
 }
 
 .signup-LookingTitleArea {
     font-family: 'GothamMedium';
-    font-size: 1vw;
+    font-size: 1.15vw;
     width: fit-content;
     color: rgb(113, 113, 113);
     height: auto;
@@ -253,6 +265,18 @@ body {
     outline: none;
 }
 
+.signup-passwordAreaTitle {
+    display: flex;
+    position: relative;
+}
+
+.signup-ForgotPasswordArea {
+    color: blue;
+    position: absolute;
+    right: 0;
+    cursor: pointer;
+}
+
 .signup-PasswordArea {
     display: flex;
     width: 100%;
@@ -280,12 +304,30 @@ body {
 
 .buttonAccountCreate {
     padding: 1.5% 2% 1.5% 2%;
-    background-color: blue;
+    background-color: rgb(64, 0, 255);
     color: white;
     font-family: 'GothamBold';
     outline: none;
     border: none;
     border-radius: 6px;
+    cursor: pointer;
+}
+
+.buttonAccountCreate:hover {
+    background-color: rgb(94, 83, 251);
+}
+
+.buttonAccountCreate:focus {
+    background-color: rgb(0, 0, 216);
 }
 
 /* =========== Login =========== */
+/* == Register Area 1 == */
+.login-registerSousArea1 {
+    position: relative;
+    width: 98%;
+    height: 98%;
+    background: linear-gradient(rgba(34, 0, 255, 0.719), rgba(206, 206, 206, 0.5)), url('../../../assets/inline_image_preview.jpg');
+    background-size: cover;
+    border-radius: 10px;
+}

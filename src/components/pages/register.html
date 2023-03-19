@@ -25,7 +25,7 @@
                 <div class="signup-containerTitle">
                     <p class="registerTitleApp">Flowly</p>
                     <p class="registerDescriptionApp">Start your journey with us.</p>
-                    <p class="registerSloganApp">Take control of your carbon footprint. </p>
+                    <p class="registerSloganApp">Take control of your carbon footprint.</p>
                 </div>
                 <p class="registerAuthorApp flex">by Thomas Kauffmant</p>
             </div>
@@ -33,10 +33,11 @@
 
         <!-- Register Area 2 -->
         <div class="signup-registerArea2">
-            <form class="signup-registerSousArea2" method="post" id="myForm">
+            <form class="signup-registerSousArea2" method="post" id="registerForm">
                 <!-- Title -->
                 <div class="signup-TitleArea">Sign up</div>
-                <div class="signup-HaveAccountTitleArea">Have an account ?</div>
+                <div class="signup-HaveAccountTitleArea" id="signup-HaveAccount">Have an account ?</div>
+                <div class="signup-MissingInformation" id="missingInformations">Missing information !</div>
                 <div class="signup-LookingTitleArea">Looking for?</div>
 
                 <!-- Looking For -->
@@ -56,21 +57,20 @@
                 <!-- Email -->
                 <div class="signup-LookingTitleArea ">Email</div>
                 <div class="signup-EmailArea">
-                    <input type="email" class="emailInput" name="email">
+                    <input type="email" class="emailInput" name="email" placeholder="compagnie@email.com">
                 </div>
 
                 <!-- Password -->
-                <div class="signup-LookingTitleArea ">Password</div>
+                <div class="signup-LookingTitleArea">Password</div>
                 <div class="signup-PasswordArea">
-                    <input type="password" class="passwordInput" name="password">
+                    <input type="password" class="passwordInput" name="password" placeholder="******">
                 </div>
 
                 <div class="signup-CreateAccountButtonArea">
-                    <button type="submit" class="buttonAccountCreate" id="test">Create account</button>
+                    <button type="submit" class="buttonAccountCreate" id="buttonSubmit">Create account</button>
                 </div>
             </form>
         </div>
     </div> 
-
 </body>
 </html>

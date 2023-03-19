@@ -27,7 +27,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // ========= DataBase Event =========
     // === Register User => Add user in DB ==
-    document.getElementById('myForm')?.addEventListener('submit', (event) => {
+    document.getElementById('registerForm')?.addEventListener('submit', (event) => {
         event.preventDefault();
     
         const formData = new FormData(event.target);
@@ -44,8 +44,37 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         }
 
-        ipcRenderer.send('db/add-user', {email, password, typeUsers});
+        if (email.length > 0 && password.length > 0) {
+            ipcRenderer.send('db/add-user', {email, password, typeUsers});
+        } else {
+            document.getElementById("missingInformations").style.display = "block"
+        }
     });
+
+    // === Login User ==
+    document.getElementById('loginForm')?.addEventListener('submit', (event) => {
+        event.preventDefault();
+    
+        const formData = new FormData(event.target);
+        const email = formData.get('email');
+        const password = formData.get('password');
+
+        if (email.length > 0 && password.length > 0) {
+            ipcRenderer.send('app/login-user', {email, password, typeUsers});
+        } else {
+            document.getElementById("missingInformations").style.display = "block"
+        }
+    });
+
+    // === Login User => Forgot Password ==
+    document.getElementById('login-ForgotPassword')?.addEventListener('click', (event) => {
+        ipcRenderer.send('redirect/forgot-password');
+    })
+
+    // === Register User => Have Account ==
+    document.getElementById('signup-HaveAccount')?.addEventListener('click', (event) => {
+        ipcRenderer.send('redirect/have-account');
+    })
 
 
     // ========= API Event =========

@@ -28,10 +28,11 @@ const createWindow = () => {
         }
     })
   
-    windows.loadFile('./src/components/pages/register.html')
+    // windows.loadFile('./src/components/pages/register.html')
+    windows.loadFile('./src/components/pages/login.html')
 }
 
-// == App Ready ==
+// ========== App Ready ==========
 app.on('ready', async () => {
     const uri = process.env.MONGODB_HOST;
 
@@ -47,13 +48,28 @@ app.whenReady().then(() => {
     createWindow()
 })
 
-// == All IPC Call ==
+// ========== All IPC Call ==========
+// ===> DataBase :
 ipcMain.on('db/add-user', (event, data) => {
     dataBaseComponent.addUserController(data)
+
+    windows.loadFile('./src/components/pages/login.html')
 });
 
+// ===> Redirect Page :
+ipcMain.on('redirect/forgot-password', (event, data) => {
+    windows.loadFile('./src/components/pages/register.html')
+});
 
-// == Minimize & Close Windows ==
+ipcMain.on('redirect/have-account', (event, data) => {
+    windows.loadFile('./src/components/pages/login.html')
+});
+
+// ===> Application :
+ipcMain.on("app/login-user", () => {
+    dataBaseComponent.addUserController()
+});
+
 ipcMain.on("app/minimize", () => {
     windows.minimize();
 });
