@@ -1,23 +1,23 @@
 let button = document.getElementById('toggle-button')
 let testArea = document.getElementById('testArea')
-
-testArea?.addEventListener('transitionend', () => {
-    console.log("HERRRRRRRRRRRRE");
-    if (testArea.style.opacity === "0") {
-      testArea.style.display = "none";
-    }
-});
+let containerDashBoard2 = document.getElementById('dashboard-SCountainer2-2')
+var opacite = 0;
 
 button?.addEventListener('click', (event) => {
     if (button.classList.contains('fa-circle-plus')) {
         button.classList.remove('fa-circle-plus');
         button.classList.add('fa-circle-minus');
         testArea.style.display = "flex"
-        testArea.style.opacity = 1;
+
     } else {
         button.classList.remove('fa-circle-minus');
         button.classList.add('fa-circle-plus');
         testArea.style.display = "none"
-        testArea.style.opacity = 0;
     }
+})
+
+containerDashBoard2?.addEventListener('click', (event) => {
+        button.classList.remove('fa-circle-minus');
+        button.classList.add('fa-circle-plus');
+        testArea.style.display = "none"
 })
