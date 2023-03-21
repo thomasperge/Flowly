@@ -1,10 +1,20 @@
+// Import 
 let button = document.getElementById('toggle-button')
 let containerDashBoard2 = document.getElementById('dashboard-SCountainer2-2')
 let addArea = document.getElementById("addArea")
 
+let carButton = document.getElementById('fa-car')
+let energyButton = document.getElementById('fa-oil-well')
+let oilButton = document.getElementById('fa-bolt')
+
+let carArea = document.getElementById('fa-car')
+let energyArea = document.getElementById('fa-oil-well')
+let oilArea = document.getElementById('fa-bolt')
+
 let carAddDiv = false;
 let energyAddDiv = false;
 
+// == Button Plus / Minus ==
 button?.addEventListener('click', (event) => {
     if (button.classList.contains('fa-circle-plus')) {
         addArea.style.display = "flex"
@@ -35,6 +45,12 @@ button?.addEventListener('click', (event) => {
     }
 })
 
+// Car Button :
+carButton?.addEventListener('click', () => {
+
+})
+
+// == Transition => Display Logo to add things ==
 addArea.addEventListener('transitionend', () => {
     if (button.classList.contains('fa-circle-plus')) {
         addArea.style.display = "none"
@@ -44,6 +60,8 @@ addArea.addEventListener('transitionend', () => {
 })
 
 
+// == Click Container2.2 => Display "none" minus button ==
+// ( a revoir car si il a les grahs par dessus = plus a dispo)
 containerDashBoard2?.addEventListener('click', (event) => {
     if (button.classList.contains('fa-circle-minus')) {
         button.style.transform = "translateX(0%)";

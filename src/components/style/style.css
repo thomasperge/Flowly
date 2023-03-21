@@ -439,8 +439,16 @@ body {
     width: auto;
     height: 100%;
     color: #e2d390;
-    font-size: 4.5vh;
+    font-size: 4.2vh;
     cursor: pointer;
+}
+
+.test {
+    position: absolute;
+    top: 15vh;
+    width: 98%;
+    height: 15vh;
+    background-color: red;
 }
 
 .dashboard-addArea {
@@ -452,7 +460,6 @@ body {
     font-size: 3.5vh;
     color: #e2d390;
     border-radius: 18px;
-    border: 1.7px solid #e2d390;
     background-color: black;
 }
 
