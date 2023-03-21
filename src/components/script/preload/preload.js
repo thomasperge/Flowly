@@ -80,7 +80,7 @@ document.addEventListener('DOMContentLoaded', function() {
 })
 
 ipcRenderer.on('app/login-error', (event, data) => {
-    console.log("TEST");
+    console.log("TEST2");
     document.getElementById('wrongInformations').style.display = "block"
 })
 
