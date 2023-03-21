@@ -63,7 +63,7 @@ body {
     z-index: 1;
 }
 
-.test {
+.titleNavBar {
     padding: 0 2vh 0 2vh;
     width: auto;
     height: 100%;
@@ -71,7 +71,7 @@ body {
     position: absolute;
     opacity: 20%;
     font-size: 2vh;
-    left:0
+    left: 0;
 }
 
 .close {
