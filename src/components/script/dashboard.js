@@ -3,25 +3,30 @@ let button = document.getElementById('toggle-button')
 let containerDashBoard2 = document.getElementById('dashboard-SCountainer2-2')
 let addArea = document.getElementById("addArea")
 
+// Div Add Menu
+let containerAddAbsolute = document.getElementById('dashboard-containerAddAbsolute')
+
 let carButton = document.getElementById('fa-car')
-let energyButton = document.getElementById('fa-oil-well')
-let oilButton = document.getElementById('fa-bolt')
+let energyButton = document.getElementById('fa-bolt')
+let oilButton = document.getElementById('fa-oil-well')
 
-let carArea = document.getElementById('fa-car')
-let energyArea = document.getElementById('fa-oil-well')
-let oilArea = document.getElementById('fa-bolt')
+let carArea = document.getElementById('dashboard-areaCarButton')
+let energyArea = document.getElementById('dashboard-areaEnergyButton')
+let oilArea = document.getElementById('dashboard-areaOilButton')
 
-let carAddDiv = false;
-let energyAddDiv = false;
+var carDisplay = false
+var energyDisplay = false
 
 // == Button Plus / Minus ==
 button?.addEventListener('click', (event) => {
     if (button.classList.contains('fa-circle-plus')) {
         addArea.style.display = "flex"
 
+        // Change + to - logo
         button.classList.remove('fa-circle-plus');
         button.classList.add('fa-circle-minus');
 
+        // Transition
         button.style.transform = "translateX(-230%)";
         button.style.transition = "transform 0.5s";
 
@@ -30,9 +35,11 @@ button?.addEventListener('click', (event) => {
             addArea.style.transition = "transform 0.5s";
         }, 10);
     } else {
+        // Change - to + logo
         button.classList.remove('fa-circle-minus');
         button.classList.add('fa-circle-plus');
 
+        // Transition
         button.style.transform = "translateX(0%)";
         button.style.transition = "transform 0.5s";
 
@@ -41,13 +48,55 @@ button?.addEventListener('click', (event) => {
             addArea.style.transition = "transform 0.5s";
         }, 4);
 
+        // Display "none" div to add
         addArea.style.display = "none"
+        containerAddAbsolute.style.display = "none"
+        // Car
+        carDisplay = false
+        carArea.style.display = "none"
+        // Energy
+        energyDisplay = false
+        energyArea.style.display = "none"
     }
 })
 
-// Car Button :
+// == Car Button : ==
 carButton?.addEventListener('click', () => {
+    // Display "none" all other add area
+    if (energyArea) {
+        energyArea.style.display = "none"
+        energyDisplay = false
+    }
 
+    // Car event = Display Car Area
+    if (carDisplay) {
+        containerAddAbsolute.style.display = "none"
+        carArea.style.display = "none"
+        carDisplay = false
+    } else {
+        containerAddAbsolute.style.display = "flex"
+        carArea.style.display = "flex"
+        carDisplay = true
+    }
+})
+// == Energy Button : ==
+energyButton?.addEventListener('click', () => {
+    // Display "none" all other add area
+    if (carDisplay) {
+        carArea.style.display = "none"
+        carDisplay = false
+    }
+
+    // Energy event = Display Energy Area
+    if (energyDisplay) {
+        containerAddAbsolute.style.display = "none"
+        energyArea.style.display = "none"
+        energyDisplay = false
+    } else {
+        containerAddAbsolute.style.display = "flex"
+        energyArea.style.display = "flex"
+        energyDisplay = true
+    }
 })
 
 // == Transition => Display Logo to add things ==
@@ -64,13 +113,22 @@ addArea.addEventListener('transitionend', () => {
 // ( a revoir car si il a les grahs par dessus = plus a dispo)
 containerDashBoard2?.addEventListener('click', (event) => {
     if (button.classList.contains('fa-circle-minus')) {
+        // Transition
         button.style.transform = "translateX(0%)";
         button.style.transition = "transform 0.5s";
 
         addArea.style.transform = "translateX(0%)";
         addArea.style.transition = "transform 0.5s";
 
+        // Display "none" all div
         addArea.style.display = "none"
+        containerAddAbsolute.style.display = "none"
+        // Car
+        carDisplay = false
+        carArea.style.display = "none"
+        // Energy
+        energyDisplay = false
+        energyArea.style.display = "none"
     }
 
     button.classList.remove('fa-circle-minus');
