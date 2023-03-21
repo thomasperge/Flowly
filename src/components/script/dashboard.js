@@ -16,6 +16,7 @@ let oilArea = document.getElementById('dashboard-areaOilButton')
 
 var carDisplay = false
 var energyDisplay = false
+var oilDisplay = false
 
 // == Button Plus / Minus ==
 button?.addEventListener('click', (event) => {
@@ -57,15 +58,22 @@ button?.addEventListener('click', (event) => {
         // Energy
         energyDisplay = false
         energyArea.style.display = "none"
+        // Oil
+        oilDisplay = false
+        oilArea.style.display = "none"
     }
 })
 
 // == Car Button : ==
 carButton?.addEventListener('click', () => {
     // Display "none" all other add area
-    if (energyArea) {
+    if (energyDisplay) {
         energyArea.style.display = "none"
         energyDisplay = false
+    }
+    if (oilDisplay) {
+        oilArea.style.display = "none"
+        oilDisplay = false
     }
 
     // Car event = Display Car Area
@@ -86,6 +94,10 @@ energyButton?.addEventListener('click', () => {
         carArea.style.display = "none"
         carDisplay = false
     }
+    if (oilDisplay) {
+        oilArea.style.display = "none"
+        oilDisplay = false
+    }
 
     // Energy event = Display Energy Area
     if (energyDisplay) {
@@ -96,6 +108,29 @@ energyButton?.addEventListener('click', () => {
         containerAddAbsolute.style.display = "flex"
         energyArea.style.display = "flex"
         energyDisplay = true
+    }
+})
+// == Oil Button : ==
+oilButton?.addEventListener('click', () => {
+    // Display "none" all other add area
+    if (carDisplay) {
+        carArea.style.display = "none"
+        carDisplay = false
+    }
+    if (energyDisplay) {
+        energyArea.style.display = "none"
+        energyDisplay = false
+    }
+
+    // Energy event = Display Energy Area
+    if (oilDisplay) {
+        containerAddAbsolute.style.display = "none"
+        oilArea.style.display = "none"
+        oilDisplay = false
+    } else {
+        containerAddAbsolute.style.display = "flex"
+        oilArea.style.display = "flex"
+        oilDisplay = true
     }
 })
 
@@ -129,6 +164,9 @@ containerDashBoard2?.addEventListener('click', (event) => {
         // Energy
         energyDisplay = false
         energyArea.style.display = "none"
+        // Oil
+        oilDisplay = false
+        oilArea.style.display = "none"
     }
 
     button.classList.remove('fa-circle-minus');
