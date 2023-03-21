@@ -512,11 +512,25 @@ body {
 }
 
 .fa-car {
+    width: 75%;
+    height: 75%;
+    border-radius: 8px;
     cursor: pointer;
 }
 
 .fa-bolt {
+    width: 75%;
+    height: 75%;
+    border-radius: 8px;
     cursor: pointer;
+}
+
+.fa-car:hover {
+    background-color: #afa471;
+}
+
+.fa-bolt:hover {
+    background-color: #afa471;
 }
 
 .voiddiv {

@@ -22,8 +22,10 @@ button?.addEventListener('click', (event) => {
     }
 
     // A revoie car pas sur
-    carAddDiv = true;
-    energyAddDiv = true;
+    carAddDiv = false;
+    energyAddDiv = false;
+    document.getElementById('dashboard-AddEnergyArea').style.display = "none"
+    document.getElementById('dashboard-AddTransportArea').style.display = "none"
 })
 
 containerDashBoard2?.addEventListener('click', (event) => {
@@ -32,15 +34,17 @@ containerDashBoard2?.addEventListener('click', (event) => {
     testArea.style.display = "none"
 
     // A revoie car pas sur
-    carAddDiv = true;
-    energyAddDiv = true;
+    carAddDiv = false;
+    energyAddDiv = false;
+    document.getElementById('dashboard-AddEnergyArea').style.display = "none"
+    document.getElementById('dashboard-AddTransportArea').style.display = "none"
+
 })
 
 carButton?.addEventListener('click', (event) => {
-    if (energyAddDiv) {
-        document.getElementById('dashboard-AddEnergyArea').style.display = "none"
-        energyAddDiv = false;
-    }
+    // Delete Bolt Add
+    document.getElementById('dashboard-AddEnergyArea').style.display = "none"
+    energyAddDiv = false;
 
     if (carAddDiv) {
         document.getElementById('dashboard-AddTransportArea').style.display = "none"
@@ -52,10 +56,9 @@ carButton?.addEventListener('click', (event) => {
 })
 
 boltButton?.addEventListener('click', (event) => {
-    if (carAddDiv) {
-        document.getElementById('dashboard-AddTransportArea').style.display = "none"
-        carAddDiv = false;
-    }
+    // Delete Car Add
+    document.getElementById('dashboard-AddTransportArea').style.display = "none"
+    carAddDiv = false;
 
     if (energyAddDiv) {
         document.getElementById('dashboard-AddEnergyArea').style.display = "none"
