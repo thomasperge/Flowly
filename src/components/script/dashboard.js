@@ -1,7 +1,13 @@
 let button = document.getElementById('toggle-button')
 let testArea = document.getElementById('testArea')
 let containerDashBoard2 = document.getElementById('dashboard-SCountainer2-2')
-var opacite = 0;
+
+let carButton = document.getElementById('fa-car')
+let boltButton = document.getElementById('fa-bolt')
+let addTransport = document.getElementById('dashboard-AddTransportArea')
+
+let carAddDiv = false;
+let energyAddDiv = false;
 
 button?.addEventListener('click', (event) => {
     if (button.classList.contains('fa-circle-plus')) {
@@ -14,10 +20,48 @@ button?.addEventListener('click', (event) => {
         button.classList.add('fa-circle-plus');
         testArea.style.display = "none"
     }
+
+    // A revoie car pas sur
+    carAddDiv = true;
+    energyAddDiv = true;
 })
 
 containerDashBoard2?.addEventListener('click', (event) => {
-        button.classList.remove('fa-circle-minus');
-        button.classList.add('fa-circle-plus');
-        testArea.style.display = "none"
+    button.classList.remove('fa-circle-minus');
+    button.classList.add('fa-circle-plus');
+    testArea.style.display = "none"
+
+    // A revoie car pas sur
+    carAddDiv = true;
+    energyAddDiv = true;
+})
+
+carButton?.addEventListener('click', (event) => {
+    if (energyAddDiv) {
+        document.getElementById('dashboard-AddEnergyArea').style.display = "none"
+        energyAddDiv = false;
+    }
+
+    if (carAddDiv) {
+        document.getElementById('dashboard-AddTransportArea').style.display = "none"
+        carAddDiv = false;
+    } else {
+        document.getElementById('dashboard-AddTransportArea').style.display = "block"
+        carAddDiv = true;
+    }
+})
+
+boltButton?.addEventListener('click', (event) => {
+    if (carAddDiv) {
+        document.getElementById('dashboard-AddTransportArea').style.display = "none"
+        carAddDiv = false;
+    }
+
+    if (energyAddDiv) {
+        document.getElementById('dashboard-AddEnergyArea').style.display = "none"
+        energyAddDiv = false;
+    } else {
+        document.getElementById('dashboard-AddEnergyArea').style.display = "block"
+        energyAddDiv = true;
+    }
 })
