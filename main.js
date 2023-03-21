@@ -22,10 +22,10 @@ const createWindow = () => {
     windows = new BrowserWindow({
         frame: false,
         autoHideMenuBar: true,
-        width: 1225,
+        width: 1425,
         height: 725,
-        minWidth: 1225,
-        minHeight: 725,
+        minWidth: 1325,
+        minHeight: 705,
         resizable: true,
         webPreferences: {
             contextIsolation: true,
