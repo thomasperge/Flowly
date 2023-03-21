@@ -83,7 +83,7 @@ carButton?.addEventListener('click', () => {
         carDisplay = false
     } else {
         containerAddAbsolute.style.display = "flex"
-        carArea.style.display = "flex"
+        carArea.style.display = "block"
         carDisplay = true
     }
 })
@@ -172,3 +172,17 @@ containerDashBoard2?.addEventListener('click', (event) => {
     button.classList.remove('fa-circle-minus');
     button.classList.add('fa-circle-plus');
 })
+
+
+
+const incrementBtn = document.getElementById("incrementBtn");
+const decrementBtn = document.getElementById("decrementBtn");
+const myNumber = document.getElementById("myNumber");
+
+incrementBtn.addEventListener("click", function() {
+  myNumber.stepUp();
+});
+
+decrementBtn.addEventListener("click", function() {
+  myNumber.stepDown();
+});

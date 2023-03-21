@@ -43,6 +43,13 @@ body {
     width: 0px;
 }
 
+/* input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button
+{
+  -webkit-appearance: none;
+  margin: 0;
+} */
+
 /* =========== TitleBar =========== */
 .titlebar {
     width: 100%;
@@ -482,14 +489,14 @@ body {
 .dashboard-containerAddAbsolute {
     display: none;
     position: absolute;
-    top: 16vh;
+    top: 18vh;
     width: 98%;
     height: 20vh;
 }
 
 .dashboard-areaCarButton {
     display: none;
-    width: 40%;
+    width: 25%;
     height: 100%;
     border-radius: 8px;
     border: 2px solid black;
@@ -499,7 +506,7 @@ body {
 
 .dashboard-areaEnergyButton {
     display: none;
-    width: 40%;
+    width: 25%;
     height: 100%;
     border-radius: 8px;
     border: 2px solid black;
@@ -509,13 +516,64 @@ body {
 
 .dashboard-areaOilButton {
     display: none;
-    width: 40%;
+    width: 25%;
     height: 100%;
     border-radius: 8px;
     border: 2px solid black;
     background-color: #23242a;
     padding: 1%;
 }
+
+/* == Car PopUp == */
+.dashboard-carPopupTitleArea {
+    width: fit-content;
+    height: auto;
+    padding: 0.5vh 0 0.5vh;
+    color: white;
+    font-family: "GothamMedium";
+    font-size: 2.3vh;
+}
+
+.dashboard-carPopupCarModelArea {
+    width: auto;
+    height: auto;
+    gap: 6vh;
+    margin-top: 4%;
+}
+
+.dashboard-inputCarModel {
+    outline: none;
+    width: 32%;
+    height: 3.5vh;
+    padding: 0 8px 0 8px;
+    color: white;
+    font-size: 2vh;
+    font-family: "GothamMedium";
+    border-radius: 5px;
+    border: 1.5px solid #454955;
+    background-color: #323741;
+}
+
+.dashboard-carPopupCarInfoArea {
+    width: auto;
+    height: auto;
+    gap: 6vh;
+    margin-top: 8%;
+}
+
+.dashboard-inputCarModel {
+    outline: none;
+    width: 32%;
+    height: 3.8vh;
+    padding: 0 8px 0 8px;
+    color: white;
+    font-size: 2vh;
+    font-family: "GothamMedium";
+    border-radius: 5px;
+    border: 1.5px solid #454955;
+    background-color: #323741;
+}
+
 
 /* == End Logo == */
 .dashboard-languageLogo {
