@@ -443,6 +443,29 @@ body {
     cursor: pointer;
 }
 
+.dashboard-addArea {
+    display: none;
+    position: absolute;
+    margin-left: 19%;
+    width: 11%;
+    height: 6.5%;   
+    font-size: 3.5vh;
+    color: #e2d390;
+    border-radius: 18px;
+    border: 1.7px solid #e2d390;
+    background-color: black;
+}
+
+.dashbaord-addLogo {
+    width: 27%;
+    height: 80%;
+    border-radius: 20%;
+}
+
+.dashbaord-addLogo:hover {
+    background-color: rgb(33, 33, 33);
+}
+
 .dashboard-languageLogo {
     width: auto;
     height: 100%;
@@ -477,90 +500,5 @@ body {
     color: white;
     font-size: 2.7vh;
     font-family: 'GothamBold';
-    border: 1.5px solid;
-    border-color: #e2d390;
-}
-
-/* == Task Dropdown == */
-.dashboard-addTransportContainer {
-    display: none;
-    position: absolute;
-    width: 98%;
-    height: 15vh;
-    top: 15%;
-    justify-content: center;
-    gap: 2vh;
-}
-
-.dashboard-logoAddArea {
-    width: 4.3%;
-    height: 100%;
-    background-color: #e2d390;
-    color: black;
-    border: 3px solid;
-    border-color: #635d3f;
-    border-radius: 18px;
-    font-size: 4.1vh;
-}
-
-.dashboard-carArea {
-    height: 50%;
-}
-
-.dashboard-boltArea {
-    height: 50%;
-}
-
-.fa-car {
-    width: 75%;
-    height: 75%;
-    border-radius: 8px;
-    cursor: pointer;
-}
-
-.fa-bolt {
-    width: 75%;
-    height: 75%;
-    border-radius: 8px;
-    cursor: pointer;
-}
-
-.fa-car:hover {
-    background-color: #afa471;
-}
-
-.fa-bolt:hover {
-    background-color: #afa471;
-}
-
-.voiddiv {
-    width: 50%;
-    height: 100%;
-}
-
-.test {
-    width: 50%;
-    height: 100%;
-}
-
-.dashboard-AddTransportArea {
-    display: none;
-    width: 45%;
-    height: 140%;
-    background-color: #e2d390;
-    color: black;
-    border: 3px solid;
-    border-color: #635d3f;
-    border-radius: 18px;
-}
-
-.dashboard-AddEnergyArea {
-    display: none;
-    width: 45%;
-    height: 140%;
-    background-color: #e2d390;
-    color: black;
-    border: 3px solid;
-    border-color: #635d3f;
-    border-radius: 18px;
+    border: 1.7px solid #e2d390;
 }
