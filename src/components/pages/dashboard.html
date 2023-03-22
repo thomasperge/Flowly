@@ -5,6 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel='stylesheet' href='https://cdn-uicons.flaticon.com/uicons-regular-rounded/css/uicons-regular-rounded.css'>
     <link rel="stylesheet" href="./../style/style.css">
     <title>Document</title>
 </head>
@@ -28,7 +29,7 @@
                     <div class="dashboard-logoRounded flex"><i class="fa-solid fa-fire-flame-curved"></i></div>
                 </div>
                 <div class="dashboard-title flex">Dashboard</div>
-                <div class="dashboard-aboutLogo flex"><i class="fa-solid fa-circle-info"></i><i class="fa-brands fa-twitter"></i></div>
+                <div class="dashboard-aboutLogo flex"><i class="fi fi-rr-interrogation flex"></i><i class="fa-brands fa-twitter"></i></div>
             </div>
 
             <!-- Middle -->
@@ -94,8 +95,8 @@
 
             <!-- Right Icon -->
             <div class="dashboard-rightIcon">
-                <div class="dashboard-languageLogo flex"><i class="fa-solid fa-language"></i></div>
-                <div class="dashboard-notificationLogo flex"><i class="fa-solid fa-bell"></i></div>
+                <div class="dashboard-languageLogo flex"><i class="fi fi-rr-language flex"></i></div>
+                <div class="dashboard-notificationLogo flex"><i class="fi fi-rr-bell flex"></i></div>
                 <div class="dashboard-UserLogo flex">
                     <div class="dashboard-logoRoundedUser flex"><i class="fa-regular fa-user"></i></div>
                 </div>
@@ -106,16 +107,48 @@
             <!-- First Blue - Left NavBar-->
             <div class="dashboard-SCountainer2-1">
                 <div class="dashboard-logoContainer">
-                    <i class="fa-solid fa-chart-area flex"></i>
-                    <i class="fa-regular fa-file-lines flex"></i>
+                    <i class="fi fi-rr-chart-line-up flex"></i>
+                    <i class="fi fi-rr-time-past flex"></i>
                 </div>
             </div>
             <!-- Second Blue - All Graphs -->
             <div class="dashboard-SCountainer2-2" id="dashboard-SCountainer2-2">
-                <!-- First Pink - Time Range-->
-                <div class="dashboard-SCountainer2-2-1">
+                <!-- First Pink - Overview Range -->
+                <div class="dashboard-SCountainer2-2-1 flex">
 
+                    <!-- Overview Container -->
+                    <div class="dashboard-overviewByDateContainer">
+                        <!-- Left Overview area -->
+                        <div class="dashboard-overviewByDateLeftArea">
+                            <!-- Overview -->
+                            <div class="dashboard-overviewTitle flex white">
+                                <i class="fi fi-rr-circle-1 flex"></i>
+                                Overview
+                            </div>
+                            <!-- Week -->
+                            <div class="dashboard-overviewTitle flex gray">
+                                <i class="fi fi-rr-circle-2 flex"></i>
+                                Week
+                            </div>
+                            <!-- Month -->
+                            <div class="dashboard-overviewTitle flex gray">
+                                <i class="fi fi-rr-circle-3 flex"></i>
+                                Month
+                            </div>
+                            <!-- Year -->
+                            <div class="dashboard-overviewTitle flex gray">
+                                <i class="fi fi-rr-circle-4 flex"></i>
+                                Year
+                            </div>
+                        </div>
+
+                        <!-- Right Overview area -->
+                        <div class="dashboard-overviewByDateRightArea">
+                            <!-- soon -->
+                        </div>
+                    </div>
                 </div>
+
                 <!-- Second Pink - All Graphs-->
                 <div class="dashboard-SCountainer2-2-2">
 

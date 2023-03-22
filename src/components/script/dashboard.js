@@ -199,3 +199,13 @@ for (let i = 0; i < leftButton.length; i++) {
         oilArea.style.display = "none"
     })
 }
+
+
+// Dashbaord : Overview Date Select
+var dateTitle = document.querySelectorAll('.dashboard-overviewTitle')
+for (let i = 0; i < dateTitle.length; i++) {
+    dateTitle[i].addEventListener('click', () => {
+        dateTitle[i].classList.remove("gray")
+        dateTitle[i].classList.add("white")
+    })
+}
