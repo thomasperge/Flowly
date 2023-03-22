@@ -12,7 +12,7 @@
     <!-- Menu -->
     <div class="titlebar">
         <div class="menu drag">
-            <div class="titleNavBar white flex">Flowly - Beta Version</div>
+            <div class="titleNavBar white flex">Flowly - Beta Version 1.0</div>
             <i class="fa-solid fa-minus white minus flex no-drag" id="minus"></i>
             <i class="fa-sharp fa-solid fa-xmark white close flex no-drag" id="close"></i>
         </div>
@@ -42,40 +42,32 @@
             </div>
 
             <div class="dashboard-containerAddAbsolute flex" id="dashboard-containerAddAbsolute">
-                <!-- Adding Car PopUp -->
-                <div class="dashboard-areaCarButton" id="dashboard-areaCarButton">
-
+                <!-- == Adding Car PopUp == -->
+                <div class="dashboard-areaCarButton flex" id="dashboard-areaCarButton">
                     <!-- Car Title -->
-                    <div class="dashboard-carPopupTitleArea flex">Add Car</div>
-
+                    <div class="dashboard-carPopupTitleArea flex"><i class="fa-solid fa-arrow-left"></i> Add Car</div>
                     <!-- Car Model (Brand, Model) -->
                     <div class="dashboard-carPopupCarModelArea flex">
                         <input type="text" class="dashboard-inputCarModel" name="" id="" placeholder="Brands">
                         <input type="text" class="dashboard-inputCarModel" name="" id="" placeholder="Models">
                     </div>
-
                     <!-- Car Info (Years, Km) -->
                     <div class="dashboard-carPopupCarInfoArea flex">
                         <input type="number" class="dashboard-inputCarModel" name="" id="" min="1998" max="2023" step="1" value="2016" placeholder="Years">
-                        <input type="number" class="dashboard-inputCarModel" name="" id="" placeholder="Km(s)">
-                        
-                        <div class="input-group">
-                            <input type="number" id="myNumber" value="0" min="0">
-                            <div class="input-group-buttons">
-                              <button id="incrementBtn">+</button>
-                              <button id="decrementBtn">-</button>
-                            </div>
-                        </div>
-                        
+                        <input type="number" class="dashboard-inputCarModel" name="" id="" min="1" max="999" placeholder="Km(s)">
                     </div>
-                </div>
+                    <!-- Add Button -->
+                    <div class="dashboard-carPopupSendButtonArea flex">
+                        <button class="dashboard-carPopupButton">Add</button>
+                    </div>
+                </div>      
 
-                <!-- Adding Car PopUp -->
+                <!-- == Adding Car PopUp == -->
                 <div class="dashboard-areaEnergyButton" id="dashboard-areaEnergyButton">
                     <!-- soon -->
                 </div>
 
-                <!-- Adding Car PopUp -->
+                <!-- == Adding Car PopUp == -->
                 <div class="dashboard-areaOilButton" id="dashboard-areaOilButton">
                     <!-- soon -->
                 </div>

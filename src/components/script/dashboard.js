@@ -174,15 +174,3 @@ containerDashBoard2?.addEventListener('click', (event) => {
 })
 
 
-
-const incrementBtn = document.getElementById("incrementBtn");
-const decrementBtn = document.getElementById("decrementBtn");
-const myNumber = document.getElementById("myNumber");
-
-incrementBtn.addEventListener("click", function() {
-  myNumber.stepUp();
-});
-
-decrementBtn.addEventListener("click", function() {
-  myNumber.stepDown();
-});

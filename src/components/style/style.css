@@ -43,12 +43,10 @@ body {
     width: 0px;
 }
 
-/* input[type=number]::-webkit-inner-spin-button,
-input[type=number]::-webkit-outer-spin-button
-{
-  -webkit-appearance: none;
-  margin: 0;
-} */
+input[type=number]::-webkit-outer-spin-button, 
+input[type=number]::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+}
 
 /* =========== TitleBar =========== */
 .titlebar {
@@ -76,8 +74,8 @@ input[type=number]::-webkit-outer-spin-button
     height: 100%;
     font-family: "GothamMedium";
     position: absolute;
-    opacity: 20%;
-    font-size: 2vh;
+    opacity: 25%;
+    font-size: 2.1vh;
     left: 0;
 }
 
@@ -491,16 +489,16 @@ input[type=number]::-webkit-outer-spin-button
     position: absolute;
     top: 18vh;
     width: 98%;
-    height: 20vh;
+    height: 24.5vh;
 }
 
 .dashboard-areaCarButton {
     display: none;
-    width: 25%;
+    width: 22%;
     height: 100%;
     border-radius: 8px;
     border: 2px solid black;
-    background-color: #23242a;
+    background-color: #181818;
     padding: 1%;
 }
 
@@ -528,10 +526,15 @@ input[type=number]::-webkit-outer-spin-button
 .dashboard-carPopupTitleArea {
     width: fit-content;
     height: auto;
-    padding: 0.5vh 0 0.5vh;
+    padding: 0.3vh 0 0.3vh 0;
     color: white;
     font-family: "GothamMedium";
-    font-size: 2.3vh;
+    font-size: 2.5vh;
+    gap: 20px;
+}
+
+.fa-arrow-left {
+    cursor: pointer;
 }
 
 .dashboard-carPopupCarModelArea {
@@ -539,19 +542,6 @@ input[type=number]::-webkit-outer-spin-button
     height: auto;
     gap: 6vh;
     margin-top: 4%;
-}
-
-.dashboard-inputCarModel {
-    outline: none;
-    width: 32%;
-    height: 3.5vh;
-    padding: 0 8px 0 8px;
-    color: white;
-    font-size: 2vh;
-    font-family: "GothamMedium";
-    border-radius: 5px;
-    border: 1.5px solid #454955;
-    background-color: #323741;
 }
 
 .dashboard-carPopupCarInfoArea {
@@ -572,6 +562,24 @@ input[type=number]::-webkit-outer-spin-button
     border-radius: 5px;
     border: 1.5px solid #454955;
     background-color: #323741;
+}
+
+.dashboard-carPopupSendButtonArea {
+    width: 100%;
+    height: 4.8vh;
+    margin-top: 5%;
+}
+
+.dashboard-carPopupButton {
+    color: white;
+    border: none;
+    outline: none;
+    width: 22%;
+    height: 100%;
+    font-size: 2.1vh;
+    font-family: "GothamMedium";
+    border-radius: 8px;
+    background-color: #1d5eff;
 }
 
 
