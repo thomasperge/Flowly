@@ -132,6 +132,8 @@ input[type="date"]::-webkit-input-placeholder {
     background: #1e1e21;
 }
 
+
+/* =========== Color =========== */
 .white {
     color: white;
 }
@@ -140,6 +142,18 @@ input[type="date"]::-webkit-input-placeholder {
     color: #6f6c6b;
 }
 
+.StatsColor-1 {
+    background-color: #d3e1fa;
+}
+.StatsColor-2 {
+    background-color: #d2f1f9;
+}
+.StatsColor-3 {
+    background-color: #d2f9e7;
+}
+.StatsColor-4 {
+    background-color: #f8fad2;
+}
 
 /* =========== Main Container =========== */
 .container {
@@ -886,7 +900,6 @@ input[type="date"]::-webkit-input-placeholder {
 }
 
 .dashboard-statsArea1-3 {
-    justify-content: flex-end;
     width: 31.5%;
     height: 100%;
     border-radius: 26px;
@@ -937,6 +950,41 @@ input[type="date"]::-webkit-input-placeholder {
     color: black;
     font-size: 2.4vh;
     font-family: "GothamMedium";
-    margin-top: 2vh;
+    margin-top: 0.9vh;
     padding-left: 2.2vh;
+    padding-bottom: 1.4vh;
+}
+
+.dashboard-statsArea1ContainerData {
+    display: grid;
+    width: 100%;
+    max-height: 80%;
+    grid-gap: 0.8vh;
+    overflow-y: scroll;
+}
+
+.dashboard-statsArea1-1DataArea {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: auto;
+    height: 4.3vh;
+    border-radius: 18px;
+    font-family: "GothamBold";
+    color: black;
+    font-size: 2vh;
+    padding-left: 2%;
+}
+
+.dashboard-statsArea1-1Type {
+    margin-left: 0.5vh;
+}
+
+.dashboard-statsArea1-1RoundedValue {
+    width: auto;
+    margin-left: auto;
+    margin-right: 1vh;
+    padding: 2px 5px 2px 5px;
+    border-radius: 18px;
+    background-color: rgba(255, 255, 255, 0.525);
 }
