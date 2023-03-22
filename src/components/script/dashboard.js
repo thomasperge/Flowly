@@ -1,7 +1,9 @@
 // Import 
 let button = document.getElementById('toggle-button')
-let containerDashBoard2 = document.getElementById('dashboard-SCountainer2-2')
 let addArea = document.getElementById("addArea")
+let unselect = document.querySelector('.dashboard-unselect')
+
+let leftButton = document.querySelectorAll('.fa-arrow-left')
 
 // Div Add Menu
 let containerAddAbsolute = document.getElementById('dashboard-containerAddAbsolute')
@@ -49,6 +51,8 @@ button?.addEventListener('click', (event) => {
             addArea.style.transition = "transform 0.5s";
         }, 4);
 
+        unselect.style.display = "none"
+
         // Display "none" div to add
         addArea.style.display = "none"
         containerAddAbsolute.style.display = "none"
@@ -79,12 +83,15 @@ carButton?.addEventListener('click', () => {
     // Car event = Display Car Area
     if (carDisplay) {
         containerAddAbsolute.style.display = "none"
+        unselect.style.display = "none"
         carArea.style.display = "none"
         carDisplay = false
     } else {
         containerAddAbsolute.style.display = "flex"
+        unselect.style.display = "block"
         carArea.style.display = "block"
         carDisplay = true
+
     }
 })
 // == Energy Button : ==
@@ -102,11 +109,13 @@ energyButton?.addEventListener('click', () => {
     // Energy event = Display Energy Area
     if (energyDisplay) {
         containerAddAbsolute.style.display = "none"
+        unselect.style.display = "none"
         energyArea.style.display = "none"
         energyDisplay = false
     } else {
         containerAddAbsolute.style.display = "flex"
-        energyArea.style.display = "flex"
+        unselect.style.display = "block"
+        energyArea.style.display = "block"
         energyDisplay = true
     }
 })
@@ -125,10 +134,12 @@ oilButton?.addEventListener('click', () => {
     // Energy event = Display Energy Area
     if (oilDisplay) {
         containerAddAbsolute.style.display = "none"
+        unselect.style.display = "none"
         oilArea.style.display = "none"
         oilDisplay = false
     } else {
         containerAddAbsolute.style.display = "flex"
+        unselect.style.display = "block"
         oilArea.style.display = "flex"
         oilDisplay = true
     }
@@ -146,7 +157,7 @@ addArea.addEventListener('transitionend', () => {
 
 // == Click Container2.2 => Display "none" minus button ==
 // ( a revoir car si il a les grahs par dessus = plus a dispo)
-containerDashBoard2?.addEventListener('click', (event) => {
+unselect?.addEventListener('click', (event) => {
     if (button.classList.contains('fa-circle-minus')) {
         // Transition
         button.style.transform = "translateX(0%)";
@@ -154,6 +165,8 @@ containerDashBoard2?.addEventListener('click', (event) => {
 
         addArea.style.transform = "translateX(0%)";
         addArea.style.transition = "transform 0.5s";
+
+        unselect.style.display = "none"
 
         // Display "none" all div
         addArea.style.display = "none"
@@ -173,4 +186,16 @@ containerDashBoard2?.addEventListener('click', (event) => {
     button.classList.add('fa-circle-plus');
 })
 
-
+// == Left Button => Display "none" all area ==
+for (let i = 0; i < leftButton.length; i++) {
+    leftButton[i].addEventListener('click', () => {
+        carDisplay = false
+        energyDisplay = false
+        oilDisplay = false
+        console.log(carDisplay, energyDisplay, oilDisplay);
+        unselect.style.display = "none"
+        carArea.style.display = "none"
+        energyArea.style.display = "none"
+        oilArea.style.display = "none"
+    })
+}
