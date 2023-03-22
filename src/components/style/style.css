@@ -56,6 +56,14 @@ input[type="date"]::-webkit-input-placeholder{
     visibility: hidden !important;
 }
 
+input::-webkit-calendar-picker-indicator{
+    display: none;
+}
+
+input[type="date"]::-webkit-input-placeholder{ 
+    visibility: hidden !important;
+}
+
 /* =========== TitleBar =========== */
 .titlebar {
     width: 100%;
@@ -370,7 +378,9 @@ input[type="date"]::-webkit-input-placeholder{
 /* == All Container (cf. Assets) == */
 .dashboard-container {
     position: absolute;
+    position: absolute;
     width: auto;
+    /* height: 92vh; */
     /* height: 92vh; */
     margin: 0;
     overflow: hidden;
@@ -380,6 +390,7 @@ input[type="date"]::-webkit-input-placeholder{
     top: 33px; 
     bottom: 0;
     gap: 2%;
+    overflow-y:hidden;
     overflow-y:hidden;
     background-image: url('../../../assets/background.png');
     background-size: cover;
@@ -403,9 +414,13 @@ input[type="date"]::-webkit-input-placeholder{
     width: 6%;
     height: 100%;
     padding: 2% 0 0 0;
+    padding: 2% 0 0 0;
 }
-  
+
+
 .dashboard-SCountainer2-2 {
+    display: flex; /* Définit le conteneur comme un flex container */
+    flex-direction: column; /* Définit l'axe principal en colonne */
     width: 94%;
     height: 100%;
 }
@@ -419,6 +434,10 @@ input[type="date"]::-webkit-input-placeholder{
 .dashboard-SCountainer2-2-2 {
     width: 100%;
     height: 88%;
+    padding: 0;
+    overflow: scroll;
+    overflow-x: hidden;
+    background-color: white;
 }
 
 /* == All Logo & Area Logo - Top NavBar == */
@@ -503,7 +522,7 @@ input[type="date"]::-webkit-input-placeholder{
     position: absolute;
     width: 98%;
     height: 25vh;
-    top: 18vh;
+    top: 14vh;
 }
 
 .dashboard-areaCarButton {
@@ -590,6 +609,7 @@ input[type="date"]::-webkit-input-placeholder{
     font-family: "GothamMedium";
     border-radius: 5px;
     border: 1.5px solid #454955;
+    background-color: #26221f;
     background-color: #26221f;
 }
 
@@ -697,6 +717,47 @@ input[type="date"]::-webkit-input-placeholder{
     align-items: center;
     width: 45%;
     height: 100%;
+    font-size: 2.7vh;
+    gap: 3vh;
+    cursor: pointer;
+}
+
+.dashboard-logoLeftNavBarAreaRouded {
+    width: 100%;
+    height: auto;
+}
+
+.dashboard-logoLeftNavBar {
+    width: 4.7vh;
+    height: 4.7vh;
+    border-radius: 100%;
+}
+
+.logoOn {
+    color: black;
+    background-color: #e2d390;
+}
+
+.logoOff {
+    color: #e2d390;
+    background-color: black;
+}
+
+
+/* =========== Overview Date =========== */
+/* == Area with all logos inside == */
+.dashboard-overviewByDateContainer {
+    display: flex;
+    width: 94%;
+    height: 70%;
+    justify-content: space-between;
+}
+
+.dashboard-overviewByDateLeftArea {
+    display: flex;
+    align-items: center;
+    width: 45%;
+    height: 100%;
     color: white;
     font-size: 2vh;
     font-family: 'GothamBold';
@@ -755,3 +816,51 @@ input[type="date"]::-webkit-input-placeholder{
     cursor: pointer;
     background-color: #e2d390;
 }
+
+
+/* =========== All Stats graphs =========== */
+/* == 3 Container : Top / Middle / Bottom == */
+.dashboard-statsContainer1 {
+    width: 100%;
+    height: 35%;
+    justify-content: space-between;
+    padding: 0 1% 0 1%;
+}
+
+.dashboard-statsContainer2 {
+    width: 100%;
+    height: 30%;
+    padding: 0 1% 0 1%;
+}
+
+.dashboard-statsContainer3 {
+    width: 100%;
+    height: 35%;
+    justify-content: space-between;
+    padding: 0 1% 0 1%;
+}
+
+/* == Top Container - Area == */
+.dashboard-statsArea1-1 {
+    width: 30%;
+    height: 100%;
+    border-radius: 14px;
+    background-color: #b9c2b6;
+}
+
+.dashboard-statsArea1-2 {
+    width: 30%;
+    height: 100%;
+    border-radius: 14px;
+    background-color: #b0d2c2;
+}
+
+.dashboard-statsArea1-3 {
+    width: 30%;
+    height: 100%;
+    border-radius: 14px;
+    background-color: #bbb7c1;
+}
+
+
+
