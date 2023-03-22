@@ -127,7 +127,7 @@ input[type=number]::-webkit-inner-spin-button {
     position: relative;
     width: 98%;
     height: 98%;
-    padding-right: 4%;
+    padding-right: 7%;
     background: linear-gradient(rgba(34, 0, 255, 0.868), rgba(255,255,255,.5)), url('../../../assets/AdobeStock_220385906_Preview-transformed.jpeg');
     background-size: cover;
     border-radius: 10px;
@@ -349,7 +349,7 @@ input[type=number]::-webkit-inner-spin-button {
     background: linear-gradient(rgba(34, 0, 255, 0.84), rgba(206, 206, 206, 0.5)), url('../../../assets/inline_image_preview.jpg');
     background-size: cover;
     border-radius: 10px;
-    padding-right: 4%;
+    padding-right: 7%;
 }
 
 /* =========== DashBoard =========== */
@@ -387,6 +387,8 @@ input[type=number]::-webkit-inner-spin-button {
 .dashboard-SCountainer2-1 {
     width: 6%;
     height: 100%;
+    padding: 2% 0 0 0;
+    /* background-color: red; */
 }
   
 .dashboard-SCountainer2-2 {
@@ -496,7 +498,7 @@ input[type=number]::-webkit-inner-spin-button {
     height: 100%;
     border-radius: 9px;
     border: 1px solid #25282e;
-    background-color: #181818;
+    background-color: #26221f;
     padding: 1%;
     z-index: 3;
 }
@@ -640,7 +642,7 @@ input[type=number]::-webkit-inner-spin-button {
 /* == Container (Logo) == */
 .dashboard-logoContainer {
     display: grid;
-    color: white;
+    color: #e2d390;
     font-size: 3.5vh;
     gap: 5vh;
     cursor: pointer;
