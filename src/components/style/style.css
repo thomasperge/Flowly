@@ -647,10 +647,30 @@ input[type=number]::-webkit-inner-spin-button {
 /* == Container (Logo) == */
 .dashboard-logoContainer {
     display: grid;
-    color: #e2d390;
-    font-size: 3.5vh;
-    gap: 5vh;
+    font-size: 2.7vh;
+    gap: 3vh;
     cursor: pointer;
+}
+
+.dashboard-logoLeftNavBarAreaRouded {
+    width: 100%;
+    height: auto;
+}
+
+.dashboard-logoLeftNavBar {
+    width: 4.7vh;
+    height: 4.7vh;
+    border-radius: 100%;
+}
+
+.logoOn {
+    color: black;
+    background-color: #e2d390;
+}
+
+.logoOff {
+    color: #e2d390;
+    background-color: black;
 }
 
 
@@ -668,9 +688,9 @@ input[type=number]::-webkit-inner-spin-button {
     width: 45%;
     height: 100%;
     color: white;
-    font-size: 2.2vh;
+    font-size: 2vh;
     font-family: 'GothamBold';
-    gap: 15px;
+    gap: 30px;
 }
 
 .dashboard-overviewByDateRightArea {
