@@ -22,12 +22,12 @@ var oilDisplay = false
 
 // == Button Plus / Minus ==
 button?.addEventListener('click', (event) => {
-    if (button.classList.contains('fa-circle-plus')) {
+    if (button.classList.contains('fi-rr-square-plus')) {
         addArea.style.display = "flex"
 
         // Change + to - logo
-        button.classList.remove('fa-circle-plus');
-        button.classList.add('fa-circle-minus');
+        button.classList.remove('fi-rr-square-plus');
+        button.classList.add('fi-rr-square-minus');
 
         // Transition
         button.style.transform = "translateX(-230%)";
@@ -39,8 +39,8 @@ button?.addEventListener('click', (event) => {
         }, 10);
     } else {
         // Change - to + logo
-        button.classList.remove('fa-circle-minus');
-        button.classList.add('fa-circle-plus');
+        button.classList.remove('fi-rr-square-minus');
+        button.classList.add('fi-rr-square-plus');
 
         // Transition
         button.style.transform = "translateX(0%)";
@@ -147,7 +147,7 @@ oilButton?.addEventListener('click', () => {
 
 // == Transition => Display Logo to add things ==
 addArea.addEventListener('transitionend', () => {
-    if (button.classList.contains('fa-circle-plus')) {
+    if (button.classList.contains('fi-rr-square-plus')) {
         addArea.style.display = "none"
     } else {
         addArea.style.display = "flex"
@@ -158,7 +158,7 @@ addArea.addEventListener('transitionend', () => {
 // == Click Container2.2 => Display "none" minus button ==
 // ( a revoir car si il a les grahs par dessus = plus a dispo)
 unselect?.addEventListener('click', (event) => {
-    if (button.classList.contains('fa-circle-minus')) {
+    if (button.classList.contains('fi-rr-square-minus')) {
         // Transition
         button.style.transform = "translateX(0%)";
         button.style.transition = "transform 0.5s";
@@ -182,8 +182,8 @@ unselect?.addEventListener('click', (event) => {
         oilArea.style.display = "none"
     }
 
-    button.classList.remove('fa-circle-minus');
-    button.classList.add('fa-circle-plus');
+    button.classList.remove('fi-rr-square-minus');
+    button.classList.add('fi-rr-square-plus');
 })
 
 // == Left Button => Display "none" all area ==
