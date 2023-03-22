@@ -204,8 +204,18 @@ for (let i = 0; i < leftButton.length; i++) {
 // Dashbaord : Overview Date Select
 var dateTitle = document.querySelectorAll('.dashboard-overviewTitle')
 for (let i = 0; i < dateTitle.length; i++) {
+
     dateTitle[i].addEventListener('click', () => {
-        dateTitle[i].classList.remove("gray")
-        dateTitle[i].classList.add("white")
+        for (let j = 0; j <= dateTitle.length - 1; j++) {
+            console.log(dateTitle[j]);
+
+            if (dateTitle[i].classList.contains(j.toString())) {
+                dateTitle[j].classList.add("white")
+                dateTitle[j].classList.remove("gray")
+            } else {
+                dateTitle[j].classList.add("gray")
+                dateTitle[j].classList.remove("white")
+            }
+        }
     })
 }
