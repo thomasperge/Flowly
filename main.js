@@ -23,9 +23,9 @@ const createWindow = () => {
         frame: false,
         autoHideMenuBar: true,
         width: 1400,
-        height: 705,
-        minWidth: 1325,
-        minHeight: 675,
+        height: 775,
+        minWidth: 1400,
+        minHeight: 775,
         resizable: true,
         webPreferences: {
             contextIsolation: true,

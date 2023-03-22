@@ -437,7 +437,6 @@ input[type="date"]::-webkit-input-placeholder{
     padding: 0;
     overflow: scroll;
     overflow-x: hidden;
-    background-color: white;
 }
 
 /* == All Logo & Area Logo - Top NavBar == */
@@ -563,10 +562,11 @@ input[type="date"]::-webkit-input-placeholder{
     display: none;
     position: absolute;
     left: 8%;
-    top: 16%;
+    top: 12%;
     width: 91%;
-    height: 82%;
+    height: 86%;
     z-index: 2;
+    background-color: rgba(0, 0, 0, 0.347);
 }
 
 /* == Car PopUp == */
@@ -819,48 +819,74 @@ input[type="date"]::-webkit-input-placeholder{
 
 
 /* =========== All Stats graphs =========== */
+.dashboard-statsMainContainer {
+    width: 90%;
+    height: 95%;
+}
 /* == 3 Container : Top / Middle / Bottom == */
+
 .dashboard-statsContainer1 {
-    width: 100%;
-    height: 35%;
+    display: flex;
     justify-content: space-between;
-    padding: 0 1% 0 1%;
+    align-items: center;
+    width: 100%;
+    height: 38%;
 }
 
 .dashboard-statsContainer2 {
     width: 100%;
-    height: 30%;
-    padding: 0 1% 0 1%;
+    height: 25%;
+    gap: 2%;
 }
 
 .dashboard-statsContainer3 {
-    width: 100%;
-    height: 35%;
+    display: flex;
     justify-content: space-between;
-    padding: 0 1% 0 1%;
+    align-items: center;
+    width: 100%;
+    height: 37%;
+    gap: 2%;
 }
 
 /* == Top Container - Area == */
 .dashboard-statsArea1-1 {
-    width: 30%;
+    width: 31.5%;
     height: 100%;
-    border-radius: 14px;
+    border-radius: 26px;
     background-color: #b9c2b6;
+    justify-content: start;
 }
 
 .dashboard-statsArea1-2 {
-    width: 30%;
+    width: 31.5%;
     height: 100%;
-    border-radius: 14px;
+    border-radius: 26px;
     background-color: #b0d2c2;
+    justify-content: center;
 }
 
 .dashboard-statsArea1-3 {
-    width: 30%;
+    justify-content: flex-end;
+    width: 31.5%;
     height: 100%;
-    border-radius: 14px;
+    border-radius: 26px;
     background-color: #bbb7c1;
 }
 
+/* == Middle Container - Area == */
 
 
+/* == Bottom Container - Area == */
+.dashboard-statsArea3-1 {
+    width: 48.5%;
+    height: 100%;
+    border-radius: 26px;
+    background-color: #bfb194;
+}
+
+.dashboard-statsArea3-2 {
+    width: 48.5%;
+    height: 100%;
+    border-radius: 26px;
+    background-color: #c3c3aa;
+}

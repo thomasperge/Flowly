@@ -1,7 +1,7 @@
 // Import 
 let button = document.getElementById('toggle-button')
 let addArea = document.getElementById("addArea")
-let unselect = document.querySelector('.dashboard-unselect')
+let unselect = document.getElementById('unselect')
 
 let leftButton = document.querySelectorAll('.fa-arrow-left')
 
@@ -91,7 +91,6 @@ carButton?.addEventListener('click', () => {
         unselect.style.display = "block"
         carArea.style.display = "block"
         carDisplay = true
-
     }
 })
 // == Energy Button : ==
