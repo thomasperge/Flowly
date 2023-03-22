@@ -842,8 +842,8 @@ input[type="date"]::-webkit-input-placeholder {
     width: 90%;
     height: 95%;
 }
-/* == 3 Container : Top / Middle / Bottom == */
 
+/* == 3 Container : Top / Middle / Bottom == */
 .dashboard-statsContainer1 {
     display: flex;
     justify-content: space-between;
@@ -876,7 +876,6 @@ input[type="date"]::-webkit-input-placeholder {
     height: 100%;
     border-radius: 26px;
     background-color: #b9c2b6;
-    justify-content: start;
 }
 
 .dashboard-statsArea1-2 {
@@ -884,7 +883,6 @@ input[type="date"]::-webkit-input-placeholder {
     height: 100%;
     border-radius: 26px;
     background-color: #b0d2c2;
-    justify-content: center;
 }
 
 .dashboard-statsArea1-3 {
@@ -911,7 +909,6 @@ input[type="date"]::-webkit-input-placeholder {
     background-color: #26221f;
 }
 
-
 /* == Bottom Container - Area == */
 .dashboard-statsArea3-1 {
     width: 48.5%;
@@ -927,3 +924,19 @@ input[type="date"]::-webkit-input-placeholder {
     background-color: #c3c3aa;
 }
 
+.dashboard-statsContainerGraphs {
+    width: 95%;
+    height: 95%;
+}
+
+/* == Property for Graphs == */
+/* Title */
+.dashboard-statsTitleGraph {
+    width: auto;
+    height: auto;
+    color: black;
+    font-size: 2.4vh;
+    font-family: "GothamMedium";
+    margin-top: 2vh;
+    padding-left: 2.2vh;
+}
