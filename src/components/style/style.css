@@ -48,20 +48,39 @@ input[type=number]::-webkit-inner-spin-button {
     -webkit-appearance: none;
 }
 
-input::-webkit-calendar-picker-indicator{
+input::-webkit-calendar-picker-indicator {
     display: none;
 }
 
-input[type="date"]::-webkit-input-placeholder{ 
+input[type="date"]::-webkit-input-placeholder {
     visibility: hidden !important;
 }
 
-input::-webkit-calendar-picker-indicator{
+input::-webkit-calendar-picker-indicator {
     display: none;
 }
 
-input[type="date"]::-webkit-input-placeholder{ 
+input[type="date"]::-webkit-input-placeholder {
     visibility: hidden !important;
+}
+
+::-webkit-scrollbar {
+    width: 0px;
+    height: 0px;
+    border-radius: 100%;
+}
+
+::-webkit-scrollbar-track {
+    background: rgba(0, 0, 0, 0);
+}
+
+::-webkit-scrollbar-thumb {
+    background: rgba(0, 0, 0, 0);
+    border-radius: 100px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: rgba(0, 0, 0, 0);
 }
 
 /* =========== TitleBar =========== */
@@ -834,9 +853,12 @@ input[type="date"]::-webkit-input-placeholder{
 }
 
 .dashboard-statsContainer2 {
+    display: flex;
     width: 100%;
-    height: 25%;
+    height: 28%;
     gap: 2%;
+    justify-content: flex-start;
+    overflow-x: scroll;
 }
 
 .dashboard-statsContainer3 {
@@ -844,7 +866,7 @@ input[type="date"]::-webkit-input-placeholder{
     justify-content: space-between;
     align-items: center;
     width: 100%;
-    height: 37%;
+    height: 35%;
     gap: 2%;
 }
 
@@ -874,6 +896,20 @@ input[type="date"]::-webkit-input-placeholder{
 }
 
 /* == Middle Container - Area == */
+.dashboard-statsContainer2-1 {
+    display: flex;
+    width: auto;
+    height: 75%;
+    gap: 3%;
+    justify-content: flex-start;
+}
+
+.dashboard-statsArea2-1 {
+    width: 36vh;
+    height: 100%;
+    border-radius: 26px;
+    background-color: #26221f;
+}
 
 
 /* == Bottom Container - Area == */
@@ -890,3 +926,4 @@ input[type="date"]::-webkit-input-placeholder{
     border-radius: 26px;
     background-color: #c3c3aa;
 }
+
