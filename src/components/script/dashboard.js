@@ -1,26 +1,30 @@
-// Import 
+// Main Import 
 let button = document.getElementById('toggle-button')
 let addArea = document.getElementById("addArea")
 let unselect = document.getElementById('unselect')
 
+// Set left button => Left popup
 let leftButton = document.querySelectorAll('.fa-arrow-left')
 
-// Div Add Menu
+// Set absolute div to display popup
 let containerAddAbsolute = document.getElementById('dashboard-containerAddAbsolute')
 
+// Set Button Car, Energy, Fuel
 let carButton = document.getElementById('fa-car')
 let energyButton = document.getElementById('fa-bolt')
 let oilButton = document.getElementById('fa-oil-well')
 
+// Set Area (popup) Car, Energy, Fuel
 let carArea = document.getElementById('dashboard-areaCarButton')
 let energyArea = document.getElementById('dashboard-areaEnergyButton')
 let oilArea = document.getElementById('dashboard-areaOilButton')
 
+// Set Area display boolean
 var carDisplay = false
 var energyDisplay = false
 var oilDisplay = false
 
-// == Button Plus / Minus ==
+// ======= Button Plus / Minus for popup =======
 button?.addEventListener('click', (event) => {
     if (button.classList.contains('fi-rr-square-plus')) {
         addArea.style.display = "flex"
@@ -68,6 +72,7 @@ button?.addEventListener('click', (event) => {
     }
 })
 
+// ======= Logo Button =======
 // == Car Button : ==
 carButton?.addEventListener('click', () => {
     // Display "none" all other add area
@@ -144,7 +149,7 @@ oilButton?.addEventListener('click', () => {
     }
 })
 
-// == Transition => Display Logo to add things ==
+// ======= Transition => Display Logo to add things =======
 addArea.addEventListener('transitionend', () => {
     if (button.classList.contains('fi-rr-square-plus')) {
         addArea.style.display = "none"
@@ -154,8 +159,7 @@ addArea.addEventListener('transitionend', () => {
 })
 
 
-// == Click Container2.2 => Display "none" minus button ==
-// ( a revoir car si il a les grahs par dessus = plus a dispo)
+// ======= Click Container2.2 => Display "none" minus button =======
 unselect?.addEventListener('click', (event) => {
     if (button.classList.contains('fi-rr-square-minus')) {
         // Transition
@@ -185,7 +189,7 @@ unselect?.addEventListener('click', (event) => {
     button.classList.add('fi-rr-square-plus');
 })
 
-// == Left Button => Display "none" all area ==
+// ======= Left Button => Display "none" all area =======
 for (let i = 0; i < leftButton.length; i++) {
     leftButton[i].addEventListener('click', () => {
         carDisplay = false
@@ -199,8 +203,7 @@ for (let i = 0; i < leftButton.length; i++) {
     })
 }
 
-
-// == Dashbaord : Overview Date Select ==
+// ======= Dashboard : Overview Date Select =======
 var dateTitle = document.querySelectorAll('.dashboard-overviewTitle')
 for (let i = 0; i < dateTitle.length; i++) {
 
@@ -218,3 +221,28 @@ for (let i = 0; i < dateTitle.length; i++) {
         }
     })
 }
+
+// == Switch => DashBoard => Time Past ==
+var dashboardLogoNavbar = document.getElementById('logoDashboard')
+var historyLogoNavbar = document.getElementById('logoHistory')
+var dashboardContainer = document.querySelector('.dashboard-SCountainer2-2-2')
+
+// ======= Dashboard : History / Dashboard Page - Logo switch =======
+historyLogoNavbar?.addEventListener('click', () => {
+    historyLogoNavbar.classList.remove('logoOff')
+    historyLogoNavbar.classList.add('logoOn')
+
+    dashboardLogoNavbar.classList.add('logoOff')
+    dashboardLogoNavbar.classList.remove('logoOn')
+
+    dashboardContainer.style.display = "none"
+})
+dashboardLogoNavbar?.addEventListener('click', () => {
+    historyLogoNavbar.classList.add('logoOff')
+    historyLogoNavbar.classList.remove('logoOn')
+
+    dashboardLogoNavbar.classList.remove('logoOff')
+    dashboardLogoNavbar.classList.add('logoOn')
+
+    dashboardContainer.style.display = "flex"
+})
