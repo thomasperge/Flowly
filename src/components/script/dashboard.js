@@ -1,4 +1,6 @@
 // Main Import 
+import { transitionOpacity } from '../script/app.component.js'
+
 let button = document.getElementById('toggle-button')
 let addArea = document.getElementById("addArea")
 let unselect = document.getElementById('unselect')
@@ -240,6 +242,7 @@ dashboardLogoNavbar?.addEventListener('click', () => {
     diamondLogoNavbar.classList.remove('logoOn')
     
     dashboardContainer.style.display = "flex"
+    transitionOpacity(dashboardContainer, 200)
 })
 historyLogoNavbar?.addEventListener('click', () => {
     historyLogoNavbar.classList.remove('logoOff')
