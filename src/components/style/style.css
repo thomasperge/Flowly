@@ -154,6 +154,12 @@ input[type="date"]::-webkit-input-placeholder {
 .StatsColor-4 {
     background-color: #f8fad2;
 }
+.StatsColor-5 {
+    background-color: #6EC898;
+}
+.StatsColor-6 {
+    background-color: #6fcaab;
+}
 
 /* =========== Main Container =========== */
 .container {
@@ -1002,7 +1008,7 @@ input[type="date"]::-webkit-input-placeholder {
 
 .dashboard-statsArea1-2-1AreaData {
     width: 50%;
-    height: 87%;
+    height: 93%;
     border-radius: 26px;
 }
 
