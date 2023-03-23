@@ -1087,12 +1087,12 @@ input[type="date"]::-webkit-input-placeholder {
     overflow-y: scroll;
 }
 
-.test1 {
+.dashboard-statsArea1-3ContainerGraph {
     width: 100%;
     height: 80%;
 }
 
-.test4 {
+.dashboard-statsArea1-3SContainerGraph {
     display: flex;
     align-items:end;
     justify-content: space-between;
@@ -1100,19 +1100,19 @@ input[type="date"]::-webkit-input-placeholder {
     height: 100%;
 }
 
-.graph1 {
+.dashboard-statsArea1-3GraphArea {
     width: 30%;
     height: 95%;
     border-radius: 22px 22px 0 0;
     background-color: #6b976aee;
 }
 
-.test2 {
+.dashboard-statsArea1-3TitleContainer {
     width: 100%;
     height: 20%;
 }
 
-.test3 {
+.dashboard-statsArea1-3TitleSContainer {
     display: flex;
     width: 60%;
     height: auto;
@@ -1123,11 +1123,11 @@ input[type="date"]::-webkit-input-placeholder {
     color: black;
 }
 
-.test6 {
+.dashboard-statsArea1-3Title {
     width: 27%;
 }
 
-.title {
+.dashboard-statsArea1-3DataTitle {
     display: grid;
     width: 100%;
     font-family: "GothamBold";
