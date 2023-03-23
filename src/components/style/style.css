@@ -1104,7 +1104,7 @@ input[type="date"]::-webkit-input-placeholder {
     width: 30%;
     height: 95%;
     border-radius: 22px 22px 0 0;
-    background-color: #6b976aee;
+    background-color: #c9539cb1;
 }
 
 .dashboard-statsArea1-3TitleContainer {
@@ -1135,6 +1135,14 @@ input[type="date"]::-webkit-input-placeholder {
     color: black;
     margin-top: 15%;
     justify-content: center;
+}
+
+.dashboard-statsArea1-3ValueTitle {
+    font-size: 2.6vh;
+}
+
+.dashboard-statsArea1-3UnitTitle {
+    font-size: 1.8vh;
 }
 
 /* ==== Area 2 - Stats ==== */
