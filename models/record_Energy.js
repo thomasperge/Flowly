@@ -22,6 +22,10 @@ const recordEnergySchema = mongoose.Schema({
         default: energy_type[1],
         required: true,
     },
+    value: {
+        type: Number, 
+        required: true,
+    },
     carbon_g: {
         type: Number, 
         required: true,
