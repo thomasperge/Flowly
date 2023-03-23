@@ -20,9 +20,9 @@ let energyArea = document.getElementById('dashboard-areaEnergyButton')
 let oilArea = document.getElementById('dashboard-areaOilButton')
 
 // Set Area display boolean
-var carDisplay = false
-var energyDisplay = false
-var oilDisplay = false
+let carDisplay = false
+let energyDisplay = false
+let oilDisplay = false
 
 // ======= Button Plus / Minus for popup =======
 button?.addEventListener('click', (event) => {
@@ -204,7 +204,7 @@ for (let i = 0; i < leftButton.length; i++) {
 }
 
 // ======= Dashboard : Overview Date Select =======
-var dateTitle = document.querySelectorAll('.dashboard-overviewTitle')
+let dateTitle = document.querySelectorAll('.dashboard-overviewTitle')
 for (let i = 0; i < dateTitle.length; i++) {
 
     dateTitle[i].addEventListener('click', () => {
@@ -223,11 +223,24 @@ for (let i = 0; i < dateTitle.length; i++) {
 }
 
 // == Switch => DashBoard => Time Past ==
-var dashboardLogoNavbar = document.getElementById('logoDashboard')
-var historyLogoNavbar = document.getElementById('logoHistory')
-var dashboardContainer = document.querySelector('.dashboard-SCountainer2-2-2')
+let dashboardLogoNavbar = document.getElementById('logoDashboard')
+let historyLogoNavbar = document.getElementById('logoHistory')
+let diamondLogoNavbar = document.getElementById('logoDiamond')
+let dashboardContainer = document.querySelector('.dashboard-SCountainer2-2-2')
 
 // ======= Dashboard : History / Dashboard Page - Logo switch =======
+dashboardLogoNavbar?.addEventListener('click', () => {
+    historyLogoNavbar.classList.add('logoOff')
+    historyLogoNavbar.classList.remove('logoOn')
+    
+    dashboardLogoNavbar.classList.remove('logoOff')
+    dashboardLogoNavbar.classList.add('logoOn')
+    
+    diamondLogoNavbar.classList.add('logoOff')
+    diamondLogoNavbar.classList.remove('logoOn')
+    
+    dashboardContainer.style.display = "flex"
+})
 historyLogoNavbar?.addEventListener('click', () => {
     historyLogoNavbar.classList.remove('logoOff')
     historyLogoNavbar.classList.add('logoOn')
@@ -235,14 +248,20 @@ historyLogoNavbar?.addEventListener('click', () => {
     dashboardLogoNavbar.classList.add('logoOff')
     dashboardLogoNavbar.classList.remove('logoOn')
 
+    diamondLogoNavbar.classList.add('logoOff')
+    diamondLogoNavbar.classList.remove('logoOn')
+
     dashboardContainer.style.display = "none"
 })
-dashboardLogoNavbar?.addEventListener('click', () => {
+diamondLogoNavbar?.addEventListener('click', () => {
     historyLogoNavbar.classList.add('logoOff')
     historyLogoNavbar.classList.remove('logoOn')
 
-    dashboardLogoNavbar.classList.remove('logoOff')
-    dashboardLogoNavbar.classList.add('logoOn')
+    dashboardLogoNavbar.classList.add('logoOff')
+    dashboardLogoNavbar.classList.remove('logoOn')
 
-    dashboardContainer.style.display = "flex"
+    diamondLogoNavbar.classList.remove('logoOff')
+    diamondLogoNavbar.classList.add('logoOn')
+
+    dashboardContainer.style.display = "none"
 })

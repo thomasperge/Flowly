@@ -951,6 +951,8 @@ input[type="date"]::-webkit-input-placeholder {
 /* ==== Property for Graphs - Stats ==== */
 /* Glabal Title */
 .dashboard-statsTitleGraph {
+    display: flex;
+    align-items: center;
     width: auto;
     height: auto;
     color: black;
@@ -1059,7 +1061,7 @@ input[type="date"]::-webkit-input-placeholder {
     width: 47%;
     height: 95%;
     border-radius: 16px;
-    background-color: #d5d6c3;
+    background-color: #e3f2c167;
     row-gap: 1vh;
 }
 
