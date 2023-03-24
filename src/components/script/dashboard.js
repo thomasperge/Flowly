@@ -1,5 +1,5 @@
 // Main Import 
-import { transitionOpacity } from '../script/app.component.js'
+import { transitionOpacity } from './app.component.js'
 
 let button = document.getElementById('toggle-button')
 let addArea = document.getElementById("addArea")
@@ -197,7 +197,7 @@ for (let i = 0; i < leftButton.length; i++) {
         carDisplay = false
         energyDisplay = false
         oilDisplay = false
-        console.log(carDisplay, energyDisplay, oilDisplay);
+
         unselect.style.display = "none"
         carArea.style.display = "none"
         energyArea.style.display = "none"
@@ -211,8 +211,6 @@ for (let i = 0; i < dateTitle.length; i++) {
 
     dateTitle[i].addEventListener('click', () => {
         for (let j = 0; j <= dateTitle.length - 1; j++) {
-            console.log(dateTitle[j]);
-
             if (dateTitle[i].classList.contains(j.toString())) {
                 dateTitle[j].classList.add("white")
                 dateTitle[j].classList.remove("gray")
@@ -241,8 +239,13 @@ dashboardLogoNavbar?.addEventListener('click', () => {
     diamondLogoNavbar.classList.add('logoOff')
     diamondLogoNavbar.classList.remove('logoOn')
     
-    dashboardContainer.style.display = "flex"
-    transitionOpacity(dashboardContainer, 200)
+    if (dashboardContainer.style.display == "none") {
+        dashboardContainer.style.display = "flex"
+        transitionOpacity(dashboardContainer, 150)
+    } else {
+        dashboardContainer.style.display = "flex"
+    }
+    
 })
 historyLogoNavbar?.addEventListener('click', () => {
     historyLogoNavbar.classList.remove('logoOff')
