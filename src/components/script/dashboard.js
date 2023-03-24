@@ -222,13 +222,15 @@ for (let i = 0; i < dateTitle.length; i++) {
     })
 }
 
-// == Switch => DashBoard => Time Past ==
+// == Switch : DashBoard => History => Premium ==
 let dashboardLogoNavbar = document.getElementById('logoDashboard')
 let historyLogoNavbar = document.getElementById('logoHistory')
 let diamondLogoNavbar = document.getElementById('logoDiamond')
-let dashboardContainer = document.querySelector('.dashboard-SCountainer2-2-2')
 
-// ======= Dashboard : History / Dashboard Page - Logo switch =======
+let dashboardContainer = document.querySelector('.dashboard-SCountainer2-2-2')
+let premiumContainer = document.querySelector('.premium-SCountainer2-2-2')
+
+// ======= Dashboard : History / Dashboard / Premium Page - Logo switch =======
 dashboardLogoNavbar?.addEventListener('click', () => {
     historyLogoNavbar.classList.add('logoOff')
     historyLogoNavbar.classList.remove('logoOn')
@@ -244,6 +246,7 @@ dashboardLogoNavbar?.addEventListener('click', () => {
         transitionOpacity(dashboardContainer, 150)
     } else {
         dashboardContainer.style.display = "flex"
+        premiumContainer.style.display = "none"
     }
     
 })
@@ -258,6 +261,7 @@ historyLogoNavbar?.addEventListener('click', () => {
     diamondLogoNavbar.classList.remove('logoOn')
 
     dashboardContainer.style.display = "none"
+    premiumContainer.style.display = "none"
 })
 diamondLogoNavbar?.addEventListener('click', () => {
     historyLogoNavbar.classList.add('logoOff')
@@ -270,4 +274,6 @@ diamondLogoNavbar?.addEventListener('click', () => {
     diamondLogoNavbar.classList.add('logoOn')
 
     dashboardContainer.style.display = "none"
+    premiumContainer.style.display = "flex"
+    transitionOpacity(premiumContainer, 150)
 })
