@@ -3,6 +3,8 @@ import { transitionOpacity } from './app.component.js'
 
 let button = document.getElementById('toggle-button')
 let addArea = document.getElementById("addArea")
+
+// Popup unselect area
 let unselect = document.getElementById('unselect')
 
 // Set left button => Left popup
@@ -26,8 +28,9 @@ let carDisplay = false
 let energyDisplay = false
 let oilDisplay = false
 
-// ======= Button Plus / Minus for popup =======
+// =========== Button Plus / Minus for popup ===========
 button?.addEventListener('click', (event) => {
+    // Check : Button on "+" status
     if (button.classList.contains('fi-rr-square-plus')) {
         addArea.style.display = "flex"
 
@@ -74,7 +77,7 @@ button?.addEventListener('click', (event) => {
     }
 })
 
-// ======= Logo Button =======
+// =========== Car / Energy / Oil Button (on navbar) ===========
 // == Car Button : ==
 carButton?.addEventListener('click', () => {
     // Display "none" all other add area
@@ -151,21 +154,23 @@ oilButton?.addEventListener('click', () => {
     }
 })
 
-// ======= Add Record : Select Today / input date =======
+// =========== Popup to add => Button "Today" or "Select Date" ===========
 let todayButton = document.getElementById("dashboard-inputToday")
 let addDateRecordButton = document.getElementById("dashboard-inputDateAddRecord")
 
+// == Today Button ==
 todayButton?.addEventListener('click', () => {
-    todayButton.style.borderWidth = "2.5px"
+    todayButton.style.borderWidth = "2.7px"
     addDateRecordButton.style.borderWidth = "1.5px"
 })
+// == Date Input ==
 addDateRecordButton?.addEventListener('click', () => {
     todayButton.style.borderWidth = "1.5px"
-    addDateRecordButton.style.borderWidth = "2.5px"
+    addDateRecordButton.style.borderWidth = "2.7px"
 })
 
 
-// ======= Transition => Display Logo to add things =======
+// =========== Transition to display button : Car / Energy / Oil ===========
 addArea.addEventListener('transitionend', () => {
     if (button.classList.contains('fi-rr-square-plus')) {
         addArea.style.display = "none"
@@ -175,7 +180,7 @@ addArea.addEventListener('transitionend', () => {
 })
 
 
-// ======= Click Container2.2 => Display "none" minus button =======
+// =========== Unselect Area : (click) => Leave Popup ===========
 unselect?.addEventListener('click', (event) => {
     if (button.classList.contains('fi-rr-square-minus')) {
         // Transition
@@ -201,11 +206,12 @@ unselect?.addEventListener('click', (event) => {
         oilArea.style.display = "none"
     }
 
+    // Class remove - & add +
     button.classList.remove('fi-rr-square-minus');
     button.classList.add('fi-rr-square-plus');
 })
 
-// ======= Left Button => Display "none" all area =======
+// =========== Popup : Left Button => Display "none" all area ===========
 for (let i = 0; i < leftButton.length; i++) {
     leftButton[i].addEventListener('click', () => {
         carDisplay = false
@@ -219,10 +225,10 @@ for (let i = 0; i < leftButton.length; i++) {
     })
 }
 
-// ======= Dashboard : Overview Date Select =======
+// =========== Dashboard : Overview Date Select (Overview / Week / Month / Year(s)) ===========
 let dateTitle = document.querySelectorAll('.dashboard-overviewTitle')
-for (let i = 0; i < dateTitle.length; i++) {
 
+for (let i = 0; i < dateTitle.length; i++) {
     dateTitle[i].addEventListener('click', () => {
         for (let j = 0; j <= dateTitle.length - 1; j++) {
             if (dateTitle[i].classList.contains(j.toString())) {
@@ -236,23 +242,26 @@ for (let i = 0; i < dateTitle.length; i++) {
     })
 }
 
-// == Switch : DashBoard => History => Premium ==
+// =========== Switch : DashBoard => History => Premium => Profile ===========
+// Get all button
 let dashboardLogoNavbar = document.getElementById('logoDashboard')
 let historyLogoNavbar = document.getElementById('logoHistory')
 let diamondLogoNavbar = document.getElementById('logoDiamond')
 let profileLogoNavbar = document.getElementById('logoProfile')
 
+// Get all container
 let dashboardContainer = document.querySelector('.dashboard-SCountainer2-2-2')
 let historyContainer = document.querySelector('.history-SCountainer2-2-2')
 let premiumContainer = document.querySelector('.premium-SCountainer2-2-2')
 let profileContainer = document.querySelector('.profile-SCountainer2-2-2')
 
+// Default display
 dashboardContainer.style.display = "flex"
 historyContainer.style.display = "none"
 premiumContainer.style.display = "none"
 profileContainer.style.display = "none"
 
-// ======= Dashboard : History / Dashboard / Premium Page - Logo switch =======
+// == DashBoard ==
 dashboardLogoNavbar?.addEventListener('click', () => {
     console.log(historyContainer.style.display);
     // Logo
@@ -276,10 +285,13 @@ dashboardLogoNavbar?.addEventListener('click', () => {
         dashboardContainer.style.display = "flex"
     }
 
+    // Undisplay all other container
     premiumContainer.style.display = "none"
     historyContainer.style.display = "none"
     profileContainer.style.display = "none"
 })
+
+// == History ==
 historyLogoNavbar?.addEventListener('click', () => {
     // Logo
     dashboardLogoNavbar.classList.add('logoOff')
@@ -304,14 +316,16 @@ historyLogoNavbar?.addEventListener('click', () => {
         historyContainer.style.display = "flex"
     }
 
+    // Undisplay all other container
     dashboardContainer.style.display = "none"
     premiumContainer.style.display = "none"
     profileContainer.style.display = "none"
 
-    // Set Background Color history card
+    // Set random background-color for all history card
     let history = document?.querySelectorAll('.history-area')
 
     for (let i = 0; i < history.length; i++) {
+        // Check if history-card has already background-color
         if (history[i].classList.contains("HistoryColor-1") || history[i].classList.contains("HistoryColor-2") || history[i].classList.contains("HistoryColor-3") || history[i].classList.contains("HistoryColor-4") || history[i].classList.contains("HistoryColor-5") || history[i].classList.contains("HistoryColor-6")) {
             var randomColor = Math.round(Math.random() * 5) + 1
             history[i].classList = []
@@ -323,8 +337,9 @@ historyLogoNavbar?.addEventListener('click', () => {
             history[i].classList.add(`HistoryColor-${randomColor}`)
         }
     }
-
 })
+
+// == Premium ==
 diamondLogoNavbar?.addEventListener('click', () => {
     // Logo
     historyLogoNavbar.classList.add('logoOff')
@@ -346,11 +361,14 @@ diamondLogoNavbar?.addEventListener('click', () => {
     } else {
         premiumContainer.style.display = "flex"
     }
-
+    
+    // Undisplay all other container
     dashboardContainer.style.display = "none"
     historyContainer.style.display = "none"
     profileContainer.style.display = "none"
 })
+
+// == Profile ==
 profileLogoNavbar?.addEventListener('click', () => {
     // Logo
     historyLogoNavbar.classList.add('logoOff')
@@ -373,6 +391,7 @@ profileLogoNavbar?.addEventListener('click', () => {
         profileContainer.style.display = "flex"
     }
 
+    // Undisplay all other container
     dashboardContainer.style.display = "none"
     historyContainer.style.display = "none"
     premiumContainer.style.display = "none"
