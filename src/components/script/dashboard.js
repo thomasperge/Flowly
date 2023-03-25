@@ -290,6 +290,7 @@ historyLogoNavbar?.addEventListener('click', () => {
     dashboardContainer.style.display = "none"
     premiumContainer.style.display = "none"
 
+    // Set Background Color history card
     let history = document?.querySelectorAll('.history-area')
     console.log(history.length);
 
