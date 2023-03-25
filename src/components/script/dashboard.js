@@ -291,6 +291,36 @@ historyLogoNavbar?.addEventListener('click', () => {
     premiumContainer.style.display = "none"
 
     // Set Background Color history card
+    
+    for(let i = 0; i <= 25; i++) {
+        const container = document.querySelector('.history-mainContainer');
+
+        const div = document.createElement('div');
+        div.innerHTML = `
+            <div class="history-area flex">
+            <div class="history-areaContainer">
+                <div class="history-areaContainerOverview">
+                    <span class="history-areaContainerTitle flex">
+                        <i class="fi fi-br-time-past flex" style="font-size: 2.1vh;"></i>
+                        Car
+                    </span>
+                    <span class="history-areaContainerDate flex">Oct 16 - 15:59</span>
+                    </div>
+                    <div class="history-areaContainerOverview">
+                    <span class="history-areaContainerDesc flex">Ford Mustang - 2016</span>
+                    </div>
+                <div class="history-areaContainerData flex">
+                    <div class="history-areaContainerDataKm flex">${i} km</div>
+                    <div>|</div>
+                    <div class="history-areaContainerDataCo2 flex">${(i + 20) * 1.5} kg</div>
+                    </div>
+                </div>
+            </div>
+        `;
+                
+        container.appendChild(div);
+    }
+
     let history = document?.querySelectorAll('.history-area')
 
     for (let i = 0; i < history.length; i++) {
@@ -305,6 +335,7 @@ historyLogoNavbar?.addEventListener('click', () => {
             history[i].classList.add(`HistoryColor-${randomColor}`)
         }
     }
+
 })
 diamondLogoNavbar?.addEventListener('click', () => {
     // Logo

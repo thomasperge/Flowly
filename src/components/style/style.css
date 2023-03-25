@@ -1300,8 +1300,8 @@ input[type="date"]::-webkit-input-placeholder {
 .history-areaContainerTitle {
     width: auto;
     height: auto;
-    padding: 2.5px 5px 2.5px 5px;
-    font-size: 2.5vh;
+    padding: 2px 7px 2px 7px;
+    font-size: 2.3vh;
     border-radius: 8px;
     gap: .5vh;
     background-color: rgba(255, 255, 255, 0.518);
@@ -1321,7 +1321,7 @@ input[type="date"]::-webkit-input-placeholder {
     width: auto;
     height: 55%;
     max-height: 55%;
-    font-size: 4.2vh;
+    font-size: 3.8vh;
 }
 
 .history-areaContainerDataKm {
