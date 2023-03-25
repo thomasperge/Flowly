@@ -289,6 +289,16 @@ historyLogoNavbar?.addEventListener('click', () => {
 
     dashboardContainer.style.display = "none"
     premiumContainer.style.display = "none"
+
+    let history = document?.querySelectorAll('.sous-container')
+    console.log(history.length);
+
+    for (let i = 0; i < history.length; i++) {
+        var randomColor = Math.round(Math.random() * 5) + 1
+        console.log(randomColor);
+        history[i].classList.add(`HistoryColor-${randomColor}`)
+    }
+
 })
 diamondLogoNavbar?.addEventListener('click', () => {
     // Logo
@@ -308,7 +318,7 @@ diamondLogoNavbar?.addEventListener('click', () => {
     } else {
         premiumContainer.style.display = "flex"
     }
-    
+
     dashboardContainer.style.display = "none"
     historyContainer.style.display = "none"
 })

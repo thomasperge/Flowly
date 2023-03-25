@@ -142,6 +142,7 @@ input[type="date"]::-webkit-input-placeholder {
     color: #6f6c6b;
 }
 
+/* Stats Color */
 .StatsColor-1 {
     background-color: #d3e1fa;
 }
@@ -159,6 +160,26 @@ input[type="date"]::-webkit-input-placeholder {
 }
 .StatsColor-6 {
     background-color: #6fcaab;
+}
+
+/* History Color */
+.HistoryColor-1 {
+    background-color: #d3e1facf;
+}
+.HistoryColor-2 {
+    background-color: #d2f1f9cf;
+}
+.HistoryColor-3 {
+    background-color: #d2f9e7cf;
+}
+.HistoryColor-4 {
+    background-color: #f8fad2cf;
+}
+.HistoryColor-5 {
+    background-color: #6EC898cf;
+}
+.HistoryColor-6 {
+    background-color: #6fcaabcf;
 }
 
 /* =========== Main Container =========== */
@@ -1246,12 +1267,11 @@ input[type="date"]::-webkit-input-placeholder {
     color: white;
     font-size: 2.5vh;
     font-family: "GothamBold";
-    background-color: red;
 }
 
 .sous-container {
-    height: 100px;
-    background-color: lightblue;
+    border-radius: 16px;
+    height: 18vh;
 }
 
 
