@@ -71,6 +71,10 @@ document.addEventListener('DOMContentLoaded', function() {
         ipcRenderer.send('redirect/forgot-password');
     })
 
+    document.getElementById('login-dontHaveAccount')?.addEventListener('click', (event) => {
+        ipcRenderer.send('redirect/forgot-password');
+    })
+
     // === Register User => Have Account ==
     document.getElementById('signup-HaveAccount')?.addEventListener('click', (event) => {
         ipcRenderer.send('redirect/have-account');
