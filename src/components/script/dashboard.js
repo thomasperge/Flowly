@@ -151,6 +151,20 @@ oilButton?.addEventListener('click', () => {
     }
 })
 
+// ======= Add Record : Select Today / input date =======
+let todayButton = document.getElementById("dashboard-inputToday")
+let addDateRecordButton = document.getElementById("dashboard-inputDateAddRecord")
+
+todayButton?.addEventListener('click', () => {
+    todayButton.style.borderWidth = "2.5px"
+    addDateRecordButton.style.borderWidth = "1.5px"
+})
+addDateRecordButton?.addEventListener('click', () => {
+    todayButton.style.borderWidth = "1.5px"
+    addDateRecordButton.style.borderWidth = "2.5px"
+})
+
+
 // ======= Transition => Display Logo to add things =======
 addArea.addEventListener('transitionend', () => {
     if (button.classList.contains('fi-rr-square-plus')) {
@@ -246,9 +260,9 @@ dashboardLogoNavbar?.addEventListener('click', () => {
         transitionOpacity(dashboardContainer, 150)
     } else {
         dashboardContainer.style.display = "flex"
-        premiumContainer.style.display = "none"
     }
-    
+
+    premiumContainer.style.display = "none"
 })
 historyLogoNavbar?.addEventListener('click', () => {
     historyLogoNavbar.classList.remove('logoOff')
@@ -277,3 +291,4 @@ diamondLogoNavbar?.addEventListener('click', () => {
     premiumContainer.style.display = "flex"
     transitionOpacity(premiumContainer, 150)
 })
+

@@ -559,8 +559,37 @@ input[type="date"]::-webkit-input-placeholder {
     display: none;
     position: absolute;
     width: 98%;
-    height: 25vh;
+    height: 32vh;
     top: 14vh;
+}
+
+.dashboard-inputDateAddRecord {
+    outline: none;
+    width: 32%;
+    height: 3.8vh;
+    padding: 0 8px 0 8px;
+    color: #6f6c6b;
+    font-size: 2vh;
+    font-family: "GothamMedium";
+    border-radius: 5px;
+    border: 1.5px solid #454955;
+    background-color: #26221f;
+    background-color: #26221f;
+}
+
+.dashboard-inputToday {
+    cursor: pointer;
+    outline: none;
+    width: 32%;
+    height: 3.8vh;
+    padding: 0 8px 0 8px;
+    color: white;
+    font-size: 2vh;
+    font-family: "GothamMedium";
+    border-radius: 5px;
+    border: 2.5px solid #454955;
+    background-color: #26221f;
+    background-color: #26221f;
 }
 
 .dashboard-areaCarButton {
