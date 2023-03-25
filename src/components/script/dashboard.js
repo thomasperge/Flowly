@@ -240,23 +240,34 @@ for (let i = 0; i < dateTitle.length; i++) {
 let dashboardLogoNavbar = document.getElementById('logoDashboard')
 let historyLogoNavbar = document.getElementById('logoHistory')
 let diamondLogoNavbar = document.getElementById('logoDiamond')
+let profileLogoNavbar = document.getElementById('logoProfile')
 
 let dashboardContainer = document.querySelector('.dashboard-SCountainer2-2-2')
 let historyContainer = document.querySelector('.history-SCountainer2-2-2')
 let premiumContainer = document.querySelector('.premium-SCountainer2-2-2')
+let profileContainer = document.querySelector('.profile-SCountainer2-2-2')
+
+dashboardContainer.style.display = "flex"
+historyContainer.style.display = "none"
+premiumContainer.style.display = "none"
+profileContainer.style.display = "none"
 
 // ======= Dashboard : History / Dashboard / Premium Page - Logo switch =======
 dashboardLogoNavbar?.addEventListener('click', () => {
+    console.log(historyContainer.style.display);
     // Logo
     historyLogoNavbar.classList.add('logoOff')
     historyLogoNavbar.classList.remove('logoOn')
     
-    dashboardLogoNavbar.classList.remove('logoOff')
-    dashboardLogoNavbar.classList.add('logoOn')
-    
     diamondLogoNavbar.classList.add('logoOff')
     diamondLogoNavbar.classList.remove('logoOn')
+
+    profileLogoNavbar.classList.add('logoOff')
+    profileLogoNavbar.classList.remove('logoOn')
     
+    dashboardLogoNavbar.classList.remove('logoOff')
+    dashboardLogoNavbar.classList.add('logoOn')
+
     // Container
     if (dashboardContainer.style.display == "none") {
         dashboardContainer.style.display = "flex"
@@ -267,60 +278,37 @@ dashboardLogoNavbar?.addEventListener('click', () => {
 
     premiumContainer.style.display = "none"
     historyContainer.style.display = "none"
+    profileContainer.style.display = "none"
 })
 historyLogoNavbar?.addEventListener('click', () => {
     // Logo
-    historyLogoNavbar.classList.remove('logoOff')
-    historyLogoNavbar.classList.add('logoOn')
-
     dashboardLogoNavbar.classList.add('logoOff')
     dashboardLogoNavbar.classList.remove('logoOn')
 
     diamondLogoNavbar.classList.add('logoOff')
     diamondLogoNavbar.classList.remove('logoOn')
 
+    profileLogoNavbar.classList.add('logoOff')
+    profileLogoNavbar.classList.remove('logoOn')
+
+    historyLogoNavbar.classList.remove('logoOff')
+    historyLogoNavbar.classList.add('logoOn')
+
     // Container
     if (historyContainer.style.display == "none") {
+        console.log("HERE 1");
         historyContainer.style.display = "flex"
         transitionOpacity(historyContainer, 170)
     } else {
+        console.log("HERE 2");
         historyContainer.style.display = "flex"
     }
 
     dashboardContainer.style.display = "none"
     premiumContainer.style.display = "none"
+    profileContainer.style.display = "none"
 
     // Set Background Color history card
-    
-    for(let i = 0; i <= 25; i++) {
-        const container = document.querySelector('.history-mainContainer');
-
-        const div = document.createElement('div');
-        div.innerHTML = `
-            <div class="history-area flex">
-            <div class="history-areaContainer">
-                <div class="history-areaContainerOverview">
-                    <span class="history-areaContainerTitle flex">
-                        <i class="fi fi-br-time-past flex" style="font-size: 2.1vh;"></i>
-                        Car
-                    </span>
-                    <span class="history-areaContainerDate flex">Oct 16 - 15:59</span>
-                    </div>
-                    <div class="history-areaContainerOverview">
-                    <span class="history-areaContainerDesc flex">Ford Mustang - 2016</span>
-                    </div>
-                <div class="history-areaContainerData flex">
-                    <div class="history-areaContainerDataKm flex">${i} km</div>
-                    <div>|</div>
-                    <div class="history-areaContainerDataCo2 flex">${(i + 20) * 1.5} kg</div>
-                    </div>
-                </div>
-            </div>
-        `;
-                
-        container.appendChild(div);
-    }
-
     let history = document?.querySelectorAll('.history-area')
 
     for (let i = 0; i < history.length; i++) {
@@ -345,6 +333,9 @@ diamondLogoNavbar?.addEventListener('click', () => {
     dashboardLogoNavbar.classList.add('logoOff')
     dashboardLogoNavbar.classList.remove('logoOn')
 
+    profileLogoNavbar.classList.add('logoOff')
+    profileLogoNavbar.classList.remove('logoOn')
+
     diamondLogoNavbar.classList.remove('logoOff')
     diamondLogoNavbar.classList.add('logoOn')
 
@@ -358,5 +349,32 @@ diamondLogoNavbar?.addEventListener('click', () => {
 
     dashboardContainer.style.display = "none"
     historyContainer.style.display = "none"
+    profileContainer.style.display = "none"
+})
+profileLogoNavbar?.addEventListener('click', () => {
+    // Logo
+    historyLogoNavbar.classList.add('logoOff')
+    historyLogoNavbar.classList.remove('logoOn')
+
+    dashboardLogoNavbar.classList.add('logoOff')
+    dashboardLogoNavbar.classList.remove('logoOn')
+
+    diamondLogoNavbar.classList.add('logoOff')
+    diamondLogoNavbar.classList.remove('logoOn')
+
+    profileLogoNavbar.classList.remove('logoOff')
+    profileLogoNavbar.classList.add('logoOn')
+
+    // Container
+    if (profileContainer.style.display == "none") {
+        profileContainer.style.display = "flex"
+        transitionOpacity(profileContainer, 170)
+    } else {
+        profileContainer.style.display = "flex"
+    }
+
+    dashboardContainer.style.display = "none"
+    historyContainer.style.display = "none"
+    premiumContainer.style.display = "none"
 })
 
