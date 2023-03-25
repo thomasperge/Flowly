@@ -242,10 +242,12 @@ let historyLogoNavbar = document.getElementById('logoHistory')
 let diamondLogoNavbar = document.getElementById('logoDiamond')
 
 let dashboardContainer = document.querySelector('.dashboard-SCountainer2-2-2')
+let historyContainer = document.querySelector('.history-SCountainer2-2-2')
 let premiumContainer = document.querySelector('.premium-SCountainer2-2-2')
 
 // ======= Dashboard : History / Dashboard / Premium Page - Logo switch =======
 dashboardLogoNavbar?.addEventListener('click', () => {
+    // Logo
     historyLogoNavbar.classList.add('logoOff')
     historyLogoNavbar.classList.remove('logoOn')
     
@@ -255,16 +257,19 @@ dashboardLogoNavbar?.addEventListener('click', () => {
     diamondLogoNavbar.classList.add('logoOff')
     diamondLogoNavbar.classList.remove('logoOn')
     
+    // Container
     if (dashboardContainer.style.display == "none") {
         dashboardContainer.style.display = "flex"
-        transitionOpacity(dashboardContainer, 150)
+        transitionOpacity(dashboardContainer, 170)
     } else {
         dashboardContainer.style.display = "flex"
     }
 
     premiumContainer.style.display = "none"
+    historyContainer.style.display = "none"
 })
 historyLogoNavbar?.addEventListener('click', () => {
+    // Logo
     historyLogoNavbar.classList.remove('logoOff')
     historyLogoNavbar.classList.add('logoOn')
 
@@ -274,10 +279,19 @@ historyLogoNavbar?.addEventListener('click', () => {
     diamondLogoNavbar.classList.add('logoOff')
     diamondLogoNavbar.classList.remove('logoOn')
 
+    // Container
+    if (historyContainer.style.display == "none") {
+        historyContainer.style.display = "flex"
+        transitionOpacity(historyContainer, 170)
+    } else {
+        historyContainer.style.display = "flex"
+    }
+
     dashboardContainer.style.display = "none"
     premiumContainer.style.display = "none"
 })
 diamondLogoNavbar?.addEventListener('click', () => {
+    // Logo
     historyLogoNavbar.classList.add('logoOff')
     historyLogoNavbar.classList.remove('logoOn')
 
@@ -287,8 +301,15 @@ diamondLogoNavbar?.addEventListener('click', () => {
     diamondLogoNavbar.classList.remove('logoOff')
     diamondLogoNavbar.classList.add('logoOn')
 
+    // Container
+    if (premiumContainer.style.display == "none") {
+        premiumContainer.style.display = "flex"
+        transitionOpacity(premiumContainer, 170)
+    } else {
+        premiumContainer.style.display = "flex"
+    }
+    
     dashboardContainer.style.display = "none"
-    premiumContainer.style.display = "flex"
-    transitionOpacity(premiumContainer, 150)
+    historyContainer.style.display = "none"
 })
 
