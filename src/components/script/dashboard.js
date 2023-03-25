@@ -290,7 +290,7 @@ historyLogoNavbar?.addEventListener('click', () => {
     dashboardContainer.style.display = "none"
     premiumContainer.style.display = "none"
 
-    let history = document?.querySelectorAll('.sous-container')
+    let history = document?.querySelectorAll('.history-area')
     console.log(history.length);
 
     for (let i = 0; i < history.length; i++) {
