@@ -1011,7 +1011,7 @@ input[type="date"]::-webkit-input-placeholder {
     width: auto;
     height: auto;
     color: black;
-    font-size: 2.4vh;
+    font-size: 2.5vh;
     font-family: "GothamMedium";
     margin-top: 0.9vh;
     padding-left: 2.2vh;
@@ -1036,7 +1036,7 @@ input[type="date"]::-webkit-input-placeholder {
     border-radius: 18px;
     font-family: "GothamBold";
     color: black;
-    font-size: 2vh;
+    font-size: 2.1vh;
     padding-left: 2%;
 }
 
@@ -1280,6 +1280,7 @@ input[type="date"]::-webkit-input-placeholder {
     height: 18vh;
 }
 
+/* Style of Card */
 .history-areaContainer {
     width: 92%;
     height: 88%;
@@ -1294,6 +1295,16 @@ input[type="date"]::-webkit-input-placeholder {
     font-size: 2.3vh;
 }
 
+.history-areaContainerTitle {
+    width: auto;
+    height: auto;
+    padding: .5px 7px .5px 7px;
+    font-size: 2.3vh;
+    border-radius: 8px;
+    gap: .5vh;
+    background-color: rgba(255, 255, 255, 0.518);
+}
+
 .history-areaContainerDesc {
     width: auto;
     height: auto;
@@ -1302,16 +1313,6 @@ input[type="date"]::-webkit-input-placeholder {
     border-radius: 8px;
     color: #111111bb;
     font-size: 1.9vh;
-}
-
-.history-areaContainerTitle {
-    width: auto;
-    height: auto;
-    padding: 2px 7px 2px 7px;
-    font-size: 2.3vh;
-    border-radius: 8px;
-    gap: .5vh;
-    background-color: rgba(255, 255, 255, 0.518);
 }
 
 .history-areaContainerDate {
