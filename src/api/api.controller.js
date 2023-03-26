@@ -1,6 +1,6 @@
 const apiService = require('./api.service');
 
-exports.calculateCarbonElectricity = async (req, res) => {
+exports.calculateCarbonElectricityController = async (req, res) => {
   try {
     const carbonFootprintData = req.body;
 
@@ -9,5 +9,16 @@ exports.calculateCarbonElectricity = async (req, res) => {
     res.json(result);
   } catch (error) {
     res.status(500).json({ message: error.message });
+  }
+};
+
+exports.getVehicleBrandIdController = async (req, _res) => {
+  try {
+    const result = await apiService.getVehicleBrandId(req.brands);
+    console.log("==========>", result);
+    return result
+  } catch (error) {
+    console.log(error);
+    return error
   }
 };

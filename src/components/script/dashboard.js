@@ -102,7 +102,7 @@ carButton?.addEventListener('click', () => {
     } else {
         inputErrorCar.dataset.error = "false"
         inputErrorCar.innerHTML = ""
-        containerAddAbsolute.style.height = "32vh"
+        containerAddAbsolute.style.height = "33vh"
         containerAddAbsolute.style.display = "flex"
         unselect.style.display = "block"
         carArea.style.display = "block"
@@ -204,13 +204,13 @@ addCarButton?.addEventListener('click', () => {
     if (carData.brands == "" || carData.models == "" || carData.years == "" || carData.km == "" || carData.date == "") {
         inputErrorCar.innerHTML = "Error ! Missing Information"
         inputErrorCar.dataset.error = "true"
-        containerAddAbsolute.style.height = "35vh"
+        containerAddAbsolute.style.height = "36vh"
     } else {
-        // Delete Error : "Missing Information !"
+        // Delete Error : "Missing Information"
         inputErrorCar.dataset.error = "false"
         inputErrorCar.innerHTML = ""
         containerAddAbsolute.style.height = "32vh"
-        
+
         carArea.style.display = "none"
         unselect.style.display = "none"
         carDisplay = false

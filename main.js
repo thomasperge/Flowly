@@ -9,6 +9,7 @@ require('dotenv').config();
 
 // Import Components
 const dataBaseComponent = require('./src/database/database.controller')
+const apiComponent = require('./src/api/api.controller')
 
 // Import DataBase /API Schema
 const { userSchema } = require('./models/account.js');
@@ -63,8 +64,9 @@ ipcMain.on('db/add-user', (event, data) => {
 
 
 // ====> API :
-ipcMain.on('api/add-car-record', (event, data) => {
+ipcMain.on('api/add-car-record', async (event, data) => {
     console.log(data.brands, data.models, data.years, data.km, data.date);
+    console.log(await apiComponent.getVehicleBrandIdController(data));
 })
 
 // ====> Redirect Page :

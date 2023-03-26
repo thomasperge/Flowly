@@ -19,6 +19,39 @@ const getEstimate = async (data) => {
   }
 };
 
+const getVehicleBrandId = async (makeName) => {
+    const endpoint = 'https://www.carboninterface.com/api/v1/vehicle_makes';
+
+    const config = {
+        headers: {
+            Authorization: 'Bearer ' + API_KEY,
+        },
+    };
+
+    axios
+        .get(endpoint, config)
+        .then((response) => {
+            const vehicleMakes = response.data;
+            
+            if (!vehicleMakes) {
+                throw new Error('Failed to get vehicle makes from API.');
+            }
+
+            let makeId = null;
+
+            vehicleMakes.forEach((make) => {
+                if (make.data.attributes.name.toLowerCase() == makeName.toLowerCase()) {
+                    makeId = make.data.id;
+                }
+            });
+
+            return makeId;
+        })
+        .catch((error) => {
+            console.error(error);
+        });
+};
+
 // const apiKey = process.env.TOKEN_CARBON_INTERFACE;
 
 // axios.post('https://www.carboninterface.com/api/v1/estimates', {
@@ -41,4 +74,4 @@ const getEstimate = async (data) => {
 //     console.error(error);
 // });
 
-module.exports = { getEstimate };
+module.exports = { getEstimate, getVehicleBrandId };
