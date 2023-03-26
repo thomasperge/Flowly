@@ -28,11 +28,11 @@ const getVehicleBrandId = async (makeName) => {
         },
     };
 
-    axios
+    return axios
         .get(endpoint, config)
         .then((response) => {
             const vehicleMakes = response.data;
-            
+
             if (!vehicleMakes) {
                 throw new Error('Failed to get vehicle makes from API.');
             }
