@@ -58,9 +58,14 @@ app.whenReady().then(() => {
 // ====> DataBase :
 ipcMain.on('db/add-user', (event, data) => {
     dataBaseComponent.addUserController(data)
-
     windows.loadFile('./src/components/pages/login.html')
 });
+
+
+// ====> API :
+ipcMain.on('api/add-car-record', (event, data) => {
+    console.log(data.brands, data.models, data.years, data.km, data.date);
+})
 
 // ====> Redirect Page :
 ipcMain.on('redirect/forgot-password', (event, data) => {
@@ -70,6 +75,8 @@ ipcMain.on('redirect/forgot-password', (event, data) => {
 ipcMain.on('redirect/have-account', (event, data) => {
     windows.loadFile('./src/components/pages/login.html')
 });
+
+
 
 
 function saveConfig(config, configPath) {

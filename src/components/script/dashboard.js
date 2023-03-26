@@ -157,18 +157,36 @@ oilButton?.addEventListener('click', () => {
 // =========== Popup to add => Button "Today" or "Select Date" ===========
 let todayButton = document.getElementById("dashboard-inputToday")
 let addDateRecordButton = document.getElementById("dashboard-inputDateAddRecord")
+let dateInputData = document.getElementById('dashboard-dateInput')
+
+// Default Date - Today dataset-when
+dateInputData.dataset.when =`${new Date().toLocaleDateString('fr-CA').split('/').reverse().join('-')}`
 
 // == Today Button ==
 todayButton?.addEventListener('click', () => {
     todayButton.style.borderWidth = "2.7px"
     addDateRecordButton.style.borderWidth = "1.5px"
+
+    dateInputData.dataset.when = `${new Date().toLocaleDateString('fr-CA').split('/').reverse().join('-')}`
 })
 // == Date Input ==
 addDateRecordButton?.addEventListener('click', () => {
     todayButton.style.borderWidth = "1.5px"
     addDateRecordButton.style.borderWidth = "2.7px"
 })
+// Put date in dataset-when
+addDateRecordButton?.addEventListener('change', () => {
+    dateInputData.dataset.when = addDateRecordButton.value
+})
 
+// =========== "Add" Button : Car / Energy / Oil ===========
+let addCarButton = document.getElementById('addCarRecord')
+
+// == Car "Add" Button ==
+addCarButton?.addEventListener('click', () => {
+    carArea.style.display = "none"
+    unselect.style.display = "none"
+})
 
 // =========== Transition to display button : Car / Energy / Oil ===========
 addArea.addEventListener('transitionend', () => {

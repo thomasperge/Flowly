@@ -52,22 +52,22 @@
                     <div class="dashboard-carPopupTitleArea flex"><i class="fa-solid fa-arrow-left"></i> Add a distance</div>
                     <!-- Car Model (Brand, Model) -->
                     <div class="dashboard-carPopupCarModelArea flex">
-                        <input type="text" class="dashboard-inputCarModel" name="" id="" placeholder="Brands">
-                        <input type="text" class="dashboard-inputCarModel" name="" id="" placeholder="Models">
+                        <input type="text" class="dashboard-inputCarModel" name="" id="carBrandsInput" placeholder="Brands">
+                        <input type="text" class="dashboard-inputCarModel" name="" id="carModelsInput" placeholder="Models">
                     </div>
                     <!-- Car Info (Years, Km) -->
                     <div class="dashboard-carPopupCarInfoArea flex">
-                        <input type="number" class="dashboard-inputCarModel" name="" id="" min="1998" max="2023" step="1" value="2016" placeholder="Years">
-                        <input type="number" class="dashboard-inputCarModel" name="" id="" min="1" max="999" placeholder="Km(s)">
+                        <input type="number" class="dashboard-inputCarModel" name="" id="carYearsInput" min="1998" max="2023" step="1" value="2016" placeholder="Years">
+                        <input type="number" class="dashboard-inputCarModel" name="" id="carKmInput" min="1" max="999" placeholder="Km(s)">
                     </div>
                     <!-- Select Date when distance has done -->
-                    <div class="dashboard-carPopupCarInfoArea flex">
+                    <div class="dashboard-carPopupCarInfoArea flex" id="dashboard-dateInput" data-when = "today">
                         <div class="dashboard-inputToday flex" id="dashboard-inputToday">Today</div>
                         <input type="date" class="dashboard-inputDateAddRecord" id="dashboard-inputDateAddRecord">
                     </div>
                     <!-- Add Button -->
                     <div class="dashboard-carPopupSendButtonArea flex">
-                        <button class="dashboard-carPopupButton">Add</button>
+                        <button class="dashboard-carPopupButton" id="addCarRecord">Add</button>
                     </div>
                 </div>      
 
