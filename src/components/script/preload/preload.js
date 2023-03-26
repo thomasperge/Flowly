@@ -99,6 +99,10 @@ document.addEventListener('DOMContentLoaded', function() {
     })
 })
 
+ipcRenderer.on('test', (event, data) => {
+    console.log("==> : ",  data.id);
+})
+
 ipcRenderer.on('app/login-error', (event, data) => {
     document.getElementById('wrongInformations').style.display = "block"
 })

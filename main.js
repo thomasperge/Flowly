@@ -65,8 +65,15 @@ ipcMain.on('db/add-user', (event, data) => {
 
 // ====> API :
 ipcMain.on('api/add-car-record', async (event, data) => {
+    const win = BrowserWindow.getAllWindows()[0];
+
     console.log(data.brands, data.models, data.years, data.km, data.date);
-    console.log("Id : ", await apiComponent.getVehicleBrandIdController(data));
+    let p =  await apiComponent.getVehicleBrandIdController(data)
+
+    let returndata = {
+        id : p
+    }
+    win.webContents.send('test', returndata)
 })
 
 // ====> Redirect Page :
@@ -97,7 +104,6 @@ function loadConfig() {
 // ====> Application :
 ipcMain.on("app/login-user", async (event, data) => {
     const win = BrowserWindow.getAllWindows()[0];
-
     let userFound = await dataBaseComponent.loginUserController(data)
 
     if (!userFound) {
