@@ -81,9 +81,10 @@ document.addEventListener('DOMContentLoaded', function() {
     })
 
     // ========= API Event =========
-    // === Add Car Record ==
+    // === Button "Add" - Car Record ==
     document.getElementById('addCarRecord')?.addEventListener('click', (event) => {
         let dateInputData = document.getElementById('dashboard-dateInput')
+        let inputErrorCar = document.getElementById('dashboard-carPopupError')
         
         let carData = {
             brands: document.getElementById('carBrandsInput').value,
@@ -93,7 +94,9 @@ document.addEventListener('DOMContentLoaded', function() {
             date: dateInputData.dataset.when
         }
 
-        ipcRenderer.send('api/add-car-record', carData);
+        if (inputErrorCar.dataset.error = "true") {
+            ipcRenderer.send('api/add-car-record', carData);
+        }
     })
 })
 

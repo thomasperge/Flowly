@@ -23,6 +23,9 @@ let carArea = document.getElementById('dashboard-areaCarButton')
 let energyArea = document.getElementById('dashboard-areaEnergyButton')
 let oilArea = document.getElementById('dashboard-areaOilButton')
 
+// Set Error Title (popup)
+let inputErrorCar = document.getElementById('dashboard-carPopupError')
+
 // Set Area display boolean
 let carDisplay = false
 let energyDisplay = false
@@ -97,6 +100,9 @@ carButton?.addEventListener('click', () => {
         carArea.style.display = "none"
         carDisplay = false
     } else {
+        inputErrorCar.dataset.error = "false"
+        inputErrorCar.innerHTML = ""
+        containerAddAbsolute.style.height = "32vh"
         containerAddAbsolute.style.display = "flex"
         unselect.style.display = "block"
         carArea.style.display = "block"
@@ -159,17 +165,18 @@ let todayButton = document.getElementById("dashboard-inputToday")
 let addDateRecordButton = document.getElementById("dashboard-inputDateAddRecord")
 let dateInputData = document.getElementById('dashboard-dateInput')
 
+// ======== Manage Input : "Today" or "aaaa/mm/dd" ========
 // Default Date - Today dataset-when
 dateInputData.dataset.when =`${new Date().toLocaleDateString('fr-CA').split('/').reverse().join('-')}`
 
-// == Today Button ==
+// == "Today" Button ==
 todayButton?.addEventListener('click', () => {
     todayButton.style.borderWidth = "2.7px"
     addDateRecordButton.style.borderWidth = "1.5px"
 
     dateInputData.dataset.when = `${new Date().toLocaleDateString('fr-CA').split('/').reverse().join('-')}`
 })
-// == Date Input ==
+// == "Date" Input ==
 addDateRecordButton?.addEventListener('click', () => {
     todayButton.style.borderWidth = "1.5px"
     addDateRecordButton.style.borderWidth = "2.7px"
@@ -181,11 +188,39 @@ addDateRecordButton?.addEventListener('change', () => {
 
 // =========== "Add" Button : Car / Energy / Oil ===========
 let addCarButton = document.getElementById('addCarRecord')
+let addEnergyButton = document.getElementById('addEnergyRecord')
+let addOilButton = document.getElementById('addOilRecord')
 
 // == Car "Add" Button ==
 addCarButton?.addEventListener('click', () => {
-    carArea.style.display = "none"
+    let carData = {
+        brands: document.getElementById('carBrandsInput').value,
+        models: document.getElementById('carModelsInput').value,
+        years: document.getElementById('carYearsInput').value,
+        km: document.getElementById('carKmInput').value,
+        date: dateInputData.dataset.when
+    }
+
+    if (carData.brands == "" || carData.models == "" || carData.years == "" || carData.km == "" || carData.date == "") {
+        inputErrorCar.innerHTML = "Error ! Missing Information"
+        inputErrorCar.dataset.error = "true"
+        containerAddAbsolute.style.height = "35vh"
+    } else {
+        // Delete Error : "Missing Information !"
+        inputErrorCar.dataset.error = "false"
+        inputErrorCar.innerHTML = ""
+        containerAddAbsolute.style.height = "32vh"
+        
+        carArea.style.display = "none"
+        unselect.style.display = "none"
+        carDisplay = false
+    }
+})
+// == Energy "Add" Button ==
+addEnergyButton?.addEventListener('click', () => {
+    energyArea.style.display = "none"
     unselect.style.display = "none"
+    energyDisplay = false
 })
 
 // =========== Transition to display button : Car / Energy / Oil ===========

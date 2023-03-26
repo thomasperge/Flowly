@@ -50,6 +50,7 @@
                 <div class="dashboard-areaCarButton flex" id="dashboard-areaCarButton">
                     <!-- Car Title -->
                     <div class="dashboard-carPopupTitleArea flex"><i class="fa-solid fa-arrow-left"></i> Add a distance</div>
+                    <div class="dashboard-carPopupError" id="dashboard-carPopupError" data-error="false"></div>
                     <!-- Car Model (Brand, Model) -->
                     <div class="dashboard-carPopupCarModelArea flex">
                         <input type="text" class="dashboard-inputCarModel" name="" id="carBrandsInput" placeholder="Brands">
@@ -87,7 +88,7 @@
                     </div>
                     <!-- Add Button -->
                     <div class="dashboard-carPopupSendButtonArea flex">
-                        <button class="dashboard-carPopupButton">Add</button>
+                        <button class="dashboard-carPopupButton" id="addEnergyRecord">Add</button>
                     </div>
                 </div>
 
@@ -341,13 +342,13 @@
                         <!-- Bottom Container - Stats -->
                         <div class="dashboard-statsContainer3">
                             <!-- Left Area -->
-                            <div class="dashboard-statsArea3-1">
+                            <div class="dashboard-statsArea3-1 flex">
                                 <div class="dashboard-statsContainerGraphs">
                                     <div class="dashboard-statsTitleGraph">Last day</div>
                                 </div>
                             </div>
                             <!-- Right Area -->
-                            <div class="dashboard-statsArea3-2">
+                            <div class="dashboard-statsArea3-2 flex">
                                 <div class="dashboard-statsContainerGraphs">
                                     <div class="dashboard-statsTitleGraph">You vs Average</div>
                                 </div>
