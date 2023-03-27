@@ -64,8 +64,9 @@ ipcMain.on('db/add-user', (event, data) => {
 
 
 // ====> API :
-ipcMain.on('api/add-car', (event, data) => {
-    apiComponent.getEstimateVehicleCarbonController(data)
+ipcMain.on('api/add-car', async (event, data) => {
+    console.log("NICE : ", await apiComponent.getEstimateVehicleCarbonController(data))
+    console.log("HERE GOOD BRO");
 });
 
 

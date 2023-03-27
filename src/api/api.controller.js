@@ -12,7 +12,7 @@ exports.calculateCarbonElectricityController = async (req, res) => {
 
 exports.getEstimateVehicleCarbonController = async (req, _res) => {
     try {
-        const result = await apiService.getEstimateVehicleCarbon(req.carType);
+        const result = await apiService.getEstimateVehicleCarbon(req);
         return result
     } catch (error) {
         return error
