@@ -100,6 +100,8 @@ document.addEventListener('DOMContentLoaded', function() {
 
         if (data.carType && data.years && data.km && data.date) {
             ipcRenderer.send('api/add-car', data);
+        } else {
+            console.log("Missing Information");
         }
     })
 })
