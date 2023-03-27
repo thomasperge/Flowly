@@ -80,27 +80,7 @@ document.addEventListener('DOMContentLoaded', function() {
         ipcRenderer.send('redirect/have-account');
     })
 
-    // ========= API Event =========
-    // === Button "Add" - Car Record ==
-    document.getElementById('addCarRecord')?.addEventListener('click', (event) => {
-        let dateInputData = document.getElementById('dashboard-dateInput')
-        
-        let carData = {
-            brands: document.getElementById('carBrandsInput').value,
-            models: document.getElementById('carModelsInput').value,
-            years: document.getElementById('carYearsInput').value,
-            km: document.getElementById('carKmInput').value,
-            date: dateInputData.dataset.when
-        }
-
-        if (!!carData.brands && !!carData.models && !!carData.years && !!carData.km && !!carData.date) {
-            ipcRenderer.send('api/add-car-record', carData);
-        }
-    })
-})
-
-ipcRenderer.on('test', (event, data) => {
-    console.log("==> : ",  data.id);
+    // ========= API Event =========    
 })
 
 ipcRenderer.on('app/login-error', (event, data) => {

@@ -11,13 +11,3 @@ exports.calculateCarbonElectricityController = async (req, res) => {
     res.status(500).json({ message: error.message });
   }
 };
-
-exports.getVehicleBrandIdController = async (req, _res) => {
-  try {
-    const result = await apiService.getVehicleBrandId(req.brands);
-
-    return result
-  } catch (error) {
-    return error
-  }
-};

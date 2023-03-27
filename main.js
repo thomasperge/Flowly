@@ -64,17 +64,8 @@ ipcMain.on('db/add-user', (event, data) => {
 
 
 // ====> API :
-ipcMain.on('api/add-car-record', async (event, data) => {
-    const win = BrowserWindow.getAllWindows()[0];
 
-    console.log(data.brands, data.models, data.years, data.km, data.date);
-    let p =  await apiComponent.getVehicleBrandIdController(data)
 
-    let returndata = {
-        id : p
-    }
-    win.webContents.send('test', returndata)
-})
 
 // ====> Redirect Page :
 ipcMain.on('redirect/forgot-password', (event, data) => {

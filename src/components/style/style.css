@@ -593,7 +593,7 @@ input[type="date"]::-webkit-input-placeholder {
     display: none;
     position: absolute;
     width: 95%;
-    height: 33vh;
+    height: 37vh;
     top: 14vh;
 }
 
@@ -628,7 +628,7 @@ input[type="date"]::-webkit-input-placeholder {
 
 .dashboard-areaCarButton {
     display: none;
-    width: 22%;
+    width: 28%;
     height: 100%;
     border-radius: 9px;
     border: 1px solid #25282e;
@@ -697,17 +697,29 @@ input[type="date"]::-webkit-input-placeholder {
 }
 
 .dashboard-carPopupCarModelArea {
+    display: flex;
+    flex-wrap: wrap;
     width: auto;
     height: auto;
-    gap: 6vh;
-    margin-top: 4%;
+    gap: .8vh;
+    padding: 0 2vh 0 2vh;
 }
 
 .dashboard-carPopupCarInfoArea {
     width: auto;
     height: auto;
     gap: 6vh;
-    margin-top: 8%;
+    margin-top: 5%;
+}
+
+.dashboard-carPopupCarType {
+    cursor: pointer;
+    padding: 1.5px 6px 1.5px 6px;
+    border-radius: 4px;
+    font-size: 2vh;
+    font-family: "GothamMedium";
+    color: white;
+    background-color: rgba(255, 255, 255, 0.187);
 }
 
 .dashboard-inputCarModel {
