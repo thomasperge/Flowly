@@ -170,6 +170,10 @@ dateInputData.dataset.when =`${new Date().toLocaleDateString('fr-CA').split('/')
 
 // == "Today" Button ==
 todayButton?.addEventListener('click', () => {
+    // Dataset
+    todayButton.dataset.select = "true"
+    addDateRecordButton.dataset.select = "false"
+    // Border
     todayButton.style.borderWidth = "2.7px"
     addDateRecordButton.style.borderWidth = "1.5px"
 
@@ -177,22 +181,32 @@ todayButton?.addEventListener('click', () => {
 })
 // == "Date" Input ==
 addDateRecordButton?.addEventListener('click', () => {
+    // Dataset
+    todayButton.dataset.select = "false"
+    addDateRecordButton.dataset.select = "true"
+    // Border
     todayButton.style.borderWidth = "1.5px"
     addDateRecordButton.style.borderWidth = "2.7px"
 })
-// Put date in dataset-when
-addDateRecordButton?.addEventListener('change', () => {
-    dateInputData.dataset.when = addDateRecordButton.value
-})
+
+// == Select Car Type : set background & dataset ==
+const carTypes = document.querySelectorAll('.dashboard-carPopupCarType');
+carTypes.forEach(carType => {
+    carType.addEventListener('click', () => {
+      carTypes.forEach(div => {
+        div.style.backgroundColor = '';
+        div.dataset.type = "false";
+      });
+      carType.style.backgroundColor = '#15ff0058';
+      carType.dataset.type = "true";
+    });
+  });
 
 // =========== "Add" Button : Car / Energy / Oil ===========
 let addCarButton = document.getElementById('addCarRecord')
 let addEnergyButton = document.getElementById('addEnergyRecord')
 let addOilButton = document.getElementById('addOilRecord')
 
-// == Car "Add" Button ==
-addCarButton?.addEventListener('click', () => {
-})
 // == Energy "Add" Button ==
 addEnergyButton?.addEventListener('click', () => {
     energyArea.style.display = "none"

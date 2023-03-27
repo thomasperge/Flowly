@@ -80,7 +80,28 @@ document.addEventListener('DOMContentLoaded', function() {
         ipcRenderer.send('redirect/have-account');
     })
 
-    // ========= API Event =========    
+    // ========= API Event =========
+    // == Car "Add" Button ==
+    let addCarButton = document.getElementById('addCarRecord')
+
+    addCarButton?.addEventListener('click', () => {
+        // Get Car type
+        const carTypes = document.querySelectorAll('.dashboard-carPopupCarType');
+        const selectedCarType = Array.from(carTypes).find(div => div.dataset.type === 'true');
+        // Get Date Selected
+        let dateInputSelect = (document.getElementById("dashboard-inputToday").dataset.select == "true") ? "Today" : document.getElementById("dashboard-inputDateAddRecord").value
+
+        var data = {
+            carType : (selectedCarType ? selectedCarType.innerHTML : null),
+            years : document.getElementById('carYearsInput').value,
+            km : document.getElementById('carKmInput').value,
+            date : dateInputSelect,
+        }
+
+        if (data.carType && data.years && data.km && data.date) {
+            ipcRenderer.send('api/add-car', data);
+        }
+    })
 })
 
 ipcRenderer.on('app/login-error', (event, data) => {
