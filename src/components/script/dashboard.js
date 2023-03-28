@@ -200,7 +200,7 @@ carTypes.forEach(carType => {
       carType.style.backgroundColor = '#15ff0058';
       carType.dataset.type = "true";
     });
-  });
+});
 
 // =========== "Add" Button : Car / Energy / Oil ===========
 let addCarButton = document.getElementById('addCarRecord')

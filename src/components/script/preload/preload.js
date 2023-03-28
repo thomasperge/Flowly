@@ -1,5 +1,6 @@
 const { ipcRenderer, contextBridge, ipcMain } = require('electron')
 
+
 // Initialize API Send (minus & close button)
 const API = {
     window: {
@@ -7,6 +8,8 @@ const API = {
         minimize: () => ipcRenderer.send("app/minimize")
     },
 }
+
+let test = null
 
 document.addEventListener('DOMContentLoaded', function() {
     // ========= App Event =========
@@ -83,7 +86,6 @@ document.addEventListener('DOMContentLoaded', function() {
     // ========= API Event =========
     // == Car "Add" Button ==
     let addCarButton = document.getElementById('addCarRecord')
-    let containerAddAbsolute = document.getElementById('dashboard-containerAddAbsolute')
 
     addCarButton?.addEventListener('click', () => {
         // Get Car type
@@ -101,18 +103,10 @@ document.addEventListener('DOMContentLoaded', function() {
 
         if (data.carType && data.years && data.km && data.date) {
             ipcRenderer.send('api/add-car', data);
+            test = data
         } else {
             console.log("Missing Information");
         }
-        let unselect = document.getElementById('unselect')
-        let carArea = document.getElementById('dashboard-areaCarButton')
-
-        ipcRenderer.on('test', (event, data) => {
-            console.log("OK HERE");
-            containerAddAbsolute.style.display = "none"
-            unselect.style.display = "none"
-            carArea.style.display = "none"
-        })
     })
 })
 
@@ -120,6 +114,8 @@ ipcRenderer.on('app/login-error', (event, data) => {
     document.getElementById('wrongInformations').style.display = "block"
 })
 
-
+// ipcRenderer.on('test', (event, data) => {
+//     console.log("HERE");
+// });
 
 contextBridge.exposeInMainWorld("app", API)
