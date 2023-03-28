@@ -244,13 +244,13 @@ ipcRenderer.on('database/top-10-history', (event, result) => {
     
     for(let i = 0; i <= final; i++) {
         let percentage = (result[i+1] != undefined) ? formatNumber(result[i]._doc.carbon_kg - result[i + 1]._doc.carbon_kg) : "-"
-        let color = (percentage >= 0) ? "rgba(0, 255, 76, 0.404)" : "rgba(255, 0, 0, 0.404)"
+        let color = (percentage > 0) ? "rgba(255, 0, 0, 0.404)" : "rgba(0, 255, 76, 0.404)"
         
         const div = document.createElement('div');
         div.innerHTML = `
             <div class="dashboard-statsArea2-1 flex">
                 <div class="dashboard-statsArea2-1Container">
-                    <div class="dashboard-statsArea2-1Title">${result[i]._doc.record_type}</div>
+                    <div class="dashboard-statsArea2-1Title">${result[i]._doc.record_type} - ${result[i]._doc.description_record}</div>
                     <div class="dashboard-statsArea2-1Date">${formatDate2(result[i]._doc.dateInput)}</div>
                     <div class="dashboard-statsArea2-1ContainerData">
                         <div class="dashboard-statsArea2-1Data">${result[i]._doc.string_value} - ${result[i]._doc.carbon_kg}kg</div>
