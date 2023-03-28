@@ -117,8 +117,7 @@ ipcRenderer.on('database/car-record-added', (event, data) => {
 
     setInterval(() => {
         document.getElementById('dashboard-carPopupError').innerHTML = ""
-    }, 5000)
-
+    }, 3000)
 });
 
 contextBridge.exposeInMainWorld("app", API)

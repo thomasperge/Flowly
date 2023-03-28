@@ -43,4 +43,4 @@ const statsSchema = mongoose.Schema({
     },
 })
 
-module.exports = mongoose.model('stats', statsSchema)
+module.exports = mongoose.model('users_stats', statsSchema)

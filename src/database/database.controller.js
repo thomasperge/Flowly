@@ -8,6 +8,14 @@ exports.addUserController = async (req, res) => {
   }
 };
 
+exports.addUserStatsController = async (req, res) => {
+  try {
+    return await dbService.addUserInDB(req);
+  } catch (error) {
+    res.status(500).json({ message: error.message });
+  }
+};
+
 
 exports.loginUserController = async (req, _res) => {
   try {

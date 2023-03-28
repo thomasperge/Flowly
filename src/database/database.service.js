@@ -1,7 +1,8 @@
 const mongoose = require('mongoose');
 const { accountSchema } = require('../../models/account');
-const { recordCarSchema } = require('../../models/record_car')
-const idUserDataJson = require('../../data.json')
+const { recordCarSchema } = require('../../models/record_car');
+const { statsSchema } = require('../../models/stats');
+const idUserDataJson = require('../../data.json');
 const bcrypt = require('bcryptjs');
 
 /**
@@ -10,6 +11,7 @@ const bcrypt = require('bcryptjs');
  */
 exports.addUserInDB = async (data) => {
 	try {
+		// Create User account
 		const User = mongoose.model('account', accountSchema);
 
 		const salt = await bcrypt.genSalt(10);
@@ -23,10 +25,27 @@ exports.addUserInDB = async (data) => {
 		});
 
 		newUser.save()
+
+		// Create Stats Account
+		const Stats = mongoose.model('users_stats', statsSchema);
+
+		const userStats = new Stats({
+			idAccount: newUser._id,
+			total_km: 0,
+			total_carbon_kg: 0,
+			total_km_vehicle: 0,
+			total_km_flight: 0,
+			total_km_shipping: 0,
+			total_electricity_mwh: 0,
+			total_fuel_btu: 0,
+		});
+
+		userStats.save()
 	} catch (error) {
 		console.error(error);
 	}
 };
+
 
 /**
  * Check password and hashed password
@@ -87,6 +106,7 @@ exports.returnUserDataFromEmail = async (data) => {
  */
 exports.addCarRecord = async (data) => {
 	try {
+		// Add Car Record
 		const CarRecord = mongoose.model('record_car', recordCarSchema);
 
 		const newCarRecord = new CarRecord({
@@ -101,6 +121,20 @@ exports.addCarRecord = async (data) => {
 		});
 
 		newCarRecord.save()
+
+		// Add user Stats
+		const UsersStats = mongoose.model('users_stats', statsSchema);
+		const stats = await UsersStats.findOne({ idAccount: idUserDataJson.id })
+
+		if(stats) {
+			console.log("GOOD HERE");
+			stats.total_carbon_kg += data.response.attributes.carbon_kg;
+			stats.total_km_vehicle += data.response.attributes.distance_value;
+			stats.save()
+		} else {
+			console.log("ERROR");
+		}
+
 		return true
 	} catch (error) {
 		return false
