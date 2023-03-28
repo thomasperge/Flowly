@@ -65,8 +65,17 @@ ipcMain.on('db/add-user', (event, data) => {
 
 // ====> API :
 ipcMain.on('api/add-car', async (event, data) => {
-    console.log("NICE : ", await apiComponent.getEstimateVehicleCarbonController(data))
-    console.log("HERE GOOD BRO");
+    console.log("Main.js");
+    let dataResponse = {
+        input: data,
+        response: await apiComponent.getEstimateVehicleCarbonController(data)
+    }
+
+    if (dataResponse == null || dataResponse == undefined) {
+        console.error("Error : ", dataResponse);
+    } else {
+        await dataBaseComponent.addCarRecordController(dataResponse)
+    }
 });
 
 
@@ -86,7 +95,7 @@ function saveConfig(config, configPath) {
     fs.writeFileSync(configPath, JSON.stringify(config));
 }
 
-function loadConfig() {
+function loadConfig(configPath) {
     try {
       const configData = fs.readFileSync(configPath, 'utf8');
       return JSON.parse(configData);
@@ -110,7 +119,7 @@ ipcMain.on("app/login-user", async (event, data) => {
 
         const dataPath = path.join(app.getAppPath(), 'data.json');
 
-        const config = loadConfig();
+        const config = loadConfig(dataPath);
         config.id = userData._id;
 
         saveConfig(config, dataPath);

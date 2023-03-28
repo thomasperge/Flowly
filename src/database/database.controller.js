@@ -20,7 +20,7 @@ exports.addUserController = async (req, res) => {
  * @param {*} res 
  * @returns Boolean
  */
-exports.loginUserController = async (req, res) => {
+exports.loginUserController = async (req, _res) => {
   try {
     const result = await dbService.loginUser(req);
 
@@ -30,11 +30,20 @@ exports.loginUserController = async (req, res) => {
   }
 };
 
-exports.returnUserDataFromEmailController = async (req, res) => {
+exports.returnUserDataFromEmailController = async (req, _res) => {
   try {
     const result = await dbService.returnUserDataFromEmail(req);
-
     return result;
+  } catch (error) {
+    return error
+  }
+};
+
+exports.addCarRecordController = async (req, _res) => {
+  try {
+    console.log("Add Car Controller");
+    await dbService.addCarRecord(req);
+    // return result;
   } catch (error) {
     return error
   }

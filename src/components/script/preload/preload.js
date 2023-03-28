@@ -89,12 +89,12 @@ document.addEventListener('DOMContentLoaded', function() {
         const carTypes = document.querySelectorAll('.dashboard-carPopupCarType');
         const selectedCarType = Array.from(carTypes).find(div => div.dataset.type === 'true');
         // Get Date Selected
-        let dateInputSelect = (document.getElementById("dashboard-inputToday").dataset.select == "true") ? "Today" : document.getElementById("dashboard-inputDateAddRecord").value
+        let dateInputSelect = (document.getElementById("dashboard-inputToday").dataset.select == "true") ? new Date().toISOString().slice(0, 10).replace(/-/g, '/') : document.getElementById("dashboard-inputDateAddRecord").value
 
-        var data = {
+        const data = {
             carType : (selectedCarType ? selectedCarType.innerHTML : null),
             years : document.getElementById('carYearsInput').value,
-            km : document.getElementById('carKmInput').value,
+            km : parseInt(document.getElementById('carKmInput').value),
             date : dateInputSelect,
         }
 

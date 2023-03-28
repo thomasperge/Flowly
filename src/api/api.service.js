@@ -65,8 +65,7 @@ const getEstimateVehicleCarbon = async (data) => {
 
     return axios.post(endpoint, requestData, config)
     .then((response) => {
-        console.log(response.data.data);
-        return response.data.data.attributes.carbon_kg
+        return response.data.data
     })
     .catch((error) => {
         console.error(error);

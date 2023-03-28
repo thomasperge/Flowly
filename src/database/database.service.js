@@ -1,5 +1,7 @@
 const mongoose = require('mongoose');
 const { accountSchema } = require('../../models/account');
+const { recordCarSchema } = require('../../models/record_car')
+const idUserDataJson = require('../../data.json')
 const bcrypt = require('bcryptjs');
 
 /**
@@ -49,6 +51,7 @@ exports.loginUser = async (data) => {
 	if (!userFound) return false
 	else {
 		if (await checkPassword(data.password, userFound.password)) {
+			idUserDataJson.id = userFound._id
 			return true
 		}
 		
@@ -74,5 +77,30 @@ exports.returnUserDataFromEmail = async (data) => {
 		}
 		
 		return undefined
+	}
+};
+
+
+exports.addCarRecord = async (data) => {
+	console.log("Input : ", data.input);
+	console.log("Response : ", data.response);
+	try {
+		const CarRecord = mongoose.model('record_car', recordCarSchema);
+
+		const newCarRecord = new CarRecord({
+			idAccount: idUserDataJson.id,
+			distanceDate: data.input.date,
+			car_type: data.input.carType,
+			distance: data.response.attributes.distance_value,
+			carbon_g: data.response.attributes.carbon_g,
+			carbon_lb: data.response.attributes.carbon_lb,
+			carbon_kg: data.response.attributes.carbon_kg,
+			carbon_mt: data.response.attributes.carbon_mt,
+		});
+
+		newCarRecord.save()
+		console.log("Car Record Create !");
+	} catch (error) {
+		console.error(error);
 	}
 };
