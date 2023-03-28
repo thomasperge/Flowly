@@ -108,10 +108,9 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // == History ==
     let historyLogoNavbar = document.getElementById('logoHistory')
-    
-    historyLogoNavbar.addEventListener('click', () => {
-        ipcRenderer.send('api/add-car', data);
 
+    historyLogoNavbar?.addEventListener('click', () => {
+        ipcRenderer.send('database/display-history');
     })
 
 })
@@ -139,6 +138,19 @@ function formatNumber(number) {
     return (isNegative ? '-' : '') + formattedValue + prefix;
 }
 
+function formatDate(dateStr) {
+    const date = new Date(dateStr);
+    const options = {
+      month: 'short',
+      day: 'numeric',
+      hour: 'numeric',
+      minute: 'numeric',
+      hour12: false
+    };
+    const formattedDate = new Intl.DateTimeFormat('en-US', options).format(date);
+    return formattedDate;
+}
+
 // IpcRender ON
 ipcRenderer.on('app/login-error', (event, data) => {
     document.getElementById('wrongInformations').style.display = "block"
@@ -164,5 +176,54 @@ ipcRenderer.on('database/car-record-added', (event, data) => {
         document.getElementById('dashboard-carPopupError').innerHTML = ""
     }, 3000)
 });
+
+
+ipcRenderer.on('database/send-all-history', (event, result) => {
+    const container = document.querySelector('.history-mainContainer');
+    container.innerHTML = ""
+
+    for(let i = 0; i <= result.length - 1; i++) {
+        const div = document.createElement('div');
+        div.innerHTML = `
+            <div class="history-area flex">
+            <div class="history-areaContainer">
+                <div class="history-areaContainerOverview">
+                    <span class="history-areaContainerTitle flex">
+                        <i class="fi fi-br-time-past flex" style="font-size: 2.1vh;"></i>
+                        ${result[i]._doc.record_type}
+                    </span>
+                    <span class="history-areaContainerDate flex">${formatDate(result[i]._doc.dateInput)}</span>
+                    </div>
+                    <div class="history-areaContainerOverview">
+                    <span class="history-areaContainerDesc flex">${result[i]._doc.description_record}</span>
+                    </div>
+                <div class="history-areaContainerData flex">
+                    <div class="history-areaContainerDataKm flex">${result[i]._doc.string_value}</div>
+                    <div>|</div>
+                    <div class="history-areaContainerDataCo2 flex">${result[i]._doc.carbon_kg} kg</div>
+                    </div>
+                </div>
+            </div>
+        `;
+
+        container.appendChild(div);
+    }
+
+    let history = document?.querySelectorAll('.history-area')
+
+    for (let i = 0; i < history.length; i++) {
+        // Check if history-card has already background-color
+        if (history[i].classList.contains("HistoryColor-1") || history[i].classList.contains("HistoryColor-2") || history[i].classList.contains("HistoryColor-3") || history[i].classList.contains("HistoryColor-4") || history[i].classList.contains("HistoryColor-5") || history[i].classList.contains("HistoryColor-6")) {
+            var randomColor = Math.round(Math.random() * 5) + 1
+            history[i].classList = []
+            history[i].classList.add("history-area")
+            history[i].classList.add("flex")
+            history[i].classList.add(`HistoryColor-${randomColor}`)
+        } else {
+            var randomColor = Math.round(Math.random() * 5) + 1
+            history[i].classList.add(`HistoryColor-${randomColor}`)
+        }
+    }
+})
 
 contextBridge.exposeInMainWorld("app", API)

@@ -105,6 +105,27 @@ exports.returnUserDataFromEmail = async (data) => {
 	}
 };
 
+function formatNumber(number) {
+    number = number.toFixed(2);
+    const prefixes = ['', 'K', 'M', 'B'];
+    const base = 1000;
+
+    const isNegative = number < 0;
+    number = Math.abs(number);
+
+    if (number < base) {
+      return isNegative ? '-' + number : number.toString();
+    }
+
+    const log = Math.floor(Math.log10(number) / Math.log10(base));
+    const prefix = prefixes[log];
+
+    const value = number / Math.pow(base, log);
+
+    const formattedValue = value.toFixed(2);
+
+    return (isNegative ? '-' : '') + formattedValue + prefix;
+}
 
 /**
  * Add car record => return true id add in Db
@@ -150,7 +171,7 @@ exports.addCarRecord = async (data) => {
 			dateInput: data.input.date,
 			description_record: data.input.carType,
 			int_value: data.response.attributes.distance_value,
-			string_value: `${data.response.attributes.distance_value} km`,
+			string_value: `${formatNumber(data.response.attributes.distance_value)} km`,
 			carbon_g: data.response.attributes.carbon_g,
 			carbon_lb: data.response.attributes.carbon_lb,
 			carbon_kg: data.response.attributes.carbon_kg,
@@ -176,7 +197,7 @@ exports.returnUserStats = async (data) => {
 	}
 };
 
-exports.getAllRecordFromUser = async (data) => {
+exports.getAllRecordFromUser = async () => {
 	const UsersStats = mongoose.model('all_record', allRecordSchema);
 	const stats = await UsersStats.find({ idAccount: idUserDataJson.id })
 

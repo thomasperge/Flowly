@@ -364,21 +364,21 @@ historyLogoNavbar?.addEventListener('click', () => {
     profileContainer.style.display = "none"
 
     // Set random background-color for all history card
-    let history = document?.querySelectorAll('.history-area')
+    // let history = document?.querySelectorAll('.history-area')
 
-    for (let i = 0; i < history.length; i++) {
-        // Check if history-card has already background-color
-        if (history[i].classList.contains("HistoryColor-1") || history[i].classList.contains("HistoryColor-2") || history[i].classList.contains("HistoryColor-3") || history[i].classList.contains("HistoryColor-4") || history[i].classList.contains("HistoryColor-5") || history[i].classList.contains("HistoryColor-6")) {
-            var randomColor = Math.round(Math.random() * 5) + 1
-            history[i].classList = []
-            history[i].classList.add("history-area")
-            history[i].classList.add("flex")
-            history[i].classList.add(`HistoryColor-${randomColor}`)
-        } else {
-            var randomColor = Math.round(Math.random() * 5) + 1
-            history[i].classList.add(`HistoryColor-${randomColor}`)
-        }
-    }
+    // for (let i = 0; i < history.length; i++) {
+    //     // Check if history-card has already background-color
+    //     if (history[i].classList.contains("HistoryColor-1") || history[i].classList.contains("HistoryColor-2") || history[i].classList.contains("HistoryColor-3") || history[i].classList.contains("HistoryColor-4") || history[i].classList.contains("HistoryColor-5") || history[i].classList.contains("HistoryColor-6")) {
+    //         var randomColor = Math.round(Math.random() * 5) + 1
+    //         history[i].classList = []
+    //         history[i].classList.add("history-area")
+    //         history[i].classList.add("flex")
+    //         history[i].classList.add(`HistoryColor-${randomColor}`)
+    //     } else {
+    //         var randomColor = Math.round(Math.random() * 5) + 1
+    //         history[i].classList.add(`HistoryColor-${randomColor}`)
+    //     }
+    // }
 })
 
 // == Premium ==

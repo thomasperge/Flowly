@@ -63,6 +63,12 @@ ipcMain.on('db/add-user', (event, data) => {
     windows.loadFile('./src/components/pages/login.html')
 });
 
+ipcMain.on('database/display-history', async () => {
+    const win = BrowserWindow.getAllWindows()[0];
+    let result = await dataBaseComponent.getAllRecordFromUserController()
+    win.webContents.send('database/send-all-history', result)
+})
+
 // ====> API :
 ipcMain.on('api/add-car', async (event, data) => {
     const win = BrowserWindow.getAllWindows()[0];
