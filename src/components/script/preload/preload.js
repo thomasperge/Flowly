@@ -241,8 +241,10 @@ ipcRenderer.on('database/top-10-history', (event, result) => {
     container.innerHTML = ""
 
     let final = (result.length >= 10) ? 9 : result.length
-
+    
     for(let i = 0; i <= final; i++) {
+        let percentage = (result[i+1] != undefined) ? formatNumber(result[i]._doc.carbon_kg - result[i + 1]._doc.carbon_kg) : "-"
+        
         const div = document.createElement('div');
         div.innerHTML = `
             <div class="dashboard-statsArea2-1 flex">
@@ -250,8 +252,8 @@ ipcRenderer.on('database/top-10-history', (event, result) => {
                     <div class="dashboard-statsArea2-1Title">${result[i]._doc.record_type}</div>
                     <div class="dashboard-statsArea2-1Date">${formatDate2(result[i]._doc.dateInput)}</div>
                     <div class="dashboard-statsArea2-1ContainerData">
-                        <div class="dashboard-statsArea2-1Data">${result[i]._doc.string_value} - ${result[i]._doc.carbon_kg}kg Co²</div>
-                        <div class="dashboard-statsArea2-1Percentage flex">-4%</div>
+                        <div class="dashboard-statsArea2-1Data">${result[i]._doc.string_value} - ${result[i]._doc.carbon_kg}kg</div>
+                        <div class="dashboard-statsArea2-1Percentage flex">${percentage}%</div>
                     </div>
                 </div>
             </div>

@@ -1253,8 +1253,9 @@ input[type="date"]::-webkit-input-placeholder {
 .dashboard-statsArea2-1ContainerData {
     display: flex;
     align-items: center;
-    font-size: 2.3vh;
+    font-size: 2.2vh;
     margin-top: 2vh;
+    /* gap: .5%; */
 }
 
 .dashboard-statsArea2-1Data {
