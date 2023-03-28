@@ -2,6 +2,7 @@ const mongoose = require('mongoose');
 const { accountSchema } = require('../../models/account');
 const { recordCarSchema } = require('../../models/record_car');
 const { statsSchema } = require('../../models/stats');
+const { allRecordSchema } = require('../../models/all_record');
 const idUserDataJson = require('../../data.json');
 const bcrypt = require('bcryptjs');
 
@@ -34,10 +35,15 @@ exports.addUserInDB = async (data) => {
 			total_km: 0,
 			total_carbon_kg: 0,
 			total_km_vehicle: 0,
+			total_carbon_vehicle: 0,
 			total_km_flight: 0,
+			total_carbon_flight: 0,
 			total_km_shipping: 0,
+			total_carbon_shipping: 0,
 			total_electricity_mwh: 0,
+			total_carbon_electricity: 0,
 			total_fuel_btu: 0,
+			total_carbon_fuel: 0,
 		});
 
 		userStats.save()
@@ -127,16 +133,56 @@ exports.addCarRecord = async (data) => {
 		const stats = await UsersStats.findOne({ idAccount: idUserDataJson.id })
 
 		if(stats) {
-			console.log("GOOD HERE");
 			stats.total_carbon_kg += data.response.attributes.carbon_kg;
 			stats.total_km_vehicle += data.response.attributes.distance_value;
-			stats.save()
+			stats.total_carbon_vehicle += data.response.attributes.carbon_kg
+			await stats.save()
 		} else {
-			console.log("ERROR");
+			console.log("Erreur : Utilisateur non trouvé");
 		}
+
+		// Add all record
+		const allRecord = mongoose.model('all_record', allRecordSchema);
+
+		const newAllRecord = new allRecord({
+			idAccount: idUserDataJson.id,
+			record_type: "Car",
+			dateInput: data.input.date,
+			description_record: data.input.carType,
+			int_value: data.response.attributes.distance_value,
+			string_value: `${data.response.attributes.distance_value} km`,
+			carbon_g: data.response.attributes.carbon_g,
+			carbon_lb: data.response.attributes.carbon_lb,
+			carbon_kg: data.response.attributes.carbon_kg,
+			carbon_mt: data.response.attributes.carbon_mt,
+		});
+
+		newAllRecord.save()
 
 		return true
 	} catch (error) {
 		return false
+	}
+};
+
+exports.returnUserStats = async (data) => {
+	const UsersStats = mongoose.model('users_stats', statsSchema);
+	const stats = await UsersStats.findOne({ idAccount: idUserDataJson.id })
+
+	if(stats) {
+		return stats
+	} else {
+		return null
+	}
+};
+
+exports.getAllRecordFromUser = async (data) => {
+	const UsersStats = mongoose.model('all_record', allRecordSchema);
+	const stats = await UsersStats.find({ idAccount: idUserDataJson.id })
+
+	if(stats) {
+		return stats
+	} else {
+		return null
 	}
 };

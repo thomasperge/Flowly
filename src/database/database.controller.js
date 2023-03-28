@@ -16,10 +16,18 @@ exports.addUserStatsController = async (req, res) => {
   }
 };
 
-
 exports.loginUserController = async (req, _res) => {
   try {
     const result = await dbService.loginUser(req);
+    return result;
+  } catch (error) {
+    return error
+  }
+};
+
+exports.returnUserStatsController = async (_req, _res) => {
+  try {
+    const result = await dbService.returnUserStats();
     return result;
   } catch (error) {
     return error
@@ -38,6 +46,7 @@ exports.returnUserDataFromEmailController = async (req, _res) => {
 exports.addCarRecordController = async (req, _res) => {
   try {
     let result = await dbService.addCarRecord(req);
+    await dbService.getAllRecordFromUser(req)
     return result;
   } catch (error) {
     return error

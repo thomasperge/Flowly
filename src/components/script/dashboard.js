@@ -308,7 +308,6 @@ profileContainer.style.display = "none"
 
 // == DashBoard ==
 dashboardLogoNavbar?.addEventListener('click', () => {
-    console.log(historyContainer.style.display);
     // Logo
     historyLogoNavbar.classList.add('logoOff')
     historyLogoNavbar.classList.remove('logoOn')
@@ -353,11 +352,9 @@ historyLogoNavbar?.addEventListener('click', () => {
 
     // Container
     if (historyContainer.style.display == "none") {
-        console.log("HERE 1");
         historyContainer.style.display = "flex"
         transitionOpacity(historyContainer, 170)
     } else {
-        console.log("HERE 2");
         historyContainer.style.display = "flex"
     }
 

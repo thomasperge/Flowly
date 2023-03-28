@@ -33,7 +33,7 @@ const recordCarSchema = mongoose.Schema({
         type: Number, 
         required: true,
     },
-    carbon_lb: { 
+    carbon_lb: {
         type: Number, 
         required: true,
     },

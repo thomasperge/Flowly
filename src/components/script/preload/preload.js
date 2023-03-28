@@ -105,13 +105,58 @@ document.addEventListener('DOMContentLoaded', function() {
             document.getElementById('dashboard-carPopupError').innerHTML = "Missing Information"
         }
     })
+
+    // == History ==
+    let historyLogoNavbar = document.getElementById('logoHistory')
+    
+    historyLogoNavbar.addEventListener('click', () => {
+        ipcRenderer.send('api/add-car', data);
+
+    })
+
 })
 
+// Function
+function formatNumber(number) {
+    number = number.toFixed(2);
+    const prefixes = ['', 'K', 'M', 'B'];
+    const base = 1000;
+
+    const isNegative = number < 0;
+    number = Math.abs(number);
+
+    if (number < base) {
+      return isNegative ? '-' + number : number.toString();
+    }
+
+    const log = Math.floor(Math.log10(number) / Math.log10(base));
+    const prefix = prefixes[log];
+
+    const value = number / Math.pow(base, log);
+
+    const formattedValue = value.toFixed(2);
+
+    return (isNegative ? '-' : '') + formattedValue + prefix;
+}
+
+// IpcRender ON
 ipcRenderer.on('app/login-error', (event, data) => {
     document.getElementById('wrongInformations').style.display = "block"
 })
 
+ipcRenderer.on('database/send-user-stats', (event, data) => {
+    document.getElementById('carCarbonStats').innerHTML = formatNumber(data._doc.total_carbon_vehicle)
+    document.getElementById('electricityCarbonStats').innerHTML = formatNumber(data._doc.total_carbon_electricity)
+    document.getElementById('fuelCarbonStats').innerHTML = formatNumber(data._doc.total_carbon_fuel)
+    document.getElementById('flightCarbonStats').innerHTML = formatNumber(data._doc.total_carbon_flight)
+})
+
 ipcRenderer.on('database/car-record-added', (event, data) => {
+    document.getElementById('carCarbonStats').innerHTML = formatNumber(data._doc.total_carbon_vehicle)
+    document.getElementById('electricityCarbonStats').innerHTML = formatNumber(data._doc.total_carbon_electricity)
+    document.getElementById('fuelCarbonStats').innerHTML = formatNumber(data._doc.total_carbon_fuel)
+    document.getElementById('flightCarbonStats').innerHTML = formatNumber(data._doc.total_carbon_flight)
+    
     document.getElementById('dashboard-carPopupError').style.color = "yellowgreen"
     document.getElementById('dashboard-carPopupError').innerHTML = "Car added !"
 

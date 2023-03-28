@@ -25,7 +25,15 @@ const statsSchema = mongoose.Schema({
         type: Number,
         default: 0,
     },
+    total_carbon_vehicle: {
+        type: Number,
+        default: 0,
+    },
     total_km_flight: {
+        type: Number,
+        default: 0,
+    },
+    total_carbon_flight: {
         type: Number,
         default: 0,
     },
@@ -33,11 +41,23 @@ const statsSchema = mongoose.Schema({
         type: Number,
         default: 0,
     },
+    total_carbon_shipping: {
+        type: Number,
+        default: 0,
+    },
     total_electricity_mwh: {
         type: Number,
         default: 0,
     },
+    total_carbon_electricity: {
+        type: Number,
+        default: 0,
+    },
     total_fuel_btu: {
+        type: Number,
+        default: 0,
+    },
+    total_carbon_fuel: {
         type: Number,
         default: 0,
     },

@@ -55,13 +55,13 @@ app.whenReady().then(() => {
     createWindow()
 })
 
+
 // =========== All IPC Call ===========
 // ====> DataBase :
 ipcMain.on('db/add-user', (event, data) => {
     dataBaseComponent.addUserController(data)
     windows.loadFile('./src/components/pages/login.html')
 });
-
 
 // ====> API :
 ipcMain.on('api/add-car', async (event, data) => {
@@ -78,7 +78,8 @@ ipcMain.on('api/add-car', async (event, data) => {
         let addCarRecordResponse = await dataBaseComponent.addCarRecordController(dataResponse)
         
         if (addCarRecordResponse) {
-            win.webContents.send('database/car-record-added')
+            var result = await dataBaseComponent.returnUserStatsController()
+            win.webContents.send('database/car-record-added', result)
         }
     }
 });
@@ -130,6 +131,19 @@ ipcMain.on("app/login-user", async (event, data) => {
         saveConfig(config, dataPath);
 
         windows.loadFile('./src/components/pages/dashboard.html')
+
+        // Test
+        const win = BrowserWindow.getAllWindows()[0];
+
+        win.webContents.on('did-finish-load', async () => {
+            const win = BrowserWindow.getAllWindows()[0];
+        
+            var result = await dataBaseComponent.returnUserStatsController()
+            win.webContents.send('database/send-user-stats', result)
+        });
+
+        var result = await dataBaseComponent.returnUserStatsController()
+        win.webContents.send('database/send-user-stats', result)
     }
 });
 
