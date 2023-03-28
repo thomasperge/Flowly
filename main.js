@@ -66,6 +66,7 @@ ipcMain.on('db/add-user', (event, data) => {
 // ====> API :
 ipcMain.on('api/add-car', async (event, data) => {
     const win = BrowserWindow.getAllWindows()[0];
+    
     let dataResponse = {
         input: data,
         response: await apiComponent.getEstimateVehicleCarbonController(data)
@@ -77,10 +78,7 @@ ipcMain.on('api/add-car', async (event, data) => {
         let addCarRecordResponse = await dataBaseComponent.addCarRecordController(dataResponse)
         
         if (addCarRecordResponse) {
-            win.webContents.send('test')
-            console.log("TRUE");
-        } else {
-            console.log("FALSE");
+            win.webContents.send('database/car-record-added')
         }
     }
 });

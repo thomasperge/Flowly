@@ -593,7 +593,7 @@ input[type="date"]::-webkit-input-placeholder {
     display: none;
     position: absolute;
     width: 95%;
-    height: 37vh;
+    height: auto;
     top: 14vh;
 }
 
@@ -683,9 +683,9 @@ input[type="date"]::-webkit-input-placeholder {
 }
 
 .dashboard-carPopupError {
-    width: auto;
+    width: fit-content;
     height: auto;
-    padding: 5px 0 5px 0;
+    padding: 0 0 1.5vh 2vh;
     color: red;
     font-family: "GothamMedium";
     font-size: 2.1vh;

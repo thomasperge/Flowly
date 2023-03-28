@@ -102,6 +102,7 @@ carButton?.addEventListener('click', () => {
     } else {
         inputErrorCar.dataset.error = "false"
         inputErrorCar.innerHTML = ""
+        inputErrorCar.style.color = "red"
         containerAddAbsolute.style.display = "flex"
         unselect.style.display = "block"
         carArea.style.display = "block"

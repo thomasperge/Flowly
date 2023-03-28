@@ -1,6 +1,5 @@
 const { ipcRenderer, contextBridge, ipcMain } = require('electron')
 
-
 // Initialize API Send (minus & close button)
 const API = {
     window: {
@@ -8,8 +7,6 @@ const API = {
         minimize: () => ipcRenderer.send("app/minimize")
     },
 }
-
-let test = null
 
 document.addEventListener('DOMContentLoaded', function() {
     // ========= App Event =========
@@ -103,9 +100,9 @@ document.addEventListener('DOMContentLoaded', function() {
 
         if (data.carType && data.years && data.km && data.date) {
             ipcRenderer.send('api/add-car', data);
-            test = data
         } else {
-            console.log("Missing Information");
+            document.getElementById('dashboard-carPopupError').style.color = "red"
+            document.getElementById('dashboard-carPopupError').innerHTML = "Missing Information"
         }
     })
 })
@@ -114,8 +111,14 @@ ipcRenderer.on('app/login-error', (event, data) => {
     document.getElementById('wrongInformations').style.display = "block"
 })
 
-// ipcRenderer.on('test', (event, data) => {
-//     console.log("HERE");
-// });
+ipcRenderer.on('database/car-record-added', (event, data) => {
+    document.getElementById('dashboard-carPopupError').style.color = "yellowgreen"
+    document.getElementById('dashboard-carPopupError').innerHTML = "Car added !"
+
+    setInterval(() => {
+        document.getElementById('dashboard-carPopupError').innerHTML = ""
+    }, 5000)
+
+});
 
 contextBridge.exposeInMainWorld("app", API)
