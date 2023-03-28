@@ -66,7 +66,7 @@ ipcMain.on('db/add-user', (event, data) => {
 ipcMain.on('database/display-history', async () => {
     const win = BrowserWindow.getAllWindows()[0];
     let result = await dataBaseComponent.getAllRecordFromUserController()
-    win.webContents.send('database/send-all-history', result)
+    win.webContents.send('database/send-all-history', result.reverse())
 })
 
 // ====> API :
@@ -86,6 +86,9 @@ ipcMain.on('api/add-car', async (event, data) => {
         if (addCarRecordResponse) {
             var result = await dataBaseComponent.returnUserStatsController()
             win.webContents.send('database/car-record-added', result)
+            // Refresh top 10 history
+            let history = await dataBaseComponent.getAllRecordFromUserController()
+            win.webContents.send('database/top-10-history', history.reverse())
         }
     }
 });
@@ -146,10 +149,14 @@ ipcMain.on("app/login-user", async (event, data) => {
         
             var result = await dataBaseComponent.returnUserStatsController()
             win.webContents.send('database/send-user-stats', result)
+            let history = await dataBaseComponent.getAllRecordFromUserController()
+            win.webContents.send('database/top-10-history', history.reverse())
         });
 
         var result = await dataBaseComponent.returnUserStatsController()
         win.webContents.send('database/send-user-stats', result)
+        let history = await dataBaseComponent.getAllRecordFromUserController()
+        win.webContents.send('database/top-10-history', history.reverse())
     }
 });
 

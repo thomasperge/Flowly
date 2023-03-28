@@ -1000,7 +1000,7 @@ input[type="date"]::-webkit-input-placeholder {
     display: flex;
     width: auto;
     height: 75%;
-    gap: 2%;
+    gap: .6%;
     justify-content: flex-start;
 }
 
@@ -1064,7 +1064,7 @@ input[type="date"]::-webkit-input-placeholder {
     border-radius: 18px;
     font-family: "GothamBold";
     color: black;
-    font-size: 2.1vh;
+    font-size: 2.2vh;
     padding-left: 2%;
 }
 
@@ -1340,7 +1340,7 @@ input[type="date"]::-webkit-input-placeholder {
     margin-right: 5px;
     border-radius: 8px;
     color: #111111bb;
-    font-size: 1.9vh;
+    font-size: 2.1vh;
 }
 
 .history-areaContainerDate {
@@ -1357,7 +1357,7 @@ input[type="date"]::-webkit-input-placeholder {
     width: auto;
     height: 55%;
     max-height: 55%;
-    font-size: 3.8vh;
+    font-size: 3.6vh;
 }
 
 .history-areaContainerDataKm {
