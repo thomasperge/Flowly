@@ -81,9 +81,11 @@ exports.returnUserDataFromEmail = async (data) => {
 };
 
 
+/**
+ * Add car record => return true id add in Db
+ * @param {*} data 
+ */
 exports.addCarRecord = async (data) => {
-	console.log("Input : ", data.input);
-	console.log("Response : ", data.response);
 	try {
 		const CarRecord = mongoose.model('record_car', recordCarSchema);
 
@@ -99,8 +101,8 @@ exports.addCarRecord = async (data) => {
 		});
 
 		newCarRecord.save()
-		console.log("Car Record Create !");
+		return true
 	} catch (error) {
-		console.error(error);
+		return false
 	}
 };

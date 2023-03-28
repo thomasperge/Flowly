@@ -23,7 +23,6 @@ exports.addUserController = async (req, res) => {
 exports.loginUserController = async (req, _res) => {
   try {
     const result = await dbService.loginUser(req);
-
     return result;
   } catch (error) {
     return error
@@ -41,9 +40,8 @@ exports.returnUserDataFromEmailController = async (req, _res) => {
 
 exports.addCarRecordController = async (req, _res) => {
   try {
-    console.log("Add Car Controller");
-    await dbService.addCarRecord(req);
-    // return result;
+    let result = await dbService.addCarRecord(req);
+    return result;
   } catch (error) {
     return error
   }

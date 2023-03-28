@@ -83,6 +83,7 @@ document.addEventListener('DOMContentLoaded', function() {
     // ========= API Event =========
     // == Car "Add" Button ==
     let addCarButton = document.getElementById('addCarRecord')
+    let containerAddAbsolute = document.getElementById('dashboard-containerAddAbsolute')
 
     addCarButton?.addEventListener('click', () => {
         // Get Car type
@@ -103,11 +104,22 @@ document.addEventListener('DOMContentLoaded', function() {
         } else {
             console.log("Missing Information");
         }
+        let unselect = document.getElementById('unselect')
+        let carArea = document.getElementById('dashboard-areaCarButton')
+
+        ipcRenderer.on('test', (event, data) => {
+            console.log("OK HERE");
+            containerAddAbsolute.style.display = "none"
+            unselect.style.display = "none"
+            carArea.style.display = "none"
+        })
     })
 })
 
 ipcRenderer.on('app/login-error', (event, data) => {
     document.getElementById('wrongInformations').style.display = "block"
 })
+
+
 
 contextBridge.exposeInMainWorld("app", API)
