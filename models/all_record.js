@@ -29,7 +29,7 @@ const allRecordSchema = mongoose.Schema({
         required: true,
     },
     int_value: {
-        type: String,
+        type: Number,
         required: true
     },
     string_value: {

@@ -1,8 +1,7 @@
 const mongoose = require('mongoose')
-const { typeUsers } = require('./enum.js');
 const { v4: uuidv4 } = require('uuid');
 
-const statsSchema = mongoose.Schema({
+const userStatSchema = mongoose.Schema({
     _id: {
         type: String,
         default: uuidv4,
@@ -63,4 +62,4 @@ const statsSchema = mongoose.Schema({
     },
 })
 
-module.exports = mongoose.model('users_stats', statsSchema)
+module.exports = mongoose.model('users_stats', userStatSchema)

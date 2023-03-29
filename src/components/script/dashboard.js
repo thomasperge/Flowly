@@ -204,11 +204,9 @@ carTypes.forEach(carType => {
 });
 
 // =========== "Add" Button : Car / Energy / Oil ===========
-// a delete :
 let addCarButton = document.getElementById('addCarRecord')
 let addEnergyButton = document.getElementById('addEnergyRecord')
 let addOilButton = document.getElementById('addOilRecord')
-
 // == Energy "Add" Button ==
 addEnergyButton?.addEventListener('click', () => {
     energyArea.style.display = "none"

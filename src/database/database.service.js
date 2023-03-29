@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 const { accountSchema } = require('../../models/account');
-const { recordCarSchema } = require('../../models/record_car');
-const { statsSchema } = require('../../models/stats');
+const { totalRecordCarSchema } = require('../../models/stats_record_car');
+const { userStatSchema } = require('../../models/users_stats');
 const { allRecordSchema } = require('../../models/all_record');
 const idUserDataJson = require('../../data.json');
 const bcrypt = require('bcryptjs');
@@ -12,7 +12,7 @@ const bcrypt = require('bcryptjs');
  */
 exports.addUserInDB = async (data) => {
 	try {
-		// Create User account
+		// Create User Schema
 		const User = mongoose.model('account', accountSchema);
 
 		const salt = await bcrypt.genSalt(10);
@@ -27,8 +27,8 @@ exports.addUserInDB = async (data) => {
 
 		newUser.save()
 
-		// Create Stats Account
-		const Stats = mongoose.model('users_stats', statsSchema);
+		// Create Users Stats Schema
+		const Stats = mongoose.model('users_stats', userStatSchema);
 
 		const userStats = new Stats({
 			idAccount: newUser._id,
@@ -47,11 +47,51 @@ exports.addUserInDB = async (data) => {
 		});
 
 		userStats.save()
+
+		// Create Car Record Stats Schema
+		const totalRecordStats = mongoose.model('total_record_car', totalRecordCarSchema);
+
+		const newCarStatsRecord = new totalRecordStats({
+			idAccount: newUser._id,
+			fourgonette : {
+				total_distance: 0,
+				total_carbon_kg: 0,
+			},
+			mini_fourgonette : {
+				total_distance: 0,
+				total_carbon_kg: 0,
+			},
+			pick_up : {
+				total_distance: 0,
+				total_carbon_kg: 0,
+			},
+			coupes : {
+				total_distance: 0,
+				total_carbon_kg: 0,
+			},
+			suv : {
+				total_distance: 0,
+				total_carbon_kg: 0,
+			},
+			crossover : {
+				total_distance: 0,
+				total_carbon_kg: 0,
+			},
+			break : {
+				total_distance: 0,
+				total_carbon_kg: 0,
+			},
+			berline : {
+				total_distance: 0,
+				total_carbon_kg: 0,
+			},
+		});
+
+		newCarStatsRecord.save()
 	} catch (error) {
 		console.error(error);
 	}
 };
-
 
 /**
  * Check password and hashed password
@@ -83,7 +123,6 @@ exports.loginUser = async (data) => {
 		return false
 	}
 };
-
 
 /**
  * Function who return all information about users
@@ -138,14 +177,15 @@ function formatNumber(number) {
  */
 exports.addCarRecord = async (data) => {
 	try {
-		// Add Car Record
-		const CarRecord = mongoose.model('record_car', recordCarSchema);
+		const CarRecord = mongoose.model('all_record', allRecordSchema);
 
 		const newCarRecord = new CarRecord({
 			idAccount: idUserDataJson.id,
-			distanceDate: data.input.date,
-			car_type: data.input.carType,
-			distance: data.response.attributes.distance_value,
+			record_type: 'Car',
+			dateInput: data.input.date,
+			description_record: data.input.carType,
+			int_value: data.input.km,
+			string_value: `${data.input.km} km`,
 			carbon_g: data.response.attributes.carbon_g,
 			carbon_lb: data.response.attributes.carbon_lb,
 			carbon_kg: data.response.attributes.carbon_kg,
@@ -154,40 +194,56 @@ exports.addCarRecord = async (data) => {
 
 		newCarRecord.save()
 
-		// Add user Stats
-		const UsersStats = mongoose.model('users_stats', statsSchema);
+		// Add User Stats && Car Stats
+		const UsersStats = mongoose.model('users_stats', userStatSchema);
 		const stats = await UsersStats.findOne({ idAccount: idUserDataJson.id })
 
-		if(stats) {
+		const totalRecordStats = mongoose.model('total_record_car', totalRecordCarSchema);
+		const statsCarRecord = await totalRecordStats.findOne({ idAccount: idUserDataJson.id })
+
+
+		if(stats && statsCarRecord) {
+			// SAVE in Db : Users Stats
 			stats.total_carbon_kg += data.response.attributes.carbon_kg;
 			stats.total_km_vehicle += data.response.attributes.distance_value;
 			stats.total_carbon_vehicle += data.response.attributes.carbon_kg
 			await stats.save()
+
+			// SAVE in Db : Users Stats All car record
+			if(data.input.carType == "Fourgonette") {
+				statsCarRecord.fourgonette.total_distance += data.response.attributes.distance_value
+				statsCarRecord.fourgonette.total_carbon_kg += data.response.attributes.carbon_kg
+			} else if(data.input.carType == "Mini-Fourgonette") {
+				statsCarRecord.mini_fourgonette.total_distance += data.response.attributes.distance_value
+				statsCarRecord.mini_fourgonette.total_carbon_kg += data.response.attributes.carbon_kg
+			} else if(data.input.carType == "Pick-up") {
+				statsCarRecord.pick_up.total_distance += data.response.attributes.distance_value
+				statsCarRecord.pick_up.total_carbon_kg += data.response.attributes.carbon_kg
+			} else if(data.input.carType == "Coupés") {
+				statsCarRecord.coupes.total_distance += data.response.attributes.distance_value
+				statsCarRecord.coupes.total_carbon_kg += data.response.attributes.carbon_kg
+			} else if(data.input.carType == "SUV") {
+				statsCarRecord.suv.total_distance += data.response.attributes.distance_value
+				statsCarRecord.suv.total_carbon_kg += data.response.attributes.carbon_kg
+			} else if(data.input.carType == "Crossover") {
+				statsCarRecord.crossover.total_distance += data.response.attributes.distance_value
+				statsCarRecord.crossover.total_carbon_kg += data.response.attributes.carbon_kg
+			} else if(data.input.carType == "Break") {
+				statsCarRecord.break.total_distance += data.response.attributes.distance_value
+				statsCarRecord.break.total_carbon_kg += data.response.attributes.carbon_kg
+			} else if(data.input.carType == "Berline") {
+				statsCarRecord.berline.total_distance += data.response.attributes.distance_value
+				statsCarRecord.berline.total_carbon_kg += data.response.attributes.carbon_kg
+			}
+
+			await statsCarRecord.save()
 		} else {
 			console.log("Erreur : Utilisateur non trouvé");
 		}
 
-		// Add all record
-		const allRecord = mongoose.model('all_record', allRecordSchema);
-
-		const newAllRecord = new allRecord({
-			idAccount: idUserDataJson.id,
-			record_type: "Car",
-			dateInput: data.input.date,
-			description_record: data.input.carType,
-			int_value: data.response.attributes.distance_value,
-			string_value: `${formatNumber(data.response.attributes.distance_value)} km`,
-			carbon_g: data.response.attributes.carbon_g,
-			carbon_lb: data.response.attributes.carbon_lb,
-			carbon_kg: data.response.attributes.carbon_kg,
-			carbon_mt: data.response.attributes.carbon_mt,
-		});
-
-		newAllRecord.save()
-
 		return true
 	} catch (error) {
-		return false
+		console.log('===> Erreur ici', error.message);
 	}
 };
 
@@ -197,8 +253,8 @@ exports.addCarRecord = async (data) => {
  * @returns 
  */
 exports.returnUserStats = async (data) => {
-	const UsersStats = mongoose.model('users_stats', statsSchema);
-	const stats = await UsersStats.findOne({ idAccount: idUserDataJson.id })
+	const UserStats = mongoose.model('users_stats', userStatSchema);
+	const stats = await UserStats.findOne({ idAccount: idUserDataJson.id })
 
 	if(stats) {
 		return stats
@@ -221,3 +277,21 @@ exports.getAllRecordFromUser = async () => {
 		return null
 	}
 };
+
+/**
+ * Get 2 most car used per user
+ * @returns 
+ */
+// exports.getMostCarUsed = async () => {
+// 	const RecordCar = mongoose.model('record_car', recordCarSchema);
+// 	const record = await RecordCar.find({ idAccount: idUserDataJson.id })
+
+// 	if(record) {
+// 		// Loop into all record car
+// 		for (let i = 0; i <= record.length; i++) {
+
+// 		}
+// 	} else {
+// 		return null
+// 	}
+// };
