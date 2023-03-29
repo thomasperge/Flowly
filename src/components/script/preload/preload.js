@@ -1,4 +1,4 @@
-const { ipcRenderer, contextBridge, ipcMain } = require('electron')
+const { ipcRenderer, contextBridge } = require('electron')
 
 // Initialize API Send (minus & close button)
 const API = {
@@ -25,7 +25,7 @@ document.addEventListener('DOMContentLoaded', function() {
     })
 
 
-    // ========= DataBase Event =========
+    // ========= Database Event =========
     // === Register User => Add user in DB ==
     document.getElementById('registerForm')?.addEventListener('submit', (event) => {
         event.preventDefault();
@@ -45,7 +45,7 @@ document.addEventListener('DOMContentLoaded', function() {
         }
 
         if (email.length > 0 && password.length > 0) {
-            ipcRenderer.send('db/add-user', {email, password, typeUsers});
+            ipcRenderer.send('database/add-user', {email, password, typeUsers});
         } else {
             document.getElementById("missingInformations").style.display = "block"
         }
@@ -115,7 +115,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
 })
 
-// Function
+// ======== Function========
 function formatNumber(number) {
     number = number.toFixed(2);
     const prefixes = ['', 'K', 'M', 'B'];
@@ -161,7 +161,7 @@ function formatDate2(dateStr) {
     return formattedDate;
 }
 
-// IpcRender ON
+// ======== Ipc On ========
 ipcRenderer.on('app/login-error', (event, data) => {
     document.getElementById('wrongInformations').style.display = "block"
 })
@@ -186,7 +186,6 @@ ipcRenderer.on('database/car-record-added', (event, data) => {
         document.getElementById('dashboard-carPopupError').innerHTML = ""
     }, 3000)
 });
-
 
 ipcRenderer.on('database/send-all-history', (event, result) => {
     const container = document.querySelector('.history-mainContainer');

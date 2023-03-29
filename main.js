@@ -11,11 +11,6 @@ require('dotenv').config();
 const dataBaseComponent = require('./src/database/database.controller')
 const apiComponent = require('./src/api/api.controller')
 
-// Import DataBase /API Schema
-const { userSchema } = require('./models/account.js');
-const { recordsSchema } = require('./models/account.js');
-const { typeUsers } = require('./models/enum.js');
-
 // Create Windows
 let windows
 
@@ -38,7 +33,7 @@ const createWindow = () => {
     windows.loadFile('./src/components/pages/login.html')
 }
 
-// =========== App Ready ===========
+// ========= App Ready =========
 app.on('ready', async () => {
     const uri = process.env.MONGODB_HOST;
 
@@ -56,9 +51,9 @@ app.whenReady().then(() => {
 })
 
 
-// =========== All IPC Call ===========
-// ====> DataBase :
-ipcMain.on('db/add-user', (event, data) => {
+// ========= All Ipc Call =========
+// Database :
+ipcMain.on('database/add-user', (event, data) => {
     dataBaseComponent.addUserController(data)
     windows.loadFile('./src/components/pages/login.html')
 });
@@ -69,7 +64,7 @@ ipcMain.on('database/display-history', async () => {
     win.webContents.send('database/send-all-history', result.reverse())
 })
 
-// ====> API :
+// Api :
 ipcMain.on('api/add-car', async (event, data) => {
     const win = BrowserWindow.getAllWindows()[0];
     
@@ -93,8 +88,7 @@ ipcMain.on('api/add-car', async (event, data) => {
     }
 });
 
-
-// ====> Redirect Page :
+// Redirect :
 ipcMain.on('redirect/forgot-password', (event, data) => {
     windows.loadFile('./src/components/pages/register.html')
 });
@@ -103,9 +97,7 @@ ipcMain.on('redirect/have-account', (event, data) => {
     windows.loadFile('./src/components/pages/login.html')
 });
 
-
-
-
+// Function :
 function saveConfig(config, configPath) {
     fs.writeFileSync(configPath, JSON.stringify(config));
 }
@@ -119,7 +111,7 @@ function loadConfig(configPath) {
     }
 }
 
-// ====> Application :
+// App :
 ipcMain.on("app/login-user", async (event, data) => {
     const win = BrowserWindow.getAllWindows()[0];
     let userFound = await dataBaseComponent.loginUserController(data)

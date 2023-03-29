@@ -204,6 +204,7 @@ carTypes.forEach(carType => {
 });
 
 // =========== "Add" Button : Car / Energy / Oil ===========
+// a delete :
 let addCarButton = document.getElementById('addCarRecord')
 let addEnergyButton = document.getElementById('addEnergyRecord')
 let addOilButton = document.getElementById('addOilRecord')
@@ -300,12 +301,13 @@ let historyContainer = document.querySelector('.history-SCountainer2-2-2')
 let premiumContainer = document.querySelector('.premium-SCountainer2-2-2')
 let profileContainer = document.querySelector('.profile-SCountainer2-2-2')
 
-// Default display
+// Default logo display
 dashboardContainer.style.display = "flex"
 historyContainer.style.display = "none"
 premiumContainer.style.display = "none"
 profileContainer.style.display = "none"
 
+// =========== Logo ===========
 // == DashBoard ==
 dashboardLogoNavbar?.addEventListener('click', () => {
     // Logo

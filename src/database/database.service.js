@@ -105,6 +105,11 @@ exports.returnUserDataFromEmail = async (data) => {
 	}
 };
 
+/**
+ * Format number : 120000 => 120k
+ * @param {*} number 
+ * @returns 
+ */
 function formatNumber(number) {
     number = number.toFixed(2);
     const prefixes = ['', 'K', 'M', 'B'];
@@ -186,6 +191,11 @@ exports.addCarRecord = async (data) => {
 	}
 };
 
+/**
+ * Retourne all stats of Users
+ * @param {*} data 
+ * @returns 
+ */
 exports.returnUserStats = async (data) => {
 	const UsersStats = mongoose.model('users_stats', statsSchema);
 	const stats = await UsersStats.findOne({ idAccount: idUserDataJson.id })
@@ -197,6 +207,10 @@ exports.returnUserStats = async (data) => {
 	}
 };
 
+/**
+ * Get all record from user
+ * @returns 
+ */
 exports.getAllRecordFromUser = async () => {
 	const UsersStats = mongoose.model('all_record', allRecordSchema);
 	const stats = await UsersStats.find({ idAccount: idUserDataJson.id })

@@ -4,6 +4,11 @@ require('dotenv').config();
 const API_BASE_URL = 'https://www.carboninterface.com/api/v1';
 const API_KEY = process.env.API_KEY;
 
+/**
+ * Get Estimations : Test function
+ * @param {*} data 
+ * @returns 
+ */
 const getEstimate = async (data) => {
     try {
         const response = await axios.post(`${API_BASE_URL}/estimates`, data, {
@@ -11,7 +16,6 @@ const getEstimate = async (data) => {
             Authorization: `Bearer ${API_KEY}`,
             'Content-Type': 'application/json',
             },
-            
         });
         return response.data;
     } catch (error) {
@@ -19,6 +23,11 @@ const getEstimate = async (data) => {
     }
 };
 
+/**
+ * Get Estimate Carbon Vehicle
+ * @param {*} data 
+ * @returns 
+ */
 const getEstimateVehicleCarbon = async (data) => {
     const endpoint = 'https://www.carboninterface.com/api/v1/estimates';
 
