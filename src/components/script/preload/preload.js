@@ -265,4 +265,64 @@ ipcRenderer.on('database/top-10-history', (event, result) => {
     }
 })
 
+ipcRenderer.on('database/most-car-used', (event, result) => {
+    if (result != null) {
+        console.log(result[0][0]);
+        console.log(result[0][1]);
+
+        console.log(result[1][0]);
+        console.log(result[1][1]);
+
+        const container = document.querySelector('.dashboard-statsArea1-2-1ContainerData');
+        container.innerHTML = ""
+        
+        const card1 = document.createElement('div');
+        card1.classList.add('dashboard-statsArea1-2-1AreaData', 'StatsColor-5', 'flex');
+        card1.innerHTML = `
+            <div class="dashboard-statsArea1-2-1AreaContainerData">
+                <div class="dashboard-statsArea1-2-1AreaContainerDataTitleContainer">
+                    <div class="dashboard-statsArea1-2-1AreaContainerTitleBrand">${result[0][1].string_name}</div>
+                    <div class="dashboard-statsArea1-2-1AreaContainerDescBrand">${result[0][0]}</div>
+                </div>
+                
+                <div class="dashboard-statsArea1-2-1AreaContainerDataContainer">
+                    <div class="dashboard-statsArea1-2-1AreaContainerDataGraphArea">
+                        <div class="dashboard-statsArea1-2-1AreaContainerKmTitle flex">${formatNumber(result[0][1].total_distance)}</div>
+                        <div class="dashboard-statsArea1-2-1AreaContainerCo2Title flex">km</div>
+                    </div>
+                    <div class="dashboard-statsArea1-2-1AreaContainerDataGraphArea">
+                        <div class="dashboard-statsArea1-2-1AreaContainerKmTitle flex">${formatNumber(result[0][1].total_carbon_kg)}</div>
+                        <div class="dashboard-statsArea1-2-1AreaContainerCo2Title flex">Co²</div>
+                    </div>
+                </div>
+            </div>
+        `;
+        container.appendChild(card1);
+
+        const card2 = document.createElement('div');
+        card2.classList.add('dashboard-statsArea1-2-1AreaData', 'StatsColor-6', 'flex');
+        card2.innerHTML = `
+            <div class="dashboard-statsArea1-2-1AreaContainerData">
+                <div class="dashboard-statsArea1-2-1AreaContainerDataTitleContainer">
+                    <div class="dashboard-statsArea1-2-1AreaContainerTitleBrand">${result[1][1].string_name}</div>
+                    <div class="dashboard-statsArea1-2-1AreaContainerDescBrand">${result[1][0]}</div>
+                </div>
+                
+                <div class="dashboard-statsArea1-2-1AreaContainerDataContainer">
+                    <div class="dashboard-statsArea1-2-1AreaContainerDataGraphArea">
+                        <div class="dashboard-statsArea1-2-1AreaContainerKmTitle flex">${formatNumber(result[1][1].total_distance)}</div>
+                        <div class="dashboard-statsArea1-2-1AreaContainerCo2Title flex">km</div>
+                    </div>
+                    <div class="dashboard-statsArea1-2-1AreaContainerDataGraphArea">
+                        <div class="dashboard-statsArea1-2-1AreaContainerKmTitle flex">${formatNumber(result[1][1].total_carbon_kg)}</div>
+                        <div class="dashboard-statsArea1-2-1AreaContainerCo2Title flex">Co²</div>
+                    </div>
+                </div>
+            </div>
+        `;
+        container.appendChild(card2);
+    }
+})
+
+
 contextBridge.exposeInMainWorld("app", API)

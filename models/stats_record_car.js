@@ -13,37 +13,45 @@ const totalRecordCarSchema = mongoose.Schema({
         required: true,
     },
     fourgonette: {
+        string_name: { type: String, default: "Fourgonette", required: false },
         total_distance: { type: Number, required: true },
         total_carbon_kg: { type: Number, required: true },
     },
     mini_fourgonette: {
+        string_name: { type: String, default: "Mini Fourgonette", required: false },
         total_distance: { type: Number, required: true },
         total_carbon_kg: { type: Number, required: true },
     },
     pick_up: {
+        string_name: { type: String, default: "Pick Up", required: false },
         total_distance: { type: Number, required: true },
         total_carbon_kg: { type: Number, required: true },
     },
     coupes: {
+        string_name: { type: String, default: "Coupes", required: false },
         total_distance: { type: Number, required: true },
         total_carbon_kg: { type: Number, required: true },
     },
     suv: {
+        string_name: { type: String, default: "SUV", required: false },
         total_distance: { type: Number, required: true },
         total_carbon_kg: { type: Number, required: true },
     },
     crossover: {
+        string_name: { type: String, default: "Crossover", required: false },
         total_distance: { type: Number, required: true },
         total_carbon_kg: { type: Number, required: true },
     },
     break: {
+        string_name: { type: String, default: "Break", required: false },
         total_distance: { type: Number, required: true },
         total_carbon_kg: { type: Number, required: true },
     },
     berline: {
+        string_name: { type: String, default: "Berline", required: false },
         total_distance: { type: Number, required: true },
         total_carbon_kg: { type: Number, required: true },
     },
 })
 
-module.exports = mongoose.model('total_record_car', totalRecordCarSchema)
+module.exports = mongoose.model('total_record_cars', totalRecordCarSchema)

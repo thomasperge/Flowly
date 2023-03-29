@@ -49,7 +49,7 @@ exports.addUserInDB = async (data) => {
 		userStats.save()
 
 		// Create Car Record Stats Schema
-		const totalRecordStats = mongoose.model('total_record_car', totalRecordCarSchema);
+		const totalRecordStats = mongoose.model('total_record_cars', totalRecordCarSchema);
 
 		const newCarStatsRecord = new totalRecordStats({
 			idAccount: newUser._id,
@@ -171,7 +171,7 @@ exports.addCarRecord = async (data) => {
 		const UsersStats = mongoose.model('users_stats', userStatSchema);
 		const stats = await UsersStats.findOne({ idAccount: idUserDataJson.id })
 
-		const totalRecordStats = mongoose.model('total_record_car', totalRecordCarSchema);
+		const totalRecordStats = mongoose.model('total_record_cars', totalRecordCarSchema);
 		const statsCarRecord = await totalRecordStats.findOne({ idAccount: idUserDataJson.id })
 
 
@@ -253,42 +253,49 @@ exports.getAllRecordFromUser = async () => {
 
 /**
  * Get 2 most car used per user
- * @returns 
+ * @returns null or 2 most car used
  */
 exports.getMostCarUsed = async () => {
-	const UsersAllCarStats = mongoose.model('total_record_car', totalRecordCarSchema);
+	const UsersAllCarStats = mongoose.model('total_record_cars', totalRecordCarSchema);
 	const allCarStats = await UsersAllCarStats.find({ idAccount: idUserDataJson.id })
 
-	let results = {};
-
-	for (const doc of allCarStats) {
-		for (const path in doc._doc) {
-			if (
-				path !== '_id' &&
-				path !== 'idAccount' &&
-				doc._doc[path] &&
-				doc._doc[path].total_distance &&
-				doc._doc[path].total_carbon_kg
-			) {
-				if (!results[path]) {
-					results[path] = {
-						total_distance: 0,
-						total_carbon_kg: 0,
-					};
+	if (allCarStats.length >= 1) {
+		let results = {};
+	
+		for (const doc of allCarStats) {
+			for (const path in doc._doc) {
+				if (
+					path !== '_id' &&
+					path !== 'idAccount' &&
+					doc._doc[path] &&
+					doc._doc[path].total_distance &&
+					doc._doc[path].total_carbon_kg
+				) {
+					if (!results[path]) {
+						results[path] = {
+							total_distance: 0,
+							total_carbon_kg: 0,
+							string_name: ""
+						};
+					}
+					results[path].total_distance += doc._doc[path].total_distance;
+					results[path].total_carbon_kg += doc._doc[path].total_carbon_kg;
+					results[path].string_name += doc._doc[path].string_name;
 				}
-				results[path].total_distance += doc._doc[path].total_distance;
-				results[path].total_carbon_kg += doc._doc[path].total_carbon_kg;
 			}
 		}
+
+		// Trier le tableau des résultats par ordre décroissant de la somme total_distance + total_carbon_kg
+		const sortedObj = Object.entries(results).sort(
+			(a, b) => (b[1].total_distance + b[1].total_carbon_kg) - (a[1].total_distance + a[1].total_carbon_kg)
+		);
+
+		if (sortedObj.length >= 2) {
+			return [sortedObj[0], sortedObj[1]];
+		} else {
+			return null
+		}
+	} else {
+		return null
 	}
-
-	// Trier le tableau des résultats par ordre décroissant de la somme total_distance + total_carbon_kg
-	const sortedResults = Object.entries(results).sort(
-		(a, b) =>
-		b[1].total_distance + b[1].total_carbon_kg -
-		(a[1].total_distance + a[1].total_carbon_kg)
-	);
-
-	// Renvoyer les deux premiers éléments du tableau trié
-	return [sortedResults[0][0], sortedResults[1][0]];
 }

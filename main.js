@@ -48,8 +48,6 @@ app.on('ready', async () => {
 
 app.whenReady().then(async () => {
     createWindow()
-
-    console.log(await dataBaseComponent.getMostCarUsedController())
 })
 
 
@@ -81,11 +79,15 @@ ipcMain.on('api/add-car', async (event, data) => {
         let addCarRecordResponse = await dataBaseComponent.addCarRecordController(dataResponse)
         
         if (addCarRecordResponse) {
+            // Add Car
             var result = await dataBaseComponent.returnUserStatsController()
             win.webContents.send('database/car-record-added', result)
             // Refresh top 10 history
             let history = await dataBaseComponent.getAllRecordFromUserController()
             win.webContents.send('database/top-10-history', history.reverse())
+            // Refresh most car used
+            let mostCarUsed = await dataBaseComponent.getMostCarUsedController()
+            win.webContents.send('database/most-car-used', mostCarUsed)
         }
     }
 });
@@ -143,14 +145,23 @@ ipcMain.on("app/login-user", async (event, data) => {
         
             var result = await dataBaseComponent.returnUserStatsController()
             win.webContents.send('database/send-user-stats', result)
+            // Refresh History
             let history = await dataBaseComponent.getAllRecordFromUserController()
             win.webContents.send('database/top-10-history', history.reverse())
+            // Refresh most car used
+            let mostCarUsed = await dataBaseComponent.getMostCarUsedController()
+            win.webContents.send('database/most-car-used', mostCarUsed)
         });
 
+        
         var result = await dataBaseComponent.returnUserStatsController()
         win.webContents.send('database/send-user-stats', result)
+        // Refresh History
         let history = await dataBaseComponent.getAllRecordFromUserController()
         win.webContents.send('database/top-10-history', history.reverse())
+        // Refresh most car used
+        let mostCarUsed = await dataBaseComponent.getMostCarUsedController()
+        win.webContents.send('database/most-car-used', mostCarUsed)
     }
 });
 
