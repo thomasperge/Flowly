@@ -174,7 +174,6 @@ ipcRenderer.on('database/send-user-stats', (event, data) => {
 })
 
 ipcRenderer.on('database/car-record-added', (event, data) => {
-    console.log(data);
     document.getElementById('carCarbonStats').innerHTML = formatNumber(data._doc.total_carbon_vehicle)
     document.getElementById('electricityCarbonStats').innerHTML = formatNumber(data._doc.total_carbon_electricity)
     document.getElementById('fuelCarbonStats').innerHTML = formatNumber(data._doc.total_carbon_fuel)
@@ -189,8 +188,6 @@ ipcRenderer.on('database/car-record-added', (event, data) => {
 });
 
 ipcRenderer.on('database/send-all-history', (event, result) => {
-    console.log(result);
-
     const container = document.querySelector('.history-mainContainer');
     container.innerHTML = ""
 
@@ -239,15 +236,13 @@ ipcRenderer.on('database/send-all-history', (event, result) => {
 })
 
 ipcRenderer.on('database/top-10-history', (event, result) => {
-    console.log("History : ", result);
-
     if (result.length > 0) {
         const container = document.querySelector('.dashboard-statsContainer2-1');
         container.innerHTML = ""
     
         let final = (result.length >= 10) ? 9 : result.length
         
-        for(let i = 0; i <= final; i++) {
+        for(let i = 0; i <= final-1; i++) {
             let percentage = (result[i+1] != undefined) ? formatNumber(result[i]._doc.carbon_kg - result[i + 1]._doc.carbon_kg) : "-"
             let color = (percentage > 0) ? "rgba(255, 0, 0, 0.404)" : "rgba(0, 255, 76, 0.404)"
             

@@ -60,3 +60,12 @@ exports.getAllRecordFromUserController = async (_req, _res) => {
     return error
   }
 };
+
+exports.getMostCarUsedController = async (_req, _res) => {
+  try {
+    let result = await dbService.getMostCarUsed();
+    return result;
+  } catch (error) {
+    return error
+  }
+};

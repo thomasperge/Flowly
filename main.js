@@ -46,8 +46,10 @@ app.on('ready', async () => {
 });
 
 
-app.whenReady().then(() => {
+app.whenReady().then(async () => {
     createWindow()
+
+    console.log(await dataBaseComponent.getMostCarUsedController())
 })
 
 

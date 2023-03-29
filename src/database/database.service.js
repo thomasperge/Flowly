@@ -145,33 +145,6 @@ exports.returnUserDataFromEmail = async (data) => {
 };
 
 /**
- * Format number : 120000 => 120k
- * @param {*} number 
- * @returns 
- */
-function formatNumber(number) {
-    number = number.toFixed(2);
-    const prefixes = ['', 'K', 'M', 'B'];
-    const base = 1000;
-
-    const isNegative = number < 0;
-    number = Math.abs(number);
-
-    if (number < base) {
-      return isNegative ? '-' + number : number.toString();
-    }
-
-    const log = Math.floor(Math.log10(number) / Math.log10(base));
-    const prefix = prefixes[log];
-
-    const value = number / Math.pow(base, log);
-
-    const formattedValue = value.toFixed(2);
-
-    return (isNegative ? '-' : '') + formattedValue + prefix;
-}
-
-/**
  * Add car record => return true id add in Db
  * @param {*} data 
  */
@@ -282,16 +255,40 @@ exports.getAllRecordFromUser = async () => {
  * Get 2 most car used per user
  * @returns 
  */
-// exports.getMostCarUsed = async () => {
-// 	const RecordCar = mongoose.model('record_car', recordCarSchema);
-// 	const record = await RecordCar.find({ idAccount: idUserDataJson.id })
+exports.getMostCarUsed = async () => {
+	const UsersAllCarStats = mongoose.model('total_record_car', totalRecordCarSchema);
+	const allCarStats = await UsersAllCarStats.find({ idAccount: idUserDataJson.id })
 
-// 	if(record) {
-// 		// Loop into all record car
-// 		for (let i = 0; i <= record.length; i++) {
+	let results = {};
 
-// 		}
-// 	} else {
-// 		return null
-// 	}
-// };
+	for (const doc of allCarStats) {
+		for (const path in doc._doc) {
+			if (
+				path !== '_id' &&
+				path !== 'idAccount' &&
+				doc._doc[path] &&
+				doc._doc[path].total_distance &&
+				doc._doc[path].total_carbon_kg
+			) {
+				if (!results[path]) {
+					results[path] = {
+						total_distance: 0,
+						total_carbon_kg: 0,
+					};
+				}
+				results[path].total_distance += doc._doc[path].total_distance;
+				results[path].total_carbon_kg += doc._doc[path].total_carbon_kg;
+			}
+		}
+	}
+
+	// Trier le tableau des résultats par ordre décroissant de la somme total_distance + total_carbon_kg
+	const sortedResults = Object.entries(results).sort(
+		(a, b) =>
+		b[1].total_distance + b[1].total_carbon_kg -
+		(a[1].total_distance + a[1].total_carbon_kg)
+	);
+
+	// Renvoyer les deux premiers éléments du tableau trié
+	return [sortedResults[0][0], sortedResults[1][0]];
+}
