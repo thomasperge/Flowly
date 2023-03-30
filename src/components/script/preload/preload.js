@@ -88,7 +88,7 @@ document.addEventListener('DOMContentLoaded', function() {
         const carTypes = document.querySelectorAll('.dashboard-carPopupCarType');
         const selectedCarType = Array.from(carTypes).find(div => div.dataset.type === 'true');
         // Get Date Selected
-        let dateInputSelect = (document.getElementById("dashboard-inputToday").dataset.select == "true") ? new Date().toISOString().slice(0, 10).replace(/-/g, '/') : document.getElementById("dashboard-inputDateAddRecord").value
+        let dateInputSelect = (document.getElementById("dashboard-inputToday").dataset.select == "true") ? null : document.getElementById("dashboard-inputDateAddRecord").value
         console.log(dateInputSelect);
 
         const data = {
@@ -98,7 +98,7 @@ document.addEventListener('DOMContentLoaded', function() {
             date : dateInputSelect,
         }
 
-        if (data.carType && data.years && data.km && data.date) {
+        if (data.carType && data.years && data.km) {
             ipcRenderer.send('api/add-car', data);
         } else {
             document.getElementById('dashboard-carPopupError').style.color = "red"
@@ -130,7 +130,6 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // == History ==
     let historyLogoNavbar = document.getElementById('logoHistory')
-
     historyLogoNavbar?.addEventListener('click', () => {
         ipcRenderer.send('database/display-history');
     })

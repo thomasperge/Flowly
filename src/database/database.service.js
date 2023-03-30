@@ -155,7 +155,7 @@ exports.addCarRecord = async (data) => {
 		const newCarRecord = new CarRecord({
 			idAccount: idUserDataJson.id,
 			record_type: 'Car',
-			dateInput: data.response.attributes.estimated_at,
+			dateInput: (data.input.date == null) ? data.response.attributes.estimated_at : data.input.date,
 			description_record: data.input.carType,
 			int_value: data.input.km,
 			string_value: `${data.input.km} km`,
