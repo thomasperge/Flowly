@@ -25,6 +25,7 @@ let oilArea = document.getElementById('dashboard-areaOilButton')
 
 // Set Error Title (popup)
 let inputErrorCar = document.getElementById('dashboard-carPopupError')
+let inputErrorEnergy = document.getElementById('dashboard-energyPopupError')
 
 // Set Area display boolean
 let carDisplay = false
@@ -128,6 +129,9 @@ energyButton?.addEventListener('click', () => {
         energyArea.style.display = "none"
         energyDisplay = false
     } else {
+        inputErrorEnergy.dataset.error = "false"
+        inputErrorEnergy.innerHTML = ""
+        inputErrorEnergy.style.color = "red"
         containerAddAbsolute.style.display = "flex"
         unselect.style.display = "block"
         energyArea.style.display = "block"
@@ -202,17 +206,6 @@ carTypes.forEach(carType => {
       carType.dataset.type = "true";
     });
 });
-
-// =========== "Add" Button : Car / Energy / Oil ===========
-let addCarButton = document.getElementById('addCarRecord')
-let addEnergyButton = document.getElementById('addEnergyRecord')
-let addOilButton = document.getElementById('addOilRecord')
-// == Energy "Add" Button ==
-addEnergyButton?.addEventListener('click', () => {
-    energyArea.style.display = "none"
-    unselect.style.display = "none"
-    energyDisplay = false
-})
 
 // =========== Transition to display button : Car / Energy / Oil ===========
 addArea.addEventListener('transitionend', () => {

@@ -639,7 +639,7 @@ input[type="date"]::-webkit-input-placeholder {
 .dashboard-areaEnergyButton {
     display: none;
     width: 22%;
-    height: 100%;
+    height: auto;
     border-radius: 9px;
     border: 1px solid #25282e;
     background-color: #181818;
@@ -752,6 +752,23 @@ input[type="date"]::-webkit-input-placeholder {
     border-radius: 8px;
     background-color: #1d5eff;
     cursor: pointer;
+}
+
+/* Energy Popup */
+.dashboard-energyPopupInfoArea {
+    width: auto;
+    height: auto;
+    gap: 3vh;
+    margin-top: 5%;
+}
+
+.dashboard-energyPopupError {
+    width: fit-content;
+    height: auto;
+    padding: 0 0 1.5vh 2vh;
+    color: red;
+    font-family: "GothamMedium";
+    font-size: 2.1vh;
 }
 
 

@@ -83,7 +83,6 @@ document.addEventListener('DOMContentLoaded', function() {
     // ========= API Event =========
     // == Car "Add" Button ==
     let addCarButton = document.getElementById('addCarRecord')
-
     addCarButton?.addEventListener('click', () => {
         // Get Car type
         const carTypes = document.querySelectorAll('.dashboard-carPopupCarType');
@@ -103,6 +102,24 @@ document.addEventListener('DOMContentLoaded', function() {
         } else {
             document.getElementById('dashboard-carPopupError').style.color = "red"
             document.getElementById('dashboard-carPopupError').innerHTML = "Missing Information"
+        }
+    })
+
+    // == Energy "Add" Button ==
+    let addEnergyButton = document.getElementById('addEnergyRecord')
+    addEnergyButton?.addEventListener('click', () => {
+        const data = {
+            country : document.getElementById('addEnergyCountry').value,
+            unit : document.getElementById('addEnergyUnit').value,
+            value : parseInt(document.getElementById('addEnergyValue').value),
+            date : Date.now(),
+        }
+
+        if (data.carType && data.years && data.km && data.date) {
+            ipcRenderer.send('api/add-energy', data);
+        } else {
+            document.getElementById('dashboard-energyPopupError').style.color = "red"
+            document.getElementById('dashboard-energyPopupError').innerHTML = "Missing Information"
         }
     })
 
