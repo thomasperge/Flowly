@@ -243,7 +243,7 @@ ipcRenderer.on('database/top-10-history', (event, result) => {
         let final = (result.length >= 10) ? 9 : result.length
         
         for(let i = 0; i <= final-1; i++) {
-            let percentage = (result[i+1] != undefined) ? result[i]._doc.carbon_kg - result[i + 1]._doc.carbon_kg : "-"
+            let percentage = (result[i+1] != undefined) ? result[i]._doc.carbon_kg - result[i + 1]._doc.carbon_kg : 0
             let color = (percentage > 0) ? "rgba(255, 0, 0, 0.404)" : "rgba(0, 255, 76, 0.404)"
             
             const div = document.createElement('div');
