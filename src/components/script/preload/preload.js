@@ -136,7 +136,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
 })
 
-// ======== Function========
+// ======== Function ========
 function formatNumber(number) {
     number = number.toFixed(2);
     const prefixes = ['', 'K', 'M', 'B'];
@@ -182,7 +182,7 @@ function formatDate2(dateStr) {
     return formattedDate;
 }
 
-// ======== Ipc On ========
+// ======== Ipc Renderer On ========
 ipcRenderer.on('app/login-error', (event, data) => {
     document.getElementById('wrongInformations').style.display = "block"
 })

@@ -88,6 +88,9 @@ ipcMain.on('api/add-car', async (event, data) => {
             // Refresh most car used
             let mostCarUsed = await dataBaseComponent.getMostCarUsedController()
             win.webContents.send('database/most-car-used', mostCarUsed)
+            // Refresh all History
+            let allHistory = await dataBaseComponent.getAllRecordFromUserController()
+            win.webContents.send('database/send-all-history', allHistory.reverse())
         }
     }
 });
@@ -112,6 +115,9 @@ ipcMain.on('api/add-energy', async (event, data) => {
             // Refresh top 10 history
             let history = await dataBaseComponent.getAllRecordFromUserController()
             win.webContents.send('database/top-10-history', history.reverse())
+            // Refresh all History
+            let allHistory = await dataBaseComponent.getAllRecordFromUserController()
+            win.webContents.send('database/send-all-history', allHistory.reverse())
         }
     }
 });
