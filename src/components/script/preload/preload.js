@@ -89,6 +89,7 @@ document.addEventListener('DOMContentLoaded', function() {
         const selectedCarType = Array.from(carTypes).find(div => div.dataset.type === 'true');
         // Get Date Selected
         let dateInputSelect = (document.getElementById("dashboard-inputToday").dataset.select == "true") ? new Date().toISOString().slice(0, 10).replace(/-/g, '/') : document.getElementById("dashboard-inputDateAddRecord").value
+        console.log(dateInputSelect);
 
         const data = {
             carType : (selectedCarType ? selectedCarType.innerHTML : null),
@@ -115,6 +116,8 @@ document.addEventListener('DOMContentLoaded', function() {
             value : parseInt(document.getElementById('addEnergyValue').value),
             date : new Date().toISOString().slice(0, 10).replace(/-/g, '/'),
         }
+        console.log(data.date);
+
 
         if (data.country && data.unit && data.value) {
             console.log("ALL GOOD");
@@ -193,16 +196,36 @@ ipcRenderer.on('database/send-user-stats', (event, data) => {
 })
 
 ipcRenderer.on('database/car-record-added', (event, data) => {
+    // Refresh Data
     document.getElementById('carCarbonStats').innerHTML = formatNumber(data._doc.total_carbon_vehicle)
     document.getElementById('electricityCarbonStats').innerHTML = formatNumber(data._doc.total_carbon_electricity)
     document.getElementById('fuelCarbonStats').innerHTML = formatNumber(data._doc.total_carbon_fuel)
     document.getElementById('flightCarbonStats').innerHTML = formatNumber(data._doc.total_carbon_flight)
     
+    // Popup Message
     document.getElementById('dashboard-carPopupError').style.color = "yellowgreen"
     document.getElementById('dashboard-carPopupError').innerHTML = "Car added !"
 
+    // Interval
     setInterval(() => {
         document.getElementById('dashboard-carPopupError').innerHTML = ""
+    }, 3000)
+});
+
+ipcRenderer.on('database/energy-record-added', (event, data) => {
+    // Refresh Data
+    document.getElementById('carCarbonStats').innerHTML = formatNumber(data._doc.total_carbon_vehicle)
+    document.getElementById('electricityCarbonStats').innerHTML = formatNumber(data._doc.total_carbon_electricity)
+    document.getElementById('fuelCarbonStats').innerHTML = formatNumber(data._doc.total_carbon_fuel)
+    document.getElementById('flightCarbonStats').innerHTML = formatNumber(data._doc.total_carbon_flight)
+    
+    // Popup Message
+    document.getElementById('dashboard-energyPopupError').style.color = "yellowgreen"
+    document.getElementById('dashboard-energyPopupError').innerHTML = "Bill added !"
+
+    // Interval
+    setInterval(() => {
+        document.getElementById('dashboard-energyPopupError').innerHTML = ""
     }, 3000)
 });
 
@@ -273,7 +296,7 @@ ipcRenderer.on('database/top-10-history', (event, result) => {
                         <div class="dashboard-statsArea2-1Date">${formatDate2(result[i]._doc.dateInput)}</div>
                         <div class="dashboard-statsArea2-1ContainerData">
                             <div class="dashboard-statsArea2-1Data">${result[i]._doc.string_value} - ${formatNumber(result[i]._doc.carbon_kg)} kg</div>
-                            <div class="dashboard-statsArea2-1Percentage flex" style="background-color:${color}">${formatNumber(percentage)}%</div>
+                            <div class="dashboard-statsArea2-1Percentage" style="background-color:${color}">${formatNumber(percentage)}%</div>
                         </div>
                     </div>
                 </div>

@@ -155,7 +155,7 @@ exports.addCarRecord = async (data) => {
 		const newCarRecord = new CarRecord({
 			idAccount: idUserDataJson.id,
 			record_type: 'Car',
-			dateInput: data.input.date,
+			dateInput: data.response.attributes.estimated_at,
 			description_record: data.input.carType,
 			int_value: data.input.km,
 			string_value: `${data.input.km} km`,
@@ -228,7 +228,7 @@ exports.addEnergyRecord = async (data) => {
 			idAccount: idUserDataJson.id,
 			record_type: 'Energy',
 			dateInput: data.response.attributes.estimated_at,
-			description_record: `From ${data.input.country}`,
+			description_record: `Country ${data.input.country}`,
 			int_value: data.input.value,
 			string_value: `${data.input.value} ${(data.response.attributes.electricity_unit == "kwh") ? "kwh" : "mwh"}`,
 			carbon_g: data.response.attributes.carbon_g,

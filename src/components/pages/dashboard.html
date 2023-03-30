@@ -83,7 +83,7 @@
                 <!-- == Adding Energy PopUp == -->
                 <div class="dashboard-areaEnergyButton" id="dashboard-areaEnergyButton">
                     <!-- Energy Title -->
-                    <div class="dashboard-carPopupTitleArea flex"><i class="fa-solid fa-arrow-left"></i> Add an electricity bill</div>
+                    <div class="dashboard-energyPopupTitleArea flex"><i class="fa-solid fa-arrow-left"></i> Add an electricity bill</div>
                     <div class="dashboard-energyPopupError" id="dashboard-energyPopupError" data-error="false"></div>
                     <!-- Energy Model (Brand, Model) -->
                     <div class="dashboard-energyPopupInfoArea flex">
@@ -92,11 +92,11 @@
                     </div>
                     <!-- Energy Info (Years, Km) -->
                     <div class="dashboard-energyPopupInfoArea flex">
-                        <input type="text" class="dashboard-inputCarModel" name="" id="addEnergyUnit" value="mwh" placeholder="Unit">
+                        <input type="text" class="dashboard-inputCarModel" name="" id="addEnergyUnit" value="kwh" placeholder="Unit">
                         <input type="number" class="dashboard-inputCarModel" name="" id="addEnergyValue" min="1" max="999" placeholder="Value">
                     </div>
                     <!-- Add Button -->
-                    <div class="dashboard-carPopupSendButtonArea flex">
+                    <div class="dashboard-energyPopupSendButtonArea flex">
                         <button class="dashboard-carPopupButton" id="addEnergyRecord">Add</button>
                     </div>
                 </div>
@@ -200,7 +200,7 @@
                             <!-- First Graph -->
                             <div class="dashboard-statsArea1-1 flex">
                                 <div class="dashboard-statsContainerGraphs">
-                                    <div class="dashboard-statsTitleGraph">Summary Carbon</div>
+                                    <div class="dashboard-statsTitleGraph">Summary Carbon (kgCo2)</div>
                                     <div class="dashboard-statsArea1ContainerData">
                                         <div class="dashboard-statsArea1-1DataArea StatsColor-1">
                                             <i class="fi fi-rr-bullet flex"></i>

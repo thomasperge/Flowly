@@ -79,7 +79,7 @@ ipcMain.on('api/add-car', async (event, data) => {
         let addCarRecordResponse = await dataBaseComponent.addCarRecordController(dataResponse)
         
         if (addCarRecordResponse) {
-            // Add Car
+            // Get Users Stats
             var result = await dataBaseComponent.returnUserStatsController()
             win.webContents.send('database/car-record-added', result)
             // Refresh top 10 history
@@ -93,7 +93,7 @@ ipcMain.on('api/add-car', async (event, data) => {
 });
 
 ipcMain.on('api/add-energy', async (event, data) => {
-    // const win = BrowserWindow.getAllWindows()[0];
+    const win = BrowserWindow.getAllWindows()[0];
     
     let dataResponse = {
         input: data,
@@ -106,15 +106,12 @@ ipcMain.on('api/add-energy', async (event, data) => {
         let addEnergyRecordResponse = await dataBaseComponent.addEnergyRecordController(dataResponse)
         
         if (addEnergyRecordResponse) {
-            // Add Car
+            // Get Users Stats
             var result = await dataBaseComponent.returnUserStatsController()
-            win.webContents.send('database/car-record-added', result)
+            win.webContents.send('database/energy-record-added', result)
             // Refresh top 10 history
             let history = await dataBaseComponent.getAllRecordFromUserController()
             win.webContents.send('database/top-10-history', history.reverse())
-            // Refresh most car used
-            let mostCarUsed = await dataBaseComponent.getMostCarUsedController()
-            win.webContents.send('database/most-car-used', mostCarUsed)
         }
     }
 });
