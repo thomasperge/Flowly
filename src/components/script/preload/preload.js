@@ -243,7 +243,7 @@ ipcRenderer.on('database/top-10-history', (event, result) => {
         let final = (result.length >= 10) ? 9 : result.length
         
         for(let i = 0; i <= final-1; i++) {
-            let percentage = (result[i+1] != undefined) ? formatNumber(result[i]._doc.carbon_kg - result[i + 1]._doc.carbon_kg) : "-"
+            let percentage = (result[i+1] != undefined) ? result[i]._doc.carbon_kg - result[i + 1]._doc.carbon_kg : "-"
             let color = (percentage > 0) ? "rgba(255, 0, 0, 0.404)" : "rgba(0, 255, 76, 0.404)"
             
             const div = document.createElement('div');
@@ -253,8 +253,8 @@ ipcRenderer.on('database/top-10-history', (event, result) => {
                         <div class="dashboard-statsArea2-1Title">${result[i]._doc.record_type} - ${result[i]._doc.description_record}</div>
                         <div class="dashboard-statsArea2-1Date">${formatDate2(result[i]._doc.dateInput)}</div>
                         <div class="dashboard-statsArea2-1ContainerData">
-                            <div class="dashboard-statsArea2-1Data">${result[i]._doc.string_value} - ${result[i]._doc.carbon_kg}kg</div>
-                            <div class="dashboard-statsArea2-1Percentage flex" style="background-color:${color}">${percentage}%</div>
+                            <div class="dashboard-statsArea2-1Data">${result[i]._doc.string_value} - ${formatNumber(result[i]._doc.carbon_kg)} kg</div>
+                            <div class="dashboard-statsArea2-1Percentage flex" style="background-color:${color}">${formatNumber(percentage)}%</div>
                         </div>
                     </div>
                 </div>
@@ -267,12 +267,6 @@ ipcRenderer.on('database/top-10-history', (event, result) => {
 
 ipcRenderer.on('database/most-car-used', (event, result) => {
     if (result != null) {
-        console.log(result[0][0]);
-        console.log(result[0][1]);
-
-        console.log(result[1][0]);
-        console.log(result[1][1]);
-
         const container = document.querySelector('.dashboard-statsArea1-2-1ContainerData');
         container.innerHTML = ""
         
@@ -321,8 +315,10 @@ ipcRenderer.on('database/most-car-used', (event, result) => {
             </div>
         `;
         container.appendChild(card2);
+    } else {
+        const container = document.querySelector('.dashboard-statsArea1-2-1ContainerData');
+        container.innerHTML = "No data"
     }
 })
-
 
 contextBridge.exposeInMainWorld("app", API)
