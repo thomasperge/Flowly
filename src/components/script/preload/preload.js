@@ -108,14 +108,16 @@ document.addEventListener('DOMContentLoaded', function() {
     // == Energy "Add" Button ==
     let addEnergyButton = document.getElementById('addEnergyRecord')
     addEnergyButton?.addEventListener('click', () => {
+
         const data = {
             country : document.getElementById('addEnergyCountry').value,
             unit : document.getElementById('addEnergyUnit').value,
             value : parseInt(document.getElementById('addEnergyValue').value),
-            date : Date.now(),
+            date : new Date().toISOString().slice(0, 10).replace(/-/g, '/'),
         }
 
-        if (data.carType && data.years && data.km && data.date) {
+        if (data.country && data.unit && data.value) {
+            console.log("ALL GOOD");
             ipcRenderer.send('api/add-energy', data);
         } else {
             document.getElementById('dashboard-energyPopupError').style.color = "red"

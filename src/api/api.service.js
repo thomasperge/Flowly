@@ -81,4 +81,35 @@ const getEstimateVehicleCarbon = async (data) => {
     });
 };
 
-module.exports = { getEstimate, getEstimateVehicleCarbon };
+/**
+ * Get Estimate Carbon Vehicle
+ * @param {*} data 
+ * @returns 
+ */
+const getEstimateEnergyCarbon = async (data) => {
+    const endpoint = 'https://www.carboninterface.com/api/v1/estimates';
+
+    const config = {
+        headers: {
+            Authorization: 'Bearer ' + API_KEY,
+        },
+    };
+
+    const requestData = {
+        "type": "electricity",
+        "electricity_unit": data.unit,
+        "electricity_value": data.value,
+        "country": data.country,
+        "state": ""
+    }
+
+    return axios.post(endpoint, requestData, config)
+    .then((response) => {
+        return response.data.data
+    })
+    .catch((error) => {
+        console.error(error);
+    });
+};
+
+module.exports = { getEstimate, getEstimateVehicleCarbon, getEstimateEnergyCarbon };

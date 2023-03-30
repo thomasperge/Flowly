@@ -92,6 +92,33 @@ ipcMain.on('api/add-car', async (event, data) => {
     }
 });
 
+ipcMain.on('api/add-energy', async (event, data) => {
+    // const win = BrowserWindow.getAllWindows()[0];
+    
+    let dataResponse = {
+        input: data,
+        response: await apiComponent.getEstimateEnergyCarbonController(data)
+    }
+
+    if (dataResponse == null || dataResponse == undefined) {
+        console.error("Error : ", dataResponse);
+    } else {
+        let addEnergyRecordResponse = await dataBaseComponent.addEnergyRecordController(dataResponse)
+        
+        if (addEnergyRecordResponse) {
+            // Add Car
+            var result = await dataBaseComponent.returnUserStatsController()
+            win.webContents.send('database/car-record-added', result)
+            // Refresh top 10 history
+            let history = await dataBaseComponent.getAllRecordFromUserController()
+            win.webContents.send('database/top-10-history', history.reverse())
+            // Refresh most car used
+            let mostCarUsed = await dataBaseComponent.getMostCarUsedController()
+            win.webContents.send('database/most-car-used', mostCarUsed)
+        }
+    }
+});
+
 // Redirect :
 ipcMain.on('redirect/forgot-password', (event, data) => {
     windows.loadFile('./src/components/pages/register.html')

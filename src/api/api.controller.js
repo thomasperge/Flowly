@@ -18,3 +18,12 @@ exports.getEstimateVehicleCarbonController = async (req, _res) => {
         return error
     }
 };
+
+exports.getEstimateEnergyCarbonController = async (req, _res) => {
+    try {
+        const result = await apiService.getEstimateEnergyCarbon(req);
+        return result
+    } catch (error) {
+        return error
+    }
+};

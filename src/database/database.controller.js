@@ -52,6 +52,15 @@ exports.addCarRecordController = async (req, _res) => {
   }
 };
 
+exports.addEnergyRecordController = async (req, _res) => {
+  try {
+    let result = await dbService.addEnergyRecord(req);
+    return result;
+  } catch (error) {
+    return error
+  }
+};
+
 exports.getAllRecordFromUserController = async (_req, _res) => {
   try {
     let result = await dbService.getAllRecordFromUser();

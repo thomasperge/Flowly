@@ -220,6 +220,45 @@ exports.addCarRecord = async (data) => {
 	}
 };
 
+exports.addEnergyRecord = async (data) => {
+	try {
+		const EnergyRecord = mongoose.model('all_record', allRecordSchema);
+
+		const newEnergyRecord = new EnergyRecord({
+			idAccount: idUserDataJson.id,
+			record_type: 'Energy',
+			dateInput: data.response.attributes.estimated_at,
+			description_record: `From ${data.input.country}`,
+			int_value: data.input.value,
+			string_value: `${data.input.value} ${(data.response.attributes.electricity_unit == "kwh") ? "kwh" : "mwh"}`,
+			carbon_g: data.response.attributes.carbon_g,
+			carbon_lb: data.response.attributes.carbon_lb,
+			carbon_kg: data.response.attributes.carbon_kg,
+			carbon_mt: data.response.attributes.carbon_mt,
+		});
+
+		newEnergyRecord.save()
+
+		// Add User Stats && Car Stats
+		const UsersStats = mongoose.model('users_stats', userStatSchema);
+		const stats = await UsersStats.findOne({ idAccount: idUserDataJson.id })
+
+
+		if(stats) {
+			// SAVE in Db : Users Stats
+			stats.total_carbon_kg += data.response.attributes.carbon_kg;
+			stats.total_electricity_mwh += (data.response.attributes.electricity_unit == "kwh") ? (data.response.attributes.electricity_value/1000) : data.response.attributes.electricity_value;
+			stats.total_carbon_electricity += data.response.attributes.carbon_kg
+			await stats.save()
+		} else {
+			console.log("Erreur : Utilisateur non trouvé");
+		}
+
+		return true
+	} catch (error) {
+		console.log('===> Erreur ici', error.message);
+	}
+};
 /**
  * Retourne all stats of Users
  * @param {*} data 
