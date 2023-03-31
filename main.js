@@ -186,7 +186,7 @@ ipcMain.on("app/login-user", async (event, data) => {
             win.webContents.send('database/average-consumption', averageConsumption)
         });
 
-        
+        // Summary Carbon
         var result = await dataBaseComponent.returnUserStatsController()
         win.webContents.send('database/send-user-stats', result)
         // Refresh History
@@ -195,6 +195,9 @@ ipcMain.on("app/login-user", async (event, data) => {
         // Refresh most car used
         let mostCarUsed = await dataBaseComponent.getMostCarUsedController()
         win.webContents.send('database/most-car-used', mostCarUsed)
+        // Average consumption per day
+        let averageConsumption = await dataBaseComponent.returnUserStatsController()
+        win.webContents.send('database/average-consumption', averageConsumption)
     }
 });
 
