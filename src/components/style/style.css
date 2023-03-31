@@ -1314,8 +1314,10 @@ input[type="date"]::-webkit-input-placeholder {
 }
 
 /* ==== Area 3 - Stats ==== */
-
-/* soon */
+.dashboard-statsLastDayContainer {
+    width: auto;
+    height: 70%;
+}
 
 
 

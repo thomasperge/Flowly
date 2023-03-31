@@ -190,20 +190,24 @@ ipcMain.on("app/login-user", async (event, data) => {
             // Average consumption per day
             let averageConsumption = await dataBaseComponent.returnUserStatsController()
             win.webContents.send('database/average-consumption', averageConsumption)
+
+            console.log("HERE 0");
+            win.webContents.send('graph/test')
+
         });
 
-        // Summary Carbon
-        var result = await dataBaseComponent.returnUserStatsController()
-        win.webContents.send('database/send-user-stats', result)
-        // Refresh History
-        let history = await dataBaseComponent.getAllRecordFromUserController()
-        win.webContents.send('database/top-10-history', history.reverse())
-        // Refresh most car used
-        let mostCarUsed = await dataBaseComponent.getMostCarUsedController()
-        win.webContents.send('database/most-car-used', mostCarUsed)
-        // Average consumption per day
-        let averageConsumption = await dataBaseComponent.returnUserStatsController()
-        win.webContents.send('database/average-consumption', averageConsumption)
+        // // Summary Carbon
+        // var result = await dataBaseComponent.returnUserStatsController()
+        // win.webContents.send('database/send-user-stats', result)
+        // // Refresh History
+        // let history = await dataBaseComponent.getAllRecordFromUserController()
+        // win.webContents.send('database/top-10-history', history.reverse())
+        // // Refresh most car used
+        // let mostCarUsed = await dataBaseComponent.getMostCarUsedController()
+        // win.webContents.send('database/most-car-used', mostCarUsed)
+        // // Average consumption per day
+        // let averageConsumption = await dataBaseComponent.returnUserStatsController()
+        // win.webContents.send('database/average-consumption', averageConsumption)
     }
 });
 

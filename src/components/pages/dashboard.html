@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel='stylesheet' href='https://cdn-uicons.flaticon.com/uicons-regular-rounded/css/uicons-regular-rounded.css'>
     <link rel='stylesheet' href='https://cdn-uicons.flaticon.com/uicons-bold-rounded/css/uicons-bold-rounded.css'>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.8.0/chart.min.js"></script>
     <link rel="stylesheet" href="./../style/style.css">
     <webview src="https://example.com" preload="src/components/script/preload/preload.js"></webview>
     <title>Flowly Beta - Dashboard</title>
@@ -342,6 +343,10 @@
                             <div class="dashboard-statsArea3-1 flex">
                                 <div class="dashboard-statsContainerGraphs">
                                     <div class="dashboard-statsTitleGraph">Last day</div>
+                                    <!-- Container graph -->
+                                    <div class="dashboard-statsLastDayContainer flex">
+                                        <canvas id="myChart"></canvas>
+                                    </div>
                                 </div>
                             </div>
                             <!-- Right Area -->

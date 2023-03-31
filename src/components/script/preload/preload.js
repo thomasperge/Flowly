@@ -1,4 +1,5 @@
 const { ipcRenderer, contextBridge } = require('electron')
+const { Chart, registerables } = require('chart.js');
 
 // Initialize API Send (minus & close button)
 const API = {
@@ -366,5 +367,30 @@ ipcRenderer.on('database/average-consumption', (event, data) => {
     document.getElementById('averageCarDay').innerHTML = formatNumber(data._doc.total_carbon_vehicle/365)
     document.getElementById('averageFuelDay').innerHTML = formatNumber(data._doc.total_carbon_fuel/365)
 })
+
+ipcRenderer.on('graph/test', (event, data) => {
+    Chart.register(...registerables);
+    const ctx = document.getElementById('myChart');
+
+    new Chart(ctx, {
+        type: 'line',
+        data: {
+            labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange', 'Test', 'Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange', 'Test'],
+            datasets: [{
+                label: '# of Votes',
+                data: [12, 19, 3, 5, 2, 3, 28, 12, 19, 3, 5, 2, 3, 28],
+                borderWidth: 1
+            }]
+        },
+        options: {
+            scales: {
+                y: {
+                    beginAtZero: true
+                }
+            }
+        }
+    });
+})
+
 
 contextBridge.exposeInMainWorld("app", API)
