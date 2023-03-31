@@ -45,7 +45,6 @@ app.on('ready', async () => {
     .then(() => console.log('MongoDB : Ready !'));
 });
 
-
 app.whenReady().then(async () => {
     createWindow()
 })
@@ -167,12 +166,13 @@ ipcMain.on("app/login-user", async (event, data) => {
 
         windows.loadFile('./src/components/pages/dashboard.html')
 
-        // Test
+        // When Refresh App
         const win = BrowserWindow.getAllWindows()[0];
 
         win.webContents.on('did-finish-load', async () => {
             const win = BrowserWindow.getAllWindows()[0];
         
+            // Summary Carbon
             var result = await dataBaseComponent.returnUserStatsController()
             win.webContents.send('database/send-user-stats', result)
             // Refresh History
@@ -181,6 +181,9 @@ ipcMain.on("app/login-user", async (event, data) => {
             // Refresh most car used
             let mostCarUsed = await dataBaseComponent.getMostCarUsedController()
             win.webContents.send('database/most-car-used', mostCarUsed)
+            // Average consumption per day
+            let averageConsumption = await dataBaseComponent.returnUserStatsController()
+            win.webContents.send('database/average-consumption', averageConsumption)
         });
 
         

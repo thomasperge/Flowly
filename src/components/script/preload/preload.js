@@ -133,7 +133,6 @@ document.addEventListener('DOMContentLoaded', function() {
     historyLogoNavbar?.addEventListener('click', () => {
         ipcRenderer.send('database/display-history');
     })
-
 })
 
 // ======== Function ========
@@ -360,6 +359,12 @@ ipcRenderer.on('database/most-car-used', (event, result) => {
         const container = document.querySelector('.dashboard-statsArea1-2-1ContainerData');
         container.innerHTML = "No data"
     }
+})
+
+ipcRenderer.on('database/average-consumption', (event, data) => {
+    document.getElementById('averageElectricDay').innerHTML = formatNumber(data._doc.total_carbon_electricity/365)
+    document.getElementById('averageCarDay').innerHTML = formatNumber(data._doc.total_carbon_vehicle/365)
+    document.getElementById('averageFuelDay').innerHTML = formatNumber(data._doc.total_carbon_fuel/365)
 })
 
 contextBridge.exposeInMainWorld("app", API)
