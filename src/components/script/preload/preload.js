@@ -375,10 +375,11 @@ ipcRenderer.on('graph/test', (event, data) => {
     new Chart(ctx, {
         type: 'line',
         data: {
-            labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange', 'Test', 'Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange', 'Test'],
+            labels: ['21', '22', '23', '24', '25', '26', '27', '28', '29', '30', '31', '01'],
             datasets: [{
-                data: [12, 19, 3, 5, 2, 3, 28, 12, 19, 3, 5, 2, 3, 28],
+                data: [11, 22, 20, 24, 9, 26, 14, 18, 5, 30, 6, 01],
                 fill: false,
+                borderColor: "black",
                 tension: 0.3,
                 borderWidth: 3.5,
             }]
