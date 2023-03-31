@@ -90,6 +90,9 @@ ipcMain.on('api/add-car', async (event, data) => {
             // Refresh all History
             let allHistory = await dataBaseComponent.getAllRecordFromUserController()
             win.webContents.send('database/send-all-history', allHistory.reverse())
+            // Average consumption per day
+            let averageConsumption = await dataBaseComponent.returnUserStatsController()
+            win.webContents.send('database/average-consumption', averageConsumption)
         }
     }
 });
@@ -117,6 +120,9 @@ ipcMain.on('api/add-energy', async (event, data) => {
             // Refresh all History
             let allHistory = await dataBaseComponent.getAllRecordFromUserController()
             win.webContents.send('database/send-all-history', allHistory.reverse())
+            // Average consumption per day
+            let averageConsumption = await dataBaseComponent.returnUserStatsController()
+            win.webContents.send('database/average-consumption', averageConsumption)
         }
     }
 });
