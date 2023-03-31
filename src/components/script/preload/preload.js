@@ -377,17 +377,36 @@ ipcRenderer.on('graph/test', (event, data) => {
         data: {
             labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange', 'Test', 'Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange', 'Test'],
             datasets: [{
-                label: '# of Votes',
                 data: [12, 19, 3, 5, 2, 3, 28, 12, 19, 3, 5, 2, 3, 28],
-                borderWidth: 1
+                fill: false,
+                tension: 0.3,
+                borderWidth: 3.5,
             }]
         },
         options: {
+            maintainAspectRatio: false,
+            layout: {
+                padding: {
+                    top: 3, // half border width
+                    bottom: 3,
+                    left: 5,
+                    right: 5
+                },
+            },
+            elements: {
+                point: { radius: 0 },
+            },
+            plugins: {
+                legend: false // Hide legend
+            },
             scales: {
                 y: {
-                    beginAtZero: true
+                    display: false // Hide Y axis labels
+                },
+                x: {
+                    display: true // Hide X axis labels
                 }
-            }
+            },
         }
     });
 })
