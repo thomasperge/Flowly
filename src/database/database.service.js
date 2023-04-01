@@ -22,7 +22,7 @@ exports.addUserInDB = async (data) => {
 		const newUser = new User({
 			type: data.typeUsers,
 			email: data.email,
-			username: "thomas",
+			name: data.name,
 			password: passwordHash,
 		});
 

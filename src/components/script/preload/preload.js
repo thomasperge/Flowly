@@ -32,6 +32,7 @@ document.addEventListener('DOMContentLoaded', function() {
         event.preventDefault();
     
         const formData = new FormData(event.target);
+        const name = formData.get('name');
         const email = formData.get('email');
         const password = formData.get('password');
         let typeUsers;
@@ -45,8 +46,8 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         }
 
-        if (email.length > 0 && password.length > 0) {
-            ipcRenderer.send('database/add-user', {email, password, typeUsers});
+        if (email.length > 0 && password.length > 0 && name.length > 0) {
+            ipcRenderer.send('database/add-user', {name, email, password, typeUsers});
         } else {
             document.getElementById("missingInformations").style.display = "block"
         }
