@@ -348,9 +348,9 @@ exports.getLast10DaysConsumptionCar = async () => {
 	let i = await UsersStats.aggregate([
 		{
 			$match: {
-			idAccount: idUserDataJson.id,
-			dateInput: { $gte: start },
-			record_type: "Car"
+				idAccount: idUserDataJson.id,
+				dateInput: { $gte: start },
+				record_type: "Car"
 			}
 		},
 		{
