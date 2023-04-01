@@ -193,7 +193,7 @@ ipcMain.on("app/login-user", async (event, data) => {
 
             win.webContents.send('graph/test')
 
-            console.log(await dataBaseComponent.testController())
+            console.log(await dataBaseComponent.getLast10DaysConsumptionCarController())
         });
 
         // // Summary Carbon

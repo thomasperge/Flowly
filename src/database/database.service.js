@@ -341,34 +341,62 @@ exports.getMostCarUsed = async () => {
 }
 
 
-exports.test = async () => {
+exports.getLast10DaysConsumptionCar = async () => {
 	const UsersStats = mongoose.model('all_record', allRecordSchema);
 	const start = moment().subtract(10, 'days').startOf('day').toDate();
 
 	let i = await UsersStats.aggregate([
 		{
 			$match: {
-			  idAccount: idUserDataJson.id, // Remplacez ID_DE_L_UTILISATEUR par l'identifiant de l'utilisateur pour lequel vous souhaitez calculer la consommation de carbone.
-			  dateInput: { $gte: start }, // Filtre pour les 10 derniers jours.
+			idAccount: idUserDataJson.id,
+			dateInput: { $gte: start },
+			record_type: "Car"
 			}
-		  },
-		  {
+		},
+		{
 			$group: {
-			  _id: {
-				$dateToString: {
-				  format: '%Y-%m-%d', // Formate la date pour extraire l'année, le mois et le jour.
-				  date: '$dateInput'
-				}
-			  },
-			  carbon: { $sum: '$carbon_kg' } // Calcule la somme du carbone pour chaque jour.
+				_id: {
+					$dateToString: {
+						format: '%Y-%m-%d',
+						date: '$dateInput'
+					}
+				},
+				carbon: { $sum: '$carbon_kg' }
 			}
-		  },
-		  {
+		},
+		{
+			$project: {
+				_id: 1,
+				carbon: { $ifNull: [ "$carbon", 0 ] }
+			}
+		},
+		{
 			$sort: {
-			  _id: 1 // Trie les résultats par date croissante.
+				_id: 1
 			}
-		  }
+		}
 	]);
 
-	return i
+	// Compléter les jours sans données avec 0
+	const dayStats = {};
+	let today = moment().startOf('day');
+	for (let j = 0; j < 10; j++) {
+		let day = today.format('Y-MM-DD');
+		dayStats[day] = 0;
+		today.subtract(1, 'day');
+	}
+
+	for (let j = 0; j < i.length; j++) {
+		let day = i[j]._id;
+		dayStats[day] = i[j].carbon;
+	}
+
+	const stats = Object.entries(dayStats).map(([day, carbon]) => {
+		return {
+			day,
+			carbon
+		}
+	});
+
+	return stats
 };

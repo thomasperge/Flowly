@@ -79,10 +79,9 @@ exports.getMostCarUsedController = async (_req, _res) => {
   }
 };
 
-exports.testController = async (_req, _res) => {
+exports.getLast10DaysConsumptionCarController = async (_req, _res) => {
   try {
-    console.log("HERE TEST");
-    let result = await dbService.test();
+    let result = await dbService.getLast10DaysConsumptionCar();
     return result;
   } catch (error) {
     return error
