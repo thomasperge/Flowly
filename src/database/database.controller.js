@@ -78,3 +78,12 @@ exports.getMostCarUsedController = async (_req, _res) => {
     return error
   }
 };
+
+exports.getLast10DaysConsumptionController = async (req, _res) => {
+  try {
+    let result = await dbService.getLast10DaysConsumption(req);
+    return result;
+  } catch (error) {
+    return error
+  }
+};

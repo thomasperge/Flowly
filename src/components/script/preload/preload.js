@@ -1,4 +1,5 @@
 const { ipcRenderer, contextBridge } = require('electron')
+const { Chart, registerables } = require('chart.js');
 
 // Initialize API Send (minus & close button)
 const API = {
@@ -365,6 +366,73 @@ ipcRenderer.on('database/average-consumption', (event, data) => {
     document.getElementById('averageElectricDay').innerHTML = formatNumber(data._doc.total_carbon_electricity/365)
     document.getElementById('averageCarDay').innerHTML = formatNumber(data._doc.total_carbon_vehicle/365)
     document.getElementById('averageFuelDay').innerHTML = formatNumber(data._doc.total_carbon_fuel/365)
+})
+
+ipcRenderer.on('database/last-10-days', (event, data) => {
+    let carData = data[0].reverse()
+    let energyData = data[1].reverse()
+    let fuelData = data[2].reverse()
+
+    Chart.register(...registerables);
+    const ctx = document.querySelector('#myChart');
+    const oldChart = Chart.getChart(ctx);
+
+    if (oldChart) {
+        oldChart.destroy();
+    }
+
+    new Chart(ctx, {
+        type: 'line',
+        data: {
+            labels: [carData[0].day.slice(5), carData[1].day.slice(5), carData[2].day.slice(5), carData[3].day.slice(5), carData[4].day.slice(5), carData[5].day.slice(5), carData[6].day.slice(5), carData[7].day.slice(5), carData[8].day.slice(5), carData[9].day.slice(5)],
+            datasets: [{
+                data: [carData[0].carbon, carData[1].carbon, carData[2].carbon, carData[3].carbon, carData[4].carbon, carData[5].carbon, carData[6].carbon, carData[7].carbon, carData[8].carbon, carData[9].carbon],
+                fill: false,
+                borderColor: "#c2bbf0",
+                tension: 0.3,
+                borderWidth: 3.5,
+            },
+            {
+                data: [energyData[0].carbon, energyData[1].carbon, energyData[2].carbon, energyData[3].carbon, energyData[4].carbon, energyData[5].carbon, energyData[6].carbon, energyData[7].carbon, energyData[8].carbon, energyData[9].carbon],
+                fill: false,
+                borderColor: "#f1e3f3",
+                tension: 0.3,
+                borderWidth: 3.5,
+            },
+            {
+                data: [fuelData[0].carbon, fuelData[1].carbon, fuelData[2].carbon, fuelData[3].carbon, fuelData[4].carbon, fuelData[5].carbon, fuelData[6].carbon, fuelData[7].carbon, fuelData[8].carbon, fuelData[9].carbon],
+                fill: false,
+                borderColor: "#8fb8ed",
+                tension: 0.3,
+                borderWidth: 3.5,
+            }]
+        },
+        options: {
+            maintainAspectRatio: false,
+            layout: {
+                padding: {
+                    top: 1,
+                    bottom: 1,
+                    left: 12,
+                    right: 12
+                },
+            },
+            elements: {
+                point: { radius: 0 },
+            },
+            plugins: {
+                legend: false // Hide legend
+            },
+            scales: {
+                y: {
+                    display: false // Hide Y axis labels
+                },
+                x: {
+                    display: true // Hide X axis labels
+                }
+            },
+        }
+    });
 })
 
 contextBridge.exposeInMainWorld("app", API)
