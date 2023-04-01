@@ -162,6 +162,15 @@ input[type="date"]::-webkit-input-placeholder {
 .StatsColor-6 {
     background-color: #6fcaab;
 }
+.GraphColor-1 {
+    background-color: #f1e3f3;
+}
+.GraphColor-2 {
+    background-color: #c2bbf0;
+}
+.GraphColor-3 {
+    background-color: #8fb8ed;
+}
 
 /* History Color */
 .HistoryColor-1 {
@@ -1223,7 +1232,6 @@ input[type="date"]::-webkit-input-placeholder {
     width: 30%;
     height: 95%;
     border-radius: 22px 22px 0 0;
-    background-color: #c9539cb1;
 }
 
 .dashboard-statsArea1-3TitleContainer {

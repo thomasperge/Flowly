@@ -379,7 +379,21 @@ ipcRenderer.on('graph/test', (event, data) => {
             datasets: [{
                 data: [11, 22, 20, 24, 9, 26, 14, 18, 5, 30, 6, 01],
                 fill: false,
-                borderColor: "black",
+                borderColor: "#f1e3f3",
+                tension: 0.3,
+                borderWidth: 3.5,
+            },
+            {
+                data: [22, 20, 24, 9, 26, 14, 18, 5, 30, 6, 01, 11],
+                fill: false,
+                borderColor: "#c2bbf0",
+                tension: 0.3,
+                borderWidth: 3.5,
+            },
+            {
+                data: [20, 24, 9, 26, 14, 18, 5, 30, 6, 01, 11, 22],
+                fill: false,
+                borderColor: "#8fb8ed",
                 tension: 0.3,
                 borderWidth: 3.5,
             }]
@@ -388,10 +402,10 @@ ipcRenderer.on('graph/test', (event, data) => {
             maintainAspectRatio: false,
             layout: {
                 padding: {
-                    top: 3, // half border width
-                    bottom: 3,
-                    left: 5,
-                    right: 5
+                    top: 1,
+                    bottom: 1,
+                    left: 12,
+                    right: 12
                 },
             },
             elements: {
