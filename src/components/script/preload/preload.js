@@ -369,13 +369,17 @@ ipcRenderer.on('database/average-consumption', (event, data) => {
 })
 
 ipcRenderer.on('database/last-10-days', (event, data) => {
-    console.log(data);
     let carData = data[0].reverse()
     let energyData = data[1].reverse()
     let fuelData = data[2].reverse()
 
     Chart.register(...registerables);
-    const ctx = document.getElementById('myChart');
+    const ctx = document.querySelector('#myChart');
+    const oldChart = Chart.getChart(ctx);
+
+    if (oldChart) {
+        oldChart.destroy();
+    }
 
     new Chart(ctx, {
         type: 'line',
@@ -384,14 +388,14 @@ ipcRenderer.on('database/last-10-days', (event, data) => {
             datasets: [{
                 data: [carData[0].carbon, carData[1].carbon, carData[2].carbon, carData[3].carbon, carData[4].carbon, carData[5].carbon, carData[6].carbon, carData[7].carbon, carData[8].carbon, carData[9].carbon],
                 fill: false,
-                borderColor: "#f1e3f3",
+                borderColor: "#c2bbf0",
                 tension: 0.3,
                 borderWidth: 3.5,
             },
             {
                 data: [energyData[0].carbon, energyData[1].carbon, energyData[2].carbon, energyData[3].carbon, energyData[4].carbon, energyData[5].carbon, energyData[6].carbon, energyData[7].carbon, energyData[8].carbon, energyData[9].carbon],
                 fill: false,
-                borderColor: "#c2bbf0",
+                borderColor: "#f1e3f3",
                 tension: 0.3,
                 borderWidth: 3.5,
             },
@@ -430,6 +434,5 @@ ipcRenderer.on('database/last-10-days', (event, data) => {
         }
     });
 })
-
 
 contextBridge.exposeInMainWorld("app", API)

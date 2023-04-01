@@ -93,6 +93,13 @@ ipcMain.on('api/add-car', async (event, data) => {
             // Average consumption per day
             let averageConsumption = await dataBaseComponent.returnUserStatsController()
             win.webContents.send('database/average-consumption', averageConsumption)
+            // Last 10 days Car Consumption
+            let last10DaysConsumptionData = [
+                await dataBaseComponent.getLast10DaysConsumptionController("Car"),
+                await dataBaseComponent.getLast10DaysConsumptionController("Energy"),
+                await dataBaseComponent.getLast10DaysConsumptionController("Fuel")
+            ]
+            win.webContents.send('database/last-10-days', last10DaysConsumptionData)
         }
     }
 });
@@ -123,6 +130,13 @@ ipcMain.on('api/add-energy', async (event, data) => {
             // Average consumption per day
             let averageConsumption = await dataBaseComponent.returnUserStatsController()
             win.webContents.send('database/average-consumption', averageConsumption)
+            // Last 10 days Car Consumption
+            let last10DaysConsumptionData = [
+                await dataBaseComponent.getLast10DaysConsumptionController("Car"),
+                await dataBaseComponent.getLast10DaysConsumptionController("Energy"),
+                await dataBaseComponent.getLast10DaysConsumptionController("Fuel")
+            ]
+            win.webContents.send('database/last-10-days', last10DaysConsumptionData)
         }
     }
 });
