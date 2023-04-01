@@ -51,7 +51,7 @@ app.whenReady().then(async () => {
 
 
 // ========= All Ipc Call =========
-// Database :
+// == Database : ==
 ipcMain.on('database/add-user', (event, data) => {
     dataBaseComponent.addUserController(data)
     windows.loadFile('./src/components/pages/login.html')
@@ -63,7 +63,14 @@ ipcMain.on('database/display-history', async () => {
     win.webContents.send('database/send-all-history', result.reverse())
 })
 
-// Api :
+ipcMain.on('database/profile-username', async () => {
+    const win = BrowserWindow.getAllWindows()[0];
+    let userAccount = await dataBaseComponent.returnUserDataFromIdController()
+    win.webContents.send('database/profile-display-account', userAccount)
+
+})
+
+// == Api : ==
 ipcMain.on('api/add-car', async (event, data) => {
     const win = BrowserWindow.getAllWindows()[0];
     
@@ -141,7 +148,7 @@ ipcMain.on('api/add-energy', async (event, data) => {
     }
 });
 
-// Redirect :
+// == Redirect : ==
 ipcMain.on('redirect/forgot-password', (event, data) => {
     windows.loadFile('./src/components/pages/register.html')
 });
@@ -150,7 +157,7 @@ ipcMain.on('redirect/have-account', (event, data) => {
     windows.loadFile('./src/components/pages/login.html')
 });
 
-// Function :
+// == Function : ==
 function saveConfig(config, configPath) {
     fs.writeFileSync(configPath, JSON.stringify(config));
 }
@@ -164,7 +171,7 @@ function loadConfig(configPath) {
     }
 }
 
-// App :
+// == App : ==
 ipcMain.on("app/login-user", async (event, data) => {
     const win = BrowserWindow.getAllWindows()[0];
     let userFound = await dataBaseComponent.loginUserController(data)

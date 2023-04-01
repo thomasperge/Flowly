@@ -1473,7 +1473,7 @@ input[type="date"]::-webkit-input-placeholder {
     width: 100%;
     height: auto;
     font-family: "GothamBold";
-    font-size: 1.8vh;
+    font-size: 2vh;
     color: #6f6c6b;
 }
 

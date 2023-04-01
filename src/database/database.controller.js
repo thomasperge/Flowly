@@ -43,6 +43,15 @@ exports.returnUserDataFromEmailController = async (req, _res) => {
   }
 };
 
+exports.returnUserDataFromIdController = async (_req, _res) => {
+  try {
+    const result = await dbService.returnUserDataFromId();
+    return result;
+  } catch (error) {
+    return error
+  }
+};
+
 exports.addCarRecordController = async (req, _res) => {
   try {
     let result = await dbService.addCarRecord(req);

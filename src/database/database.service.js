@@ -145,6 +145,14 @@ exports.returnUserDataFromEmail = async (data) => {
 	}
 };
 
+exports.returnUserDataFromId = async (data) => {
+	const User = mongoose.model('account', accountSchema);
+
+	let userFound = await User.findOne({ _id: idUserDataJson.id })
+
+	return (userFound) ? userFound : undefined
+};
+
 /**
  * Add car record => return true id add in Db
  * @param {*} data 

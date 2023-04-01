@@ -135,6 +135,12 @@ document.addEventListener('DOMContentLoaded', function() {
     historyLogoNavbar?.addEventListener('click', () => {
         ipcRenderer.send('database/display-history');
     })
+
+    // == Profile ==
+    let profileLogo = document.getElementById('logoProfile')
+    profileLogo?.addEventListener('click', () => {
+        ipcRenderer.send('database/profile-username')
+    })
 })
 
 // ======== Function ========
@@ -434,6 +440,17 @@ ipcRenderer.on('database/last-10-days', (event, data) => {
             },
         }
     });
+})
+
+ipcRenderer.on('database/profile-display-account', (event, data) => {
+    // Date
+    const options = { weekday: 'long', day: 'numeric', month: 'long' };
+    const date = new Date();
+    const formattedDate = date.toLocaleDateString('fr-FR', options).replace(/\b\d{1,2}(st|nd|rd|th)\b/g, '$& ');
+    document.getElementById('profileDate').innerHTML = `${formattedDate}`
+
+    // Welcome
+    document.getElementById('profileWelcome').innerHTML = `Welcome, ${data._doc.name}`
 })
 
 contextBridge.exposeInMainWorld("app", API)
