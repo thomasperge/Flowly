@@ -420,10 +420,10 @@ profileLogoNavbar?.addEventListener('click', () => {
 
     // Container
     if (profileContainer.style.display == "none") {
-        profileContainer.style.display = "flex"
+        profileContainer.style.display = "block"
         transitionOpacity(profileContainer, 170)
     } else {
-        profileContainer.style.display = "flex"
+        profileContainer.style.display = "block"
     }
 
     // Undisplay all other container
