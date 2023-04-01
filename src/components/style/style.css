@@ -1457,24 +1457,26 @@ input[type="date"]::-webkit-input-placeholder {
 .profile-SContainer1 {
     display: grid;
     width: 100%;
-    /* height: 18%; */
     gap: 1vh;
 }
 
 .profile-SContainer2 {
     width: 100%;
-    height: 75%;
-    padding: 1.5% 0 1.5% 0;
+    height: 80%;
+    font-family: "GothamBold";
+    font-size: 2.5vh;
+    color: #6f6c6b;
 }
 
 /* Profile Date + Title */
 .profile-dateArea {
     width: 100%;
     height: auto;
-    font-family: "GothamMedium";
+    font-family: "GothamBold";
     font-size: 1.8vh;
     color: #6f6c6b;
 }
+
 .profile-titleArea {
     width: 100%;
     height: auto;
