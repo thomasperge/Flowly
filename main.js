@@ -191,9 +191,9 @@ ipcMain.on("app/login-user", async (event, data) => {
             let averageConsumption = await dataBaseComponent.returnUserStatsController()
             win.webContents.send('database/average-consumption', averageConsumption)
 
-            console.log("HERE 0");
             win.webContents.send('graph/test')
 
+            console.log(await dataBaseComponent.testController())
         });
 
         // // Summary Carbon

@@ -78,3 +78,13 @@ exports.getMostCarUsedController = async (_req, _res) => {
     return error
   }
 };
+
+exports.testController = async (_req, _res) => {
+  try {
+    console.log("HERE TEST");
+    let result = await dbService.test();
+    return result;
+  } catch (error) {
+    return error
+  }
+};
