@@ -341,7 +341,7 @@ exports.getMostCarUsed = async () => {
 }
 
 
-exports.getLast10DaysConsumptionCar = async () => {
+exports.getLast10DaysConsumption = async (type) => {
 	const UsersStats = mongoose.model('all_record', allRecordSchema);
 	const start = moment().subtract(10, 'days').startOf('day').toDate();
 
@@ -350,7 +350,7 @@ exports.getLast10DaysConsumptionCar = async () => {
 			$match: {
 				idAccount: idUserDataJson.id,
 				dateInput: { $gte: start },
-				record_type: "Car"
+				record_type: type
 			}
 		},
 		{
