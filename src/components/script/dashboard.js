@@ -285,6 +285,7 @@ let dashboardLogoNavbar = document.getElementById('logoDashboard')
 let historyLogoNavbar = document.getElementById('logoHistory')
 let diamondLogoNavbar = document.getElementById('logoDiamond')
 let profileLogoNavbar = document.getElementById('logoProfile')
+let contactLogoNavbar = document.getElementById('logoContact')
 
 // Get all container
 let dashboardContainer = document.querySelector('.dashboard-SCountainer2-2-2')
@@ -310,6 +311,9 @@ dashboardLogoNavbar?.addEventListener('click', () => {
 
     profileLogoNavbar.classList.add('logoOff')
     profileLogoNavbar.classList.remove('logoOn')
+
+    contactLogoNavbar.classList.add('logoOff')
+    contactLogoNavbar.classList.remove('logoOn')
     
     dashboardLogoNavbar.classList.remove('logoOff')
     dashboardLogoNavbar.classList.add('logoOn')
@@ -340,6 +344,9 @@ historyLogoNavbar?.addEventListener('click', () => {
     profileLogoNavbar.classList.add('logoOff')
     profileLogoNavbar.classList.remove('logoOn')
 
+    contactLogoNavbar.classList.add('logoOff')
+    contactLogoNavbar.classList.remove('logoOn')
+
     historyLogoNavbar.classList.remove('logoOff')
     historyLogoNavbar.classList.add('logoOn')
 
@@ -355,23 +362,6 @@ historyLogoNavbar?.addEventListener('click', () => {
     dashboardContainer.style.display = "none"
     premiumContainer.style.display = "none"
     profileContainer.style.display = "none"
-
-    // Set random background-color for all history card
-    // let history = document?.querySelectorAll('.history-area')
-
-    // for (let i = 0; i < history.length; i++) {
-    //     // Check if history-card has already background-color
-    //     if (history[i].classList.contains("HistoryColor-1") || history[i].classList.contains("HistoryColor-2") || history[i].classList.contains("HistoryColor-3") || history[i].classList.contains("HistoryColor-4") || history[i].classList.contains("HistoryColor-5") || history[i].classList.contains("HistoryColor-6")) {
-    //         var randomColor = Math.round(Math.random() * 5) + 1
-    //         history[i].classList = []
-    //         history[i].classList.add("history-area")
-    //         history[i].classList.add("flex")
-    //         history[i].classList.add(`HistoryColor-${randomColor}`)
-    //     } else {
-    //         var randomColor = Math.round(Math.random() * 5) + 1
-    //         history[i].classList.add(`HistoryColor-${randomColor}`)
-    //     }
-    // }
 })
 
 // == Premium ==
@@ -385,6 +375,9 @@ diamondLogoNavbar?.addEventListener('click', () => {
 
     profileLogoNavbar.classList.add('logoOff')
     profileLogoNavbar.classList.remove('logoOn')
+
+    contactLogoNavbar.classList.add('logoOff')
+    contactLogoNavbar.classList.remove('logoOn')
 
     diamondLogoNavbar.classList.remove('logoOff')
     diamondLogoNavbar.classList.add('logoOn')
@@ -415,6 +408,9 @@ profileLogoNavbar?.addEventListener('click', () => {
     diamondLogoNavbar.classList.add('logoOff')
     diamondLogoNavbar.classList.remove('logoOn')
 
+    contactLogoNavbar.classList.add('logoOff')
+    contactLogoNavbar.classList.remove('logoOn')
+
     profileLogoNavbar.classList.remove('logoOff')
     profileLogoNavbar.classList.add('logoOn')
 
@@ -425,6 +421,39 @@ profileLogoNavbar?.addEventListener('click', () => {
     } else {
         profileContainer.style.display = "block"
     }
+
+    // Undisplay all other container
+    dashboardContainer.style.display = "none"
+    historyContainer.style.display = "none"
+    premiumContainer.style.display = "none"
+})
+
+// == Profile ==
+contactLogoNavbar?.addEventListener('click', () => {
+    // Logo
+    historyLogoNavbar.classList.add('logoOff')
+    historyLogoNavbar.classList.remove('logoOn')
+
+    dashboardLogoNavbar.classList.add('logoOff')
+    dashboardLogoNavbar.classList.remove('logoOn')
+
+    diamondLogoNavbar.classList.add('logoOff')
+    diamondLogoNavbar.classList.remove('logoOn')
+
+    profileLogoNavbar.classList.add('logoOff')
+    profileLogoNavbar.classList.remove('logoOn')
+
+    contactLogoNavbar.classList.remove('logoOff')
+    contactLogoNavbar.classList.add('logoOn')
+
+
+    // Container
+    // if (contactLogoNavbar.style.display == "none") {
+    //     contactLogoNavbar.style.display = "block"
+    //     transitionOpacity(contactLogoNavbar, 170)
+    // } else {
+    //     contactLogoNavbar.style.display = "block"
+    // }
 
     // Undisplay all other container
     dashboardContainer.style.display = "none"
