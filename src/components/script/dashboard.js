@@ -292,12 +292,14 @@ let dashboardContainer = document.querySelector('.dashboard-SCountainer2-2-2')
 let historyContainer = document.querySelector('.history-SCountainer2-2-2')
 let premiumContainer = document.querySelector('.premium-SCountainer2-2-2')
 let profileContainer = document.querySelector('.profile-SCountainer2-2-2')
+let contactContainer = document.querySelector('.contact-SCountainer2-2-2')
 
 // Default logo display
 dashboardContainer.style.display = "flex"
 historyContainer.style.display = "none"
 premiumContainer.style.display = "none"
 profileContainer.style.display = "none"
+contactContainer.style.display = "none"
 
 // =========== Logo ===========
 // == DashBoard ==
@@ -330,6 +332,7 @@ dashboardLogoNavbar?.addEventListener('click', () => {
     premiumContainer.style.display = "none"
     historyContainer.style.display = "none"
     profileContainer.style.display = "none"
+    contactContainer.style.display = "none"
 })
 
 // == History ==
@@ -362,6 +365,7 @@ historyLogoNavbar?.addEventListener('click', () => {
     dashboardContainer.style.display = "none"
     premiumContainer.style.display = "none"
     profileContainer.style.display = "none"
+    contactContainer.style.display = "none"
 })
 
 // == Premium ==
@@ -394,6 +398,7 @@ diamondLogoNavbar?.addEventListener('click', () => {
     dashboardContainer.style.display = "none"
     historyContainer.style.display = "none"
     profileContainer.style.display = "none"
+    contactContainer.style.display = "none"
 })
 
 // == Profile ==
@@ -426,6 +431,7 @@ profileLogoNavbar?.addEventListener('click', () => {
     dashboardContainer.style.display = "none"
     historyContainer.style.display = "none"
     premiumContainer.style.display = "none"
+    contactContainer.style.display = "none"
 })
 
 // == Profile ==
@@ -448,15 +454,16 @@ contactLogoNavbar?.addEventListener('click', () => {
 
 
     // Container
-    // if (contactLogoNavbar.style.display == "none") {
-    //     contactLogoNavbar.style.display = "block"
-    //     transitionOpacity(contactLogoNavbar, 170)
-    // } else {
-    //     contactLogoNavbar.style.display = "block"
-    // }
+    if (contactContainer.style.display == "none") {
+        contactContainer.style.display = "block"
+        transitionOpacity(contactContainer, 170)
+    } else {
+        contactContainer.style.display = "block"
+    }
 
     // Undisplay all other container
     dashboardContainer.style.display = "none"
     historyContainer.style.display = "none"
     premiumContainer.style.display = "none"
+    profileContainer.style.display = "none"
 })
