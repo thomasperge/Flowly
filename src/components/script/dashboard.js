@@ -159,7 +159,7 @@ oilButton?.addEventListener('click', () => {
     } else {
         containerAddAbsolute.style.display = "flex"
         unselect.style.display = "block"
-        oilArea.style.display = "flex"
+        oilArea.style.display = "block"
         oilDisplay = true
     }
 })
