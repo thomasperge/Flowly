@@ -1,5 +1,4 @@
 const mongoose = require('mongoose')
-const { typeUsers } = require('./enum.js');
 const { v4: uuidv4 } = require('uuid');
 
 const contactSchema = mongoose.Schema({

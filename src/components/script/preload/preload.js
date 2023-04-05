@@ -1,5 +1,6 @@
 const { ipcRenderer, contextBridge } = require('electron')
 const { Chart, registerables } = require('chart.js');
+const { getCurrentDate } = require('../date')
 
 // Initialize API Send (minus & close button)
 const API = {
@@ -85,13 +86,13 @@ document.addEventListener('DOMContentLoaded', function() {
     // ========= API Event =========
     // == Car "Add" Button ==
     let addCarButton = document.getElementById('addCarRecord')
-    addCarButton?.addEventListener('click', () => {
+    addCarButton?.addEventListener('click', async () => {
         // Get Car type
         const carTypes = document.querySelectorAll('.dashboard-carPopupCarType');
         const selectedCarType = Array.from(carTypes).find(div => div.dataset.type === 'true');
+
         // Get Date Selected
-        let dateInputSelect = (document.getElementById("dashboard-inputToday").dataset.select == "true") ? null : document.getElementById("dashboard-inputDateAddRecord").value
-        console.log(dateInputSelect);
+        let dateInputSelect = (document.getElementById("dashboard-inputToday").dataset.select == "true") ? await getCurrentDate() : document.getElementById("dashboard-inputDateAddRecord").value
 
         const data = {
             carType : (selectedCarType ? selectedCarType.innerHTML : null),
@@ -112,19 +113,14 @@ document.addEventListener('DOMContentLoaded', function() {
     let addEnergyButton = document.getElementById('addEnergyRecord')
     addEnergyButton?.addEventListener('click', () => {
 
-        var actualDate = new Date();
-        actualDate.setHours(actualDate.getHours() + (-(actualDate.getTimezoneOffset() / 60)));
-        var actualDateHours = actualDate.toISOString();
-
         const data = {
             country : document.getElementById('addEnergyCountry').value,
             unit : document.getElementById('addEnergyUnit').value,
             value : parseInt(document.getElementById('addEnergyValue').value),
-            date : actualDateHours,
+            date : getCurrentDate,
         }
 
         if (data.country && data.unit && data.value) {
-            console.log("ALL GOOD");
             ipcRenderer.send('api/add-energy', data);
         } else {
             document.getElementById('dashboard-energyPopupError').style.color = "red"

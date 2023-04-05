@@ -4,6 +4,8 @@ const { totalRecordCarSchema } = require('../../models/stats_record_car');
 const { userStatSchema } = require('../../models/users_stats');
 const { allRecordSchema } = require('../../models/all_record');
 const { contactSchema } = require('../../models/contact')
+const { getCurrentDate } = require('../components/script/date')
+
 const idUserDataJson = require('../../data.json');
 const moment = require('moment');
 const bcrypt = require('bcryptjs');
@@ -165,7 +167,7 @@ exports.addCarRecord = async (data) => {
 		const newCarRecord = new CarRecord({
 			idAccount: idUserDataJson.id,
 			record_type: 'Car',
-			dateInput: (data.input.date == null) ? data.response.attributes.estimated_at : data.input.date,
+			dateInput: data.input.date,
 			description_record: data.input.carType,
 			int_value: data.input.km,
 			string_value: `${data.input.km} km`,
