@@ -8,8 +8,8 @@ const contactSchema = mongoose.Schema({
         default: uuidv4,
         primary: true,
     },
-    idAccount: { 
-        type: Date, 
+    idAccount: {
+        type: String, 
         ref: 'Account',
         required: true,
     },
@@ -19,7 +19,6 @@ const contactSchema = mongoose.Schema({
     },
     nameAccount: {
         type: String,
-        default: typeUsers[1],
         required: true
     },
     email: {
@@ -30,10 +29,6 @@ const contactSchema = mongoose.Schema({
         type: String,
         required: true
     },
-    response: {
-        type: Boolean,
-        default: false
-    }
 })
 
-module.exports = mongoose.model('contact', contactSchema)
+module.exports = mongoose.model('request', contactSchema)

@@ -71,9 +71,13 @@ ipcMain.on('database/profile-username', async () => {
 })
 
 ipcMain.on('contact/send-request', async (event, data) => {
-    console.log(data);
+    const win = BrowserWindow.getAllWindows()[0];
+    if (dataBaseComponent.addContactRequestController(data)) {
+        win.webContents.send('contact/send-request-message', {sucess: true})
+    } else {
+        win.webContents.send('contact/send-request-message', {sucess: false})
+    }
 })
-
 
 // == Api : ==
 ipcMain.on('api/add-car', async (event, data) => {

@@ -96,3 +96,12 @@ exports.getLast10DaysConsumptionController = async (req, _res) => {
     return error
   }
 };
+
+exports.addContactRequestController = async (req, _res) => {
+  try {
+    let result = await dbService.addContactRequest(req);
+    return result;
+  } catch (error) {
+    return error
+  }
+};

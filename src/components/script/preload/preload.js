@@ -149,8 +149,10 @@ document.addEventListener('DOMContentLoaded', function() {
             text : document.getElementById('contactText').value
         }
 
-        ipcRenderer.send('contact/send-request', data)
-        document.getElementById('contactText').value = ""
+        if (data.text) {
+            ipcRenderer.send('contact/send-request', data)
+            document.getElementById('contactText').value = ""
+        }
     })
 })
 
@@ -462,6 +464,14 @@ ipcRenderer.on('database/profile-display-account', (event, data) => {
 
     // Welcome
     document.getElementById('profileWelcome').innerHTML = `Welcome, ${data._doc.name}`
+})
+
+ipcRenderer.on('contact/send-request-message', (event, data) => {
+    if (data.sucess) {
+        
+    } else {
+
+    }
 })
 
 contextBridge.exposeInMainWorld("app", API)

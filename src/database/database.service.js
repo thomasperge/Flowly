@@ -3,6 +3,7 @@ const { accountSchema } = require('../../models/account');
 const { totalRecordCarSchema } = require('../../models/stats_record_car');
 const { userStatSchema } = require('../../models/users_stats');
 const { allRecordSchema } = require('../../models/all_record');
+const { contactSchema } = require('../../models/contact')
 const idUserDataJson = require('../../data.json');
 const moment = require('moment');
 const bcrypt = require('bcryptjs');
@@ -145,7 +146,7 @@ exports.returnUserDataFromEmail = async (data) => {
 	}
 };
 
-exports.returnUserDataFromId = async (data) => {
+exports.returnUserDataFromId = async () => {
 	const User = mongoose.model('account', accountSchema);
 
 	let userFound = await User.findOne({ _id: idUserDataJson.id })
@@ -269,7 +270,7 @@ exports.addEnergyRecord = async (data) => {
 	}
 };
 /**
- * Retourne all stats of Users
+ * Return all stats of Users
  * @param {*} data 
  * @returns 
  */
@@ -407,4 +408,31 @@ exports.getLast10DaysConsumption = async (type) => {
 	});
 
 	return stats
+};
+
+exports.addContactRequest = async (data) => {
+	try {
+		// Get User data
+		var userData = await this.returnUserDataFromId()
+
+		// Create Contact Schema
+		const Request = mongoose.model('request', contactSchema);
+
+		const newRequest = new Request({
+			idAccount: idUserDataJson.id,
+			nameAccount : userData.name,
+			email : userData.email,
+			request : data.text,
+		});
+
+		newRequest.save()
+
+		if (newRequest) {
+			return true
+		}
+
+		return false
+	} catch (error) {
+		console.error(error);
+	}
 };
