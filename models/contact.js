@@ -14,7 +14,11 @@ const contactSchema = mongoose.Schema({
     },
     createdAt: {
         type: Date,
-        default: Date.now
+        default: function() {
+            const date = new Date();
+            date.setUTCHours(date.getUTCHours() + 2); // Ajouter le décalage horaire pour l'Europe de l'Ouest
+            return date;
+        }
     },
     nameAccount: {
         type: String,

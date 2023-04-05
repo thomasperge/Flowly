@@ -111,13 +111,13 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // == Energy "Add" Button ==
     let addEnergyButton = document.getElementById('addEnergyRecord')
-    addEnergyButton?.addEventListener('click', () => {
+    addEnergyButton?.addEventListener('click', async () => {
 
         const data = {
             country : document.getElementById('addEnergyCountry').value,
             unit : document.getElementById('addEnergyUnit').value,
             value : parseInt(document.getElementById('addEnergyValue').value),
-            date : getCurrentDate,
+            date : await getCurrentDate(),
         }
 
         if (data.country && data.unit && data.value) {
