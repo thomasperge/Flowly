@@ -70,6 +70,11 @@ ipcMain.on('database/profile-username', async () => {
 
 })
 
+ipcMain.on('contact/send-request', async (event, data) => {
+    console.log(data);
+})
+
+
 // == Api : ==
 ipcMain.on('api/add-car', async (event, data) => {
     const win = BrowserWindow.getAllWindows()[0];

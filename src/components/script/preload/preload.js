@@ -141,6 +141,17 @@ document.addEventListener('DOMContentLoaded', function() {
     profileLogo?.addEventListener('click', () => {
         ipcRenderer.send('database/profile-username')
     })
+
+    // == Contact "send" button ==
+    let contactSend = document.getElementById('contact-buttonSend')
+    contactSend.addEventListener('click', () => {
+        let data = {
+            text : document.getElementById('contactText').value
+        }
+
+        ipcRenderer.send('contact/send-request', data)
+        document.getElementById('contactText').value = ""
+    })
 })
 
 // ======== Function ========
