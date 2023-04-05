@@ -1506,7 +1506,7 @@ input[type="date"]::-webkit-input-placeholder {
 .contact-inputContainer {
     width: 100%;
     height: fit-content;
-    margin-bottom: 5vh;
+    margin: 3vh 0 5vh 0;
 }
 
 .contact-buttonContainer {
@@ -1521,7 +1521,7 @@ input[type="date"]::-webkit-input-placeholder {
     color: white;
     font-size: 2.9vh;
     font-family: 'GothamBold';
-    padding: 2vh 0 5vh 0;
+    padding: 2vh 0 2vh 0;
 }
 
 /* Input */
@@ -1536,7 +1536,8 @@ input[type="date"]::-webkit-input-placeholder {
     font-size: 2.2vh;
     font-family: 'GothamMedium';
     color: white;
-    background-color: #1e1e21;
+    /* background-color: #181818; */
+    background-color: #151515;
     outline: none;
     border: 2px solid #3d404b;
     border-radius: 13px;
@@ -1557,5 +1558,15 @@ input[type="date"]::-webkit-input-placeholder {
 
 .contact-buttonSend:hover {
     background-color: #4c8969;
+}
 
+.contact-sucessMessageContainer {
+    display: none;
+    width: 100%;
+    height: auto;
+}
+
+.contact-sucessMessage {
+    font-family: 'GothamMedium';
+    font-size: 2.4vh;
 }

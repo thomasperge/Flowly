@@ -468,10 +468,19 @@ ipcRenderer.on('database/profile-display-account', (event, data) => {
 
 ipcRenderer.on('contact/send-request-message', (event, data) => {
     if (data.sucess) {
-        
+        document.querySelector('.contact-sucessMessageContainer').style.display = "flex"
+        document.querySelector('.contact-sucessMessage').style.color = "#2ff71c"
+        document.querySelector('.contact-sucessMessage').innerHTML = "Send message!"
     } else {
-
+        document.querySelector('.contact-sucessMessageContainer').style.display = "flex"
+        document.querySelector('.contact-sucessMessage').style.color = "#f71c1c"
+        document.querySelector('.contact-sucessMessage').innerHTML = "Error, the message is not sent..."
     }
+    
+    setInterval(() => {
+        document.querySelector('.contact-sucessMessageContainer').style.display = "none"
+        document.querySelector('.contact-sucessMessage').innerHTML = ""
+    }, 3000)
 })
 
 contextBridge.exposeInMainWorld("app", API)
