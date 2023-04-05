@@ -1536,7 +1536,6 @@ input[type="date"]::-webkit-input-placeholder {
     font-size: 2.2vh;
     font-family: 'GothamMedium';
     color: white;
-    /* background-color: #181818; */
     background-color: #151515;
     outline: none;
     border: 2px solid #3d404b;

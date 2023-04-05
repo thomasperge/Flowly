@@ -237,7 +237,7 @@ exports.addEnergyRecord = async (data) => {
 		const newEnergyRecord = new EnergyRecord({
 			idAccount: idUserDataJson.id,
 			record_type: 'Energy',
-			dateInput: data.response.attributes.estimated_at,
+			dateInput: data.input.date,
 			description_record: `Country ${data.input.country}`,
 			int_value: data.input.value,
 			string_value: `${data.input.value} ${(data.response.attributes.electricity_unit == "kwh") ? "kwh" : "mwh"}`,

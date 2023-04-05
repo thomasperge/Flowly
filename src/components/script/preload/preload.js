@@ -112,14 +112,16 @@ document.addEventListener('DOMContentLoaded', function() {
     let addEnergyButton = document.getElementById('addEnergyRecord')
     addEnergyButton?.addEventListener('click', () => {
 
+        var actualDate = new Date();
+        actualDate.setHours(actualDate.getHours() + (-(actualDate.getTimezoneOffset() / 60)));
+        var actualDateHours = actualDate.toISOString();
+
         const data = {
             country : document.getElementById('addEnergyCountry').value,
             unit : document.getElementById('addEnergyUnit').value,
             value : parseInt(document.getElementById('addEnergyValue').value),
-            date : new Date().toISOString().slice(0, 10).replace(/-/g, '/'),
+            date : actualDateHours,
         }
-        console.log(data.date);
-
 
         if (data.country && data.unit && data.value) {
             console.log("ALL GOOD");
@@ -476,7 +478,7 @@ ipcRenderer.on('contact/send-request-message', (event, data) => {
         document.querySelector('.contact-sucessMessage').style.color = "#f71c1c"
         document.querySelector('.contact-sucessMessage').innerHTML = "Error, the message is not sent..."
     }
-    
+
     setInterval(() => {
         document.querySelector('.contact-sucessMessageContainer').style.display = "none"
         document.querySelector('.contact-sucessMessage').innerHTML = ""

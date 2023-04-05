@@ -1,5 +1,6 @@
 const mongoose = require('mongoose')
 const { typeUsers } = require('./enum.js');
+const { getCurrentDate } = require('../src/components/script/date.js')
 const { v4: uuidv4 } = require('uuid');
 
 const accountSchema = mongoose.Schema({
@@ -10,7 +11,7 @@ const accountSchema = mongoose.Schema({
     },
     createdAt: { 
         type: Date, 
-        default: Date.now 
+        default: getCurrentDate()
     },
     type: {
         type: String,
