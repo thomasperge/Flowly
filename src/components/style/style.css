@@ -1438,20 +1438,10 @@ input[type="date"]::-webkit-input-placeholder {
 .premium-containerTitle {
     width: 100%;
     height: fit-content;
-    padding: 1vh 0 .7vh 0;
+    padding: 0 0 .7vh 0;
     font-size: 4.2vh;
     font-family: 'GothamBold';
     color: white;
-}
-
-.premium-containerDescription {
-    width: 100%;
-    height: fit-content;
-    justify-content: center;
-    padding: 1vh 0 .7vh 0;
-    font-size: 2.2vh;
-    font-family: 'GothamBold';
-    color: rgb(138, 138, 138);
 }
 
 .premium-containerPlans {
@@ -1491,8 +1481,8 @@ input[type="date"]::-webkit-input-placeholder {
     width: 100%;
     font-size: 2.4vh;
     font-family: 'GothamBold';
-    color: white;
-    background-color: #1d5eff;
+    color: black;
+    background-color: #ffec1d;
     padding: 3px 0 3px 0;
 }
 
@@ -1553,6 +1543,7 @@ input[type="date"]::-webkit-input-placeholder {
     font-size: 2.3vh;
     font-family: 'GothamBold';
     color: white;
+    gap: 1vh;
     background-color: #1d5eff;
 }
 
