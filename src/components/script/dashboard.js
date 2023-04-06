@@ -388,10 +388,10 @@ diamondLogoNavbar?.addEventListener('click', () => {
 
     // Container
     if (premiumContainer.style.display == "none") {
-        premiumContainer.style.display = "flex"
+        premiumContainer.style.display = "block"
         transitionOpacity(premiumContainer, 170)
     } else {
-        premiumContainer.style.display = "flex"
+        premiumContainer.style.display = "block"
     }
     
     // Undisplay all other container

@@ -25,7 +25,7 @@ body {
 }
 
 .drag {
-    -webkit-user-select: none;
+    user-select: none;
     -webkit-app-region: drag;
 }
   
@@ -1428,17 +1428,132 @@ input[type="date"]::-webkit-input-placeholder {
 /* Premium soon */
 .premium-SCountainer2-2-2 {
     display: none;
-    width: 100%;
+    width: 94.5%;
     height: 88%;
     padding: 0;
     overflow: scroll;
     overflow-x: hidden;
 }
 
-.premium-accountTitleBeta {
+.premium-containerTitle {
+    width: 100%;
+    height: fit-content;
+    padding: 1vh 0 .7vh 0;
+    font-size: 4.2vh;
+    font-family: 'GothamBold';
     color: white;
-    font-size: 2.5vh;
-    font-family: "GothamBold";
+}
+
+.premium-containerDescription {
+    width: 100%;
+    height: fit-content;
+    justify-content: center;
+    padding: 1vh 0 .7vh 0;
+    font-size: 2.2vh;
+    font-family: 'GothamBold';
+    color: rgb(138, 138, 138);
+}
+
+.premium-containerPlans {
+    width: 100%;
+    height: max-content;
+    margin-top: 5.5vh;
+    gap: 2.2vh;
+}
+
+/* PLans */
+.premium-firstPlans {
+    width: 23%;
+    height: 50vh;
+    border-radius: 14px;
+    padding: 0 3vh 0 3vh;
+    background-color: #26221f;
+    overflow: hidden;
+}
+
+.premium-secondPlans {
+    width: 30%;
+    height: 53vh;
+    border-radius: 14px;
+    background-color: #25282e;
+    overflow: hidden;
+}
+
+.premium-thirdPlans {
+    width: 26%;
+    height: 50vh;
+    border-radius: 14px;
+    background-color: #26221f;
+    overflow: hidden;
+}
+
+.premium-containerPopular {
+    width: 100%;
+    font-size: 2.4vh;
+    font-family: 'GothamBold';
+    color: white;
+    background-color: #1d5eff;
+    padding: 3px 0 3px 0;
+}
+
+.premium-containerTitlePrice {
+    width: 100%;
+    height: auto;
+    margin: 2vh 0 1vh 0;
+    font-size: 3.3vh;
+    font-family: 'GothamBold';
+    color: white;
+}
+
+.premium-containerPrice {
+    width: 100%;
+    height: auto;
+    font-size: 3.6vh;
+    margin: 0 0 4vh 0;
+    font-family: 'GothamBold';
+    color: white;
+}
+
+.premium-monthTitle {
+    padding-top: 1vh;
+    font-size: 2.2vh;
+    color: rgb(167, 167, 167);
+}
+
+.premium-containerAvantage {
+    width: 100%;
+    height: auto;
+    margin: 2vh 0 5vh 0;
+}
+
+.premium-containerAvantageLine {
+    width: 100%;
+    height: auto;
+    flex-wrap: wrap;
+    padding: 3px 0 3px 0;
+    margin-bottom: 1.3vh;
+    font-size: 2.1vh;
+    font-family: 'GothamBold';
+    gap: 1.2vh;
+    color: white;
+}
+
+.premium-containerGetStarted {
+    width: 100%;
+    height: auto;
+}
+
+.premium-getStartedButton {
+    cursor: pointer;
+    width: 70%;
+    outline: none;
+    border: none;
+    padding: 7px 0 7px 0;
+    border-radius: 7px;
+    font-size: 2.3vh;
+    font-family: 'GothamBold';
+    color: white;
+    background-color: #1d5eff;
 }
 
 
