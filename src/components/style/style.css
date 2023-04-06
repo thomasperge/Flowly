@@ -1462,7 +1462,7 @@ input[type="date"]::-webkit-input-placeholder {
 }
 
 .premium-secondPlans {
-    width: 30%;
+    width: 26%;
     height: 53vh;
     border-radius: 14px;
     background-color: #25282e;
@@ -1470,9 +1470,10 @@ input[type="date"]::-webkit-input-placeholder {
 }
 
 .premium-thirdPlans {
-    width: 26%;
+    width: 23%;
     height: 50vh;
     border-radius: 14px;
+    padding: 0 3vh 0 3vh;
     background-color: #26221f;
     overflow: hidden;
 }
@@ -1513,10 +1514,18 @@ input[type="date"]::-webkit-input-placeholder {
 .premium-containerAvantage {
     width: 100%;
     height: auto;
-    margin: 2vh 0 5vh 0;
+    margin: 2vh 0 9.3vh 0;
+}
+
+.premium-containerAvantageSecond {
+    width: 100%;
+    height: auto;
+    margin: 2vh 0 9.3vh 0;
+    padding: 0 3vh 0 3vh;
 }
 
 .premium-containerAvantageLine {
+    display: flex;
     width: 100%;
     height: auto;
     flex-wrap: wrap;
