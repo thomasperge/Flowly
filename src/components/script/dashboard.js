@@ -470,16 +470,17 @@ contactLogoNavbar?.addEventListener('click', () => {
 
 // Light / Dark Theme
 const btnToggle = document.querySelector('.btn-toggle');
+
 btnToggle.addEventListener('click', () => {
     const body = document.querySelector('.dashboard-container');
 
     if(body.classList.contains('dark')) {
         body.classList.add('light')
         body.classList.remove('dark')
-        btnToggle.innerHTML = "Light Mode"
+        btnToggle.innerHTML = `<i class="fi fi-rr-brightness flex"></i>`
     } else if (body.classList.contains('light')){
         body.classList.add('dark')
         body.classList.remove('light')
-        btnToggle.innerHTML = "Dark Mode"
+        btnToggle.innerHTML = `<i class="fi fi-rr-moon flex"></i>`
     }
 })

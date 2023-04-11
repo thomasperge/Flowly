@@ -13,6 +13,11 @@
     --darkLightMode: white;
     --mainColor : #e2d390;
     --logoBackground: black;
+    --inverseTheme: black;
+    --backgroundCard: #26221F;
+    --addAreaBackground: #181818;
+    --unselectArea: rgba(0, 0, 0, 0.347);
+    --hoverAddButton: #1a1a1a;
 }
 
 /* ================ Main ================ */
@@ -590,7 +595,6 @@ input[type="date"]::-webkit-input-placeholder {
     font-size: 3.5vh;
     color: var(--mainColor);
     border-radius: 18px;
-    background-color: black;
 }
 
 .dashboard-addLogo {
@@ -600,7 +604,7 @@ input[type="date"]::-webkit-input-placeholder {
 }
 
 .dashboard-addLogo:hover {
-    background-color: rgb(33, 33, 33);
+    background-color: var(--hoverAddButton);
 }
 
 /* Div to add : car, energy, fuel */
@@ -622,7 +626,7 @@ input[type="date"]::-webkit-input-placeholder {
     font-family: "GothamMedium";
     border-radius: 5px;
     border: 1.5px solid #454955;
-    background-color: #26221f;
+    background-color: var(--backgroundCard);
 }
 
 .dashboard-inputToday {
@@ -636,8 +640,7 @@ input[type="date"]::-webkit-input-placeholder {
     font-family: "GothamMedium";
     border-radius: 5px;
     border: 2.5px solid #454955;
-    background-color: #26221f;
-    background-color: #26221f;
+    background-color: var(--backgroundCard);
 }
 
 .dashboard-areaCarButton {
@@ -646,7 +649,7 @@ input[type="date"]::-webkit-input-placeholder {
     height: 100%;
     border-radius: 9px;
     border: 1px solid #25282e;
-    background-color: #181818;
+    background-color: var(--addAreaBackground);
     padding: 1%;
     z-index: 3;
 }
@@ -657,7 +660,7 @@ input[type="date"]::-webkit-input-placeholder {
     height: auto;
     border-radius: 9px;
     border: 1px solid #25282e;
-    background-color: #181818;
+    background-color: var(--addAreaBackground);
     padding: 1% 1% 1.5% 1%;
     z-index: 3;
 }
@@ -668,7 +671,7 @@ input[type="date"]::-webkit-input-placeholder {
     height: 100%;
     border-radius: 8px;
     border: 2px solid black;
-    background-color: #23242a;
+    background-color: var(--addAreaBackground);;
     padding: 1%;
     z-index: 3;
 }
@@ -681,7 +684,7 @@ input[type="date"]::-webkit-input-placeholder {
     width: 91%;
     height: 86%;
     z-index: 2;
-    background-color: rgba(0, 0, 0, 0.347);
+    background-color: var(--unselectArea);
 }
 
 /* == Car PopUp == */
@@ -745,8 +748,8 @@ input[type="date"]::-webkit-input-placeholder {
     font-family: "GothamMedium";
     border-radius: 5px;
     border: 1.5px solid #454955;
-    background-color: #26221f;
-    background-color: #26221f;
+    background-color: var(--backgroundCard);
+    background-color: var(--backgroundCard);
 }
 
 .dashboard-carPopupSendButtonArea {
@@ -773,7 +776,7 @@ input[type="date"]::-webkit-input-placeholder {
     width: fit-content;
     height: auto;
     padding: 0.3vh 0 1.8vh 0;
-    color: white;
+    color: var(--darkLightMode);
     font-family: "GothamMedium";
     font-size: 2.5vh;
     gap: 20px;
@@ -822,6 +825,14 @@ input[type="date"]::-webkit-input-placeholder {
     cursor: pointer;
 }
 
+.btn-toggle {
+    cursor: pointer;
+    color: var(--mainColor);
+    width: fit-content;
+    padding: 2vh 1vh 2vh 1vh;
+    font-size: 3vh;
+}
+
 .dashboard-UserLogo {
     width: 12%;
     height: 100%;
@@ -835,7 +846,7 @@ input[type="date"]::-webkit-input-placeholder {
     width: 6vh;
     height: 6vh;
     border-radius: 100%;
-    color: black;
+    color: var(--darkLightMode);
     font-size: 2.7vh;
     font-family: 'GothamBold';
     border: 1.7px solid var(--mainColor);
@@ -917,7 +928,7 @@ input[type="date"]::-webkit-input-placeholder {
     align-items: center;
     width: 45%;
     height: 100%;
-    color: white;
+    color: var(--darkLightMode);;
     font-size: 2vh;
     font-family: 'GothamBold';
     gap: 30px;
@@ -945,11 +956,11 @@ input[type="date"]::-webkit-input-placeholder {
     height: 75%;
     padding: 0 2vh 0 2vh;
     align-items: center;
-    color: white;
+    color: var(--darkLightMode);;
     font-size: 2vh;
     font-family: "GothamMedium";
     gap: 10px;
-    background-color: #26221f;
+    background-color: var(--backgroundCard);
     border-radius: 50px;
 }
 
@@ -966,13 +977,18 @@ input[type="date"]::-webkit-input-placeholder {
     border-radius: 7px;
 }
 
+.fi-br-square-plus {
+    width: auto;
+    height: auto;
+}
+
 .dashboard-overviewAddDateArea {
-    width: 4.5vh;
-    height: 4.5vh;
+    width: 35px;
+    height: 35px;
     color: black;
-    border-radius: 100%;
-    font-size: 2.65vh;
+    border-radius: 50%;
     cursor: pointer;
+    font-size: 22px;
     background-color: var(--mainColor);
 }
 
@@ -1046,7 +1062,7 @@ input[type="date"]::-webkit-input-placeholder {
     height: 100%;
     border-radius: 26px;
     margin-right: 1vh;
-    background-color: #26221f;
+    background-color: var(--backgroundCard);
 }
 
 /* == Bottom Container - Area == */
@@ -1277,7 +1293,7 @@ input[type="date"]::-webkit-input-placeholder {
     width: 85%;
     height: 80%;
     font-family: "GothamMedium";
-    color: white;
+    color: var(--darkLightMode);;
 }
 
 .dashboard-statsArea2-1Title {
@@ -1285,7 +1301,7 @@ input[type="date"]::-webkit-input-placeholder {
 }
 
 .dashboard-statsArea2-1Date {
-    color: rgba(255, 255, 255, 0.578);
+    color: var(--darkLightMode);
     font-size: 2vh;
 }
 
@@ -1452,7 +1468,7 @@ input[type="date"]::-webkit-input-placeholder {
     height: 50vh;
     border-radius: 14px;
     padding: 0 3vh 0 3vh;
-    background-color: #26221f;
+    background-color: var(--backgroundCard);
     overflow: hidden;
 }
 
@@ -1469,7 +1485,7 @@ input[type="date"]::-webkit-input-placeholder {
     height: 50vh;
     border-radius: 14px;
     padding: 0 3vh 0 3vh;
-    background-color: #26221f;
+    background-color: var(--backgroundCard);
     overflow: hidden;
 }
 
@@ -1547,16 +1563,13 @@ input[type="date"]::-webkit-input-placeholder {
     font-size: 2.3vh;
     font-family: 'GothamBold';
     color: var(--darkLightMode);
+    color: white;
     gap: 1vh;
     background-color: #1d5eff;
 }
 
 .premium-getStartedButton:hover {
     width: 78%;
-}
-
-.premium-firstPlans:hover, .premium-secondPlans:hover, .premium-thirdPlans:hover {
-    transform: scale(1.005);
 }
 
 
@@ -1654,7 +1667,7 @@ input[type="date"]::-webkit-input-placeholder {
     font-size: 2.2vh;
     font-family: 'GothamMedium';
     color: var(--darkLightMode);
-    background-color: #151515;
+    background-color: var(--logoBackground);
     outline: none;
     border: 2px solid #3d404b;
     border-radius: 13px;
@@ -1664,17 +1677,18 @@ input[type="date"]::-webkit-input-placeholder {
 
 .contact-buttonSend {
     cursor: pointer;
+    border: none;
     outline: none;
     color: var(--darkLightMode);
     font-size: 2.6vh;
     font-family: 'GothamBold';
     padding: 4px 14px 4px 14px;
     border-radius: 7px;
-    background-color: #59a07a;
+    background-color: #00ba57;
 }
 
 .contact-buttonSend:hover {
-    background-color: #4c8969;
+    background-color: #00a24c;
 }
 
 .contact-sucessMessageContainer {
@@ -1688,26 +1702,31 @@ input[type="date"]::-webkit-input-placeholder {
     font-size: 2.4vh;
 }
 
-.btn-toggle {
-    cursor: pointer;
-    color: var(--darkLightMode);
-    width: fit-content;
-    padding: 2vh 1vh 2vh 1vh;
-    background-color: black;
-}
-
-
 /* ================ Light / Dark mode ================ */
 .dashboard-container.dark {
-    background-image: url('../../../assets/background.png');
-    --darkLightMode: white;
+    background-image: url('../../../assets/background3.png');
+    --darkLightMode: #f1f1f1;
     --mainColor : #e2d390;
-    --logoBackground: black
+    --logoBackground: #111111;
+    --backgroundCard: #26221F;
+    --inverseTheme: #111;
+    --addAreaBackground: #181818;
+    --unselectArea: #11111169;
+    --hoverAddButton: #212121;
 }
 
 .dashboard-container.light {
     background-image: url('../../../assets/background2.png');
-    --darkLightMode: black;
-    --mainColor : #c7b359;
-    --logoBackground: white;
+    --darkLightMode: #1a1a1a;
+    --mainColor : #c1b376;
+    --logoBackground: #f1f1f1;
+    --backgroundCard: #d7d7d7;
+    --inverseTheme: #f1f1f1;
+    --addAreaBackground: #dadada;
+    --unselectArea: #f1f1f169;
+    --hoverAddButton: #fff;
+}
+
+.dashboard-container.light .premium-secondPlans {
+    background-color: #bcbcbc;
 }
