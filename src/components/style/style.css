@@ -10,7 +10,9 @@
 }
 
 :root {
-    --lightModTitle: white
+    --darkLightMode: white;
+    --mainColor : #e2d390;
+    --logoBackground: black;
 }
 
 /* ================ Main ================ */
@@ -98,7 +100,7 @@ input[type="date"]::-webkit-input-placeholder {
     position: fixed;
     width: 100%;
     height: 33px;
-    color: var(--lightModTitle);
+    color: var(--darkLightMode);
     display: flex;
     align-items: center;
     justify-content:end;
@@ -140,7 +142,7 @@ input[type="date"]::-webkit-input-placeholder {
 /* ================ Color ================ */
 /* Primary Color */
 .white {
-    color: white;
+    color: var(--darkLightMode);
 }
 
 .gray {
@@ -239,7 +241,7 @@ input[type="date"]::-webkit-input-placeholder {
     padding-top: 20%;
     width: 50%;
     font-size: 3.5vh;
-    color: var(--lightModTitle);
+    color: var(--darkLightMode);
     font-family: 'GothamBold';
 }
 
@@ -247,7 +249,7 @@ input[type="date"]::-webkit-input-placeholder {
     padding-top: 20%;
     width: 100%;
     font-size: 5vh;
-    color: var(--lightModTitle);
+    color: var(--darkLightMode);
     font-family: 'GothamBold';
 }
 
@@ -256,7 +258,7 @@ input[type="date"]::-webkit-input-placeholder {
     width: 100%;
     font-size: 2.6vh;
     font-weight: bold;
-    color: var(--lightModTitle);
+    color: var(--darkLightMode);
     font-family: monospace;
 }
 
@@ -265,7 +267,7 @@ input[type="date"]::-webkit-input-placeholder {
     width: 100%;
     font-size: 2.2vh;
     font-weight: bold;
-    color: var(--lightModTitle);
+    color: var(--darkLightMode);
     font-family: monospace;
     bottom: 0;
     padding-bottom: 1.5%;
@@ -336,7 +338,7 @@ input[type="date"]::-webkit-input-placeholder {
     border: 2px solid;
     border-color: black;
     color: black;
-    background-color: var(--lightModTitle);
+    background-color: var(--darkLightMode);
 }
 
 .signup-CheckoxCompagnie {
@@ -346,7 +348,7 @@ input[type="date"]::-webkit-input-placeholder {
     border: 2px solid;
     border-color: black;
     color: black;
-    background-color: var(--lightModTitle);
+    background-color: var(--darkLightMode);
 }
 
 .form-control {
@@ -368,7 +370,7 @@ input[type="date"]::-webkit-input-placeholder {
 .emailInput {
     width: 100%;
     padding: 1.5% 0% 1.5% 1.5%;
-    background-color: var(--lightModTitle);
+    background-color: var(--darkLightMode);
     border: 2px solid;
     border-color: black;
     border-radius: 6px;
@@ -400,7 +402,7 @@ input[type="date"]::-webkit-input-placeholder {
 .passwordInput {
     width: 100%;
     padding: 1.5% 0% 1.5% 1.5%;
-    background-color: var(--lightModTitle);
+    background-color: var(--darkLightMode);
     border: 2px solid;
     border-color: black;
     border-radius: 6px;
@@ -420,7 +422,7 @@ input[type="date"]::-webkit-input-placeholder {
 .buttonAccountCreate {
     padding: 1.5% 2% 1.5% 2%;
     background-color: rgb(64, 0, 255);
-    color: var(--lightModTitle);
+    color: var(--darkLightMode);
     font-family: 'GothamBold';
     outline: none;
     border: none;
@@ -548,14 +550,14 @@ input[type="date"]::-webkit-input-placeholder {
 .dashboard-logoRounded {
     width: 70%;
     height: 80%;
-    color: var(--lightModTitle);
+    color: var(--darkLightMode);
     font-size: 3.5vh;
 }
 
 .dashboard-title {
     width: auto;
     height: 100%;
-    color: var(--lightModTitle);
+    color: var(--darkLightMode);
     font-family: 'GothamBold';
     font-size: 3.2vh;
 }
@@ -566,7 +568,7 @@ input[type="date"]::-webkit-input-placeholder {
     padding: 0 10px 0 18px;
     gap: 50%;
     font-size: 2.6vh;
-    color: #e2d390;
+    color: var(--mainColor);
     cursor: pointer;
 }
 
@@ -574,7 +576,7 @@ input[type="date"]::-webkit-input-placeholder {
 .dashboard-plusLogo {
     width: auto;
     height: 100%;
-    color: #e2d390;
+    color: var(--mainColor);
     font-size: 4.2vh;
     cursor: pointer;
 }
@@ -586,7 +588,7 @@ input[type="date"]::-webkit-input-placeholder {
     width: 11%;
     height: 6.5%;   
     font-size: 3.5vh;
-    color: #e2d390;
+    color: var(--mainColor);
     border-radius: 18px;
     background-color: black;
 }
@@ -629,7 +631,7 @@ input[type="date"]::-webkit-input-placeholder {
     width: 32%;
     height: 3.8vh;
     padding: 0 8px 0 8px;
-    color: var(--lightModTitle);
+    color: var(--darkLightMode);
     font-size: 2vh;
     font-family: "GothamMedium";
     border-radius: 5px;
@@ -687,7 +689,7 @@ input[type="date"]::-webkit-input-placeholder {
     width: fit-content;
     height: auto;
     padding: 0.3vh 0 1.8vh 0;
-    color: var(--lightModTitle);
+    color: var(--darkLightMode);
     font-family: "GothamMedium";
     font-size: 2.5vh;
     gap: 20px;
@@ -729,7 +731,7 @@ input[type="date"]::-webkit-input-placeholder {
     border-radius: 4px;
     font-size: 2vh;
     font-family: "GothamMedium";
-    color: var(--lightModTitle);
+    color: var(--darkLightMode);
     background-color: rgba(255, 255, 255, 0.187);
 }
 
@@ -738,7 +740,7 @@ input[type="date"]::-webkit-input-placeholder {
     width: 32%;
     height: 3.8vh;
     padding: 0 8px 0 8px;
-    color: var(--lightModTitle);
+    color: var(--darkLightMode);
     font-size: 2vh;
     font-family: "GothamMedium";
     border-radius: 5px;
@@ -754,7 +756,7 @@ input[type="date"]::-webkit-input-placeholder {
 }
 
 .dashboard-carPopupButton {
-    color: var(--lightModTitle);
+    color: var(--darkLightMode);
     border: none;
     outline: none;
     width: 22%;
@@ -805,7 +807,7 @@ input[type="date"]::-webkit-input-placeholder {
 .dashboard-languageLogo {
     width: auto;
     height: 100%;
-    color: #e2d390;
+    color: var(--mainColor);
     padding-right: 2%;
     font-size: 4.5vh;
     cursor: pointer;
@@ -814,7 +816,7 @@ input[type="date"]::-webkit-input-placeholder {
 .dashboard-notificationLogo {
     width: auto;
     height: 100%;
-    color: #e2d390;
+    color: var(--mainColor);
     font-size: 3vh;
     padding-right: 0.6%;
     cursor: pointer;
@@ -823,7 +825,7 @@ input[type="date"]::-webkit-input-placeholder {
 .dashboard-UserLogo {
     width: 12%;
     height: 100%;
-    color: #e2d390;
+    color: var(--mainColor);
     font-size: 2.5vh;
     padding-right: 5%;
     cursor: pointer;
@@ -836,7 +838,7 @@ input[type="date"]::-webkit-input-placeholder {
     color: black;
     font-size: 2.7vh;
     font-family: 'GothamBold';
-    border: 1.7px solid #e2d390;
+    border: 1.7px solid var(--mainColor);
 }
 
 
@@ -859,17 +861,6 @@ input[type="date"]::-webkit-input-placeholder {
     height: 4.7vh;
     border-radius: 100%;
 }
-
-.logoOn {
-    color: black;
-    background-color: #e2d390;
-}
-
-.logoOff {
-    color: #e2d390;
-    background-color: black;
-}
-
 
 /* =========== Overview Date =========== */
 /* == Area with all logos inside == */
@@ -903,12 +894,12 @@ input[type="date"]::-webkit-input-placeholder {
 
 .logoOn {
     color: black;
-    background-color: #e2d390;
+    background-color: var(--mainColor);
 }
 
 .logoOff {
-    color: #e2d390;
-    background-color: black;
+    color: var(--mainColor);
+    background-color: var(--logoBackground);
 }
 
 
@@ -982,7 +973,7 @@ input[type="date"]::-webkit-input-placeholder {
     border-radius: 100%;
     font-size: 2.65vh;
     cursor: pointer;
-    background-color: #e2d390;
+    background-color: var(--mainColor);
 }
 
 
@@ -1445,7 +1436,7 @@ input[type="date"]::-webkit-input-placeholder {
     padding: 0 0 .7vh 0;
     font-size: 4.2vh;
     font-family: 'GothamBold';
-    color: var(--lightModTitle);
+    color: var(--darkLightMode);
 }
 
 .premium-containerPlans {
@@ -1497,7 +1488,7 @@ input[type="date"]::-webkit-input-placeholder {
     margin: 2vh 0 1vh 0;
     font-size: 3.3vh;
     font-family: 'GothamBold';
-    color: var(--lightModTitle);
+    color: var(--darkLightMode);
 }
 
 .premium-containerPrice {
@@ -1506,7 +1497,7 @@ input[type="date"]::-webkit-input-placeholder {
     font-size: 3.6vh;
     margin: 0 0 4vh 0;
     font-family: 'GothamBold';
-    color: var(--lightModTitle);
+    color: var(--darkLightMode);
 }
 
 .premium-monthTitle {
@@ -1538,7 +1529,7 @@ input[type="date"]::-webkit-input-placeholder {
     font-size: 2.1vh;
     font-family: 'GothamBold';
     gap: 1.2vh;
-    color: var(--lightModTitle);
+    color: var(--darkLightMode);
 }
 
 .premium-containerGetStarted {
@@ -1555,7 +1546,7 @@ input[type="date"]::-webkit-input-placeholder {
     border-radius: 7px;
     font-size: 2.3vh;
     font-family: 'GothamBold';
-    color: var(--lightModTitle);
+    color: var(--darkLightMode);
     gap: 1vh;
     background-color: #1d5eff;
 }
@@ -1609,7 +1600,7 @@ input[type="date"]::-webkit-input-placeholder {
     height: auto;
     font-family: "GothamBold";
     font-size: 3.5vh;
-    color: var(--lightModTitle);
+    color: var(--darkLightMode);
 }
 
 
@@ -1645,7 +1636,7 @@ input[type="date"]::-webkit-input-placeholder {
 .contact-titleArea {
     width: 80%;
     height: 100%;
-    color: var(--lightModTitle);
+    color: var(--darkLightMode);
     font-size: 2.9vh;
     font-family: 'GothamBold';
     padding: 2vh 0 2vh 0;
@@ -1662,7 +1653,7 @@ input[type="date"]::-webkit-input-placeholder {
     height: 30vh;
     font-size: 2.2vh;
     font-family: 'GothamMedium';
-    color: var(--lightModTitle);
+    color: var(--darkLightMode);
     background-color: #151515;
     outline: none;
     border: 2px solid #3d404b;
@@ -1674,7 +1665,7 @@ input[type="date"]::-webkit-input-placeholder {
 .contact-buttonSend {
     cursor: pointer;
     outline: none;
-    color: var(--lightModTitle);
+    color: var(--darkLightMode);
     font-size: 2.6vh;
     font-family: 'GothamBold';
     padding: 4px 14px 4px 14px;
@@ -1699,7 +1690,7 @@ input[type="date"]::-webkit-input-placeholder {
 
 .btn-toggle {
     cursor: pointer;
-    color: var(--lightModTitle);
+    color: var(--darkLightMode);
     width: fit-content;
     padding: 2vh 1vh 2vh 1vh;
     background-color: black;
@@ -1708,11 +1699,15 @@ input[type="date"]::-webkit-input-placeholder {
 
 /* ================ Light / Dark mode ================ */
 .dashboard-container.dark {
-    background-image: url('../../../assets/background2.png');
-    --lightModTitle: black
+    background-image: url('../../../assets/background.png');
+    --darkLightMode: white;
+    --mainColor : #e2d390;
+    --logoBackground: black
 }
 
 .dashboard-container.light {
-    background-image: url('../../../assets/background.png');
-    --lightModTitle: white
+    background-image: url('../../../assets/background2.png');
+    --darkLightMode: black;
+    --mainColor : #c7b359;
+    --logoBackground: white;
 }
