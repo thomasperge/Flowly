@@ -1521,7 +1521,7 @@ input[type="date"]::-webkit-input-placeholder {
     width: 100%;
     height: auto;
     margin: 2vh 0 9.3vh 0;
-    padding: 0 3vh 0 3vh;
+    padding: 0 3.5vh 0 3.5vh;
 }
 
 .premium-containerAvantageLine {
@@ -1554,6 +1554,14 @@ input[type="date"]::-webkit-input-placeholder {
     color: white;
     gap: 1vh;
     background-color: #1d5eff;
+}
+
+.premium-getStartedButton:hover {
+    width: 78%;
+}
+
+.premium-firstPlans:hover, .premium-secondPlans:hover, .premium-thirdPlans:hover {
+    transform: scale(1.005);
 }
 
 
