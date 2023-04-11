@@ -467,3 +467,19 @@ contactLogoNavbar?.addEventListener('click', () => {
     premiumContainer.style.display = "none"
     profileContainer.style.display = "none"
 })
+
+// Light / Dark Theme
+const btnToggle = document.querySelector('.btn-toggle');
+btnToggle.addEventListener('click', () => {
+    const body = document.querySelector('.dashboard-container');
+
+    if(body.classList.contains('dark')) {
+        body.classList.add('light')
+        body.classList.remove('dark')
+        btnToggle.innerHTML = "Light Mode"
+    } else if (body.classList.contains('light')){
+        body.classList.add('dark')
+        body.classList.remove('light')
+        btnToggle.innerHTML = "Dark Mode"
+    }
+})
