@@ -4,6 +4,7 @@ const path = require('path');
 const mongoose = require('mongoose');
 const axios = require('axios');
 const fs = require('fs');
+const envJson = require('./env.json')
 
 require('dotenv').config();
 
@@ -35,14 +36,17 @@ const createWindow = () => {
 
 // ========= App Ready =========
 app.on('ready', async () => {
-    const uri = process.env.MONGODB_HOST;
+    const win = BrowserWindow.getAllWindows()[0];
 
+    const uri = envJson.MONGODB_HOST;
+    
     // Mongodb Connection
     mongoose.connect(uri, {
         useUnifiedTopology: true,
         useNewUrlParser: true,
     })
-    .then(() => console.log('MongoDB : Ready !'));
+    .then(() => win.webContents.send('database/connected')
+    );
 });
 
 app.whenReady().then(async () => {

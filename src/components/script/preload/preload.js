@@ -142,7 +142,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // == Contact "send" button ==
     let contactSend = document.getElementById('contact-buttonSend')
-    contactSend.addEventListener('click', () => {
+    contactSend?.addEventListener('click', () => {
         let data = {
             text : document.getElementById('contactText').value
         }
@@ -479,6 +479,10 @@ ipcRenderer.on('contact/send-request-message', (event, data) => {
         document.querySelector('.contact-sucessMessageContainer').style.display = "none"
         document.querySelector('.contact-sucessMessage').innerHTML = ""
     }, 3000)
+})
+
+ipcRenderer.on('database/connected', () => {
+    console.log("MOngoDB Connected !");
 })
 
 contextBridge.exposeInMainWorld("app", API)

@@ -1,8 +1,9 @@
 const axios = require('axios');
 require('dotenv').config();
+const envJson = require('../../env.json')
 
 const API_BASE_URL = 'https://www.carboninterface.com/api/v1';
-const API_KEY = process.env.API_KEY;
+const API_KEY = envJson.API_KEY;
 
 /**
  * Get Estimations : Test function
