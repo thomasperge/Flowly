@@ -1730,7 +1730,7 @@ input[type="date"]::-webkit-input-placeholder {
     --backgroundPlanCard: #f3f9ff;
     --inverseTheme: #f1f1f1;
     --addAreaBackground: #e4ebf2;
-    --borderAddAreaBackground: rgb(171, 171, 171);
+    --borderAddAreaBackground: rgb(205, 212, 217);
     --unselectArea: #e4ebf268;
     --hoverAddButton: #f0f6fc;
 }
