@@ -15,7 +15,10 @@
     --logoBackground: black;
     --inverseTheme: black;
     --backgroundCard: #26221F;
+    --backgroundSCard: #26221F;
+    --backgroundPlanCard: #26221F;
     --addAreaBackground: #181818;
+    --borderAddAreaBackground: #25282e;
     --unselectArea: rgba(0, 0, 0, 0.347);
     --hoverAddButton: #1a1a1a;
 }
@@ -626,7 +629,7 @@ input[type="date"]::-webkit-input-placeholder {
     font-family: "GothamMedium";
     border-radius: 5px;
     border: 1.5px solid #454955;
-    background-color: var(--backgroundCard);
+    background-color: var(--backgroundSCard);
 }
 
 .dashboard-inputToday {
@@ -640,7 +643,7 @@ input[type="date"]::-webkit-input-placeholder {
     font-family: "GothamMedium";
     border-radius: 5px;
     border: 2.5px solid #454955;
-    background-color: var(--backgroundCard);
+    background-color: var(--backgroundSCard);
 }
 
 .dashboard-areaCarButton {
@@ -648,7 +651,7 @@ input[type="date"]::-webkit-input-placeholder {
     width: 28%;
     height: 100%;
     border-radius: 9px;
-    border: 1px solid #25282e;
+    border: 1.5px solid var(--borderAddAreaBackground);
     background-color: var(--addAreaBackground);
     padding: 1%;
     z-index: 3;
@@ -659,7 +662,7 @@ input[type="date"]::-webkit-input-placeholder {
     width: 22%;
     height: auto;
     border-radius: 9px;
-    border: 1px solid #25282e;
+    border: 1.5px solid var(--borderAddAreaBackground);
     background-color: var(--addAreaBackground);
     padding: 1% 1% 1.5% 1%;
     z-index: 3;
@@ -670,7 +673,7 @@ input[type="date"]::-webkit-input-placeholder {
     width: 25%;
     height: 100%;
     border-radius: 8px;
-    border: 2px solid black;
+    border: 1.5px solid var(--borderAddAreaBackground);
     background-color: var(--addAreaBackground);;
     padding: 1%;
     z-index: 3;
@@ -748,8 +751,7 @@ input[type="date"]::-webkit-input-placeholder {
     font-family: "GothamMedium";
     border-radius: 5px;
     border: 1.5px solid #454955;
-    background-color: var(--backgroundCard);
-    background-color: var(--backgroundCard);
+    background-color: var(--backgroundSCard);
 }
 
 .dashboard-carPopupSendButtonArea {
@@ -1298,6 +1300,7 @@ input[type="date"]::-webkit-input-placeholder {
 
 .dashboard-statsArea2-1Title {
     font-size: 2.3vh;
+    font-family: "GothamBold";
 }
 
 .dashboard-statsArea2-1Date {
@@ -1468,16 +1471,16 @@ input[type="date"]::-webkit-input-placeholder {
     height: 50vh;
     border-radius: 14px;
     padding: 0 3vh 0 3vh;
-    background-color: var(--backgroundCard);
-    overflow: hidden;
+    background-color: var(--backgroundPlanCard);
+    overflow: scroll;
 }
 
 .premium-secondPlans {
     width: 26%;
-    height: 53vh;
+    height: 54vh;
     border-radius: 14px;
     background-color: #25282e;
-    overflow: hidden;
+    overflow: scroll;
 }
 
 .premium-thirdPlans {
@@ -1485,8 +1488,8 @@ input[type="date"]::-webkit-input-placeholder {
     height: 50vh;
     border-radius: 14px;
     padding: 0 3vh 0 3vh;
-    background-color: var(--backgroundCard);
-    overflow: hidden;
+    background-color: var(--backgroundPlanCard);
+    overflow: scroll;
 }
 
 .premium-containerPopular {
@@ -1525,13 +1528,12 @@ input[type="date"]::-webkit-input-placeholder {
 .premium-containerAvantage {
     width: 100%;
     height: auto;
-    margin: 2vh 0 9.3vh 0;
+    margin: 2vh 0 5vh 0;
 }
 
 .premium-containerAvantageSecond {
-    width: 100%;
     height: auto;
-    margin: 2vh 0 9.3vh 0;
+    margin: 2vh 0 4.5vh 0;
     padding: 0 3.5vh 0 3.5vh;
 }
 
@@ -1539,9 +1541,8 @@ input[type="date"]::-webkit-input-placeholder {
     display: flex;
     width: 100%;
     height: auto;
-    flex-wrap: wrap;
     padding: 3px 0 3px 0;
-    margin-bottom: 1.3vh;
+    margin-bottom: 1vh;
     font-size: 2.1vh;
     font-family: 'GothamBold';
     gap: 1.2vh;
@@ -1550,6 +1551,7 @@ input[type="date"]::-webkit-input-placeholder {
 
 .premium-containerGetStarted {
     width: 100%;
+    margin-bottom: 2vh;
     height: auto;
 }
 
@@ -1709,8 +1711,11 @@ input[type="date"]::-webkit-input-placeholder {
     --mainColor : #e2d390;
     --logoBackground: #111111;
     --backgroundCard: #26221F;
+    --backgroundSCard: #26221F;
+    --backgroundPlanCard: #302c29;
     --inverseTheme: #111;
     --addAreaBackground: #181818;
+    --borderAddAreaBackground: #25282e;
     --unselectArea: #11111169;
     --hoverAddButton: #212121;
 }
@@ -1719,14 +1724,17 @@ input[type="date"]::-webkit-input-placeholder {
     background-image: url('../../../assets/background2.png');
     --darkLightMode: #1a1a1a;
     --mainColor : #c1b376;
-    --logoBackground: #f1f1f1;
-    --backgroundCard: #d7d7d7;
+    --logoBackground: #e4ebf2;
+    --backgroundCard: #d2dde7;
+    --backgroundSCard: #d7dfe8;
+    --backgroundPlanCard: #f3f9ff;
     --inverseTheme: #f1f1f1;
-    --addAreaBackground: #dadada;
-    --unselectArea: #f1f1f169;
-    --hoverAddButton: #fff;
+    --addAreaBackground: #e4ebf2;
+    --borderAddAreaBackground: rgb(171, 171, 171);
+    --unselectArea: #e4ebf268;
+    --hoverAddButton: #f0f6fc;
 }
 
 .dashboard-container.light .premium-secondPlans {
-    background-color: #bcbcbc;
+    background-color: #fdfdfd;
 }
