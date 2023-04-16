@@ -21,6 +21,11 @@ const accountSchema = mongoose.Schema({
         default: typeUsers[1],
         required: true
     },
+    plan: {
+        type: Number,
+        default: 0,
+        required: true
+    },
     email: {
         type: String,
         required: true

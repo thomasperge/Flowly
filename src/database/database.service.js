@@ -24,6 +24,7 @@ exports.addUserInDB = async (data) => {
 
 		const newUser = new User({
 			type: data.typeUsers,
+			plan: 0,
 			email: data.email,
 			name: data.name,
 			password: passwordHash,
@@ -350,7 +351,6 @@ exports.getMostCarUsed = async () => {
 		return null
 	}
 }
-
 
 exports.getLast10DaysConsumption = async (type) => {
 	const UsersStats = mongoose.model('all_record', allRecordSchema);
