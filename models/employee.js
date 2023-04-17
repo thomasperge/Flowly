@@ -15,7 +15,7 @@ const employeeAccountSchema = mongoose.Schema({
             return date;
         }
     },
-    workForAccountId: {
+    accountId: {
         type: String,
         required: true,
     },
@@ -24,7 +24,7 @@ const employeeAccountSchema = mongoose.Schema({
         default: 0,
         required: true
     },
-    name: {
+    lastname: {
         type: String,
         required: true
     },

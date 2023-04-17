@@ -1,11 +1,16 @@
 const mongoose = require('mongoose')
 const { v4: uuidv4 } = require('uuid');
 
-const accountStatSchema = mongoose.Schema({
+const employeeStatsSchema = mongoose.Schema({
     _id: {
         type: String,
         default: uuidv4,
         primary: true,
+    },
+    idEmployee: {
+        type: String,
+        ref: 'Employee',
+        required: true,
     },
     idAccount: {
         type: String,
@@ -62,4 +67,4 @@ const accountStatSchema = mongoose.Schema({
     },
 })
 
-module.exports = mongoose.model('users_stats', accountStatSchema)
+module.exports = mongoose.model('users_stats', employeeStatsSchema)

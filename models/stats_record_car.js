@@ -1,6 +1,7 @@
 const mongoose = require('mongoose')
 const { v4: uuidv4 } = require('uuid');
 
+// Stats of all car - not use for the moment
 const totalRecordCarSchema = mongoose.Schema({
     _id: {
         type: String,
