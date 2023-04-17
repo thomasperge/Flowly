@@ -1,8 +1,7 @@
 const mongoose = require('mongoose')
-const { typeUsers } = require('./enum.js');
 const { v4: uuidv4 } = require('uuid');
 
-const accountSchema = mongoose.Schema({
+const employeeAccountSchema = mongoose.Schema({
     _id: {
         type: String,
         default: uuidv4,
@@ -16,28 +15,19 @@ const accountSchema = mongoose.Schema({
             return date;
         }
     },
-    type: {
+    workForAccountId: {
         type: String,
-        default: typeUsers[1],
-        required: true
+        required: true,
     },
-    plan: {
+    firstName: {
         type: Number,
         default: 0,
-        required: true
-    },
-    email: {
-        type: String,
         required: true
     },
     name: {
         type: String,
         required: true
     },
-    password: {
-        type: String,
-        required: true,
-    },
 })
 
-module.exports = mongoose.model('account', accountSchema)
+module.exports = mongoose.model('account', employeeAccountSchema)

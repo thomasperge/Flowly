@@ -1635,10 +1635,21 @@ input[type="date"]::-webkit-input-placeholder {
     color: var(--darkLightMode);
 }
 
-.profile-ContainerMembersCard {
+.profile-ContainerAllMembersCard {
     width: 100%;
     height: auto;
     overflow-y: scroll;
+}
+
+.profile-ContainerMemberCard {
+    width: 100%;
+    height: 11vh;
+}
+
+.profile-AreaMemberCard {
+    width: 93%;
+    height: 92%;
+    border-radius: 11px;
 }
 
 /* Profile Date + Title */

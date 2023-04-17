@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 const { accountSchema } = require('../../models/account');
 const { totalRecordCarSchema } = require('../../models/stats_record_car');
-const { userStatSchema } = require('../../models/users_stats');
+const { accountStatSchema } = require('../../models/account_stats');
 const { allRecordSchema } = require('../../models/all_record');
 const { contactSchema } = require('../../models/contact')
 const { getCurrentDate } = require('../components/script/date')
@@ -33,7 +33,7 @@ exports.addUserInDB = async (data) => {
 		newUser.save()
 
 		// Create Users Stats Schema
-		const Stats = mongoose.model('users_stats', userStatSchema);
+		const Stats = mongoose.model('users_stats', accountStatSchema);
 
 		const userStats = new Stats({
 			idAccount: newUser._id,
@@ -181,7 +181,7 @@ exports.addCarRecord = async (data) => {
 		newCarRecord.save()
 
 		// Add User Stats && Car Stats
-		const UsersStats = mongoose.model('users_stats', userStatSchema);
+		const UsersStats = mongoose.model('users_stats', accountStatSchema);
 		const stats = await UsersStats.findOne({ idAccount: idUserDataJson.id })
 
 		const totalRecordStats = mongoose.model('total_record_cars', totalRecordCarSchema);
@@ -253,7 +253,7 @@ exports.addEnergyRecord = async (data) => {
 		newEnergyRecord.save()
 
 		// Add User Stats && Car Stats
-		const UsersStats = mongoose.model('users_stats', userStatSchema);
+		const UsersStats = mongoose.model('users_stats', accountStatSchema);
 		const stats = await UsersStats.findOne({ idAccount: idUserDataJson.id })
 
 
@@ -278,7 +278,7 @@ exports.addEnergyRecord = async (data) => {
  * @returns 
  */
 exports.returnUserStats = async (data) => {
-	const UserStats = mongoose.model('users_stats', userStatSchema);
+	const UserStats = mongoose.model('users_stats', accountStatSchema);
 	const stats = await UserStats.findOne({ idAccount: idUserDataJson.id })
 
 	if(stats) {
