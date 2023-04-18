@@ -20,8 +20,7 @@ const employeeAccountSchema = mongoose.Schema({
         required: true,
     },
     firstName: {
-        type: Number,
-        default: 0,
+        type: String,
         required: true
     },
     lastname: {
@@ -30,4 +29,4 @@ const employeeAccountSchema = mongoose.Schema({
     },
 })
 
-module.exports = mongoose.model('account', employeeAccountSchema)
+module.exports = mongoose.model('employees', employeeAccountSchema)

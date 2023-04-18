@@ -12,6 +12,10 @@ const allRecordSchema = mongoose.Schema({
         ref: 'Account',
         required: true,
     },
+    idEmployee: {
+        type: String,
+        required: true
+    },
     createdAt: {
         type: Date, 
         default: function() {
@@ -41,18 +45,6 @@ const allRecordSchema = mongoose.Schema({
         required: true
     },
     carbon_g: {
-        type: Number, 
-        required: true,
-    },
-    carbon_lb: {
-        type: Number, 
-        required: true,
-    },
-    carbon_kg: { 
-        type: Number,
-        required: true,
-    },
-    carbon_mt: { 
         type: Number, 
         required: true,
     },

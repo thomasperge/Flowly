@@ -8,7 +8,7 @@ const accountSchema = mongoose.Schema({
         default: uuidv4,
         primary: true,
     },
-    createdAt: { 
+    createdAt: {
         type: Date, 
         default: function() {
             const date = new Date();

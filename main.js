@@ -202,6 +202,12 @@ ipcMain.on("app/login-user", async (event, data) => {
         const config = loadConfig(dataPath);
         config.id = userData._id;
 
+        console.log(userData);
+        console.log(config);
+
+
+        // Note : Quand ajout depuis logiciel => Mettre employee = From Logiciel
+
         saveConfig(config, dataPath);
 
         windows.loadFile('./src/components/pages/dashboard.html')
@@ -232,19 +238,6 @@ ipcMain.on("app/login-user", async (event, data) => {
             ]
             win.webContents.send('database/last-10-days', last10DaysConsumptionData)
         });
-
-        // // Summary Carbon
-        // var result = await dataBaseComponent.returnUserStatsController()
-        // win.webContents.send('database/send-user-stats', result)
-        // // Refresh History
-        // let history = await dataBaseComponent.getAllRecordFromUserController()
-        // win.webContents.send('database/top-10-history', history.reverse())
-        // // Refresh most car used
-        // let mostCarUsed = await dataBaseComponent.getMostCarUsedController()
-        // win.webContents.send('database/most-car-used', mostCarUsed)
-        // // Average consumption per day
-        // let averageConsumption = await dataBaseComponent.returnUserStatsController()
-        // win.webContents.send('database/average-consumption', averageConsumption)
     }
 });
 

@@ -4,6 +4,7 @@ const { totalRecordCarSchema } = require('../../models/stats_record_car');
 const { accountStatSchema } = require('../../models/account_stats');
 const { allRecordSchema } = require('../../models/all_record');
 const { contactSchema } = require('../../models/contact')
+const { employeeAccountSchema } = require('../../models/employee')
 const { getCurrentDate } = require('../components/script/date')
 
 const idUserDataJson = require('../../data.json');
@@ -93,6 +94,18 @@ exports.addUserInDB = async (data) => {
 		});
 
 		newCarStatsRecord.save()
+
+		// Create Employee (employe by default - Owner)
+		const Employee = mongoose.model('employees', employeeAccountSchema);
+
+		const newEmployee = new Employee({
+			accountId: newUser._id,
+			firstName: "Owner",
+			lastname: data.name
+		})
+
+		newEmployee.save()
+
 	} catch (error) {
 		console.error(error);
 	}
@@ -115,13 +128,18 @@ async function checkPassword(password, hashedPassword) {
  */
 exports.loginUser = async (data) => {
 	const User = mongoose.model('account', accountSchema);
+	const Employee = mongoose.model('employees', employeeAccountSchema);
 
 	let userFound = await User.findOne({ email: data.email })
 
 	if (!userFound) return false
 	else {
+		let employeeFound = await Employee.findOne({ accountId: userFound._id })
+
 		if (await checkPassword(data.password, userFound.password)) {
 			idUserDataJson.id = userFound._id
+			idUserDataJson.employee = employeeFound._id
+			console.log(idUserDataJson);
 			return true
 		}
 		
@@ -167,15 +185,13 @@ exports.addCarRecord = async (data) => {
 
 		const newCarRecord = new CarRecord({
 			idAccount: idUserDataJson.id,
+			idEmployee: idUserDataJson.employee,
 			record_type: 'Car',
 			dateInput: data.input.date,
 			description_record: data.input.carType,
 			int_value: data.input.km,
 			string_value: `${data.input.km} km`,
 			carbon_g: data.response.attributes.carbon_g,
-			carbon_lb: data.response.attributes.carbon_lb,
-			carbon_kg: data.response.attributes.carbon_kg,
-			carbon_mt: data.response.attributes.carbon_mt,
 		});
 
 		newCarRecord.save()
