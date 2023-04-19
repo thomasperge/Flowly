@@ -62,4 +62,4 @@ const accountStatSchema = mongoose.Schema({
     },
 })
 
-module.exports = mongoose.model('users_stats', accountStatSchema)
+module.exports = mongoose.model('account_stats', accountStatSchema)

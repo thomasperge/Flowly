@@ -7,7 +7,7 @@ const API_KEY = envJson.API_KEY;
 
 /**
  * Get Estimations : Test function
- * @param {*} data 
+ * @param {*} data
  * @returns 
  */
 const getEstimate = async (data) => {

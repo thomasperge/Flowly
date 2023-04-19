@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 const { accountSchema } = require('../../models/account');
-const { totalRecordCarSchema } = require('../../models/stats_record_car');
+const { totalRecordCarSchema } = require('../../models/stats_car_account');
 const { accountStatSchema } = require('../../models/account_stats');
 const { allRecordSchema } = require('../../models/all_record');
 const { contactSchema } = require('../../models/contact')
@@ -35,7 +35,7 @@ exports.addUserInDB = async (data) => {
 		newUser.save()
 
 		// Create Users Stats Schema
-		const Stats = mongoose.model('users_stats', accountStatSchema);
+		const Stats = mongoose.model('account_stats', accountStatSchema);
 
 		const userStats = new Stats({
 			idAccount: newUser._id,
@@ -56,7 +56,7 @@ exports.addUserInDB = async (data) => {
 		userStats.save()
 
 		// Create Car Record Stats Schema
-		const totalRecordStats = mongoose.model('total_record_cars', totalRecordCarSchema);
+		const totalRecordStats = mongoose.model('stats_cars_account', totalRecordCarSchema);
 
 		const newCarStatsRecord = new totalRecordStats({
 			idAccount: newUser._id,
@@ -102,12 +102,33 @@ exports.addUserInDB = async (data) => {
 		const newEmployee = new Employee({
 			_id: newUser._id,
 			accountId: newUser._id,
-			firstName: "Owner",
-			lastname: data.name
+			firstName: data.name,
+			lastname: "Owner"
 		})
 
 		newEmployee.save()
+		
+		// Create Employee Stats
+		const EmployeeStats = mongoose.model('employee_stats', employeeStatsSchema)
 
+		const employeeStats = new EmployeeStats({
+			idEmployee: newEmployee._id,
+			idAccount: newUser._id,
+			total_km: 0,
+			total_carbon_kg: 0,
+			total_km_vehicle: 0,
+			total_carbon_vehicle: 0,
+			total_km_flight: 0,
+			total_carbon_flight: 0,
+			total_km_shipping: 0,
+			total_carbon_shipping: 0,
+			total_electricity_mwh: 0,
+			total_carbon_electricity: 0,
+			total_fuel_btu: 0,
+			total_carbon_fuel: 0
+		})
+
+		employeeStats.save()
 	} catch (error) {
 		console.error(error);
 	}
@@ -141,10 +162,8 @@ exports.loginUser = async (data) => {
 		if (await checkPassword(data.password, userFound.password)) {
 			idUserDataJson.id = userFound._id
 			idUserDataJson.employee = employeeFound._id
-			console.log(idUserDataJson);
 			return true
 		}
-		
 		return false
 	}
 };
@@ -164,7 +183,6 @@ exports.returnUserDataFromEmail = async (data) => {
 		if (await checkPassword(data.password, userFound.password)) {
 			return userFound
 		}
-		
 		return undefined
 	}
 };
@@ -199,15 +217,16 @@ exports.addCarRecord = async (data) => {
 		newCarRecord.save()
 
 		// Add User Stats && Car Stats
-		const UsersStats = mongoose.model('users_stats', accountStatSchema);
+		const UsersStats = mongoose.model('account_stats', accountStatSchema);
 		const stats = await UsersStats.findOne({ idAccount: idUserDataJson.id })
 
 		const EmployeeStats = mongoose.model('employee_stats', employeeStatsSchema)
 		const employeeStats = await EmployeeStats.findOne({ idEmployee: idUserDataJson.employee })
 
-		const totalRecordStats = mongoose.model('total_record_cars', totalRecordCarSchema);
+		const totalRecordStats = mongoose.model('stats_cars_account', totalRecordCarSchema);
 		const statsCarRecord = await totalRecordStats.findOne({ idAccount: idUserDataJson.id })
 
+		console.log(stats, employeeStats, statsCarRecord);
 
 		if(stats && statsCarRecord && employeeStats) {
 			// SAVE in Db : Users Stats
@@ -278,7 +297,7 @@ exports.addEnergyRecord = async (data) => {
 		newEnergyRecord.save()
 
 		// Add User Stats && Car Stats
-		const UsersStats = mongoose.model('users_stats', accountStatSchema);
+		const UsersStats = mongoose.model('account_stats', accountStatSchema);
 		const stats = await UsersStats.findOne({ idAccount: idUserDataJson.id })
 
 
@@ -303,7 +322,7 @@ exports.addEnergyRecord = async (data) => {
  * @returns 
  */
 exports.returnUserStats = async (data) => {
-	const UserStats = mongoose.model('users_stats', accountStatSchema);
+	const UserStats = mongoose.model('account_stats', accountStatSchema);
 	const stats = await UserStats.findOne({ idAccount: idUserDataJson.id })
 
 	if(stats) {
@@ -333,7 +352,7 @@ exports.getAllRecordFromUser = async () => {
  * @returns null or 2 most car used
  */
 exports.getMostCarUsed = async () => {
-	const UsersAllCarStats = mongoose.model('total_record_cars', totalRecordCarSchema);
+	const UsersAllCarStats = mongoose.model('stats_cars_account', totalRecordCarSchema);
 	const allCarStats = await UsersAllCarStats.find({ idAccount: idUserDataJson.id })
 
 	if (allCarStats.length >= 1) {

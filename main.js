@@ -203,13 +203,6 @@ ipcMain.on("app/login-user", async (event, data) => {
         config.id = userData._id;
         config.employee = userData._id
 
-        console.log(userData);
-        console.log(config);
-
-
-        // Note : Quand ajout depuis logiciel => Mettre employee = From Logiciel
-
-
         saveConfig(config, dataPath);
 
         windows.loadFile('./src/components/pages/dashboard.html')

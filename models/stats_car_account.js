@@ -55,4 +55,4 @@ const totalRecordCarSchema = mongoose.Schema({
     },
 })
 
-module.exports = mongoose.model('total_record_cars', totalRecordCarSchema)
+module.exports = mongoose.model('stats_cars_account', totalRecordCarSchema)
