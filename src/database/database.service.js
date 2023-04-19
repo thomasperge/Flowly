@@ -6,6 +6,7 @@ const { allRecordSchema } = require('../../models/all_record');
 const { contactSchema } = require('../../models/contact')
 const { employeeAccountSchema } = require('../../models/employee')
 const { employeeStatsSchema } = require('../../models/employee_stats')
+const { employeeAccountSchema } = require('../../models/employee')
 const { getCurrentDate } = require('../components/script/date')
 
 const idUserDataJson = require('../../data.json');
@@ -482,3 +483,14 @@ exports.addContactRequest = async (data) => {
 		console.error(error);
 	}
 };
+
+exports.getAllEmployeeFromAccount = async () => {
+	const Members = mongoose.model('employees', employeeAccountSchema);
+	const allMembers = await Members.find({ accountId: idUserDataJson.id })
+
+	if(allMembers) {
+		return allMembers
+	} else {
+		return null
+	}
+}

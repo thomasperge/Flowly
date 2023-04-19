@@ -1648,8 +1648,22 @@ input[type="date"]::-webkit-input-placeholder {
 
 .profile-AreaMemberCard {
     width: 93%;
-    height: 92%;
+    height: fit-content;
     border-radius: 11px;
+}
+
+.profile-MemberCardFirstName {
+    width: 100%;
+    padding: 1vh 0 .2vh 0;
+    font-size: 3vh;
+    color: var(--inverseTheme);
+}
+
+.profile-MemberCardLastName {
+    width: 100%;
+    padding: .6vh 0 1vh 0;
+    font-size: 1.85vh;
+    color: var(--inverseTheme);
 }
 
 /* Profile Date + Title */

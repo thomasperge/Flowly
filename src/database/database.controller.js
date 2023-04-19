@@ -105,3 +105,12 @@ exports.addContactRequestController = async (req, _res) => {
     return error
   }
 };
+
+exports.getAllEmployeeFromAccountController = async (req, _res) => {
+  try {
+    let result = await dbService.getAllEmployeeFromAccount(req);
+    return result;
+  } catch (error) {
+    return error
+  }
+};
