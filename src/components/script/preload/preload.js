@@ -156,7 +156,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
 // ======== Function ========
 function formatNumber(number) {
-    // number = number.toFixed(2);
+    number = parseFloat(number).toFixed(2);
     const prefixes = ['', 'K', 'M', 'B'];
     const base = 1000;
 
@@ -263,6 +263,7 @@ ipcRenderer.on('database/send-all-history', (event, result) => {
                     <span class="history-areaContainerDate flex">${formatDate(result[i]._doc.dateInput)}</span>
                     </div>
                     <div class="history-areaContainerOverview">
+                    <span class="history-areaContainerDesc flex">${result[i]._doc.description_record}</span>
                     <span class="history-areaContainerDesc flex">${result[i]._doc.description_record}</span>
                     </div>
                 <div class="history-areaContainerData flex">
