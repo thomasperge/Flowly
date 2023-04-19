@@ -36,8 +36,6 @@ const createWindow = () => {
 
 // ========= App Ready =========
 app.on('ready', async () => {
-    const win = BrowserWindow.getAllWindows()[0];
-
     const uri = envJson.MONGODB_HOST;
     
     // Mongodb Connection
@@ -45,8 +43,6 @@ app.on('ready', async () => {
         useUnifiedTopology: true,
         useNewUrlParser: true,
     })
-    .then(() => win.webContents.send('database/connected')
-    );
 });
 
 app.whenReady().then(async () => {
@@ -225,6 +221,9 @@ ipcMain.on("app/login-user", async (event, data) => {
             // Average consumption per day
             let averageConsumption = await dataBaseComponent.returnUserStatsController()
             win.webContents.send('database/average-consumption', averageConsumption)
+            // Display all Members
+            let allMembers = await dataBaseComponent.getAllEmployeeFromAccountController()
+            win.webContents.send('database/get-all-employee', allMembers)
             // Last 10 days Car Consumption
             let last10DaysConsumptionData = [
                 await dataBaseComponent.getLast10DaysConsumptionController("Car"),

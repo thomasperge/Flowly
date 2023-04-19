@@ -284,9 +284,7 @@ ipcRenderer.on('database/send-all-history', (event, result) => {
         if (history[i].classList.contains("HistoryColor-1") || history[i].classList.contains("HistoryColor-2") || history[i].classList.contains("HistoryColor-3") || history[i].classList.contains("HistoryColor-4") || history[i].classList.contains("HistoryColor-5") || history[i].classList.contains("HistoryColor-6")) {
             var randomColor = Math.round(Math.random() * 5) + 1
             history[i].classList = []
-            history[i].classList.add("history-area")
-            history[i].classList.add("flex")
-            history[i].classList.add(`HistoryColor-${randomColor}`)
+            history[i].classList.add("history-area", "flex", `HistoryColor-${randomColor}`)
         } else {
             var randomColor = Math.round(Math.random() * 5) + 1
             history[i].classList.add(`HistoryColor-${randomColor}`)
@@ -481,8 +479,29 @@ ipcRenderer.on('contact/send-request-message', (event, data) => {
     }, 3000)
 })
 
-ipcRenderer.on('database/connected', () => {
-    console.log("MOngoDB Connected !");
+ipcRenderer.on('database/get-all-employee', (event, data) => {
+    if (data.length > 0) {
+        const container = document.querySelector('.profile-ContainerAllMembersCard');
+        container.innerHTML = ""
+
+
+        for(let i = 0; i < data.length; i++) {
+            let randomBackgroundColor = Math.floor(Math.random() * 6) + 1
+
+            const div = document.createElement('div');
+            div.innerHTML = `
+                <div class="profile-ContainerMemberCard flex">
+                    <div class="profile-AreaMemberCard HistoryColor-${randomBackgroundColor}">
+                        <div class="profile-MemberCardFirstName flex">${data[i]._doc.firstName}</div>
+                        <div class="profile-MemberCardLastName flex">${data[i]._doc.lastname}</div>
+                    </div>
+                </div>
+            `;
+            
+            container.appendChild(div);
+        }
+    }
 })
+
 
 contextBridge.exposeInMainWorld("app", API)

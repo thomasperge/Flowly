@@ -6,7 +6,6 @@ const { allRecordSchema } = require('../../models/all_record');
 const { contactSchema } = require('../../models/contact')
 const { employeeAccountSchema } = require('../../models/employee')
 const { employeeStatsSchema } = require('../../models/employee_stats')
-const { employeeAccountSchema } = require('../../models/employee')
 const { getCurrentDate } = require('../components/script/date')
 
 const idUserDataJson = require('../../data.json');

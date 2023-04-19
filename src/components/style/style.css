@@ -1617,6 +1617,7 @@ input[type="date"]::-webkit-input-placeholder {
     height: 90%;
     background-color: var(--borderAddAreaBackground);
     border-radius: 11px;
+    overflow: scroll;
 }
 
 .profile-AreaGlobalStats {
@@ -1630,7 +1631,7 @@ input[type="date"]::-webkit-input-placeholder {
     width: 100%;
     height: auto;
     padding: 1.7vh 0 1vh 0;
-    font-size: 2.5vh;
+    font-size: 2.7vh;
     font-family: "GothamMedium";
     color: var(--darkLightMode);
 }
@@ -1638,7 +1639,6 @@ input[type="date"]::-webkit-input-placeholder {
 .profile-ContainerAllMembersCard {
     width: 100%;
     height: auto;
-    overflow-y: scroll;
 }
 
 .profile-ContainerMemberCard {
@@ -1656,14 +1656,14 @@ input[type="date"]::-webkit-input-placeholder {
     width: 100%;
     padding: 1vh 0 .2vh 0;
     font-size: 3vh;
-    color: var(--inverseTheme);
+    color: black;
 }
 
 .profile-MemberCardLastName {
     width: 100%;
     padding: .6vh 0 1vh 0;
-    font-size: 1.85vh;
-    color: var(--inverseTheme);
+    font-size: 2vh;
+    color: black;
 }
 
 /* Profile Date + Title */

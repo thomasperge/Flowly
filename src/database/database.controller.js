@@ -106,9 +106,9 @@ exports.addContactRequestController = async (req, _res) => {
   }
 };
 
-exports.getAllEmployeeFromAccountController = async (req, _res) => {
+exports.getAllEmployeeFromAccountController = async (_req, _res) => {
   try {
-    let result = await dbService.getAllEmployeeFromAccount(req);
+    let result = await dbService.getAllEmployeeFromAccount();
     return result;
   } catch (error) {
     return error
