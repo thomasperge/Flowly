@@ -1633,6 +1633,7 @@ input[type="date"]::-webkit-input-placeholder {
     padding: 1.7vh 0 1vh 0;
     font-size: 2.7vh;
     font-family: "GothamMedium";
+    margin-bottom: 1vh;
     color: var(--darkLightMode);
 }
 
@@ -1655,7 +1656,7 @@ input[type="date"]::-webkit-input-placeholder {
 .profile-MemberCardFirstName {
     width: 100%;
     padding: 1vh 0 .2vh 0;
-    font-size: 3vh;
+    font-size: 2.6vh;
     color: black;
 }
 
@@ -1665,6 +1666,54 @@ input[type="date"]::-webkit-input-placeholder {
     font-size: 2vh;
     color: black;
 }
+
+.profile-ContainerAbout {
+    width: 96%;
+    height: 87%;
+    margin: 0 2vh 0 2vh;
+}
+
+.profile-ContainerInfo {
+    display: flex;
+    width: auto;
+    height: auto;
+    padding-left: 1vh;
+    gap: 1vh;
+}
+
+.profile-ContainerStats {
+    display: flex;
+    width: auto;
+    height: auto;
+    padding-left: 1vh;
+    margin-top: 2vh;
+    gap: 1vh;
+}
+
+.profile-AreaInfo {
+    align-items: flex-end;
+    color: var(--darkLightMode);
+    font-size: 2.3vh;
+    font-family: "GothamMedium";
+    width: auto;
+    height: auto;
+    padding: .40vh 1.1vh .40vh 1.1vh;
+    background-color: rgba(0, 189, 0, 0.525);
+    border-radius: 14px;
+}
+
+.profile-AreaStats {
+    width: fit-content;
+    display: flex;
+    gap: 1vh;
+    font-size: 2.3vh;
+    font-family: "GothamMedium";
+    color: var(--darkLightMode);
+    padding: .40vh 1.1vh .40vh 1.1vh;
+    background-color: rgba(227, 0, 0, 0.525);
+    border-radius: 14px;
+}
+
 
 /* Profile Date + Title */
 .profile-dateArea {
