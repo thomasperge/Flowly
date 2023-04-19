@@ -254,22 +254,22 @@ ipcRenderer.on('database/send-all-history', (event, result) => {
         const div = document.createElement('div');
         div.innerHTML = `
             <div class="history-area flex">
-            <div class="history-areaContainer">
-                <div class="history-areaContainerOverview">
-                    <span class="history-areaContainerTitle flex">
-                        <i class="fi fi-br-time-past flex" style="font-size: 2.1vh;"></i>
-                        ${result[i]._doc.record_type}
-                    </span>
-                    <span class="history-areaContainerDate flex">${formatDate(result[i]._doc.dateInput)}</span>
+                <div class="history-areaContainer">
+                    <div class="history-areaContainerOverview">
+                        <span class="history-areaContainerTitle flex">
+                            <i class="fi fi-br-time-past flex" style="font-size: 2.1vh;"></i>
+                            ${result[i]._doc.record_type}
+                        </span>
+                        <span class="history-areaContainerDate flex">${formatDate(result[i]._doc.dateInput)}</span>
                     </div>
                     <div class="history-areaContainerOverview">
-                    <span class="history-areaContainerDesc flex">${result[i]._doc.description_record}</span>
+                            <span class="history-areaContainerDesc flex">${result[i]._doc.description_record}</span>
                     <span class="history-areaContainerDesc flex">${result[i]._doc.nameEmployee}</span>
                     </div>
-                <div class="history-areaContainerData flex">
-                    <div class="history-areaContainerDataKm flex">${result[i]._doc.string_value}</div>
-                    <div>|</div>
-                    <div class="history-areaContainerDataCo2 flex">${result[i]._doc.carbon_kg} kg</div>
+                    <div class="history-areaContainerData flex">
+                        <div class="history-areaContainerDataKm flex">${result[i]._doc.string_value}</div>
+                        <div>|</div>
+                        <div class="history-areaContainerDataCo2 flex">${result[i]._doc.carbon_kg} kg</div>
                     </div>
                 </div>
             </div>
