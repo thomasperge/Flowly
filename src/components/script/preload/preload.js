@@ -264,7 +264,7 @@ ipcRenderer.on('database/send-all-history', (event, result) => {
                     </div>
                     <div class="history-areaContainerOverview">
                     <span class="history-areaContainerDesc flex">${result[i]._doc.description_record}</span>
-                    <span class="history-areaContainerDesc flex">${result[i]._doc.description_record}</span>
+                    <span class="history-areaContainerDesc flex">${result[i]._doc.nameEmployee}</span>
                     </div>
                 <div class="history-areaContainerData flex">
                     <div class="history-areaContainerDataKm flex">${result[i]._doc.string_value}</div>

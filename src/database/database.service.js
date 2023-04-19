@@ -6,7 +6,6 @@ const { allRecordSchema } = require('../../models/all_record');
 const { contactSchema } = require('../../models/contact')
 const { employeeAccountSchema } = require('../../models/employee')
 const { employeeStatsSchema } = require('../../models/employee_stats')
-const { getCurrentDate } = require('../components/script/date')
 
 const idUserDataJson = require('../../data.json');
 const moment = require('moment');
@@ -206,6 +205,7 @@ exports.addCarRecord = async (data) => {
 		const newCarRecord = new CarRecord({
 			idAccount: idUserDataJson.id,
 			idEmployee: idUserDataJson.employee,
+			nameEmployee: "Logiciel",
 			record_type: 'Car',
 			dateInput: data.input.date,
 			description_record: data.input.carType,
@@ -282,6 +282,8 @@ exports.addEnergyRecord = async (data) => {
 
 		const newEnergyRecord = new EnergyRecord({
 			idAccount: idUserDataJson.id,
+			idEmployee: idUserDataJson.employee,
+			nameEmployee: "Logiciel",
 			record_type: 'Energy',
 			dateInput: data.input.date,
 			description_record: `Country ${data.input.country}`,

@@ -16,6 +16,10 @@ const allRecordSchema = mongoose.Schema({
         type: String,
         required: true
     },
+    nameEmployee: {
+        type: String,
+        required: true,
+    },
     createdAt: {
         type: Date, 
         default: function() {
