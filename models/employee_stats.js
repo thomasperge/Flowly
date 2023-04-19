@@ -67,4 +67,4 @@ const employeeStatsSchema = mongoose.Schema({
     },
 })
 
-module.exports = mongoose.model('users_stats', employeeStatsSchema)
+module.exports = mongoose.model('employee_stats', employeeStatsSchema)

@@ -5,6 +5,7 @@ const { accountStatSchema } = require('../../models/account_stats');
 const { allRecordSchema } = require('../../models/all_record');
 const { contactSchema } = require('../../models/contact')
 const { employeeAccountSchema } = require('../../models/employee')
+const { employeeStatsSchema } = require('../../models/employee_stats')
 const { getCurrentDate } = require('../components/script/date')
 
 const idUserDataJson = require('../../data.json');
@@ -99,6 +100,7 @@ exports.addUserInDB = async (data) => {
 		const Employee = mongoose.model('employees', employeeAccountSchema);
 
 		const newEmployee = new Employee({
+			_id: newUser._id,
 			accountId: newUser._id,
 			firstName: "Owner",
 			lastname: data.name
@@ -200,16 +202,23 @@ exports.addCarRecord = async (data) => {
 		const UsersStats = mongoose.model('users_stats', accountStatSchema);
 		const stats = await UsersStats.findOne({ idAccount: idUserDataJson.id })
 
+		const EmployeeStats = mongoose.model('employee_stats', employeeStatsSchema)
+		const employeeStats = await EmployeeStats.findOne({ idEmployee: idUserDataJson.employee })
+
 		const totalRecordStats = mongoose.model('total_record_cars', totalRecordCarSchema);
 		const statsCarRecord = await totalRecordStats.findOne({ idAccount: idUserDataJson.id })
 
 
-		if(stats && statsCarRecord) {
+		if(stats && statsCarRecord && employeeStats) {
 			// SAVE in Db : Users Stats
 			stats.total_carbon_kg += data.response.attributes.carbon_kg;
 			stats.total_km_vehicle += data.response.attributes.distance_value;
 			stats.total_carbon_vehicle += data.response.attributes.carbon_kg
 			await stats.save()
+
+			employeeStats.total_km += data.response.attributes.distance_value
+			employeeStats.total_carbon_kg += data.response.attributes.carbon_kg
+			await employeeStats.save()
 
 			// SAVE in Db : Users Stats All car record
 			if(data.input.carType == "Fourgonette") {
