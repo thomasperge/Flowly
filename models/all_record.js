@@ -48,6 +48,10 @@ const allRecordSchema = mongoose.Schema({
         type: Number, 
         required: true,
     },
+    carbon_kg: {
+        type: Number, 
+        required: true,
+    },
 })
 
 module.exports = mongoose.model('all_record', allRecordSchema)

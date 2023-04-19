@@ -212,6 +212,7 @@ exports.addCarRecord = async (data) => {
 			int_value: data.input.km,
 			string_value: `${data.input.km} km`,
 			carbon_g: data.response.attributes.carbon_g,
+			carbon_kg: data.response.attributes.carbon_kg,
 		});
 
 		newCarRecord.save()
@@ -225,8 +226,6 @@ exports.addCarRecord = async (data) => {
 
 		const totalRecordStats = mongoose.model('stats_cars_account', totalRecordCarSchema);
 		const statsCarRecord = await totalRecordStats.findOne({ idAccount: idUserDataJson.id })
-
-		console.log(stats, employeeStats, statsCarRecord);
 
 		if(stats && statsCarRecord && employeeStats) {
 			// SAVE in Db : Users Stats
@@ -397,10 +396,10 @@ exports.getMostCarUsed = async () => {
 }
 
 exports.getLast10DaysConsumption = async (type) => {
-	const UsersStats = mongoose.model('all_record', allRecordSchema);
+	const AccountStats = mongoose.model('all_record', allRecordSchema);
 	const start = moment().subtract(10, 'days').startOf('day').toDate();
 
-	let i = await UsersStats.aggregate([
+	let i = await AccountStats.aggregate([
 		{
 			$match: {
 				idAccount: idUserDataJson.id,
@@ -435,6 +434,7 @@ exports.getLast10DaysConsumption = async (type) => {
 	// Compléter les jours sans données avec 0
 	const dayStats = {};
 	let today = moment().startOf('day');
+
 	for (let j = 0; j < 10; j++) {
 		let day = today.format('Y-MM-DD');
 		dayStats[day] = 0;

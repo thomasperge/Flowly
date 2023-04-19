@@ -156,7 +156,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
 // ======== Function ========
 function formatNumber(number) {
-    number = number.toFixed(2);
+    // number = number.toFixed(2);
     const prefixes = ['', 'K', 'M', 'B'];
     const base = 1000;
 
@@ -313,7 +313,7 @@ ipcRenderer.on('database/top-10-history', (event, result) => {
                         <div class="dashboard-statsArea2-1Date">${formatDate2(result[i]._doc.dateInput)}</div>
                         <div class="dashboard-statsArea2-1ContainerData">
                             <div class="dashboard-statsArea2-1Data">${result[i]._doc.string_value} - ${formatNumber(result[i]._doc.carbon_kg)} kg</div>
-                            <div class="dashboard-statsArea2-1Percentage" style="background-color:${color}">${formatNumber(percentage)}%</div>
+                            <div class="dashboard-statsArea2-1Percentage" style="background-color:${color}">${formatNumber(percentage.toFixed(2))}%</div>
                         </div>
                     </div>
                 </div>
