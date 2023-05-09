@@ -8,6 +8,8 @@ const { employeeAccountSchema } = require('../../models/employee')
 const { employeeStatsSchema } = require('../../models/employee_stats')
 
 const idUserDataJson = require('../../data.json');
+const envJson = require('./../../env.json')
+const stripe = require('stripe')(envJson.STRIPE_KEY);
 const moment = require('moment');
 const bcrypt = require('bcryptjs');
 
@@ -17,6 +19,23 @@ const bcrypt = require('bcryptjs');
  */
 exports.addUserInDB = async (data) => {
 	try {
+		// Create Customer Stripe Id
+		const customer = await stripe.customers.create({
+			email: data.email,
+			name: data.name
+		});
+
+		const customerId = customer.id;
+
+		fetch(`https://gray-friendly-walkingstick.cyclic.app/default-subscription/${customerId}`)
+		.then(response => response.json())
+		.then(data => {
+			console.log("==> Default Subscription : ", data);
+		})
+		.catch(error => {
+			console.error('Erreur:', error);
+		});
+
 		// Create User Schema
 		const User = mongoose.model('account', accountSchema);
 
@@ -29,6 +48,7 @@ exports.addUserInDB = async (data) => {
 			email: data.email,
 			name: data.name,
 			password: passwordHash,
+			stripeId: customerId,
 		});
 
 		newUser.save()
@@ -193,6 +213,7 @@ exports.returnUserDataFromId = async () => {
 
 	return (userFound) ? userFound : undefined
 };
+
 
 /**
  * Add car record => return true id add in Db
@@ -495,3 +516,15 @@ exports.getAllEmployeeFromAccount = async () => {
 		return null
 	}
 }
+
+exports.getIdStripeAccount = async () => {
+	const Account = mongoose.model('account', accountSchema);
+	const account = await Account.findOne({ _id: idUserDataJson.id }).select('stripeId')
+
+	if(account) {
+		return account
+	} else {
+		return null
+	}
+}
+

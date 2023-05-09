@@ -4,7 +4,8 @@ exports.addUserController = async (req, res) => {
   try {
     return await dbService.addUserInDB(req);
   } catch (error) {
-    res.status(500).json({ message: error.message });
+    console.log("ERROR");
+    // res.status(500).json({ message: error.message });
   }
 };
 
@@ -110,6 +111,15 @@ exports.getAllEmployeeFromAccountController = async (_req, _res) => {
   try {
     let result = await dbService.getAllEmployeeFromAccount();
     return result;
+  } catch (error) {
+    return error
+  }
+};
+
+exports.getIdStripeAccountController = async (_req, _res) => {
+  try {
+    let result = await dbService.getIdStripeAccount();
+    return result.stripeId;
   } catch (error) {
     return error
   }

@@ -1,5 +1,5 @@
 // Modules to control application life and create native browser window
-const { app, BrowserWindow, ipcMain, session } = require('electron')
+const { app, BrowserWindow, ipcMain, shell, session } = require('electron')
 const path = require('path');
 const mongoose = require('mongoose');
 const axios = require('axios');
@@ -67,7 +67,12 @@ ipcMain.on('database/profile-username', async () => {
     const win = BrowserWindow.getAllWindows()[0];
     let userAccount = await dataBaseComponent.returnUserDataFromIdController()
     win.webContents.send('database/profile-display-account', userAccount)
+})
 
+ipcMain.on('database/premium-plan', async () => {
+    const win = BrowserWindow.getAllWindows()[0];
+    let userPlan = await dataBaseComponent.returnUserDataFromIdController()
+    win.webContents.send('database/display-plan', userPlan)
 })
 
 ipcMain.on('contact/send-request', async (event, data) => {
@@ -234,6 +239,22 @@ ipcMain.on("app/login-user", async (event, data) => {
         });
     }
 });
+
+
+ipcMain.on('plans/request-plans', async () => {
+    let idStripeAccount = await dataBaseComponent.getIdStripeAccountController();
+
+    fetch(`https://gray-friendly-walkingstick.cyclic.app/create-payment-session/${idStripeAccount}`)
+    .then(response => response.json())
+    .then(data => {
+        // Faites quelque chose avec les données de la réponse du backend
+        shell.openExternal(data.sessionUrl);
+    })
+    .catch(error => {
+        console.error('Erreur:', error);
+    });
+});
+
 
 ipcMain.on("app/minimize", () => {
     windows.minimize();

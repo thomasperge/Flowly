@@ -38,6 +38,10 @@ const accountSchema = mongoose.Schema({
         type: String,
         required: true,
     },
+    stripeId: {
+        type: String,
+        required: true,
+    }
 })
 
 module.exports = mongoose.model('account', accountSchema)

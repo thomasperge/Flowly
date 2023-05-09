@@ -48,10 +48,17 @@ document.addEventListener('DOMContentLoaded', function() {
         }
 
         if (email.length > 0 && password.length > 0 && name.length > 0) {
-            ipcRenderer.send('database/add-user', {name, email, password, typeUsers});
+            if (isEmail(email)) {
+                ipcRenderer.send('database/add-user', {name, email, password, typeUsers});
+            } else {
+                document.getElementById("missingInformations").style.display = "block"
+                document.getElementById("missingInformations").innerHTML = "L'email n'est pas un email..."
+            }
         } else {
             document.getElementById("missingInformations").style.display = "block"
+            document.getElementById("missingInformations").innerHTML = "Erreur, vérifier les données entrer !"
         }
+        
     });
 
     // === Login User ==
@@ -140,6 +147,12 @@ document.addEventListener('DOMContentLoaded', function() {
         ipcRenderer.send('database/profile-username')
     })
 
+    // == Premium ==
+    let premiumLogo = document.getElementById('logoDiamond')
+    premiumLogo?.addEventListener('click', () => {
+        ipcRenderer.send('database/premium-plan')
+    })
+
     // == Contact "send" button ==
     let contactSend = document.getElementById('contact-buttonSend')
     contactSend?.addEventListener('click', () => {
@@ -152,6 +165,15 @@ document.addEventListener('DOMContentLoaded', function() {
             document.getElementById('contactText').value = ""
         }
     })
+
+    // == Stripe Plans Button ==
+    const plansButtons = document.querySelectorAll('.premium-getStartedButton')
+    plansButtons.forEach(button => {
+        button.addEventListener('click', () => {
+            ipcRenderer.send('plans/request-plans')
+        });
+    });
+    
 })
 
 // ======== Function ========
@@ -199,6 +221,14 @@ function formatDate2(dateStr) {
     const formattedDate = new Intl.DateTimeFormat('en-US', options).format(date);
     return formattedDate;
 }
+
+function isEmail(chaine) {
+    // Pattern pour la validation de l'email
+    var regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    
+    // Test de la chaîne de caractères avec la regex
+    return regex.test(chaine);
+  }
 
 // ======== Ipc Renderer On ========
 ipcRenderer.on('app/login-error', (event, data) => {
@@ -385,6 +415,7 @@ ipcRenderer.on('database/average-consumption', (event, data) => {
 })
 
 ipcRenderer.on('database/last-10-days', (event, data) => {
+    console.log(data);
     let carData = data[0].reverse()
     let energyData = data[1].reverse()
     let fuelData = data[2].reverse()
@@ -462,6 +493,38 @@ ipcRenderer.on('database/profile-display-account', (event, data) => {
     document.getElementById('profileWelcome').innerHTML = `Welcome, ${data._doc.name}`
 })
 
+ipcRenderer.on('database/display-plan', (event, data) => {
+    let planContainer = document.getElementById('premium-containerTitlePlans')
+
+    if (data._doc.plan == 0) {
+        planContainer.innerHTML = `
+            <div>Plan actuelle : </div>
+            <div class="premium-freePlan flex">
+                <i class="fi fi-rr-clock-ten-thirty flex"></i>
+                <div>Gratuit</div>
+            </div>
+        `;
+    } else if (data._doc.plan == 1) {
+        planContainer.innerHTML = `
+            <div>Plan actuelle : </div>
+            <div class="premium-standardPlan flex">
+                <i class="fi fi-sr-crown flex"></i>
+                <div>Standard</div>
+            </div>
+        `;
+    } else if (data._doc.plan == 2) {
+        planContainer.innerHTML = `
+            <div>Plan actuelle : </div>
+            <div class="premium-proPlan flex">
+                <i class="fi fi-br-rocket-lunch flex"></i>
+                <div>Professionnel</div>
+            </div>
+        `;
+    }
+    // Welcome
+    document.getElementById('profileWelcome').innerHTML = `Welcome, ${data._doc.name}`
+})
+
 ipcRenderer.on('contact/send-request-message', (event, data) => {
     if (data.sucess) {
         document.querySelector('.contact-sucessMessageContainer').style.display = "flex"
@@ -502,6 +565,5 @@ ipcRenderer.on('database/get-all-employee', (event, data) => {
         }
     }
 })
-
 
 contextBridge.exposeInMainWorld("app", API)

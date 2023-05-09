@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel='stylesheet' href='https://cdn-uicons.flaticon.com/uicons-regular-rounded/css/uicons-regular-rounded.css'>
     <link rel='stylesheet' href='https://cdn-uicons.flaticon.com/uicons-bold-rounded/css/uicons-bold-rounded.css'>
+    <link rel='stylesheet' href='https://cdn-uicons.flaticon.com/uicons-solid-rounded/css/uicons-solid-rounded.css'>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.8.0/chart.min.js"></script>
     <link rel="stylesheet" href="./../style/style.css">
     <webview src="https://example.com" preload="src/components/script/preload/preload.js"></webview>
@@ -387,16 +388,21 @@
                     <div class="premium-containerTitle flex">
                         Flowly Plans
                     </div>
+
+                    <!-- Current Plan -->
+                    <div class="premium-containerTitlePlans flex" id="premium-containerTitlePlans">
+                    </div>
+
                     <!-- Plans -->
                     <div class="premium-containerPlans flex">
                         <!-- First Plans -->
                         <div class="premium-firstPlans">
                             <div class="premium-containerTitlePrice flex">Free</div>
-                            <div class="premium-containerPrice flex">$0</div>
+                            <div class="premium-containerPrice flex">€0<span class="premium-monthTitle">/2 week</span></div>
                             <div class="premium-containerAvantage">
                                 <div class="premium-containerAvantageLine"><i class="fi fi-br-check flex"></i> <span>Access to all basics features</span></div>
                                 <div class="premium-containerAvantageLine"><i class="fi fi-br-check flex"></i> <span>200 estimation /month</span></div>
-                                <div class="premium-containerAvantageLine"><i class="fi fi-br-check flex"></i> <span>10x Employee</span></div>
+                                <div class="premium-containerAvantageLine"><i class="fi fi-br-check flex"></i> <span>5x Employee</span></div>
                                 <div class="premium-containerAvantageLine"><i class="fi fi-br-check flex"></i> <span>All Graph available</span></div>
                                 <div class="premium-containerAvantageLine"><i class="fi fi-br-cross flex"></i> <span>No report sent</span></div>
                             </div>
@@ -409,11 +415,11 @@
                         <div class="premium-secondPlans">
                             <div class="premium-containerPopular flex">Popular</div>
                             <div class="premium-containerTitlePrice flex">Standard</div>
-                            <div class="premium-containerPrice flex">$159<span class="premium-monthTitle">/month</span></div>
+                            <div class="premium-containerPrice flex">€129<span class="premium-monthTitle">/month</span></div>
                             <div class="premium-containerAvantageSecond">
                                 <div class="premium-containerAvantageLine"><i class="fi fi-br-check flex"></i> <span>Access to all basics features</span></div>
                                 <div class="premium-containerAvantageLine"><i class="fi fi-br-check flex"></i> <span>7500 estimation /month</span></div>
-                                <div class="premium-containerAvantageLine"><i class="fi fi-br-check flex"></i> <span>35x Employee</span></div>
+                                <div class="premium-containerAvantageLine"><i class="fi fi-br-check flex"></i> <span>20x Employee</span></div>
                                 <div class="premium-containerAvantageLine"><i class="fi fi-br-check flex"></i> <span>All graph available</span></div>
                                 <div class="premium-containerAvantageLine"><i class="fi fi-br-check flex"></i> <span>Sending a report every month</span></div>
                             </div>
@@ -425,7 +431,7 @@
                         <!-- Third Plans -->
                         <div class="premium-thirdPlans">
                             <div class="premium-containerTitlePrice flex">Pro</div>
-                            <div class="premium-containerPrice flex">$279<span class="premium-monthTitle">/month</span></div>
+                            <div class="premium-containerPrice flex">€279<span class="premium-monthTitle">/month</span></div>
                             <div class="premium-containerAvantage">
                                 <div class="premium-containerAvantageLine"><i class="fi fi-br-check flex"></i> <span>Access to all basics features</span></div>
                                 <div class="premium-containerAvantageLine"><i class="fi fi-br-check flex"></i> <span>Unlimited estimation /month</span></div>

@@ -31,7 +31,7 @@
     "mongodb": "^5.1.0",
     "mongoose": "^7.0.2",
     "path": "^0.12.7",
-    "stripe": "^11.17.0",
+    "stripe": "^11.18.0",
     "uuid": "^9.0.0"
   },
   "devDependencies": {
