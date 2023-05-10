@@ -4,7 +4,8 @@ const path = require('path');
 const mongoose = require('mongoose');
 const axios = require('axios');
 const fs = require('fs');
-const envJson = require('./env.json')
+const envJson = require('./env.json');
+const dataUserLocalJson = require('./data.json')
 
 require('dotenv').config();
 
@@ -30,8 +31,12 @@ const createWindow = () => {
             preload: path.join(__dirname, "./src/components/script/preload/preload.js")
         }
     })
-  
-    windows.loadFile('./src/components/pages/login.html')
+
+    if (dataUserLocalJson.id && dataUserLocalJson.employee) {
+        loadAllDataDashBoard()
+    } else {
+        windows.loadFile('./src/components/pages/login.html')
+    }
 }
 
 // ========= App Ready =========
@@ -183,6 +188,39 @@ function loadConfig(configPath) {
     } catch (err) {
       return {};
     }
+}
+
+async function loadAllDataDashBoard() {
+        // When Refresh App
+        const win = BrowserWindow.getAllWindows()[0];
+
+        win.webContents.on('did-finish-load', async () => {
+            const win = BrowserWindow.getAllWindows()[0];
+            // Summary Carbon
+            var result = await dataBaseComponent.returnUserStatsController()
+            win.webContents.send('database/send-user-stats', result)
+            // Refresh History
+            let history = await dataBaseComponent.getAllRecordFromUserController()
+            win.webContents.send('database/top-10-history', history.reverse())
+            // Refresh most car used
+            let mostCarUsed = await dataBaseComponent.getMostCarUsedController()
+            win.webContents.send('database/most-car-used', mostCarUsed)
+            // Average consumption per day
+            let averageConsumption = await dataBaseComponent.returnUserStatsController()
+            win.webContents.send('database/average-consumption', averageConsumption)
+            // Display all Members
+            let allMembers = await dataBaseComponent.getAllEmployeeFromAccountController()
+            win.webContents.send('database/get-all-employee', allMembers)
+            // Last 10 days Car Consumption
+            let last10DaysConsumptionData = [
+                await dataBaseComponent.getLast10DaysConsumptionController("Car"),
+                await dataBaseComponent.getLast10DaysConsumptionController("Energy"),
+                await dataBaseComponent.getLast10DaysConsumptionController("Fuel")
+            ]
+            win.webContents.send('database/last-10-days', last10DaysConsumptionData)
+        });
+        
+        windows.loadFile('./src/components/pages/dashboard.html')
 }
 
 // == App : ==

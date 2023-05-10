@@ -502,7 +502,7 @@ ipcRenderer.on('database/profile-display-account', (event, data) => {
     document.getElementById('profileDate').innerHTML = `${formattedDate}`
 
     // Welcome
-    document.getElementById('profileWelcome').innerHTML = `Welcome, ${data._doc.name}`
+    document.getElementById('profileWelcome').innerHTML = `Bienvenue, ${data._doc.name}`
 })
 
 ipcRenderer.on('database/display-plan', (event, data) => {
