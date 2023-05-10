@@ -33,7 +33,7 @@
                     <div class="dashboard-logoRounded flex"><i class="fa-solid fa-fire-flame-curved"></i></div>
                 </div>
                 <div class="dashboard-title flex">Dashboard</div>
-                <div class="dashboard-aboutLogo flex"><i class="fi fi-rr-interrogation flex"></i><i class="fa-brands fa-twitter flex"></i></div>
+                <!-- <div class="dashboard-aboutLogo flex"><i class="fi fi-rr-interrogation flex"></i><i class="fa-brands fa-twitter flex"></i></div> -->
             </div>
 
             <!-- Middle -->
@@ -52,7 +52,7 @@
                 <!-- == Adding Car PopUp == -->
                 <div class="dashboard-areaCarButton flex" id="dashboard-areaCarButton">
                     <!-- Car Title -->
-                    <div class="dashboard-carPopupTitleArea flex"><i class="fa-solid fa-arrow-left"></i> Add a trip</div>
+                    <div class="dashboard-carPopupTitleArea flex"><i class="fa-solid fa-arrow-left"></i> Ajouter un trajet</div>
                     <div class="dashboard-carPopupError" id="dashboard-carPopupError" data-error="false"></div>
                     <!-- Car Model (Brand, Model) -->
                     <div class="dashboard-carPopupCarModelArea">
@@ -73,19 +73,19 @@
                     </div>
                     <!-- Select Date when distance has done -->
                     <div class="dashboard-carPopupCarInfoArea flex" id="dashboard-dateInput">
-                        <div class="dashboard-inputToday flex" id="dashboard-inputToday" data-select="true">Today</div>
+                        <div class="dashboard-inputToday flex" id="dashboard-inputToday" data-select="true">Aujourd'hui</div>
                         <input type="date" class="dashboard-inputDateAddRecord" id="dashboard-inputDateAddRecord" data-select="false">
                     </div>
                     <!-- Add Button -->
                     <div class="dashboard-carPopupSendButtonArea flex">
-                        <button class="dashboard-carPopupButton" id="addCarRecord">Add</button>
+                        <button class="dashboard-carPopupButton" id="addCarRecord">Ajouter</button>
                     </div>
                 </div>      
 
                 <!-- == Adding Energy PopUp == -->
                 <div class="dashboard-areaEnergyButton" id="dashboard-areaEnergyButton">
                     <!-- Energy Title -->
-                    <div class="dashboard-energyPopupTitleArea flex"><i class="fa-solid fa-arrow-left"></i> Add an electricity bill</div>
+                    <div class="dashboard-energyPopupTitleArea flex"><i class="fa-solid fa-arrow-left"></i> Ajouter facture électricité</div>
                     <div class="dashboard-energyPopupError" id="dashboard-energyPopupError" data-error="false"></div>
                     <!-- Energy Model (Brand, Model) -->
                     <div class="dashboard-energyPopupInfoArea flex">
@@ -99,18 +99,18 @@
                     </div>
                     <!-- Add Button -->
                     <div class="dashboard-energyPopupSendButtonArea flex">
-                        <button class="dashboard-carPopupButton" id="addEnergyRecord">Add</button>
+                        <button class="dashboard-carPopupButton" id="addEnergyRecord">Ajouter</button>
                     </div>
                 </div>
 
                 <!-- == Adding Oil PopUp == -->
                 <div class="dashboard-areaOilButton" id="dashboard-areaOilButton">
                     <!-- Energy Title -->
-                    <div class="dashboard-energyPopupTitleArea flex"><i class="fa-solid fa-arrow-left"></i> Add an oil bill</div>
+                    <div class="dashboard-energyPopupTitleArea flex"><i class="fa-solid fa-arrow-left"></i> Ajouter facture fuel</div>
                     <div class="dashboard-energyPopupError" id="dashboard-energyPopupError" data-error="false"></div>
                     <!-- Oil Soon Message -->
                     <div class="dashboard-energyPopupInfoArea flex">
-                        <div class="dashboard-energyPopupTitleArea flex" style="opacity: 65%;">Soon</div>
+                        <div class="dashboard-energyPopupTitleArea flex" style="opacity: 65%;">Bientôt</div>
                     </div>
                 </div>
             </div>
@@ -124,7 +124,7 @@
                         <i class="fi fi-rr-moon flex"></i>
                     </div>
                 </div>
-                <div class="dashboard-notificationLogo flex"><i class="fi fi-rr-bell flex"></i></div>
+                <!-- <div class="dashboard-notificationLogo flex"><i class="fi fi-rr-bell flex"></i></div> -->
                 <div class="dashboard-UserLogo flex">
                     <div class="dashboard-logoRoundedUser flex"><i class="fa-regular fa-user"></i></div>
                 </div>
@@ -144,13 +144,13 @@
                     <div class="dashboard-logoLeftNavBarAreaRouded flex">
                         <i class="fi fi-rr-time-past dashboard-logoLeftNavBar logoOff flex" id="logoHistory"></i>
                     </div>
-                    <!-- Logo History -->
-                    <div class="dashboard-logoLeftNavBarAreaRouded flex">
-                        <i class="fi fi-rr-diamond dashboard-logoLeftNavBar logoOff flex" id="logoDiamond"></i>
-                    </div>
                     <!-- Logo Profile -->
                     <div class="dashboard-logoLeftNavBarAreaRouded flex">
                         <i class="fi fi-rr-user dashboard-logoLeftNavBar logoOff flex" id="logoProfile"></i>
+                    </div>
+                    <!-- Logo Premium -->
+                    <div class="dashboard-logoLeftNavBarAreaRouded flex">
+                        <i class="fi fi-rr-diamond dashboard-logoLeftNavBar logoOff flex" id="logoDiamond"></i>
                     </div>
                     <!-- Logo Contact -->
                     <div class="dashboard-logoLeftNavBarAreaRouded flex">
@@ -176,17 +176,17 @@
                             <!-- Week -->
                             <div class="dashboard-overviewTitle 1 flex gray">
                                 <i class="fi fi-rr-circle-2 flex"></i>
-                                Week
+                                Semaines
                             </div>
                             <!-- Month -->
                             <div class="dashboard-overviewTitle 2 flex gray">
                                 <i class="fi fi-rr-circle-3 flex"></i>
-                                Month
+                                Mois
                             </div>
                             <!-- Year -->
                             <div class="dashboard-overviewTitle 3 flex gray">
                                 <i class="fi fi-rr-circle-4 flex"></i>
-                                Year
+                                Années
                             </div>
                         </div>
 
@@ -194,7 +194,7 @@
                         <div class="dashboard-overviewByDateRightArea">
                             <div class="dashboard-overviewDateInputArea">
                                 <i class="fi fi-rr-calendar flex"></i>
-                                30 days
+                                30 jours
                                 <input type="date" name="" id="" class="dashboard-overviewInputDate">
                                 <div class="gray">-</div>
                                 <input type="date" name="" id="" class="dashboard-overviewInputDate">
@@ -216,16 +216,16 @@
                             <!-- First Graph -->
                             <div class="dashboard-statsArea1-1 flex">
                                 <div class="dashboard-statsContainerGraphs">
-                                    <div class="dashboard-statsTitleGraph">Summary Carbon (kgCo2)</div>
+                                    <div class="dashboard-statsTitleGraph">Résumé Carbone (kgCo2)</div>
                                     <div class="dashboard-statsArea1ContainerData">
                                         <div class="dashboard-statsArea1-1DataArea StatsColor-1">
                                             <i class="fi fi-rr-bullet flex"></i>
-                                            <div class="dashboard-statsArea1-1Type">Car</div>
+                                            <div class="dashboard-statsArea1-1Type">Voiture</div>
                                             <div class="dashboard-statsArea1-1RoundedValue" id="carCarbonStats">-</div>
                                         </div>
                                         <div class="dashboard-statsArea1-1DataArea StatsColor-2">
                                             <i class="fi fi-rr-bullet flex"></i>
-                                            <div class="dashboard-statsArea1-1Type">Electricity</div>
+                                            <div class="dashboard-statsArea1-1Type">Electricité</div>
                                             <div class="dashboard-statsArea1-1RoundedValue" id="electricityCarbonStats">-</div>
                                         </div>
                                         <div class="dashboard-statsArea1-1DataArea StatsColor-3">
@@ -235,7 +235,7 @@
                                         </div>
                                         <div class="dashboard-statsArea1-1DataArea StatsColor-4">
                                             <i class="fi fi-rr-bullet flex"></i>
-                                            <div class="dashboard-statsArea1-1Type">Flight</div>
+                                            <div class="dashboard-statsArea1-1Type">Vol</div>
                                             <div class="dashboard-statsArea1-1RoundedValue" id="flightCarbonStats">-</div>
                                         </div>
                                     </div>
@@ -245,7 +245,7 @@
                             <!-- Second Graph -->
                             <div class="dashboard-statsArea1-2 flex">
                                 <div class="dashboard-statsContainerGraphs">
-                                    <div class="dashboard-statsTitleGraph">Most used car</div>
+                                    <div class="dashboard-statsTitleGraph">Voiture plus utilisée</div>
                                     <div class="dashboard-statsArea1-2-1ContainerData flex">
                                         <!-- Card 1 -->
                                         <!-- <div class="dashboard-statsArea1-2-1AreaData StatsColor-5 flex">
@@ -294,7 +294,7 @@
                             <!-- Third Graph -->
                             <div class="dashboard-statsArea1-3 flex">
                                 <div class="dashboard-statsContainerGraphs">
-                                    <div class="dashboard-statsTitleGraph">Average consumption per day</div>
+                                    <div class="dashboard-statsTitleGraph">Consommation moyenne /jour</div>
                                     <div class="dashboard-statsArea3ContainerData">
                                         <!-- Data -->
                                         <div class="dashboard-statsArea1-3ContainerGraph flex">
@@ -323,7 +323,7 @@
                                         <div class="dashboard-statsArea1-3TitleContainer flex">
                                             <div class="dashboard-statsArea1-3TitleSContainer">
                                                 <div class="dashboard-statsArea1-3Title flex">Electric</div>
-                                                <div class="dashboard-statsArea1-3Title flex">Car</div>
+                                                <div class="dashboard-statsArea1-3Title flex">Voiture</div>
                                                 <div class="dashboard-statsArea1-3Title flex">Fuel</div>
                                             </div>
                                         </div>
@@ -357,7 +357,7 @@
                             <!-- Left Area -->
                             <div class="dashboard-statsArea3-1 flex">
                                 <div class="dashboard-statsContainerGraphs">
-                                    <div class="dashboard-statsTitleGraph">Last day</div>
+                                    <div class="dashboard-statsTitleGraph">Dernier jour</div>
                                     <!-- Container graph -->
                                     <div class="dashboard-statsLastDayContainer flex">
                                         <canvas id="myChart"></canvas>
@@ -367,8 +367,8 @@
                             <!-- Right Area -->
                             <div class="dashboard-statsArea3-2 flex">
                                 <div class="dashboard-statsContainerGraphs">
-                                    <div class="dashboard-statsTitleGraph">You vs Average</div>
-                                    <div class="dashboard-averageContainer flex">Soon...</div>
+                                    <div class="dashboard-statsTitleGraph">Vous vs Moyenne</div>
+                                    <div class="dashboard-averageContainer flex">Bientôt...</div>
                                 </div>
                             </div>
                         </div>
@@ -386,7 +386,7 @@
                 <div class="premium-SCountainer2-2-2">
                     <!-- Title -->
                     <div class="premium-containerTitle flex">
-                        Flowly Plans
+                        Flowly Abonnement
                     </div>
 
                     <!-- Current Plan -->
@@ -397,17 +397,17 @@
                     <div class="premium-containerPlans flex">
                         <!-- First Plans -->
                         <div class="premium-firstPlans">
-                            <div class="premium-containerTitlePrice flex">Free</div>
-                            <div class="premium-containerPrice flex">€0<span class="premium-monthTitle">/2 week</span></div>
-                            <div class="premium-containerAvantage">
-                                <div class="premium-containerAvantageLine"><i class="fi fi-br-check flex"></i> <span>Access to all basics features</span></div>
-                                <div class="premium-containerAvantageLine"><i class="fi fi-br-check flex"></i> <span>200 estimation /month</span></div>
-                                <div class="premium-containerAvantageLine"><i class="fi fi-br-check flex"></i> <span>5x Employee</span></div>
-                                <div class="premium-containerAvantageLine"><i class="fi fi-br-check flex"></i> <span>All Graph available</span></div>
-                                <div class="premium-containerAvantageLine"><i class="fi fi-br-cross flex"></i> <span>No report sent</span></div>
+                            <div class="premium-containerTitlePrice flex">Gratuit</div>
+                            <div class="premium-containerPrice flex">€0</div>
+                            <div class="premium-containerAvantage" style="margin-bottom: 3.5vh;">
+                                <div class="premium-containerAvantageLine"><i class="fi fi-br-check flex"></i> <span>Accès à toutes les fonctionnalités de base</span></div>
+                                <div class="premium-containerAvantageLine"><i class="fi fi-br-check flex"></i> <span>200 trajets /mois</span></div>
+                                <div class="premium-containerAvantageLine"><i class="fi fi-br-check flex"></i> <span>5x employées</span></div>
+                                <div class="premium-containerAvantageLine"><i class="fi fi-br-check flex"></i> <span>Tous les graphiques disponibles</span></div>
+                                <div class="premium-containerAvantageLine"><i class="fi fi-br-cross flex"></i> <span>Aucun rapport envoyé</span></div>
                             </div>
                             <div class="premium-containerGetStarted flex">
-                                <button class="premium-getStartedButton flex">Get Started <i class="fi fi-br-angle-small-right flex"></i></button>
+                                <button class="premium-getStartedButton flex">Commencer <i class="fi fi-br-angle-small-right flex"></i></button>
                             </div>
                         </div>
 
@@ -417,14 +417,14 @@
                             <div class="premium-containerTitlePrice flex">Standard</div>
                             <div class="premium-containerPrice flex">€129<span class="premium-monthTitle">/month</span></div>
                             <div class="premium-containerAvantageSecond">
-                                <div class="premium-containerAvantageLine"><i class="fi fi-br-check flex"></i> <span>Access to all basics features</span></div>
-                                <div class="premium-containerAvantageLine"><i class="fi fi-br-check flex"></i> <span>7500 estimation /month</span></div>
-                                <div class="premium-containerAvantageLine"><i class="fi fi-br-check flex"></i> <span>20x Employee</span></div>
-                                <div class="premium-containerAvantageLine"><i class="fi fi-br-check flex"></i> <span>All graph available</span></div>
-                                <div class="premium-containerAvantageLine"><i class="fi fi-br-check flex"></i> <span>Sending a report every month</span></div>
+                                <div class="premium-containerAvantageLine"><i class="fi fi-br-check flex"></i> <span>Accès à toutes les fonctionnalités de base</span></div>
+                                <div class="premium-containerAvantageLine"><i class="fi fi-br-check flex"></i> <span>7500 trajets /mois</span></div>
+                                <div class="premium-containerAvantageLine"><i class="fi fi-br-check flex"></i> <span>20x employées</span></div>
+                                <div class="premium-containerAvantageLine"><i class="fi fi-br-check flex"></i> <span>Tous les graphiques disponibles</span></div>
+                                <div class="premium-containerAvantageLine"><i class="fi fi-br-check flex"></i> <span>Rapport envoyé tout les mois</span></div>
                             </div>
                             <div class="premium-containerGetStarted flex">
-                                <button class="premium-getStartedButton flex" style="background-color: #ffec1d; color: black;">Get Started <i class="fi fi-br-angle-small-right flex"></i></button>
+                                <button class="premium-getStartedButton flex" style="background-color: #ffec1d; color: black;">Commencer <i class="fi fi-br-angle-small-right flex"></i></button>
                             </div>
                         </div>
 
@@ -432,15 +432,15 @@
                         <div class="premium-thirdPlans">
                             <div class="premium-containerTitlePrice flex">Pro</div>
                             <div class="premium-containerPrice flex">€279<span class="premium-monthTitle">/month</span></div>
-                            <div class="premium-containerAvantage">
-                                <div class="premium-containerAvantageLine"><i class="fi fi-br-check flex"></i> <span>Access to all basics features</span></div>
-                                <div class="premium-containerAvantageLine"><i class="fi fi-br-check flex"></i> <span>Unlimited estimation /month</span></div>
-                                <div class="premium-containerAvantageLine"><i class="fi fi-br-check flex"></i> <span>Unlimited Employee</span></div>
-                                <div class="premium-containerAvantageLine"><i class="fi fi-br-check flex"></i> <span>All graph available</span></div>
-                                <div class="premium-containerAvantageLine"><i class="fi fi-br-check flex"></i> <span>Sending a report every week</span></div>
+                            <div class="premium-containerAvantage" style="margin-bottom: .3vh;">
+                                <div class="premium-containerAvantageLine"><i class="fi fi-br-check flex"></i> <span>Accès à toutes les fonctionnalités de base</span></div>
+                                <div class="premium-containerAvantageLine"><i class="fi fi-br-check flex"></i> <span>Illimté trajets /mois</span></div>
+                                <div class="premium-containerAvantageLine"><i class="fi fi-br-check flex"></i> <span>Illimité employées</span></div>
+                                <div class="premium-containerAvantageLine"><i class="fi fi-br-check flex"></i> <span>Tous les graphiques disponibles</span></div>
+                                <div class="premium-containerAvantageLine"><i class="fi fi-br-check flex"></i> <span>Rapport envoyé toutes les semaines</span></div>
                             </div>
                             <div class="premium-containerGetStarted flex">
-                                <button class="premium-getStartedButton flex">Get Started <i class="fi fi-br-angle-small-right flex"></i></button>
+                                <button class="premium-getStartedButton flex">Commencer <i class="fi fi-br-angle-small-right flex"></i></button>
                             </div>
                         </div>
                     </div>
@@ -450,13 +450,13 @@
                 <div class="profile-SCountainer2-2-2">
                     <div class="profile-SContainer1">
                         <div class="profile-dateArea flex" id="profileDate">xx xx xxxx</div>
-                        <div class="profile-titleArea flex" id="profileWelcome">Welcome, xxxx</div>
+                        <div class="profile-titleArea flex" id="profileWelcome">Bienvenue, xxxx</div>
                     </div>
                     <div class="profile-SContainer2">
                         <!-- All Members -->
                         <div class="profile-ContainerAllMembers flex">
                             <div class="profile-AreaAllMembers">
-                                <div class="profile-ContainerMembersTitle flex">Employee</div>
+                                <div class="profile-ContainerMembersTitle flex">Employé(s)</div>
                                 <div class="profile-ContainerAllMembersCard">
                                     <!-- Members Card -->
                                     <!-- <div class="profile-ContainerMemberCard flex">
@@ -471,18 +471,12 @@
                         <!-- Global Stats -->
                         <div class="profile-ContainerGlobalStats flex">
                             <div class="profile-AreaGlobalStats">
-                                <div class="profile-ContainerMembersTitle flex">About</div>
+                                <div class="profile-ContainerMembersTitle flex">A propos</div>
                                 <div class="profile-ContainerAbout">
                                     <!-- Info -->
                                     <div class="profile-ContainerInfo">
                                         <div class="profile-AreaInfo flex">Email : thomaskauffmant74@gmail.com</div>
-                                        <div class="profile-AreaInfo flex">Employee : 19</div>
-                                    </div>
-                                    <!-- Stats -->
-                                    <div class="profile-ContainerStats">
-                                        <div class="profile-AreaStats"><i class="fi fi-rr-road flex"></i>Total Km : 456 km</div>
-                                        <div class="profile-AreaStats"><i class="fi fi-rr-bolt flex"></i>Total mwh : 456 mwh</div>
-                                        <div class="profile-AreaStats"><i class="fi fi-rr-smoke flex"></i>Total Km : 456 kgco2</div>
+                                        <div class="profile-AreaInfo flex">Employé(s) : 19</div>
                                     </div>
                                 </div>
                             </div>
@@ -495,7 +489,7 @@
                     <!-- Title -->
                     <div class="contact-titleContainer flex">
                         <div class="contact-titleArea flex">
-                            Send your feedback or your suggestion !
+                            Envoyez vos commentaires ou vos suggestions !
                         </div>
                     </div>
                     <!-- Sucess Message "Send" -->
@@ -510,7 +504,7 @@
                     </div>
                     <!-- Button "Send" -->
                     <div class="contact-buttonContainer flex">
-                        <button type="submit" class="contact-buttonSend" id="contact-buttonSend">Send</button>
+                        <button type="submit" class="contact-buttonSend" id="contact-buttonSend">Envoyer</button>
                     </div>
                 </div>
             </div>

@@ -1526,7 +1526,7 @@ input[type="date"]::-webkit-input-placeholder {
 /* PLans */
 .premium-firstPlans {
     width: 23%;
-    height: 50vh;
+    height: 52vh;
     border-radius: 14px;
     padding: 0 3vh 0 3vh;
     background-color: var(--backgroundPlanCard);
@@ -1535,7 +1535,7 @@ input[type="date"]::-webkit-input-placeholder {
 
 .premium-secondPlans {
     width: 26%;
-    height: 54vh;
+    height: 56vh;
     border-radius: 14px;
     background-color: #25282e;
     overflow: scroll;
@@ -1543,7 +1543,7 @@ input[type="date"]::-webkit-input-placeholder {
 
 .premium-thirdPlans {
     width: 23%;
-    height: 50vh;
+    height: 52vh;
     border-radius: 14px;
     padding: 0 3vh 0 3vh;
     background-color: var(--backgroundPlanCard);
@@ -1572,7 +1572,7 @@ input[type="date"]::-webkit-input-placeholder {
     width: 100%;
     height: auto;
     font-size: 3.6vh;
-    margin: 0 0 4vh 0;
+    margin: 0 0 2.5vh 0;
     font-family: 'GothamBold';
     color: var(--darkLightMode);
 }
@@ -1586,12 +1586,11 @@ input[type="date"]::-webkit-input-placeholder {
 .premium-containerAvantage {
     width: 100%;
     height: auto;
-    margin: 2vh 0 5vh 0;
 }
 
 .premium-containerAvantageSecond {
     height: auto;
-    margin: 2vh 0 4.5vh 0;
+    margin: 2vh 0 1.5vh 0;
     padding: 0 3.5vh 0 3.5vh;
 }
 
@@ -1739,15 +1738,6 @@ input[type="date"]::-webkit-input-placeholder {
     gap: 1vh;
 }
 
-.profile-ContainerStats {
-    display: flex;
-    width: auto;
-    height: auto;
-    padding-left: 1vh;
-    margin-top: 2vh;
-    gap: 1vh;
-}
-
 .profile-AreaInfo {
     align-items: flex-end;
     color: var(--darkLightMode);
@@ -1759,19 +1749,6 @@ input[type="date"]::-webkit-input-placeholder {
     background-color: rgba(0, 189, 0, 0.525);
     border-radius: 14px;
 }
-
-.profile-AreaStats {
-    width: fit-content;
-    display: flex;
-    gap: 1vh;
-    font-size: 2.3vh;
-    font-family: "GothamMedium";
-    color: var(--darkLightMode);
-    padding: .40vh 1.1vh .40vh 1.1vh;
-    background-color: rgba(227, 0, 0, 0.525);
-    border-radius: 14px;
-}
-
 
 /* Profile Date + Title */
 .profile-dateArea {

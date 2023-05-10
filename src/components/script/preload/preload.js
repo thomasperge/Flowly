@@ -236,18 +236,18 @@ ipcRenderer.on('app/login-error', (event, data) => {
 })
 
 ipcRenderer.on('database/send-user-stats', (event, data) => {
-    document.getElementById('carCarbonStats').innerHTML = formatNumber(data._doc.total_carbon_vehicle)
-    document.getElementById('electricityCarbonStats').innerHTML = formatNumber(data._doc.total_carbon_electricity)
-    document.getElementById('fuelCarbonStats').innerHTML = formatNumber(data._doc.total_carbon_fuel)
-    document.getElementById('flightCarbonStats').innerHTML = formatNumber(data._doc.total_carbon_flight)
+    document.getElementById('carCarbonStats').innerHTML = `${formatNumber(data._doc.total_carbon_vehicle)} kg`
+    document.getElementById('electricityCarbonStats').innerHTML = `${formatNumber(data._doc.total_carbon_electricity)} kg`
+    document.getElementById('fuelCarbonStats').innerHTML = `${formatNumber(data._doc.total_carbon_fuel)} kg`
+    document.getElementById('flightCarbonStats').innerHTML = `${formatNumber(data._doc.total_carbon_flight)} kg`
 })
 
 ipcRenderer.on('database/car-record-added', (event, data) => {
     // Refresh Data
-    document.getElementById('carCarbonStats').innerHTML = formatNumber(data._doc.total_carbon_vehicle)
-    document.getElementById('electricityCarbonStats').innerHTML = formatNumber(data._doc.total_carbon_electricity)
-    document.getElementById('fuelCarbonStats').innerHTML = formatNumber(data._doc.total_carbon_fuel)
-    document.getElementById('flightCarbonStats').innerHTML = formatNumber(data._doc.total_carbon_flight)
+    document.getElementById('carCarbonStats').innerHTML = `${formatNumber(data._doc.total_carbon_vehicle)} kg`
+    document.getElementById('electricityCarbonStats').innerHTML = `${formatNumber(data._doc.total_carbon_electricity)} kg`
+    document.getElementById('fuelCarbonStats').innerHTML = `${formatNumber(data._doc.total_carbon_fuel)} kg`
+    document.getElementById('flightCarbonStats').innerHTML = `${formatNumber(data._doc.total_carbon_flight)} kg`
     
     // Popup Message
     document.getElementById('dashboard-carPopupError').style.color = "yellowgreen"
@@ -261,10 +261,10 @@ ipcRenderer.on('database/car-record-added', (event, data) => {
 
 ipcRenderer.on('database/energy-record-added', (event, data) => {
     // Refresh Data
-    document.getElementById('carCarbonStats').innerHTML = formatNumber(data._doc.total_carbon_vehicle)
-    document.getElementById('electricityCarbonStats').innerHTML = formatNumber(data._doc.total_carbon_electricity)
-    document.getElementById('fuelCarbonStats').innerHTML = formatNumber(data._doc.total_carbon_fuel)
-    document.getElementById('flightCarbonStats').innerHTML = formatNumber(data._doc.total_carbon_flight)
+    document.getElementById('carCarbonStats').innerHTML = `${formatNumber(data._doc.total_carbon_vehicle)} kg`
+    document.getElementById('electricityCarbonStats').innerHTML = `${formatNumber(data._doc.total_carbon_electricity)} kg`
+    document.getElementById('fuelCarbonStats').innerHTML = `${formatNumber(data._doc.total_carbon_fuel)} kg`
+    document.getElementById('flightCarbonStats').innerHTML = `${formatNumber(data._doc.total_carbon_flight)} kg`
     
     // Popup Message
     document.getElementById('dashboard-energyPopupError').style.color = "yellowgreen"
@@ -475,7 +475,19 @@ ipcRenderer.on('database/last-10-days', (event, data) => {
                     display: false // Hide Y axis labels
                 },
                 x: {
-                    display: true // Hide X axis labels
+                    grid: {
+                        display: false,
+                        drawTicks: false,
+                    },
+                    ticks: {
+                        display: true,
+                        color: 'black',
+                        padding: 6,
+                        font: {
+                            family: 'GothamMedium',
+                            size: 12,
+                        },
+                    },
                 }
             },
         }
@@ -498,15 +510,15 @@ ipcRenderer.on('database/display-plan', (event, data) => {
 
     if (data._doc.plan == 0) {
         planContainer.innerHTML = `
-            <div>Plan actuelle : </div>
+            <div>Actuelle : </div>
             <div class="premium-freePlan flex">
-                <i class="fi fi-rr-clock-ten-thirty flex"></i>
+                <i class="fi fi-rr-lock flex"></i>
                 <div>Gratuit</div>
             </div>
         `;
     } else if (data._doc.plan == 1) {
         planContainer.innerHTML = `
-            <div>Plan actuelle : </div>
+            <div>Actuelle : </div>
             <div class="premium-standardPlan flex">
                 <i class="fi fi-sr-crown flex"></i>
                 <div>Standard</div>
@@ -514,7 +526,7 @@ ipcRenderer.on('database/display-plan', (event, data) => {
         `;
     } else if (data._doc.plan == 2) {
         planContainer.innerHTML = `
-            <div>Plan actuelle : </div>
+            <div>Actuelle : </div>
             <div class="premium-proPlan flex">
                 <i class="fi fi-br-rocket-lunch flex"></i>
                 <div>Professionnel</div>
