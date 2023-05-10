@@ -89,6 +89,17 @@ ipcMain.on('contact/send-request', async (event, data) => {
     }
 })
 
+ipcMain.on('database/unlogin-user', async (event, data) => {
+    const dataPath = path.join(app.getAppPath(), 'data.json');
+    const config = loadConfig(dataPath);
+    config.id = "";
+    config.employee = "";
+
+    saveConfig(config, dataPath);
+
+    windows.loadFile('./src/components/pages/login.html')
+})
+
 // == Api : ==
 ipcMain.on('api/add-car', async (event, data) => {
     const win = BrowserWindow.getAllWindows()[0];
@@ -219,7 +230,7 @@ async function loadAllDataDashBoard() {
             ]
             win.webContents.send('database/last-10-days', last10DaysConsumptionData)
         });
-        
+
         windows.loadFile('./src/components/pages/dashboard.html')
 }
 

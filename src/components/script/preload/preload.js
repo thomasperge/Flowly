@@ -153,6 +153,12 @@ document.addEventListener('DOMContentLoaded', function() {
         ipcRenderer.send('database/premium-plan')
     })
 
+    // == Premium ==
+    let exitLogo = document.getElementById('dashboard-logoRoundedUser')
+    exitLogo?.addEventListener('click', () => {
+        ipcRenderer.send('database/unlogin-user')
+    })
+
     // == Contact "send" button ==
     let contactSend = document.getElementById('contact-buttonSend')
     contactSend?.addEventListener('click', () => {

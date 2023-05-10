@@ -845,13 +845,17 @@ input[type="date"]::-webkit-input-placeholder {
 }
 
 .dashboard-logoRoundedUser {
-    width: 6vh;
-    height: 6vh;
+    width: 5vh;
+    height: 5vh;
     border-radius: 100%;
     color: var(--darkLightMode);
     font-size: 2.7vh;
     font-family: 'GothamBold';
     border: 1.7px solid var(--mainColor);
+}
+
+.fi-br-exit {
+    font-size: 2.1vh;
 }
 
 
