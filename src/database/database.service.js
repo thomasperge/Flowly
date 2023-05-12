@@ -45,6 +45,7 @@ exports.addUserInDB = async (data) => {
 		const newUser = new User({
 			type: data.typeUsers,
 			plan: 0,
+			planEstimationThisMonth: 0,
 			email: data.email,
 			name: data.name,
 			password: passwordHash,
@@ -253,6 +254,7 @@ exports.addCarRecord = async (data) => {
 			stats.total_carbon_kg += data.response.attributes.carbon_kg;
 			stats.total_km_vehicle += data.response.attributes.distance_value;
 			stats.total_carbon_vehicle += data.response.attributes.carbon_kg
+			stats.planEstimationThisMonth += 1;
 			await stats.save()
 
 			employeeStats.total_km += data.response.attributes.distance_value

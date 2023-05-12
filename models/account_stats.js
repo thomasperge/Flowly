@@ -12,6 +12,11 @@ const accountStatSchema = mongoose.Schema({
         ref: 'Account',
         required: true,
     },
+    planEstimationThisMonth: {
+        type: Number,
+        default: 0,
+        required: true,
+    },
     total_km: {
         type: Number,
         default: 0,
