@@ -505,7 +505,6 @@ ipcRenderer.on('database/last-10-days', (event, data) => {
 })
 
 ipcRenderer.on('database/profile-display-account', (event, data) => {
-    console.log(data);
     // Date
     const options = { weekday: 'long', day: 'numeric', month: 'long' };
     const date = new Date();

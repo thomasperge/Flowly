@@ -65,7 +65,6 @@ ipcMain.on('database/add-user', async (event, data) => {
     if (test == true) {
         windows.loadFile('./src/components/pages/login.html')
     } else {
-        console.log("SEND");
         win.webContents.send('database/register-error', { message: test })
     }
 });
