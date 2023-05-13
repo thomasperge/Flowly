@@ -5,7 +5,6 @@ exports.addUserController = async (req, res) => {
     return await dbService.addUserInDB(req);
   } catch (error) {
     console.log("ERROR");
-    // res.status(500).json({ message: error.message });
   }
 };
 

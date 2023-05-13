@@ -19,138 +19,145 @@ const bcrypt = require('bcryptjs');
  */
 exports.addUserInDB = async (data) => {
 	try {
-		// Create Customer Stripe Id
-		const customer = await stripe.customers.create({
-			email: data.email,
-			name: data.name
-		});
-
-		const customerId = customer.id;
-
-		fetch(`https://gray-friendly-walkingstick.cyclic.app/default-subscription/${customerId}`)
-		.then(response => response.json())
-		.then(data => {
-			console.log("==> Default Subscription : ", data);
-		})
-		.catch(error => {
-			console.error('Erreur:', error);
-		});
-
 		// Create User Schema
 		const User = mongoose.model('account', accountSchema);
+		let userFound = await User.findOne({ email: data.email })
+		let nameFound = await User.findOne({ name: data.name })
 
-		const salt = await bcrypt.genSalt(10);
-  		const passwordHash = await bcrypt.hash(data.password, salt);
+		if (!userFound && !nameFound) {
+			// Create Customer Stripe Id
+			const customer = await stripe.customers.create({
+				email: data.email,
+				name: data.name
+			});
 
-		const newUser = new User({
-			type: data.typeUsers,
-			plan: 0,
-			planEstimationThisMonth: 0,
-			email: data.email,
-			name: data.name,
-			password: passwordHash,
-			stripeId: customerId,
-		});
+			const customerId = customer.id;
 
-		newUser.save()
+			fetch(`https://gray-friendly-walkingstick.cyclic.app/default-subscription/${customerId}`)
+			.then(response => response.json())
+			.then(data => {
+				console.log("==> Default Subscription : ", data);
+			})
+			.catch(error => {
+				console.error('Erreur:', error);
+			});
 
-		// Create Users Stats Schema
-		const Stats = mongoose.model('account_stats', accountStatSchema);
+			const salt = await bcrypt.genSalt(10);
+			const passwordHash = await bcrypt.hash(data.password, salt);
 
-		const userStats = new Stats({
-			idAccount: newUser._id,
-			total_km: 0,
-			total_carbon_kg: 0,
-			total_km_vehicle: 0,
-			total_carbon_vehicle: 0,
-			total_km_flight: 0,
-			total_carbon_flight: 0,
-			total_km_shipping: 0,
-			total_carbon_shipping: 0,
-			total_electricity_mwh: 0,
-			total_carbon_electricity: 0,
-			total_fuel_btu: 0,
-			total_carbon_fuel: 0,
-		});
+			const newUser = new User({
+				type: data.typeUsers,
+				plan: 0,
+				planEstimationThisMonth: 0,
+				email: data.email,
+				name: data.name,
+				password: passwordHash,
+				stripeId: customerId,
+			});
 
-		userStats.save()
+			newUser.save()
 
-		// Create Car Record Stats Schema
-		const totalRecordStats = mongoose.model('stats_cars_account', totalRecordCarSchema);
+			// Create Users Stats Schema
+			const Stats = mongoose.model('account_stats', accountStatSchema);
 
-		const newCarStatsRecord = new totalRecordStats({
-			idAccount: newUser._id,
-			fourgonette : {
-				total_distance: 0,
+			const userStats = new Stats({
+				idAccount: newUser._id,
+				total_km: 0,
 				total_carbon_kg: 0,
-			},
-			mini_fourgonette : {
-				total_distance: 0,
-				total_carbon_kg: 0,
-			},
-			pick_up : {
-				total_distance: 0,
-				total_carbon_kg: 0,
-			},
-			coupes : {
-				total_distance: 0,
-				total_carbon_kg: 0,
-			},
-			suv : {
-				total_distance: 0,
-				total_carbon_kg: 0,
-			},
-			crossover : {
-				total_distance: 0,
-				total_carbon_kg: 0,
-			},
-			break : {
-				total_distance: 0,
-				total_carbon_kg: 0,
-			},
-			berline : {
-				total_distance: 0,
-				total_carbon_kg: 0,
-			},
-		});
+				total_km_vehicle: 0,
+				total_carbon_vehicle: 0,
+				total_km_flight: 0,
+				total_carbon_flight: 0,
+				total_km_shipping: 0,
+				total_carbon_shipping: 0,
+				total_electricity_mwh: 0,
+				total_carbon_electricity: 0,
+				total_fuel_btu: 0,
+				total_carbon_fuel: 0,
+			});
 
-		newCarStatsRecord.save()
+			userStats.save()
 
-		// Create Employee (employe by default - Owner)
-		const Employee = mongoose.model('employees', employeeAccountSchema);
+			// Create Car Record Stats Schema
+			const totalRecordStats = mongoose.model('stats_cars_account', totalRecordCarSchema);
 
-		const newEmployee = new Employee({
-			_id: newUser._id,
-			accountId: newUser._id,
-			firstName: data.name,
-			lastname: "Owner"
-		})
+			const newCarStatsRecord = new totalRecordStats({
+				idAccount: newUser._id,
+				fourgonette : {
+					total_distance: 0,
+					total_carbon_kg: 0,
+				},
+				mini_fourgonette : {
+					total_distance: 0,
+					total_carbon_kg: 0,
+				},
+				pick_up : {
+					total_distance: 0,
+					total_carbon_kg: 0,
+				},
+				coupes : {
+					total_distance: 0,
+					total_carbon_kg: 0,
+				},
+				suv : {
+					total_distance: 0,
+					total_carbon_kg: 0,
+				},
+				crossover : {
+					total_distance: 0,
+					total_carbon_kg: 0,
+				},
+				break : {
+					total_distance: 0,
+					total_carbon_kg: 0,
+				},
+				berline : {
+					total_distance: 0,
+					total_carbon_kg: 0,
+				},
+			});
 
-		newEmployee.save()
-		
-		// Create Employee Stats
-		const EmployeeStats = mongoose.model('employee_stats', employeeStatsSchema)
+			newCarStatsRecord.save()
 
-		const employeeStats = new EmployeeStats({
-			idEmployee: newEmployee._id,
-			idAccount: newUser._id,
-			total_km: 0,
-			total_carbon_kg: 0,
-			total_km_vehicle: 0,
-			total_carbon_vehicle: 0,
-			total_km_flight: 0,
-			total_carbon_flight: 0,
-			total_km_shipping: 0,
-			total_carbon_shipping: 0,
-			total_electricity_mwh: 0,
-			total_carbon_electricity: 0,
-			total_fuel_btu: 0,
-			total_carbon_fuel: 0
-		})
+			// Create Employee (employe by default - Owner)
+			const Employee = mongoose.model('employees', employeeAccountSchema);
 
-		employeeStats.save()
+			const newEmployee = new Employee({
+				_id: newUser._id,
+				accountId: newUser._id,
+				firstName: data.name,
+				lastname: "Owner"
+			})
+
+			newEmployee.save()
+			
+			// Create Employee Stats
+			const EmployeeStats = mongoose.model('employee_stats', employeeStatsSchema)
+
+			const employeeStats = new EmployeeStats({
+				idEmployee: newEmployee._id,
+				idAccount: newUser._id,
+				total_km: 0,
+				total_carbon_kg: 0,
+				total_km_vehicle: 0,
+				total_carbon_vehicle: 0,
+				total_km_flight: 0,
+				total_carbon_flight: 0,
+				total_km_shipping: 0,
+				total_carbon_shipping: 0,
+				total_electricity_mwh: 0,
+				total_carbon_electricity: 0,
+				total_fuel_btu: 0,
+				total_carbon_fuel: 0
+			})
+
+			employeeStats.save()
+			return true
+		} else {
+			return "Erreur : Ce compte est déjà enregistrée"
+		}
 	} catch (error) {
-		console.error(error);
+		return "une erreur s'est produite veuillez réessayer"
 	}
 };
 

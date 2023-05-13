@@ -234,9 +234,14 @@ function isEmail(chaine) {
     
     // Test de la chaîne de caractères avec la regex
     return regex.test(chaine);
-  }
+}
 
 // ======== Ipc Renderer On ========
+ipcRenderer.on('database/register-error', (event, data) => {
+    document.getElementById('missingInformations').innerHTML = data.message
+    document.getElementById('missingInformations').style.display = "block"
+})
+
 ipcRenderer.on('app/login-error', (event, data) => {
     document.getElementById('wrongInformations').style.display = "block"
 })

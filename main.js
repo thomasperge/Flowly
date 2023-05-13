@@ -58,9 +58,16 @@ app.whenReady().then(async () => {
 
 // ========= All Ipc Call =========
 // == Database : ==
-ipcMain.on('database/add-user', (event, data) => {
-    dataBaseComponent.addUserController(data)
-    windows.loadFile('./src/components/pages/login.html')
+ipcMain.on('database/add-user', async (event, data) => {
+    const win = BrowserWindow.getAllWindows()[0];
+
+    let test = await dataBaseComponent.addUserController(data)
+    if (test == true) {
+        windows.loadFile('./src/components/pages/login.html')
+    } else {
+        console.log("SEND");
+        win.webContents.send('database/register-error', { message: test })
+    }
 });
 
 ipcMain.on('database/display-history', async () => {
