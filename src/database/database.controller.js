@@ -124,3 +124,21 @@ exports.getIdStripeAccountController = async (_req, _res) => {
     return error
   }
 };
+
+exports.returnAverageConsumptionController = async (_req, _res) => {
+  try {
+    let data = await dbService.returnAverageConsumption();
+    return data;
+  } catch (error) {
+    return error
+  }
+};
+
+exports.accountProfileController = async (_req, _res) => {
+  try {
+    let data = await dbService.accountProfile();
+    return data;
+  } catch (error) {
+    return error
+  }
+};

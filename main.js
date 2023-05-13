@@ -25,6 +25,7 @@ const createWindow = () => {
         minWidth: 1400,
         minHeight: 775,
         resizable: true,
+        icon: './assets/logo_white_small_2_png.png',
         webPreferences: {
             contextIsolation: true,
             nodeIntegration: true,
@@ -71,7 +72,14 @@ ipcMain.on('database/display-history', async () => {
 ipcMain.on('database/profile-username', async () => {
     const win = BrowserWindow.getAllWindows()[0];
     let userAccount = await dataBaseComponent.returnUserDataFromIdController()
-    win.webContents.send('database/profile-display-account', userAccount)
+    let profileData = await dataBaseComponent.accountProfileController()
+
+    let data = {
+        userAccount: userAccount,
+        profileData: profileData
+    }
+
+    win.webContents.send('database/profile-display-account', data)
 })
 
 ipcMain.on('database/premium-plan', async () => {
@@ -128,7 +136,7 @@ ipcMain.on('api/add-car', async (event, data) => {
             let allHistory = await dataBaseComponent.getAllRecordFromUserController()
             win.webContents.send('database/send-all-history', allHistory.reverse())
             // Average consumption per day
-            let averageConsumption = await dataBaseComponent.returnUserStatsController()
+            let averageConsumption = await dataBaseComponent.returnAverageConsumptionController()
             win.webContents.send('database/average-consumption', averageConsumption)
             // Last 10 days Car Consumption
             let last10DaysConsumptionData = [
@@ -165,7 +173,7 @@ ipcMain.on('api/add-energy', async (event, data) => {
             let allHistory = await dataBaseComponent.getAllRecordFromUserController()
             win.webContents.send('database/send-all-history', allHistory.reverse())
             // Average consumption per day
-            let averageConsumption = await dataBaseComponent.returnUserStatsController()
+            let averageConsumption = await dataBaseComponent.returnAverageConsumptionController()
             win.webContents.send('database/average-consumption', averageConsumption)
             // Last 10 days Car Consumption
             let last10DaysConsumptionData = [
@@ -217,7 +225,7 @@ async function loadAllDataDashBoard() {
             let mostCarUsed = await dataBaseComponent.getMostCarUsedController()
             win.webContents.send('database/most-car-used', mostCarUsed)
             // Average consumption per day
-            let averageConsumption = await dataBaseComponent.returnUserStatsController()
+            let averageConsumption = await dataBaseComponent.returnAverageConsumptionController()
             win.webContents.send('database/average-consumption', averageConsumption)
             // Display all Members
             let allMembers = await dataBaseComponent.getAllEmployeeFromAccountController()
@@ -273,7 +281,7 @@ ipcMain.on("app/login-user", async (event, data) => {
             let mostCarUsed = await dataBaseComponent.getMostCarUsedController()
             win.webContents.send('database/most-car-used', mostCarUsed)
             // Average consumption per day
-            let averageConsumption = await dataBaseComponent.returnUserStatsController()
+            let averageConsumption = await dataBaseComponent.returnAverageConsumptionController()
             win.webContents.send('database/average-consumption', averageConsumption)
             // Display all Members
             let allMembers = await dataBaseComponent.getAllEmployeeFromAccountController()

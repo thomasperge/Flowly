@@ -1676,7 +1676,7 @@ input[type="date"]::-webkit-input-placeholder {
 .profile-AreaAllMembers {
     width: 95%;
     height: 90%;
-    background-color: var(--borderAddAreaBackground);
+    background-color: var(--hoverAddButton);
     border-radius: 11px;
     overflow: scroll;
 }
@@ -1684,7 +1684,7 @@ input[type="date"]::-webkit-input-placeholder {
 .profile-AreaGlobalStats {
     width: 95%;
     height: 90%;
-    background-color: var(--borderAddAreaBackground);
+    background-color: var(--hoverAddButton);
     border-radius: 11px;
 }
 
@@ -1742,6 +1742,12 @@ input[type="date"]::-webkit-input-placeholder {
     gap: 1vh;
 }
 
+.profile-SContainerInfo {
+    display: flex;
+    gap: 1vh;
+    margin-bottom: 2vh;
+}
+
 .profile-AreaInfo {
     align-items: flex-end;
     color: var(--darkLightMode);
@@ -1750,7 +1756,7 @@ input[type="date"]::-webkit-input-placeholder {
     width: auto;
     height: auto;
     padding: .40vh 1.1vh .40vh 1.1vh;
-    background-color: rgba(0, 189, 0, 0.525);
+    background-color: rgba(0, 189, 0, 0.276);
     border-radius: 14px;
 }
 

@@ -357,6 +357,60 @@ exports.returnUserStats = async (data) => {
 };
 
 /**
+ * Return average consumption
+ * @param {*} data 
+ * @returns 
+ */
+exports.returnAverageConsumption = async () => {
+	const AccountStatsShema = mongoose.model('account_stats', accountStatSchema);
+	const accountStats = await AccountStatsShema.findOne({ idAccount: idUserDataJson.id })
+
+	const AccountShema = mongoose.model('account', accountSchema);
+	const account = await AccountShema.findOne({ _id: idUserDataJson.id })
+
+	const createdAt = new Date(account.createdAt);
+	const currentDate = new Date();
+	const timeDiff = Math.abs(currentDate.getTime() - createdAt.getTime());
+	const numberOfDays = Math.ceil(timeDiff / (1000 * 3600 * 24));
+
+	let data = {
+		averageCar : (accountStats.total_carbon_vehicle / numberOfDays),
+		averageEnergy: (accountStats.total_carbon_electricity / numberOfDays),
+		averageFuel : (accountStats.total_carbon_fuel / numberOfDays)
+	}
+
+	if(data && accountStats && account) {
+		return data
+	} else {
+		return null
+	}
+};
+
+exports.accountProfile = async () => {
+	const AccountStatsShema = mongoose.model('account_stats', accountStatSchema);
+	const accountStats = await AccountStatsShema.findOne({ idAccount: idUserDataJson.id })
+
+	const AccountShema = mongoose.model('account', accountSchema);
+	const account = await AccountShema.findOne({ _id: idUserDataJson.id })
+
+	const AllEmployeeShema = mongoose.model('employees', employeeAccountSchema);
+	const allEmployee = await AllEmployeeShema.find({ accountId: idUserDataJson.id })
+
+	let data = {
+		emailAccount : account.email,
+		numberOfEmployee: allEmployee.length,
+		plan : account.plan,
+		planEstimation : accountStats.planEstimationThisMonth
+	}
+
+	if(data && accountStats && account && allEmployee) {
+		return data
+	} else {
+		return null
+	}
+};
+
+/**
  * Get all record from user
  * @returns 
  */

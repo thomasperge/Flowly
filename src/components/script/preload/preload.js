@@ -415,13 +415,12 @@ ipcRenderer.on('database/most-car-used', (event, result) => {
 })
 
 ipcRenderer.on('database/average-consumption', (event, data) => {
-    document.getElementById('averageElectricDay').innerHTML = formatNumber(data._doc.total_carbon_electricity/365)
-    document.getElementById('averageCarDay').innerHTML = formatNumber(data._doc.total_carbon_vehicle/365)
-    document.getElementById('averageFuelDay').innerHTML = formatNumber(data._doc.total_carbon_fuel/365)
+    document.getElementById('averageElectricDay').innerHTML = formatNumber(data.averageEnergy)
+    document.getElementById('averageCarDay').innerHTML = formatNumber(data.averageCar)
+    document.getElementById('averageFuelDay').innerHTML = formatNumber(data.averageFuel)
 })
 
 ipcRenderer.on('database/last-10-days', (event, data) => {
-    console.log(data);
     let carData = data[0].reverse()
     let energyData = data[1].reverse()
     let fuelData = data[2].reverse()
@@ -501,6 +500,7 @@ ipcRenderer.on('database/last-10-days', (event, data) => {
 })
 
 ipcRenderer.on('database/profile-display-account', (event, data) => {
+    console.log(data);
     // Date
     const options = { weekday: 'long', day: 'numeric', month: 'long' };
     const date = new Date();
@@ -508,7 +508,41 @@ ipcRenderer.on('database/profile-display-account', (event, data) => {
     document.getElementById('profileDate').innerHTML = `${formattedDate}`
 
     // Welcome
-    document.getElementById('profileWelcome').innerHTML = `Bienvenue, ${data._doc.name}`
+    document.getElementById('profileWelcome').innerHTML = `Bienvenue, ${data.userAccount._doc.name}`
+    document.getElementById('profile-email').innerHTML = `Email : ${data.profileData.emailAccount}`
+    document.getElementById('profile-employee').innerHTML = `Employé(s) : ${data.profileData.numberOfEmployee}`
+
+    let planString = ""
+    let planMax = ""
+
+    if (data.profileData.plan == 0) {
+        planMax = "60"
+        planString = `
+            <div class="premium-freePlan flex">
+                <i class="fi fi-rr-lock flex"></i>
+                <div>Gratuit</div>
+            </div>
+        `;
+    } else if (data.profileData.plan == 1) {
+        planMax = "600"
+        planString = `
+            <div class="premium-standardPlan flex">
+                <i class="fi fi-sr-crown flex"></i>
+                <div>Standard</div>
+            </div>
+        `;
+    } else if (data.profileData.plan == 2) {
+        planMax = "Illimité"
+        planString = `
+            <div class="premium-proPlan flex">
+                <i class="fi fi-br-rocket-lunch flex"></i>
+                <div>Professionnel</div>
+            </div>
+        `;
+    }
+
+    document.getElementById('profile-plan').innerHTML = `Abonnement : ${planString}`
+    document.getElementById('profile-trajet').innerHTML = `Trajet : ${data.profileData.planEstimation} / ${planMax}`
 })
 
 ipcRenderer.on('database/display-plan', (event, data) => {
