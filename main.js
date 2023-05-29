@@ -33,6 +33,9 @@ const createWindow = () => {
         }
     })
 
+    console.log("=> 1 : ", path.join(app.getAppPath(), 'data.json'));
+    console.log("=> 2 : ", path.join(__dirname, 'data.json'))
+
     if (dataUserLocalJson.id && dataUserLocalJson.employee) {
         loadAllDataDashBoard()
     } else {
@@ -104,7 +107,7 @@ ipcMain.on('contact/send-request', async (event, data) => {
 })
 
 ipcMain.on('database/unlogin-user', async (event, data) => {
-    const dataPath = path.join(app.getAppPath(), 'data.json');
+    const dataPath = path.join(__dirname, 'data.json');
     const config = loadConfig(dataPath);
     config.id = "";
     config.employee = "";
@@ -261,7 +264,7 @@ ipcMain.on("app/login-user", async (event, data) => {
         // Get all data about users with email
         let userData = await dataBaseComponent.returnUserDataFromEmailController(data)
 
-        const dataPath = path.join(app.getAppPath(), 'data.json');
+        const dataPath = path.join(__dirname, 'data.json');
 
         const config = loadConfig(dataPath);
         config.id = userData._id;
